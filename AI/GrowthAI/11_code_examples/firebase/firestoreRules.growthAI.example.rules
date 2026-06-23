@@ -1,0 +1,37 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isTenantMember(tenantId) {
+      return signedIn()
+        && exists(/databases/$(database)/documents/tenants/$(tenantId)/members/$(request.auth.uid));
+    }
+
+    function isTenantAdmin(tenantId) {
+      return signedIn()
+        && get(/databases/$(database)/documents/tenants/$(tenantId)/members/$(request.auth.uid)).data.role in ['owner', 'admin', 'super-admin'];
+    }
+
+    match /tenants/{tenantId}/growthAI/leads/{leadId} {
+      allow read: if isTenantMember(tenantId);
+      allow create, update: if isTenantAdmin(tenantId);
+      allow delete: if isTenantAdmin(tenantId);
+    }
+
+    match /tenants/{tenantId}/growthAI/outreachDrafts/{draftId} {
+      allow read: if isTenantMember(tenantId);
+      allow create, update, delete: if isTenantAdmin(tenantId);
+    }
+
+    match /tenants/{tenantId}/growthAI/interactions/{interactionId} {
+      allow read: if isTenantMember(tenantId);
+      allow create, update: if isTenantAdmin(tenantId);
+      allow delete: if false;
+    }
+  }
+}
