@@ -1,26 +1,38 @@
-# ServicesOS Laundry Module + RetailOS Laundromat Bundle
+# ServicesOS Laundry Module + POS Add-On
 
 **Status:** Future planning only  
 **Active build priority:** Do not build before ServicesOS cleaning beta, wife beta testing, UI hardening, and payments stability.  
 **Primary product anchor:** ServicesOS  
-**Related product:** RetailOS  
+**Retail path:** POS add-on first; RetailOS linkage later if retail complexity grows  
 **Strategic layer:** SLAI cross-product linking
 
 ---
 
 ## Purpose
 
-This document captures a future laundromat / laundry services concept for SLAI. The idea is not to force the business into either ServicesOS or RetailOS. A laundromat naturally has both a service workflow and a retail/POS workflow.
+This document captures a future laundromat / laundry services concept for SLAI.
 
-Long-term, the right model is:
+The key architecture decision is:
 
 ```text
-ServicesOS handles the service workflow.
-RetailOS handles the retail/POS workflow.
-SLAI Core links the related products together.
+ServicesOS already owns the service workflow, customers, employees, inventory-style tracking, payments, scheduling, analytics, and tenant structure.
+
+The missing retail layer is POS.
 ```
 
-This keeps each product focused while allowing businesses with overlapping operations to use bundled SLAI modules.
+So the correct future framing is not to immediately split laundromats into two separate products. The better model is:
+
+```text
+ServicesOS Laundry Module
++
+POS Add-On
+=
+Laundry / Laundromat Operations Bundle
+
+RetailOS linkage comes later only if retail complexity grows.
+```
+
+This preserves ServicesOS as the operational anchor while keeping RetailOS available for deeper retail/POS complexity later.
 
 ---
 
@@ -30,17 +42,81 @@ This keeps each product focused while allowing businesses with overlapping opera
 Primary bucket:
 ServicesOS future module
 
-Related bucket:
-RetailOS future module
+Add-on bucket:
+POS add-on
+
+Future linkage:
+RetailOS if retail complexity grows
 
 Bundle opportunity:
-Laundromat Operations Bundle
+Laundry / Laundromat Operations Bundle
 
 Build timing:
-After ServicesOS beta, cleaning workflow stability, and payments stability
+After ServicesOS beta, wife beta testing, UI hardening, and payments stability
 ```
 
-This should remain future planning until the core ServicesOS cleaning product is stable.
+This must remain future planning until ServicesOS cleaning is stable.
+
+---
+
+## Core Architecture Decision
+
+Laundromat/laundry businesses have service operations and retail operations. ServicesOS can already cover much of the shared operational foundation.
+
+### ServicesOS already supports or is designed to support
+
+- Customers
+- Employees
+- Service orders/jobs
+- Scheduling
+- Checklists
+- Payments
+- Inventory-style tracking
+- Tenant structure
+- Notifications
+- Analytics foundation
+
+### POS add-on adds
+
+- Product catalog
+- Cart/checkout flow
+- Receipt generation
+- Sales tax handling
+- Refunds/returns
+- Counter sales
+- Cash/card tracking
+- End-of-day summary
+- Optional barcode/SKU support later
+
+### RetailOS linkage later adds deeper retail complexity
+
+- Advanced SKU inventory
+- Supplier/vendor purchasing
+- Register sessions
+- Multi-location retail reporting
+- Product margin reporting
+- Barcode workflows
+- Retail-specific analytics
+
+---
+
+## Service Inventory vs Retail Inventory
+
+This distinction should become a general SLAI product rule.
+
+```text
+Service inventory = supplies used to complete jobs/orders.
+Retail inventory = products sold directly to customers.
+```
+
+Example:
+
+```text
+Detergent used by employees for wash-and-fold = ServicesOS inventory.
+Detergent sold to walk-in customers = POS / Retail inventory.
+```
+
+This allows the same business to track supplies without confusing internal usage with direct retail sales.
 
 ---
 
@@ -50,7 +126,7 @@ Laundry/laundromat businesses usually split into two operational sides.
 
 ### 1. Laundry Service Operations
 
-This is the best fit for ServicesOS.
+Best fit: ServicesOS.
 
 Examples:
 
@@ -66,17 +142,16 @@ Examples:
 
 ### 2. Laundromat Retail / POS Operations
 
-This is the best fit for RetailOS.
+Best fit: POS add-on first, RetailOS linkage later.
 
 Examples:
 
-- Walk-in transactions
+- Walk-in product transactions
 - Detergent and fabric softener sales
 - Vending inventory
-- Machine revenue
-- Cash/card register activity
-- Refunds
-- Retail product stock
+- Machine refunds
+- Cash/card counter activity
+- Product stock
 - Daily sales reports
 
 ---
@@ -86,14 +161,14 @@ Examples:
 ```text
 ServicesOS Laundry Module
 +
-RetailOS POS / Inventory Module
+POS Add-On
 =
-Laundromat Operations Bundle
+Laundry / Laundromat Operations Bundle
 ```
 
-The bundle would allow a laundromat or laundry service business to manage service orders, retail transactions, employees, customers, and payments from one connected SLAI ecosystem.
+The bundle would allow a laundromat or laundry service business to manage service orders, counter sales, employees, customers, payments, and inventory from a connected SLAI ecosystem.
 
-The modules should not be merged into one tangled product. They should be linkable through shared SLAI Core data.
+The modules should not become a tangled product. They should share the right core data while keeping workflows separate.
 
 ---
 
@@ -108,51 +183,24 @@ Do not merge products too early.
 Do make products linkable later.
 ```
 
-Shared cross-product foundations should include:
+The product that owns the main workflow should remain the anchor.
 
-- Tenant / business account
-- Customer profile
-- Employee profile
-- Roles and permissions
-- Billing and payments
-- Invoices and receipts
-- Notifications
-- Files and documents
-- Audit logs
-- Analytics
-- AI assistant context
+For laundromats:
 
-Product-specific workflows should stay separated.
-
-### ServicesOS owns:
-
-- Service requests
-- Quotes / estimates
-- Jobs / orders
-- Scheduling
-- Employee assignments
-- Checklists
-- Service completion
-- Recurring service workflows
-
-### RetailOS owns:
-
-- POS transactions
-- Product catalog
-- Inventory
-- Register sessions
-- Retail receipts
-- Stock adjustments
-- Vendor/supplier data
+```text
+ServicesOS owns laundry service operations.
+POS add-on owns counter checkout.
+RetailOS becomes relevant if the retail side grows into advanced inventory, register, supplier, and multi-location retail workflows.
+```
 
 ---
 
-## Example Laundromat Customer Journey
+## Example Customer Journey
 
-A customer walks into a laundromat and buys detergent:
+A customer buys detergent at the counter:
 
 ```text
-RetailOS transaction
+POS add-on transaction
 ```
 
 The same customer drops off clothes for wash-and-fold:
@@ -176,13 +224,13 @@ Delivery fee: $8
 Total customer value: $56
 ```
 
-This is the long-term value of SLAI cross-product linking: the business sees the full operational picture instead of separate disconnected systems.
+This is the long-term value of SLAI cross-product linking: the business sees the full operational picture instead of disconnected systems.
 
 ---
 
 ## ServicesOS Laundry Module MVP
 
-The MVP should focus on service operations, not full laundromat machine/POS management.
+The MVP should focus on service operations, not full laundromat POS, vending, machine IoT, or advanced retail.
 
 ### MVP Features
 
@@ -229,8 +277,6 @@ Recurring customer preferences saved
 
 ### Order Statuses
 
-Potential laundry order statuses:
-
 - New Request
 - Pickup Scheduled
 - Picked Up
@@ -250,9 +296,7 @@ Potential laundry order statuses:
 
 ## Customer Intake Fields
 
-First-time customer intake should capture detailed preferences.
-
-Potential fields:
+First-time customer intake should capture detailed preferences:
 
 - Name
 - Phone/email
@@ -380,36 +424,48 @@ Final price is confirmed after intake/weight is recorded.
 
 ---
 
-## RetailOS Side of the Bundle
+## POS Add-On Scope
 
-RetailOS would handle the retail and counter-sales side of a laundromat.
-
-Potential RetailOS laundromat features:
+Minimum POS add-on:
 
 - Product catalog
-- Detergent/softener sales
-- Vending inventory
-- Counter POS
-- Cash/card sales
+- Cart
+- Checkout
+- Receipt
+- Sales tax
 - Refunds
-- Daily sales summary
-- Low stock alerts
-- Stock adjustments
-- Product margin reporting
+- Cash/card tracking
+- End-of-day summary
 
-Future machine-related retail/payment features could include:
+Later POS features:
 
-- Machine revenue tracking
-- Washer/dryer status
-- Manual machine assignment
-- Maintenance logs
-- Downtime tracking
-
-Machine IoT integrations should not be MVP. They should come later only if real customers need them.
+- Barcode scanning
+- Cash drawer
+- Register sessions
+- Vending inventory
+- Machine payments
+- Multi-location retail reporting
 
 ---
 
-## Shared Data Between ServicesOS and RetailOS
+## RetailOS Linkage Later
+
+RetailOS should become involved only when the business has enough retail complexity to justify it.
+
+Examples that may justify RetailOS linkage:
+
+- Multiple retail locations
+- Large product catalog
+- Supplier/vendor management
+- Advanced stock reporting
+- Barcode-heavy workflows
+- Product margin tracking
+- Retail-specific analytics
+- Front-counter POS becomes as important as service workflow
+
+---
+
+## Shared Data
 
 A laundromat bundle should link data through shared identifiers.
 
@@ -426,7 +482,7 @@ Shared data examples:
 Example linked records:
 
 ```text
-RetailOS transaction:
+POS transaction:
 customerId = customer_123
 items = detergent, dryer sheets
 
@@ -468,8 +524,6 @@ Commercial workflow:
 - Scheduled route
 - Account-level reporting
 
-This could be a premium module after the consumer wash-and-fold workflow is stable.
-
 ---
 
 ## AI Features Later
@@ -499,7 +553,7 @@ Photo AI later:
 
 Avoid these until ServicesOS and the laundry workflow prove demand:
 
-- Full laundromat POS
+- Full RetailOS rollout
 - Machine IoT integrations
 - Vending automation
 - Route optimization
@@ -516,32 +570,12 @@ Avoid these until ServicesOS and the laundry workflow prove demand:
 This idea reinforces a broader SLAI architecture philosophy:
 
 ```text
-SLAI products should be modular, linkable, and tenant-aware.
+SLAI products should be modular, linkable, tenant-aware, and workflow-owned.
 ```
 
-The future SLAI Core should make it possible for a business to activate multiple modules without duplicating customers, employees, permissions, billing, or analytics.
+The future SLAI Core should make it possible for a business to activate multiple modules without duplicating customers, employees, permissions, billing, inventory, or analytics.
 
-This applies beyond laundromats:
-
-```text
-Laundromat:
-ServicesOS + RetailOS
-
-Cleaning company selling supplies:
-ServicesOS + RetailOS
-
-Pharmacy:
-RetailOS + PharmacyOS + ComplianceAI
-
-Card shop:
-RetailOS + GrowthAI
-
-Training-heavy service business:
-ServicesOS + EducationOS
-
-Multi-location operator:
-ServicesOS + RetailOS + ComplianceAI + GrowthAI
-```
+The main workflow determines the product anchor. POS can be added as an add-on when direct customer sales are needed. RetailOS linkage comes later if the retail side grows into a full retail business.
 
 ---
 
