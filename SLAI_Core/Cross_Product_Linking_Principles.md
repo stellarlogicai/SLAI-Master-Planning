@@ -19,6 +19,38 @@ Do not merge products too early. Do design them so they can connect later.
 
 ---
 
+## Linkable From the Start
+
+The purpose of cross-product linking is not to build every product at once. The purpose is to prevent future products from becoming isolated systems that must be forced together after they are already complete.
+
+```text
+Build simple products now.
+Use shared identifiers and clean events from the start.
+Add modules later without rebuilding the foundation.
+```
+
+This makes future add-ons easier because ServicesOS, GrowthAI, SLAI OS, RetailOS, EducationOS, and ComplianceAI can connect through the same core identifiers instead of each product inventing its own customer, tenant, employee, payment, and analytics models.
+
+Core identifiers that should remain clean across SLAI products:
+
+- `tenantId`
+- `locationId`
+- `customerId`
+- `employeeId`
+- `userId`
+- `paymentId`
+- `invoiceId`
+- `receiptId`
+- `inventoryItemId`
+- `auditLogId`
+- `module`
+- `source`
+- `eventType`
+
+This is the difference between an ecosystem and a pile of disconnected apps.
+
+---
+
 ## Main Workflow Ownership Rule
 
 When a business overlaps multiple categories, the product that owns the main workflow should remain the anchor.
@@ -145,6 +177,148 @@ Examples:
 - Regulated item workflows
 - Patient-facing service operations
 - Pharmacy-specific compliance needs
+
+### SLAI OS owns internal command and coordination
+
+Examples:
+
+- Founder dashboard
+- Internal tasks
+- Product status
+- Developer handoffs
+- Company memory
+- Incident tracking
+- Customer/beta feedback routing
+- Cross-product alerts
+- Strategic planning context
+
+SLAI OS should not replace the individual products. It should become the command layer that can see across them.
+
+---
+
+## Add-On Expansion Advantage: GrowthAI and SLAI OS
+
+Linkable systems make future add-ons easier because each product can plug into real operational data instead of starting from scratch.
+
+### Without linkable systems
+
+```text
+Build ServicesOS.
+Build GrowthAI separately.
+Build SLAI OS separately.
+Later try to force them to talk.
+Result: duplicate customers, duplicate permissions, duplicate billing, messy migrations, and disconnected analytics.
+```
+
+### With linkable systems
+
+```text
+Build ServicesOS cleanly.
+Use shared tenant/customer/employee/payment IDs.
+Expose clean operational events.
+Later plug GrowthAI into the same business/customer data.
+Later plug SLAI OS into the same operational command layer.
+Result: add-ons become easier, cleaner, and cheaper to build.
+```
+
+### GrowthAI example
+
+ServicesOS creates real operating data:
+
+- Customers
+- Leads
+- Quotes
+- Lost leads
+- Approved jobs
+- Completed jobs
+- Recurring services
+- Reviews
+- Customer value
+- Service frequency
+- Service geography
+- Follow-up history
+
+GrowthAI can later use that data to answer practical business questions:
+
+- Which leads went cold?
+- Which customers should be followed up with?
+- Which customers are likely to refer someone?
+- Which service types sell best?
+- Which neighborhoods or job types are most profitable?
+- Which customers are overdue for repeat service?
+- Which businesses should be targeted next?
+
+This means GrowthAI becomes a growth intelligence layer on top of real operating data instead of a generic marketing tool.
+
+### SLAI OS example
+
+SLAI OS can become the internal command center when products emit clean events and share core identifiers.
+
+SLAI OS could surface:
+
+- ServicesOS beta issues
+- GrowthAI lead opportunities
+- EducationOS training gaps
+- ComplianceAI audit tasks
+- RetailOS inventory warnings
+- Customer feedback trends
+- Developer blockers
+- Revenue signals
+- Product health metrics
+
+Example future command view:
+
+```text
+ServicesOS:
+3 quote requests pending owner review
+
+GrowthAI:
+5 cold leads ready for follow-up
+
+EducationOS:
+2 cleaners have not completed chemical safety training
+
+ComplianceAI:
+1 outdate task overdue
+
+RetailOS/POS:
+Low stock on detergent
+```
+
+This is why the shared foundation matters. SLAI OS becomes the company brain only if the products emit usable linked data.
+
+---
+
+## Events as a Future Linking Layer
+
+In addition to shared IDs, SLAI products should eventually emit clean events.
+
+Example events:
+
+- `lead.created`
+- `quote.requested`
+- `quote.approved`
+- `job.scheduled`
+- `job.completed`
+- `payment.received`
+- `inventory.low_stock`
+- `training.completed`
+- `compliance.task_overdue`
+- `customer.feedback_received`
+- `growth.followup_recommended`
+
+These events allow future products to react without tightly coupling every codebase together.
+
+Example:
+
+```text
+ServicesOS emits job.completed.
+GrowthAI can suggest review request or referral follow-up.
+SLAI OS can show completed revenue and customer status.
+EducationOS can detect if the assigned employee needs more training.
+```
+
+The event layer should come later. The design principle should exist from the start.
 
 ---
 
@@ -446,6 +620,7 @@ Possible future bundle types:
 - EducationOS training add-on
 - ComplianceAI audit/rules add-on
 - GrowthAI acquisition add-on
+- SLAI OS internal command layer
 
 Pricing should be fair and small-business friendly. Exact pricing should be decided later, after ServicesOS beta and real usage data.
 
