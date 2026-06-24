@@ -2,7 +2,7 @@
 
 **Status:** Strategic architecture planning  
 **Active build priority:** ServicesOS remains priority one.  
-**Purpose:** Define the long-term SLAI architecture as a modular AI-assisted operating system ecosystem with a shared core, selectable products, vertical modules, and intentional overlap linking.
+**Purpose:** Define the long-term SLAI architecture as a modular AI-assisted operating system ecosystem with a shared core, foundational security, selectable products, vertical modules, and intentional overlap linking.
 
 ---
 
@@ -14,6 +14,8 @@ SLAI is a modular operating system ecosystem.
 
 ```text
 SLAI Core
+↓
+Security Foundation
 ↓
 SLAI OS
 ↓
@@ -31,6 +33,7 @@ The ecosystem should feel connected, but it should not be built as one tangled a
 ```text
 One ecosystem.
 Shared core.
+Foundational security.
 Multiple focused apps.
 Selectable modules.
 Linked workflows where they naturally overlap.
@@ -38,7 +41,9 @@ Linked workflows where they naturally overlap.
 
 ---
 
-## Architecture Law
+## Architecture Laws
+
+### Law 1 — Independent by Default, Connected by Design
 
 ```text
 Products should be independent by default and connected by design.
@@ -54,6 +59,20 @@ Meaning:
 - not everything is linked upfront
 - humans approve important actions
 
+### Law 2 — Security Is Foundational
+
+```text
+Security is foundational by default and productized only when needed.
+```
+
+Meaning:
+
+- every SLAI product inherits security expectations
+- permissions, audit, and approval rules are part of the foundation
+- security visibility belongs close to SLAI OS
+- Security / Integrity products can exist later as offerings
+- protection comes before productization
+
 ---
 
 ## Confirmed Architecture Choices
@@ -62,7 +81,7 @@ Meaning:
 
 Customers do not directly use SLAI Core.
 
-They use products like ServicesOS, EducationOS, GrowthAI, RetailOS, PharmacyOS, Security/Integrity tools, or ComplianceAI.
+They use products like ServicesOS, EducationOS, GrowthAI, RetailOS, PharmacyOS, Security / Integrity tools, or ComplianceAI.
 
 SLAI Core provides the shared foundation underneath.
 
@@ -70,7 +89,7 @@ SLAI Core provides the shared foundation underneath.
 
 SLAI OS starts as Jamie/SLAI's internal command center.
 
-Later, customer-facing owner dashboards can borrow from it, but the first purpose is to help SLAI operate, prioritize, and grow.
+Later, customer-facing owner dashboards can borrow from it, but the first purpose is to help SLAI operate, prioritize, protect, and grow.
 
 ### 3. Linkability Is Built In, Not Forced Upfront
 
@@ -114,6 +133,43 @@ It is not where product complexity lives. It is where shared identity, linking, 
 
 ---
 
+## Layer 1B — Security Foundation
+
+Security is not just a product branch. It is part of the foundation that protects every product SLAI builds.
+
+The Security Foundation should protect:
+
+- tenants
+- users
+- roles
+- customer records
+- employee data
+- payments and financial workflows
+- lead and outreach data
+- company decisions
+- product data
+- AI recommendations
+- cross-product integrations
+
+Security Foundation owns:
+
+```text
+access control
+tenant isolation
+role enforcement
+audit logging
+approval gates
+secure integration boundaries
+AI action safety rules
+incident tracking
+security review workflows
+data visibility rules
+```
+
+This layer is infrastructure, not a customer-facing product.
+
+---
+
 ## Layer 2 — SLAI OS
 
 SLAI OS is the company command center.
@@ -131,6 +187,7 @@ It owns:
 - metrics
 - priorities
 - AI suggestions
+- security and integrity visibility
 
 SLAI OS answers:
 
@@ -139,10 +196,13 @@ What matters?
 What changed?
 What is blocked?
 What needs approval?
+What needs review?
 What should Jamie do next?
 ```
 
 SLAI OS should coordinate products without replacing them.
+
+Security visibility belongs near SLAI OS because the command center should surface risks, incidents, permission concerns, approval needs, and integrity signals across the ecosystem.
 
 ---
 
@@ -167,6 +227,7 @@ GrowthAI creates opportunities. SLAI OS decides where those opportunities fit in
 GrowthAI finds and prepares growth actions.
 SLAI OS surfaces the right action at the right time.
 Jamie approves important moves.
+Security Foundation protects the data and approval boundaries.
 ```
 
 ---
@@ -183,7 +244,7 @@ EducationOS
 RetailOS
 PharmacyOS
 ComplianceAI
-Security / Integrity Systems
+Security / Integrity Products
 FutureAI
 ```
 
@@ -191,7 +252,7 @@ Each product should be standalone first.
 
 A cleaning company should not need PharmacyOS. A pharmacy should not need lawn care workflows. A security/integrity customer should not need ServicesOS.
 
-But all products should be designed with shared IDs and future linking in mind.
+But all products should be designed with shared IDs, foundational security, and future linking in mind.
 
 ---
 
@@ -271,17 +332,34 @@ Regulated workflow support
 
 ---
 
-## Security and Anti-Cheat in the Ecosystem
+## Security: Foundation vs Product Branch
 
-Security and anti-cheat should be included as their own product branch, not forced into ServicesOS.
+Security has two roles in SLAI.
 
-This branch can be framed as:
+### 1. Security Foundation
 
-```text
-Security / Integrity Systems
-```
+This protects the ecosystem itself.
 
-It can include:
+It covers:
+
+- permissions
+- audit logs
+- access control
+- data boundaries
+- AI action approval
+- tenant isolation
+- incident tracking
+- security reviews
+- integrity monitoring
+- safe integrations
+
+This belongs with SLAI Core and SLAI OS.
+
+### 2. Security / Integrity Products
+
+These are customer-facing offerings later.
+
+They can include:
 
 - AI security assessments
 - agent governance
@@ -292,18 +370,12 @@ It can include:
 - security reporting
 - incident workflows
 
-This connects to SLAI Core through:
+This belongs in the Product OS Layer.
 
-- tenants
-- projects
-- events
-- audit logs
-- reports
-- findings
-- review decisions
-- human approval workflows
-
-It should remain independent from service-business operations, but it can share the same core architecture principles.
+```text
+Security Foundation protects SLAI.
+Security / Integrity Products serve customers.
+```
 
 ---
 
@@ -329,17 +401,20 @@ Outdates, scan-out, evidence, task routing.
 PharmacyOS + EducationOS
 Required training, SOP proof, employee certification.
 
-Security / Integrity Systems + ComplianceAI
+Security Foundation + all products
+Permissions, audit logs, approval gates, incident visibility.
+
+Security / Integrity Products + ComplianceAI
 Incident evidence, review workflows, reporting, governance tasks.
 
-Security / Integrity Systems + EducationOS
+Security / Integrity Products + EducationOS
 Security awareness training, analyst workflows, reviewer readiness.
 
 GrowthAI + SLAI OS
 Lead opportunities become founder/company actions.
 
 SLAI OS + all products
-Company-wide status, decisions, alerts, metrics, and handoffs.
+Company-wide status, decisions, alerts, metrics, risks, and handoffs.
 ```
 
 The overlap layer should not merge all products. It should allow products to talk when the workflow naturally requires it.
@@ -361,13 +436,14 @@ compliance.task_overdue
 inventory.low_stock
 security.finding.created
 integrity.case.review_needed
+incident.opened
 incident.resolved
 growth.followup_recommended
 decision.recorded
 handoff.created
 ```
 
-Events should be simple, auditable, and useful.
+Events should be simple, auditable, secure, and useful.
 
 ---
 
@@ -384,7 +460,7 @@ Build the SLAI operating system.
 Good prompt:
 
 ```text
-Build this one module using SLAI Core-style IDs and future event compatibility.
+Build this one module using SLAI Core-style IDs, foundational security assumptions, and future event compatibility.
 Do not touch unrelated products.
 Do not create cross-product coupling unless requested.
 Report files changed, tests run, and remaining limitations.
@@ -399,6 +475,7 @@ The architecture is big, but execution stays narrow.
 ```text
 Build ServicesOS first.
 Keep shared IDs and concepts clean.
+Bake in security expectations.
 Document overlap.
 Extract SLAI Core patterns later.
 Add selectable apps/modules only when earned.
@@ -411,7 +488,7 @@ Add selectable apps/modules only when earned.
 SLAI is becoming:
 
 ```text
-A modular AI-assisted operating system ecosystem for real-world business, growth, training, compliance, security, and intelligence workflows.
+A modular AI-assisted operating system ecosystem for real-world business, growth, training, compliance, security, integrity, and intelligence workflows.
 ```
 
 The long-term system is large, but the execution rule remains:
