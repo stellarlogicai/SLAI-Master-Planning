@@ -32,8 +32,15 @@ The beta should verify that these visible areas actually work as planned, not ju
 
 - `wife-beta-admin-sidebar-workflow.md` — decided sidebar and owner workflow plan.
 - `route-helper-crew-gps-design.md` — route, GPS, crew, mileage, and job timeline design notes.
+- `schedule-crew-roll-call-day-planning.md` — draft scheduling, crew confirmation, call-out handling, and customer time-slot planning.
+- `ai-decision-assist-owner-playbook.md` — ServicesOS AI philosophy, Owner Playbook, learning loop, and adjustment-reduction strategy.
+- `payroll-job-costing-tracking-loop.md` — payroll assist, employee tracking, job costing, profitability, and estimate-improvement loop.
 - `codex-task-sidebar-cleanup-and-verification.md` — ready-to-use Codex task scope for the first cleanup pass.
 
-## Important Rule
+## Important Rules
 
-Route, crew, and GPS design is important, but it should be implemented in controlled layers. Do not overbuild advanced optimization before the basic owner workflow is stable.
+Route, crew, GPS, AI, payroll, and job-costing design is important, but it should be implemented in controlled layers.
+
+Do not overbuild advanced optimization, payroll processing, or autonomous AI before the basic owner workflow is stable.
+
+The first coding task should remain wife-beta admin sidebar cleanup and visible workflow verification. More advanced Schedule, Crew, Route Helper, AI Day Planner, and Payroll Assist work should become separate promoted tasks after the foundation is stable.
