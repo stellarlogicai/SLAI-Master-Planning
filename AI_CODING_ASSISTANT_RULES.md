@@ -601,6 +601,50 @@ Important planning decisions should be documented before becoming coding tasks.
 
 Do not let future ideas disappear, but do not let them distract from ServicesOS beta.
 
+## Planning Document Status Rule
+
+Every planning doc should have an explicit status block.
+
+A planning document can be complete as documentation even if the feature is not implemented, so use separate status fields when helpful:
+
+```text
+Document Status: Draft | Complete | Needs Update
+Implementation Status: Planned | Ready for Coding | In Progress | Implemented | Validated | Complete | Deferred | Deprecated
+Last Updated: YYYY-MM-DD
+Implementation Repo: repository/name or N/A
+Related Commits:
+- pending or commit hash + summary
+Validation:
+- pending or command/check results
+Remaining Follow-Ups:
+- none or listed items
+```
+
+Do not mark implementation complete just because code was written.
+
+Implementation may be marked `Validated` or `Complete` only when the relevant code is implemented, tests/smoke coverage pass, lint/build pass, required manual beta checks are done if applicable, and the work is committed or clearly linked to a validated commit.
+
+When a coding task completes, update the related planning doc or progress doc with:
+
+- implementation status
+- related commit hash
+- validation results
+- remaining follow-ups
+- deferred risks
+
+Suggested status meanings:
+
+- `Planned` = idea is documented but not ready for code.
+- `Ready for Coding` = scope and acceptance criteria are clear enough for a coding assistant.
+- `In Progress` = coding or validation has started.
+- `Implemented` = code exists but has not been fully validated.
+- `Validated` = tests/smoke/lint/build/manual checks passed as required.
+- `Complete` = validated and no active follow-up is needed.
+- `Deferred` = intentionally postponed.
+- `Deprecated` = no longer the intended product direction.
+
+Assistants should keep planning docs current instead of leaving stale plans behind.
+
 ## Prompting Rule
 
 Every coding prompt should include:
