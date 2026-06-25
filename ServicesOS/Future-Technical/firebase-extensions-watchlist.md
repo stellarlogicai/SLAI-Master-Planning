@@ -35,6 +35,36 @@ Reason:
 - Payment extensions especially may conflict with ServicesOS Stripe Connect marketplace/payment ownership design.
 - Extensions should be evaluated when the related workflow is stable and there is a clear business need.
 
+## Preferred Future Pattern
+
+For future notification/email workflows, Firebase should become the source of truth and durable queue, while Resend remains the delivery provider.
+
+Preferred model:
+
+```text
+ServicesOS action
+→ write durable email/notification request to Firestore
+→ server function or Firebase Extension reads the request
+→ Resend sends the email
+→ Firestore stores delivery status, provider id, errors, retry count, and audit trail
+```
+
+This keeps business events and communication history inside ServicesOS/Firebase while still using Resend for the actual email delivery layer.
+
+The goal is not to replace Resend. The goal is to stop treating email as a one-off frontend/service call and instead make email sending record-driven, auditable, retryable, and visible to owners/support.
+
+Potential future collections:
+
+```text
+emailQueue/{emailId}
+notificationEvents/{eventId}
+tenants/{tenantId}/communications/{communicationId}
+```
+
+Important guardrail:
+
+Do not create a second email path until the current Resend email service is audited. Future implementation must avoid duplicate emails.
+
 ## Extension Candidates Most Likely to Matter Later
 
 ### 1. Trigger Email from Firestore
@@ -54,12 +84,27 @@ Why it may help:
 
 - Firestore document writes can trigger transactional email flows.
 - Keeps email sending tied to durable records.
+- Fits the preferred future model where Firebase stores the email intent/status and Resend handles delivery.
+
+Future Resend architecture note:
+
+This extension, or a custom Cloud Function, should be evaluated as a Firestore-to-Resend bridge. The desired future pattern is:
+
+```text
+Firestore email/notification document
+→ Resend delivery
+→ Firestore delivery status/audit update
+```
+
+This would make quote emails, reminders, and notifications easier to audit and retry.
 
 Risks / questions:
 
 - ServicesOS already has email service logic; avoid duplicate email paths.
-- Need to decide whether Resend/current email code stays or extension replaces part of it.
+- Need to decide whether Resend/current email code stays as the sender behind a Firestore queue or whether an extension handles sending directly.
 - Must avoid sending duplicate customer emails.
+- Must preserve tenant isolation in email records.
+- Must define email status values such as pending, sent, failed, retrying, canceled.
 
 Decision rule:
 
