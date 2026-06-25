@@ -30,6 +30,7 @@ The beta should verify that these visible areas actually work as planned, not ju
 
 ## Documents
 
+- `implementation-status-tracker.md` — central tracker for planned, in-progress, reported-local, validated, complete, and future-roadmap beta work.
 - `wife-beta-admin-sidebar-workflow.md` — decided sidebar and owner workflow plan.
 - `route-helper-crew-gps-design.md` — route, GPS, crew, mileage, and job timeline design notes.
 - `schedule-crew-roll-call-day-planning.md` — draft scheduling, crew confirmation, call-out handling, and customer time-slot planning.
