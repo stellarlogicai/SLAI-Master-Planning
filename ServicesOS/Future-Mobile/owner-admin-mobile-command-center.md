@@ -60,6 +60,23 @@ Current active priority remains:
 7. Training beta phase 2.
 8. Owner/admin mobile expansion later.
 
+## Owner Mobile Boundary
+
+Owner/admin mobile should be a day-to-day command surface, not a full desktop replacement.
+
+The mobile owner/admin experience should show just enough information and actions for small service owners to run the day from their phone.
+
+The web app remains the full detailed workspace.
+
+Simple rule:
+
+```text
+Mobile = what the owner needs today while working or driving.
+Web = the full business system with deeper details, setup, reports, and cleanup.
+```
+
+Owner/admin mobile should prioritize speed, clarity, and field usefulness over full configuration.
+
 ## Recommended Mobile Role Model
 
 Long-term, the React Native app can likely support multiple role modes:
@@ -109,15 +126,15 @@ Key actions:
 
 Purpose:
 
-- Mobile access to core admin/business controls.
+- Mobile access to core day-to-day admin/business controls.
 
 Key actions:
 
 - Dashboard snapshot.
-- Customers/leads.
-- Estimates.
+- Customers/leads summary.
+- Estimates summary/review.
 - Schedule.
-- Employees.
+- Employees/crew overview.
 - Payments overview.
 - Settings summary.
 
@@ -139,6 +156,18 @@ Quick lead/customer capture
 Quick estimate review/create
 Payment status glance
 Issue alerts
+```
+
+Basic information is enough for mobile owner/admin MVP.
+
+Examples:
+
+```text
+Today’s revenue / pending payments summary, not full financial reporting
+Customer contact/address/job notes, not full CRM history
+Estimate amount/status, not full estimate configuration
+Employee assignment/status, not payroll or performance analytics
+Settings summary, not full settings management
 ```
 
 Nice-to-have later:
@@ -181,7 +210,7 @@ Rule:
 ```text
 Web owns the complete workflow.
 Mobile gets the field/mobile correspondence piece.
-Owner/admin mobile gets the pieces needed while away from the desk.
+Owner/admin mobile gets the basic pieces needed for day-to-day operations away from the desk.
 ```
 
 This avoids trying to cram the entire desktop app into a phone all at once.
@@ -212,6 +241,13 @@ It should not try to answer:
 
 ```text
 How do I fit the entire desktop app onto a phone?
+```
+
+Another practical design principle:
+
+```text
+Phone for the day.
+Web for the details.
 ```
 
 ## Future Implementation Notes
@@ -246,4 +282,4 @@ owner/admin web planning
 → owner/admin web visibility
 ```
 
-After that works, owner/admin mobile can expand ServicesOS into a true phone-based operating system for small service owners.
+After that works, owner/admin mobile can expand ServicesOS into a true phone-based operating system for small service owners, while the web app remains the detailed command center.
