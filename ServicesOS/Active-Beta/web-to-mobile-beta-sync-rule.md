@@ -34,6 +34,30 @@ Finish or fix web workflow
 → document blockers, annoyances, polish, and deferred features
 ```
 
+## Correspondence Piece Rule
+
+Every meaningful web workflow should eventually have a mobile correspondence piece, but only when that web workflow is stable enough and relevant to field execution.
+
+A correspondence piece means the smallest mobile feature that lets the employee side participate in the same workflow.
+
+Examples:
+
+```text
+Web Schedule creates assigned jobs
+→ Mobile Today screen shows assigned jobs
+
+Web Customers stores property/access notes
+→ Mobile Job Detail shows only the job-safe customer/property notes
+
+Web job checklist template is attached to a scheduled job
+→ Mobile employee can check off those tasks
+
+Web job status exists for owner tracking
+→ Mobile employee can update status from assigned to in_progress to completed
+```
+
+This rule does not mean every web admin screen gets a full mobile copy. The mobile app should only receive the employee-facing slice of that workflow.
+
 ## Why This Rule Matters
 
 This keeps ServicesOS as one connected operating system instead of two disconnected apps.
@@ -85,6 +109,10 @@ Mobile beta requirement:
 
 - Employee sees today’s assigned jobs.
 
+Correspondence piece:
+
+- Today / Assigned Jobs screen.
+
 ---
 
 ### Create Estimate
@@ -101,6 +129,10 @@ Mobile beta follow-up:
 Mobile beta requirement:
 
 - Employee can later view job details created from accepted/scheduled work.
+
+Correspondence piece:
+
+- Job Detail screen displays the accepted/scheduled service details needed to do the work.
 
 Deferred:
 
@@ -127,6 +159,10 @@ Mobile beta requirement:
 - Basic property/job notes.
 - Access notes if safe and needed.
 
+Correspondence piece:
+
+- Job-safe customer/property section inside the mobile Job Detail screen.
+
 Guardrail:
 
 - Employee app should not expose full CRM/admin data.
@@ -149,6 +185,10 @@ Mobile beta requirement:
 - Assigned job list.
 - Job detail page.
 - Job status updates.
+
+Correspondence piece:
+
+- Assigned Jobs list, Job Detail screen, Start Job, Complete Job, and status sync.
 
 Minimum statuses:
 
@@ -188,6 +228,10 @@ Mobile beta follow-up:
 
 - No employee payment tools required for first beta.
 
+Correspondence piece:
+
+- None for first employee beta.
+
 Deferred:
 
 - Employee-collected payments.
@@ -216,6 +260,10 @@ Mobile beta requirement:
 - Tenant/company context.
 - Employee identity/role.
 - Basic app settings if needed.
+
+Correspondence piece:
+
+- Tenant/company context and employee role context available in mobile app.
 
 Deferred:
 
@@ -304,7 +352,7 @@ When asking Claude, Codex, Devin, or another coding assistant to work on the mob
 - Read current ServicesOS handoff docs.
 - Inspect existing React Native app before changing architecture.
 - Do not rebuild mobile from scratch.
-- Add only the employee-side piece tied to a stable web workflow.
+- Add only the employee-side correspondence piece tied to a stable web workflow.
 - Avoid payment, GPS, payroll, training, and route features unless explicitly scoped.
 - End with files changed, tests/build result, known issues, and next safe step.
 
@@ -316,5 +364,5 @@ Continue current ServicesOS priority:
 2. Fix only owner/admin beta blockers.
 3. Then inspect existing React Native employee app.
 4. Define exact Employee App MVP gap list.
-5. Add the relevant mobile pieces tied to stable web workflows.
+5. Add the relevant mobile correspondence pieces tied to stable web workflows.
 6. Test owner → schedule → employee → complete → owner sees update.
