@@ -1,6 +1,12 @@
-﻿# SLAI Master Planning
+# SLAI Master Planning
 
 This repository is the planning memory for Stellar Logic AI.
+
+## Start Here
+
+Use `REPO_INDEX.md` first.
+
+That file is the repo map for where planning docs live, what each folder/file is for, and whether a product area is active, parked, or future roadmap.
 
 ## Current Rule
 
