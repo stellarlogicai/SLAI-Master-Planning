@@ -32,6 +32,25 @@ Current priority order:
 10. ComplianceAI
 11. FutureAI
 
+## Project-Level SLAI Master Index
+
+This repo index should mirror the SLAI Master Index used inside the ChatGPT project.
+
+Current project categories:
+
+```text
+ServicesOS Testing
+ServicesOS Stripe
+SLAI Website
+GrowthAI Planning
+EducationOS Planning
+RetailOS PharmacyOS Ideas
+ComplianceAI
+FutureAI Research
+```
+
+These categories are the high-level planning lanes. The folders/files in this repo should gradually line up under those lanes so future searches start from this index instead of scattered memory.
+
 ## How To Use This Index
 
 - Use `README.md` for the high-level repo purpose.
@@ -39,6 +58,7 @@ Current priority order:
 - Use `ServicesOS/Active-Beta/` for current ServicesOS beta planning.
 - Use `ServicesOS/Future-*` folders for parked ServicesOS ideas.
 - Use `GrowthAI/` for parked GrowthAI planning.
+- Use the project-level SLAI Master Index categories above when deciding where a new planning file belongs.
 - Do not treat parked docs as active implementation unless Jamie explicitly says to work on them now.
 
 ---
@@ -50,6 +70,7 @@ Current priority order:
 Purpose:
 
 - Defines this repository as the planning memory for Stellar Logic AI.
+- Points users and agents to `REPO_INDEX.md` first.
 - States that ServicesOS is the only active build until beta-critical workflows are stable.
 - Clarifies that active coding work lives in the `stellarlogicai/ServicesOS` repo.
 - Defines this repo as a home for strategy, roadmaps, founder principles, research notes, future module plans, and internal SLAI planning.
@@ -82,11 +103,31 @@ Key themes:
 - Do not silently downgrade bad/missing auth profiles to customer.
 - Manual estimate must work without AI/photos.
 
+## `REPO_INDEX.md`
+
+Purpose:
+
+- Root table of contents for the planning repo.
+- Should be updated any time a new planning file is added.
+
+Use when:
+
+- Trying to find where a planning topic lives.
+- Starting a new chat or AI-agent pass.
+- Deciding whether a topic is active, parked, or future roadmap.
+
 ---
 
 # ServicesOS
 
 ServicesOS is the active build and current company proof engine.
+
+Project-index lanes covered here:
+
+```text
+ServicesOS Testing
+ServicesOS Stripe
+```
 
 ## `ServicesOS/Active-Beta/`
 
@@ -344,7 +385,46 @@ Use when:
 
 ---
 
+# SLAI Website
+
+Project-index lane:
+
+```text
+SLAI Website
+```
+
+Current status:
+
+- Planning lane exists in the ChatGPT project master index.
+- No indexed repo folder/file has been confirmed yet in this planning repo.
+
+Expected future folder:
+
+```text
+SLAI-Website/
+```
+
+Possible future docs:
+
+- Website positioning.
+- Homepage copy.
+- ServicesOS landing section.
+- SLAI company overview.
+- Contact/demo request flow.
+
+Priority:
+
+- Behind ServicesOS beta-critical work.
+
+---
+
 # GrowthAI
+
+Project-index lane:
+
+```text
+GrowthAI Planning
+```
 
 GrowthAI is future planning, not active build.
 
@@ -396,6 +476,118 @@ Use when:
 
 ---
 
+# EducationOS
+
+Project-index lane:
+
+```text
+EducationOS Planning
+```
+
+Current status:
+
+- Planning lane exists in the ChatGPT project master index.
+- No indexed repo folder/file has been confirmed yet in this planning repo.
+
+Expected future folder:
+
+```text
+EducationOS/
+```
+
+Priority:
+
+- Parked until ServicesOS is stable.
+
+---
+
+# RetailOS / PharmacyOS
+
+Project-index lane:
+
+```text
+RetailOS PharmacyOS Ideas
+```
+
+Current status:
+
+- Planning lane exists in the ChatGPT project master index.
+- No indexed repo folder/file has been confirmed yet in this planning repo.
+
+Expected future folder:
+
+```text
+RetailOS-PharmacyOS/
+```
+
+Known idea direction:
+
+- Retail/pharmacy workflow layer.
+- Task-first workflow support.
+- Future pharmacy-specific planning after RetailOS concepts mature.
+
+Priority:
+
+- Parked until ServicesOS is stable.
+
+---
+
+# ComplianceAI
+
+Project-index lane:
+
+```text
+ComplianceAI
+```
+
+Current status:
+
+- Planning lane exists in the ChatGPT project master index.
+- No indexed repo folder/file has been confirmed yet in this planning repo.
+
+Expected future folder:
+
+```text
+ComplianceAI/
+```
+
+Possible future role:
+
+- Reusable lifecycle/compliance engine across SLAI products.
+- Track objects, rules, expiration, audit trails, and required actions.
+
+Priority:
+
+- Parked until ServicesOS is stable.
+
+---
+
+# FutureAI
+
+Project-index lane:
+
+```text
+FutureAI Research
+```
+
+Current status:
+
+- Planning lane exists in the ChatGPT project master index.
+- No indexed repo folder/file has been confirmed yet in this planning repo.
+
+Expected future folder:
+
+```text
+FutureAI/
+```
+
+Priority:
+
+- Research only.
+- Do not let this distract from ServicesOS.
+
+---
+
 # Folder Map
 
 ```text
@@ -419,6 +611,20 @@ Use when:
 └── GrowthAI/
     └── growthai-gap-review-and-planning-checklist.md
 ```
+
+## Project Lanes Not Yet Confirmed As Repo Folders
+
+These lanes exist in the ChatGPT project master index but do not yet have confirmed planning folders/files in this repo index:
+
+```text
+SLAI Website
+EducationOS Planning
+RetailOS PharmacyOS Ideas
+ComplianceAI
+FutureAI Research
+```
+
+They should get folders only when Jamie wants to preserve concrete planning notes for them.
 
 ## Known Gap
 
