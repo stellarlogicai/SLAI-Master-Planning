@@ -13,11 +13,11 @@ This feature should be presented as a field safety tool, not as a guaranteed eme
 ## Product Rule
 
 ```text
-The app can help the cleaner call, alert, and record.
-The app cannot guarantee emergency response or alert delivery without cell/internet service.
+The app can help the cleaner call, alert, locate, and record.
+The app cannot guarantee emergency response, alert delivery, or live location if the device has no cell/internet/GPS access.
 ```
 
-Use honest wording everywhere. If the device has no connection, the app must not pretend the owner/admin received the alert.
+Use honest wording everywhere. If the device has no connection, the app must not pretend the owner/admin received the alert or the latest location.
 
 ## Scope
 
@@ -31,6 +31,7 @@ Use honest wording everywhere. If the device has no connection, the app must not
 - Sync queued alerts when connection returns.
 - Show owner/admin active safety alerts.
 - Allow owner/admin to mark alerts resolved.
+- Add missed check-in GPS ping support when an active job becomes overdue/unconfirmed and location permissions are available.
 - Preserve tenant isolation.
 
 ### Out of Scope
@@ -39,8 +40,8 @@ Use honest wording everywhere. If the device has no connection, the app must not
 - 24/7 monitoring center.
 - Guaranteed emergency response claims.
 - Hidden audio/video recording.
-- Full background location tracking.
-- Live GPS tracking all day.
+- Full background location tracking all day.
+- Constant live GPS tracking.
 - Weapon/threat detection.
 - Complex escalation trees.
 - Push notifications unless already safely available.
@@ -158,6 +159,7 @@ Owner/admin actions:
 ```text
 Call employee if phone exists
 View related job/customer
+Request latest location if permitted
 Mark resolved
 ```
 
@@ -172,6 +174,8 @@ The alert should be tenant-scoped and persistent after refresh/logout/login.
 - Emergency call action should use the device dialer.
 - The app should not automatically call emergency services without user action.
 - The app should not claim guaranteed response.
+- Location pings require employee/app permission and should be limited to active job safety events, missed check-ins, or explicit safety alerts.
+- The app should show last known location timestamp and accuracy, not imply real-time tracking when it is stale.
 
 ## Acceptance Criteria
 
@@ -206,7 +210,8 @@ V1-safe version:
 - Cleaner taps `Leaving / Complete` when done.
 - Owner/admin sees current field status.
 - If the job goes past an expected time window without completion/check-in, ServicesOS flags `check_in_overdue`.
-- No live GPS tracking is required.
+- When `check_in_overdue` is triggered, ServicesOS attempts a one-time latest-location ping if permissions and connection allow.
+- No constant live GPS tracking is required.
 - No emergency claim is made.
 - Owner/admin decides whether to call or follow up.
 
@@ -217,18 +222,89 @@ not_started
 arrived
 in_progress
 check_in_overdue
+location_ping_requested
+location_ping_received
+location_ping_failed
 completed
 left_property
 ```
 
 This should not replace the Safety/Emergency button. It is a backup safety net for owner-operated field visibility.
 
+## Missed Check-In GPS Ping
+
+If a cleaner does not check in, check out, or complete the job within the expected window, ServicesOS should attempt to confirm the cleaner's latest location.
+
+This should be implemented as an on-demand safety ping, not constant tracking.
+
+Suggested flow:
+
+```text
+Job starts or cleaner taps Arrived
+→ expected duration/check-in window starts
+→ no check-in or completion by expected time
+→ job becomes check_in_overdue
+→ app attempts latest-location ping if allowed
+→ owner/admin sees last known location, timestamp, and accuracy
+→ owner/admin decides whether to call, wait, or escalate
+```
+
+Location ping behavior:
+
+- Use only during an active assigned job, active safety alert, or overdue check-in.
+- Require location permission.
+- Attach location to the tenant-scoped job safety/check-in record.
+- Show timestamp and accuracy.
+- If GPS/location permission is unavailable, show `location_ping_failed` or `location_unavailable`.
+- If offline, queue the ping attempt/result when possible and show honest status.
+- Never imply the location is current if it is only the last known location.
+
+Suggested data shape:
+
+```ts
+jobSafetyStatus: {
+  fieldStatus,
+  expectedCheckInAt,
+  lastCheckInAt,
+  lastLocationPingAt,
+  lastKnownLocation: {
+    lat,
+    lng,
+    accuracy,
+    capturedAt,
+    source: "active_job" | "missed_check_in" | "safety_alert"
+  },
+  locationPingStatus: "not_requested" | "requested" | "received" | "failed" | "unavailable",
+  overdueReason,
+  ownerNotifiedAt,
+  updatedAt
+}
+```
+
+Owner/admin UI should show:
+
+```text
+Check-in overdue
+Last known location
+Location timestamp
+Accuracy
+Call employee
+View job/customer
+Mark resolved / false alarm
+```
+
+Privacy and trust rule:
+
+```text
+Location is used for active job safety and missed check-ins, not for all-day employee surveillance.
+```
+
 ## Codex Guardrail
 
 When promoted to Codex, use this framing:
 
 ```text
-Add a tenant-scoped Field Safety Button / Panic Alert foundation. This is not a guaranteed emergency response system. Support call actions, owner/admin alerting, offline queueing, active-alert review, and honest sync/delivery states. Do not build police dispatch, monitoring center, hidden recording, or live all-day tracking.
+Add a tenant-scoped Field Safety Button / Panic Alert foundation. This is not a guaranteed emergency response system. Support call actions, owner/admin alerting, offline queueing, active-alert review, missed check-in GPS ping, and honest sync/location/delivery states. Do not build police dispatch, monitoring center, hidden recording, constant live GPS tracking, or all-day surveillance.
 ```
 
 ## Current Priority
