@@ -299,6 +299,57 @@ Privacy and trust rule:
 Location is used for active job safety and missed check-ins, not for all-day employee surveillance.
 ```
 
+## Future Emergency Services / Police Escalation
+
+Eventually, ServicesOS may support an emergency-services escalation path, but this must be treated as a later regulated/high-trust integration, not a V1 feature.
+
+V1 rule:
+
+```text
+ServicesOS helps the cleaner call 911 and alerts the owner/admin.
+ServicesOS does not directly dispatch police or guarantee emergency response.
+```
+
+Future path options:
+
+1. Device dialer handoff: open the phone dialer to call 911 with one tap. This is the safest V1 approach.
+2. Owner/admin escalation: owner/admin receives the safety alert, latest location, job address, employee info, and decides whether to call emergency services.
+3. Partner integration: later investigate approved emergency-data partners or public-safety integrations that can pass location/job context to emergency communication centers.
+4. Local agency workflow: later explore whether specific local public safety agencies support approved digital intake, CAD integration, or documented emergency communication workflows.
+5. NG911 readiness: monitor whether target regions support Next Generation 911 capabilities for richer data such as text, photos, video, and location.
+
+Do not build until all are true:
+
+- Legal/terms path is clear.
+- Emergency communication partner or agency pathway is confirmed.
+- False-alarm handling is designed.
+- Customer terms and liability language are reviewed.
+- User consent and location permission flows are explicit.
+- Human confirmation rules are defined.
+- Audit trail and incident recordkeeping are implemented.
+- The app can clearly distinguish queued, delivered, acknowledged, and failed states.
+
+Future emergency escalation suggested statuses:
+
+```text
+not_escalated
+owner_notified
+emergency_call_prompted
+emergency_call_started_by_user
+emergency_partner_submission_pending
+emergency_partner_submission_sent
+emergency_partner_submission_failed
+agency_acknowledged
+resolved
+false_alarm
+```
+
+Product guardrail:
+
+```text
+Do not market this as police dispatch unless ServicesOS has a verified, approved dispatch/agency integration and legal review.
+```
+
 ## Codex Guardrail
 
 When promoted to Codex, use this framing:
