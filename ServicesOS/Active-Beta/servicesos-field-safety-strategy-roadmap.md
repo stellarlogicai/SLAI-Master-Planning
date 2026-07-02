@@ -101,6 +101,8 @@ Core ServicesOS
 → Safety + Growth
 → Field Safety Pro
 → Active Job Live Location Add-On
+→ Route Helper Pro
+→ Embedded Navigation Pro
 → Emergency Response Add-On later
 ```
 
@@ -184,6 +186,65 @@ Potential features:
 - Job timeline location proof.
 - Location audit trail.
 
+### Route Helper Pro
+
+Future routing add-on.
+
+Most service businesses already know which jobs each employee will do for the day. ServicesOS can create value by calculating the proper job order and route flow, then handing that route to the employee.
+
+Possible pricing direction:
+
+```text
++$29-$49/month base
++ optional per-worker or per-route fair-use limits
+```
+
+Potential features:
+
+- Daily route order by employee.
+- Best stop order for assigned jobs.
+- Drive-time estimates.
+- Time-window awareness.
+- Late-risk warnings.
+- Two-person job routing guardrails.
+- Safety-status routing guardrails.
+- Route handoff to Google Maps or another navigation provider.
+
+### Embedded Navigation Pro
+
+Future premium mobile navigation feature.
+
+The long-term goal is to avoid employees bouncing between multiple apps when ServicesOS already knows the job list, route order, customer address, safety status, and field workflow.
+
+Suggested path:
+
+```text
+Level 1: Route order inside ServicesOS + open route in Google Maps
+Level 2: Embedded map inside ServicesOS employee mobile app
+Level 3: Embedded turn-by-turn navigation inside ServicesOS employee mobile app
+```
+
+Level 1 is the safer early implementation because it is simpler and keeps ServicesOS focused.
+
+Level 2 and Level 3 should be premium or higher-tier features because they add mobile SDK complexity, navigation usage cost, battery considerations, location permissions, support burden, and privacy requirements.
+
+Possible pricing direction:
+
+```text
+Basic route handoff: included in Field Operations or Route Helper Pro
+Embedded map: Route Helper Pro / Field Operations Pro
+Embedded turn-by-turn navigation: premium future feature
+```
+
+Rules:
+
+- ServicesOS remains the source of truth for job list, stop order, safety status, checklists, photos, notes, and completion state.
+- Navigation provider remains responsible for route guidance/navigation behavior.
+- Employee app should not fake navigation, ETA, arrival, or completion.
+- If embedded navigation fails, employee should still be able to open the route externally.
+- Verify current SDK, API, pricing, and app-store/location-permission requirements before implementation.
+- Do not build embedded navigation before the basic employee field workflow is stable.
+
 ### Emergency Response Add-On
 
 Future premium/high-trust add-on only.
@@ -223,6 +284,8 @@ Shared location primitives should support both routing and safety:
 - Active-job location breadcrumbing if the paid add-on is enabled.
 - Distance/time estimates for routing later.
 - Owner/admin map view for safety alerts and missed check-ins.
+- Route handoff to an external navigation app.
+- Embedded mobile map/navigation later if the paid tier supports it.
 
 Product rule:
 
@@ -236,17 +299,20 @@ Cost rule:
 
 ```text
 Basic safety should stay event-based.
-High-frequency live location and routing-heavy map usage should be priced as premium features to cover API, map, storage, support, and privacy costs.
+Basic route handoff should stay low-cost and controlled.
+High-frequency live location, route optimization, and embedded navigation should be priced as premium features to cover API, map, storage, support, battery, mobile SDK, and privacy costs.
 ```
 
 Implementation guardrail:
 
 - Do not build full route optimization during the V1 safety pass.
+- Do not build embedded turn-by-turn navigation during the V1 safety pass.
 - Do not enable live location by default.
 - Do not use maps/geocoding wastefully when an address or lat/lng is already stored.
 - Cache/store normalized job coordinates when safe so the same address does not need to be repeatedly geocoded.
 - Keep location usage tenant-scoped.
 - Make location timestamps and accuracy visible so stale data is not treated as live data.
+- Keep external map handoff as a fallback even if embedded navigation exists later.
 
 ## Cost and Margin Assumption
 
@@ -269,6 +335,8 @@ Costs rise with:
 - High-frequency live location.
 - Map/geocoding usage.
 - Route optimization usage.
+- Embedded navigation usage.
+- Navigation/mobile SDK complexity.
 - Monitoring partners.
 - Emergency response partners.
 - Support burden.
@@ -307,6 +375,8 @@ Reusable primitives:
 - Offline queue.
 - Safety status/instructions in field job packet.
 - Shared geo/location layer.
+- Route ordering and handoff.
+- Embedded navigation interface later.
 
 Potential future reuse:
 
@@ -325,7 +395,7 @@ Potential future reuse:
 
 ## Implementation Order
 
-Do not jump straight to live location or emergency dispatch.
+Do not jump straight to live location, embedded navigation, or emergency dispatch.
 
 Recommended order:
 
@@ -338,10 +408,12 @@ Recommended order:
 6. Owner/admin active safety alert panel
 7. Job Check-In Timer
 8. Missed Check-In GPS Ping
-9. Field Safety Pro pricing/package definition
-10. Active Job Live Location paid add-on
-11. Routing/route helper work as a separate controlled pass
-12. Emergency Response Add-On research only
+9. Basic route order + external Google Maps handoff
+10. Field Safety Pro pricing/package definition
+11. Active Job Live Location paid add-on
+12. Routing/route helper work as a separate controlled pass
+13. Embedded mobile map/navigation as a future premium pass
+14. Emergency Response Add-On research only
 ```
 
 ## Product Rules
@@ -356,6 +428,7 @@ No automatic customer rejection.
 Human reviews and decides.
 System records the decision.
 Use one shared geo/location foundation for maps, routing, and safety.
+ServicesOS owns job order and field workflow; navigation provider owns navigation.
 ```
 
 ## Decision Rules
@@ -364,6 +437,7 @@ Use one shared geo/location foundation for maps, routing, and safety.
 - If early ServicesOS customers value safety alerts and check-ins, package Field Safety Pro.
 - If customers ask for live location, offer Active Job Live Location as a paid add-on, not a default feature.
 - If routing becomes a V1/V1.5 priority, reuse the same geo/location layer instead of duplicating mapping logic.
+- If employees need fewer app switches after the field app is stable, evaluate embedded navigation as a premium feature.
 - If emergency-response integration becomes attractive, require legal/partner/agency validation before any implementation.
 - If safety work begins distracting from owner/admin V1 stability, pause advanced safety features and return to core ServicesOS hardening.
 
@@ -378,6 +452,7 @@ Field safety gives ServicesOS:
 - A stronger differentiator against generic cleaning software.
 - A reusable SLAI platform capability.
 - A shared maps/location foundation that can support both safety and future routing.
+- A future mobile navigation path that can reduce employee app-switching.
 
 But the near-term move is still disciplined:
 
