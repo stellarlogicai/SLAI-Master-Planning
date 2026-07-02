@@ -65,7 +65,8 @@ and short-term rental turnover-style work.
 - `initial-target-customer-owner-operators.md` — target customer definition for owner-operator cleaning businesses.
 - `servicesos-lead-source-intelligence-plan.md` — ServicesOS beta lead-source intelligence plan for Facebook/Angi/source ROI tracking; GrowthAI foundation only, not a full GrowthAI build.
 - `servicesos-client-safety-precheck.md` — Client Safety Pre-Check plan for owner-reviewed safety screening before booking or field assignment.
-- `servicesos-field-safety-button.md` — Field Safety Button / Panic Alert plan with offline queueing, owner/admin alert review, and job check-in timer follow-up.
+- `servicesos-field-safety-button.md` — Field Safety Button / Panic Alert plan with offline queueing, owner/admin alert review, job check-in timer, missed check-in GPS ping, and future emergency escalation path.
+- `servicesos-field-safety-strategy-roadmap.md` — field safety strategy roadmap covering V1 safety stack, premium add-ons, Active Job Live Location, Emergency Response Add-On, and reusable SLAI Field Safety Core.
 
 ### Market Entry / Founder Access Planning
 
