@@ -208,6 +208,46 @@ Potential features:
 
 Do not build or market as police dispatch unless ServicesOS has a verified agency/partner pathway and legal review.
 
+## Shared Maps / Routing / Field Safety Foundation
+
+Jamie already wants ServicesOS to use Google Maps or a similar mapping stack for future routing and route-helper work. Field safety should reuse that same foundation instead of creating a separate location system.
+
+Shared location primitives should support both routing and safety:
+
+- Address normalization.
+- Geocoding service addresses.
+- Storing latitude/longitude on jobs where appropriate.
+- Showing job/customer addresses on a map.
+- Device GPS capture from the employee app.
+- Last known field location.
+- Active-job location breadcrumbing if the paid add-on is enabled.
+- Distance/time estimates for routing later.
+- Owner/admin map view for safety alerts and missed check-ins.
+
+Product rule:
+
+```text
+Build one clean ServicesOS geo/location layer.
+Use it for routing later and field safety now/later.
+Do not create duplicate map/location implementations.
+```
+
+Cost rule:
+
+```text
+Basic safety should stay event-based.
+High-frequency live location and routing-heavy map usage should be priced as premium features to cover API, map, storage, support, and privacy costs.
+```
+
+Implementation guardrail:
+
+- Do not build full route optimization during the V1 safety pass.
+- Do not enable live location by default.
+- Do not use maps/geocoding wastefully when an address or lat/lng is already stored.
+- Cache/store normalized job coordinates when safe so the same address does not need to be repeatedly geocoded.
+- Keep location usage tenant-scoped.
+- Make location timestamps and accuracy visible so stale data is not treated as live data.
+
 ## Cost and Margin Assumption
 
 The self-managed safety system is expected to be high margin if kept event-based.
@@ -220,6 +260,7 @@ Likely low-cost components:
 - Device GPS.
 - Local offline queue.
 - Basic owner/admin dashboard.
+- Shared map/geocoding layer already needed for future routing.
 
 Costs rise with:
 
@@ -227,6 +268,7 @@ Costs rise with:
 - Voice escalation.
 - High-frequency live location.
 - Map/geocoding usage.
+- Route optimization usage.
 - Monitoring partners.
 - Emergency response partners.
 - Support burden.
@@ -264,6 +306,7 @@ Reusable primitives:
 - Audit trail.
 - Offline queue.
 - Safety status/instructions in field job packet.
+- Shared geo/location layer.
 
 Potential future reuse:
 
@@ -289,14 +332,16 @@ Recommended order:
 ```text
 1. Offline-safe employee field workflow
 2. Checklists/photos/notes
-3. Client Safety Pre-Check
-4. Field Safety Button
-5. Owner/admin active safety alert panel
-6. Job Check-In Timer
-7. Missed Check-In GPS Ping
-8. Field Safety Pro pricing/package definition
-9. Active Job Live Location paid add-on
-10. Emergency Response Add-On research only
+3. Shared geo/location foundation where needed
+4. Client Safety Pre-Check
+5. Field Safety Button
+6. Owner/admin active safety alert panel
+7. Job Check-In Timer
+8. Missed Check-In GPS Ping
+9. Field Safety Pro pricing/package definition
+10. Active Job Live Location paid add-on
+11. Routing/route helper work as a separate controlled pass
+12. Emergency Response Add-On research only
 ```
 
 ## Product Rules
@@ -310,6 +355,7 @@ No off-hours tracking.
 No automatic customer rejection.
 Human reviews and decides.
 System records the decision.
+Use one shared geo/location foundation for maps, routing, and safety.
 ```
 
 ## Decision Rules
@@ -317,6 +363,7 @@ System records the decision.
 - If Aunt B's field workflow needs worker protection, build the V1 safety stack.
 - If early ServicesOS customers value safety alerts and check-ins, package Field Safety Pro.
 - If customers ask for live location, offer Active Job Live Location as a paid add-on, not a default feature.
+- If routing becomes a V1/V1.5 priority, reuse the same geo/location layer instead of duplicating mapping logic.
 - If emergency-response integration becomes attractive, require legal/partner/agency validation before any implementation.
 - If safety work begins distracting from owner/admin V1 stability, pause advanced safety features and return to core ServicesOS hardening.
 
@@ -330,6 +377,7 @@ Field safety gives ServicesOS:
 - A premium revenue route.
 - A stronger differentiator against generic cleaning software.
 - A reusable SLAI platform capability.
+- A shared maps/location foundation that can support both safety and future routing.
 
 But the near-term move is still disciplined:
 
