@@ -35,7 +35,7 @@ ServicesOS remains priority one.
 This is not permission to build full GrowthAI before ServicesOS V1 is stable.
 
 ```text
-Build only the small helper if it reduces real burden for Aunt B's.
+Build only the small helper if it reduces real burden for Aunt B's or SLAI.
 Do not build autonomous marketing, ad buying, analytics, or multi-business GrowthAI yet.
 ```
 
@@ -81,7 +81,8 @@ Pick a post type
 Success metric:
 
 ```text
-She can create a usable Facebook post in under 2 minutes without asking Jamie for help.
+Aunt B's can create a usable Facebook post in under 2 minutes without asking Jamie for help.
+SLAI can create founder-approved social/website content without rebuilding a separate content tool.
 ```
 
 ## MVP Scope
@@ -89,6 +90,7 @@ She can create a usable Facebook post in under 2 minutes without asking Jamie fo
 ### In Scope
 
 - Single-business internal tool for Aunt B's.
+- SLAI internal brand profile for Stellar Logic AI content.
 - Brand kit.
 - Post type picker.
 - Simple input form.
@@ -107,10 +109,11 @@ She can create a usable Facebook post in under 2 minutes without asking Jamie fo
 
 - Auto-posting.
 - Facebook API integration.
+- LinkedIn API integration.
 - Ad buying.
 - Campaign automation.
 - Analytics dashboard.
-- Multi-business SaaS mode.
+- External multi-tenant SaaS mode.
 - Lead scoring.
 - Full GrowthAI research.
 - Customer CRM tie-in.
@@ -120,6 +123,7 @@ She can create a usable Facebook post in under 2 minutes without asking Jamie fo
 
 ```text
 Open Marketing Helper
+→ choose brand profile
 → choose post type
 → fill out simple fields
 → click Generate
@@ -127,8 +131,69 @@ Open Marketing Helper
 → regenerate if needed
 → copy caption
 → download image
-→ manually post to Facebook
+→ manually post to Facebook / LinkedIn / website
 → optionally mark as posted
+```
+
+## Multi-Brand Internal Use
+
+GrowthAI Phase 0 should support internal multi-brand use without becoming a public multi-tenant product.
+
+Near-term brands:
+
+```text
+Aunt B's Cleaning Services
+Stellar Logic AI
+```
+
+Why this matters:
+
+- Aunt B's needs local Facebook marketing help.
+- SLAI also needs founder-approved social posts, website copy, launch updates, feature announcements, and thought-leadership drafts.
+- The same generation engine can serve both if each brand has its own Brand Kit.
+
+Product rule:
+
+```text
+One internal GrowthAI content engine.
+Multiple internal brand profiles.
+No public multi-business GrowthAI SaaS until ServicesOS is stable and has real retained users.
+```
+
+### Aunt B's Use Cases
+
+- Facebook availability posts.
+- Promo/discount posts.
+- Cleaning tips.
+- Seasonal cleaning reminders.
+- Review/trust posts.
+- Before/after style graphics.
+- Website blurbs.
+- Google Business Profile post drafts later.
+
+### SLAI Use Cases
+
+- Stellar Logic AI LinkedIn posts.
+- ServicesOS launch/update posts.
+- Founder progress updates.
+- Feature announcement drafts.
+- Website section copy.
+- Product explainer posts.
+- Founder Access posts.
+- ServicesOS safety/routing/growth feature explainers.
+- Reusable image prompts or branded graphics.
+
+SLAI content should remain founder-approved and strategy-aligned.
+
+Rules for SLAI content:
+
+```text
+Do not overhype.
+Do not claim features are live unless they are live.
+Do not imply customer traction that does not exist.
+Do not publish automatically.
+Keep ServicesOS as the current priority.
+Preserve future product ideas as future planning, not active launches.
 ```
 
 ## Post Types
@@ -215,6 +280,52 @@ Inputs:
 
 Later version can support uploading real before/after photos.
 
+### SLAI Founder / Product Update Post
+
+Purpose: Help Jamie explain what SLAI is building without needing to rewrite every update manually.
+
+Inputs:
+
+- Product area.
+- Update type.
+- Current status.
+- What changed.
+- What is not live yet.
+- CTA or discussion question.
+- Tone.
+
+Examples:
+
+```text
+ServicesOS progress update
+field safety planning update
+wife beta lesson learned
+Founder Access announcement
+pricing philosophy post
+AI credit system explanation
+```
+
+### SLAI Website / Feature Copy
+
+Purpose: Draft website or landing-page copy for SLAI / ServicesOS.
+
+Inputs:
+
+- Product area.
+- Target customer.
+- Feature or benefit.
+- Current status.
+- CTA.
+- Tone.
+
+Outputs:
+
+- Website section copy.
+- Short hero copy.
+- FAQ draft.
+- Feature description.
+- Honest limitation copy.
+
 ## Brand Kit
 
 The brand kit should make every post consistent.
@@ -224,21 +335,26 @@ The brand kit should make every post consistent.
 ```ts
 type BrandProfile = {
   id: string
+  brandKey: "aunt_bs" | "slai" | string
   businessName: string
   tagline?: string
   logoUrl?: string
   primaryColor: string
   secondaryColor: string
   accentColor?: string
-  tone: "friendly" | "fun" | "professional" | "local-family" | "trustworthy"
-  serviceArea: string
+  tone: "friendly" | "fun" | "professional" | "local-family" | "trustworthy" | "founder-led" | "technical" | "practical"
+  serviceArea?: string
+  audience?: string
   phone?: string
   email?: string
   facebookUrl?: string
+  linkedinUrl?: string
+  websiteUrl?: string
   defaultCTA: string
   defaultHashtags: string[]
   services: string[]
-  imageStyle: "fun" | "clean-modern" | "friendly-local" | "seasonal"
+  imageStyle: "fun" | "clean-modern" | "friendly-local" | "seasonal" | "enterprise-ai" | "founder-build-log"
+  activeProductPriority?: string
   createdAt: string
   updatedAt: string
 }
@@ -254,12 +370,31 @@ Default CTA: Message us for a free quote
 Image style: friendly local cleaning brand
 ```
 
+### SLAI Default Brand
+
+```text
+Business name: Stellar Logic AI
+Tone: founder-led, practical, trustworthy, technical when needed
+Current priority: ServicesOS
+Audience: small business owners, future ServicesOS users, founders, operators, and technical followers
+Default CTA: Follow along as ServicesOS moves toward customer-ready V1
+Image style: clean enterprise AI / founder-build-log visuals
+```
+
+SLAI brand content must respect the current priority order:
+
+```text
+ServicesOS first.
+Future products are planning, not active launches.
+```
+
 ## Draft Data Model
 
 ```ts
 type PostDraft = {
   id: string
   brandProfileId: string
+  brandKey: "aunt_bs" | "slai" | string
   postType:
     | "availability"
     | "promo"
@@ -267,6 +402,8 @@ type PostDraft = {
     | "seasonal"
     | "review_trust"
     | "before_after"
+    | "slai_founder_update"
+    | "slai_feature_copy"
 
   title: string
   inputData: Record<string, unknown>
@@ -280,7 +417,7 @@ type PostDraft = {
   imageUrl?: string
 
   status: "draft" | "ready" | "posted"
-  platform: "facebook" | "instagram" | "both"
+  platform: "facebook" | "instagram" | "linkedin" | "website" | "both"
 
   creditsUsed: number
   generationEvents: GenerationEvent[]
@@ -311,6 +448,7 @@ type GenerationEvent = {
 
 Shows:
 
+- Brand selector.
 - Create New Post.
 - Saved Drafts.
 - Recent Posts.
@@ -322,10 +460,11 @@ Shows:
 
 Left side:
 
+- Brand profile.
 - Post type.
-- Service type.
-- Offer/details.
-- Service area.
+- Service/product type.
+- Offer/details or update details.
+- Service area / audience.
 - Tone.
 - Platform.
 - CTA.
@@ -357,6 +496,7 @@ Buttons:
 
 Each draft card shows:
 
+- Brand.
 - Post title.
 - Post type.
 - Created date.
@@ -371,30 +511,32 @@ Each draft card shows:
 
 Editable fields:
 
-- Business name.
-- Service area.
+- Business/brand name.
+- Service area or audience.
 - Logo.
 - Colors.
 - Tone.
 - Default CTA.
-- Services.
+- Services/products.
 - Hashtags.
 - Contact info.
+- Current product priority.
 
 ## AI Caption Rules
 
 The caption generator should follow these rules:
 
 ```text
-Write for a local cleaning business.
-Keep it friendly and simple.
+Write for the selected brand.
+Keep it friendly and simple unless the selected brand/tone asks for technical depth.
 Avoid exaggerated claims.
 Do not promise results the business cannot guarantee.
-Do not mention AI.
-Do not sound corporate.
-Use the business name naturally.
+Do not mention AI unless the post is specifically about AI.
+Do not sound corporate by default.
+Use the business/brand name naturally.
 Include a clear CTA.
 Keep Facebook version warm and conversational.
+Keep LinkedIn version founder-led, practical, and honest.
 ```
 
 Suggested output shape:
@@ -413,14 +555,14 @@ Suggested output shape:
 
 Images should be:
 
-- Square social post format.
+- Square social post format when used for Facebook/Instagram.
+- LinkedIn-friendly when used for SLAI.
 - Friendly.
 - Clean.
 - Branded.
 - Easy to read.
 - Not cluttered.
-- Consistent with Aunt B's logo/colors.
-- Suitable for Facebook.
+- Consistent with the selected brand kit.
 
 Avoid:
 
@@ -431,6 +573,7 @@ Avoid:
 - Realistic people if not needed.
 - Weird hands/faces.
 - Unsafe chemical use.
+- Claims that imply unreleased ServicesOS features are already live.
 
 Best image types:
 
@@ -440,6 +583,9 @@ Best image types:
 - Review/trust graphic.
 - Fun friendly mascot-style graphic.
 - Simple clean-home illustration.
+- SLAI founder-build/update graphic.
+- ServicesOS feature explainer graphic.
+- Clean enterprise AI visual for SLAI.
 
 ## AI Credit System
 
@@ -488,6 +634,7 @@ Early internal use:
 
 ```text
 Aunt B's Marketing Helper
+SLAI Internal Content Helper
 ```
 
 Later ServicesOS module:
@@ -510,9 +657,11 @@ Image generation should always be credit-capped.
 
 ## Roadmap
 
-### Phase 0 — Aunt B's Internal Helper
+### Phase 0 — Aunt B's + SLAI Internal Helper
 
-- Single brand profile.
+- Internal brand profiles only.
+- Aunt B's brand profile.
+- SLAI brand profile.
 - Manual post generation.
 - Captions.
 - Branded image generation.
@@ -580,19 +729,20 @@ Do not let AI automatically publish posts, buy ads, reject leads, or make import
 
 This planning created the first grounded version of GrowthAI.
 
-It starts with a real burden:
+It starts with real burden:
 
 ```text
 Aunt B's needs marketing help.
 Jamie needs less manual marketing work.
+SLAI also needs repeatable founder-approved content without creating a separate content system.
 ```
 
-It becomes useful immediately if it helps Jamie's wife create clean, branded posts without help.
+It becomes useful immediately if it helps Jamie's wife create clean, branded posts without help and helps Jamie create SLAI content faster without breaking focus.
 
 But it stays disciplined:
 
 ```text
-Start as a tiny Aunt B's helper.
+Start as a tiny internal helper for Aunt B's and SLAI.
 Fold into ServicesOS later.
 Only grow into full GrowthAI after ServicesOS V1 is stable and customer usage proves the need.
 ```
