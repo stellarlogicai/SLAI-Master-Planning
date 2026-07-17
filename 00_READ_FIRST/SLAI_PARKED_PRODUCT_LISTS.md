@@ -277,6 +277,46 @@ Do not build internal tools before ServicesOS has customers.
 
 ---
 
+## 9. GrowOS / GreenhouseOS
+
+Status: Parked / discovery only
+
+Purpose: Future AI-assisted cultivation operating system for commercial cannabis and broader controlled-environment agriculture.
+
+Parked ideas:
+
+* METRC and other track-and-trace adapters
+* Plant, cultivar, batch, stage, room, and zone tracking
+* Company-defined cultivation SOPs and stage-based playbooks
+* Daily and weekly cultivation task generation
+* Sensor and environmental data integration
+* Root-zone, irrigation, reservoir, EC, and pH monitoring
+* Scheduled fixed-camera stills and human photo uploads
+* AI-assisted plant diagnosis using multiple evidence sources
+* Feeding, irrigation, treatment, and maintenance history
+* Transparent ranked recommendations with human approval
+* Director of Cultivation and multi-facility dashboards
+* Employee execution records and audit trails
+* Existing controller and fertigation-system integrations
+* Carefully bounded approved automation later
+* Yield, quality, labor, crop-loss, and resource analytics
+* Expansion into flowers, fruits, vegetables, herbs, and nurseries
+* Potential collaboration with an experienced multi-state cultivation director and consultant
+
+Promotion trigger:
+
+Move into active validation only after ServicesOS reaches stable customer-ready V1 and real usage, repeated commercial pain points are confirmed, a narrow measurable pilot is defined, and Jamie explicitly promotes the product.
+
+Rule:
+
+Document, interview, and validate only. Do not begin active product development because the opportunity is exciting.
+
+Planning folder:
+
+* `14_GrowOS/`
+
+---
+
 # Promotion Rules
 
 A parked list can become live only if it passes at least one of these tests:
@@ -307,6 +347,7 @@ Parked:
 7. ComplianceAI
 8. FutureAI Research
 9. SLAI Internal OS
+10. GrowOS / GreenhouseOS
 
 Founder rule:
 
