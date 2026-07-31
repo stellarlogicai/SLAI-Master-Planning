@@ -2,8 +2,15 @@
 
 **Purpose:** Keep ServicesOS execution ordered piece by piece.  
 **Owner:** Jamie Brown / Stellar Logic AI  
+**Last updated:** 2026-07-30  
 **Rule:** ServicesOS is priority one. Future products stay parked unless explicitly activated.  
-**Current milestone:** July 20 live manual smoke test.
+**Current milestone:** Controlled wife beta on the live production release.
+
+Canonical detailed plan:
+
+```text
+01_ServicesOS/Active-Beta/servicesos-wife-beta-photo-growthai-plan.md
+```
 
 ---
 
@@ -13,355 +20,367 @@ Do one controlled piece at a time.
 
 ```text
 Plan the piece
-Build the smallest safe version
-Validate it
-Smoke test it
-Commit it
-Then move to the next piece
+→ build the smallest safe version
+→ validate it
+→ smoke test it
+→ commit it
+→ deploy only when approved
+→ observe real use
+→ then move to the next piece
 ```
 
 Do not mix unrelated product areas in the same implementation pass.
 
 ---
 
-## Active Build Route
+## Current Production Baseline
 
-### 0. Repo Baseline
+- Production branch: `master`
+- Production commit: `7c15cd1418a6105d2d3c41242a899d06ba43a7f8`
+- Netlify deploy: `6a6bee9f7b120d00074f5c0f`
+- Production URL: https://servicesos.netlify.app
+- Rollback deploy preserved: `6a698c7b4d4c450008e39eeb`
 
-**Status:** Active/check before every Codex pass
+The current release includes:
 
-Before making changes:
+- Native booking date/time controls
+- Native Create Estimate date control with local-date handling
+- Refreshed Create Estimate layout
+- Existing-customer detail, estimate prefill, and direct booking
+- Structured address handling
+- Tenant-switch stale-context protection
+- Lead tenant-ID persistence fix
 
-- Confirm branch/base commit.
-- Confirm working tree status.
-- Confirm current known test/build status.
-- Confirm target files.
+Known wife-beta residual risk:
 
-Validation commands:
-
-```bash
-npm run lint
-npm test -- --run
-npm run build
-```
+- Duplicate-booking protection is UI-level plus an in-memory guard.
+- It is not fully backend-idempotent across separate concurrent clients.
 
 ---
 
-### 1. July 20 Smoke-Test Polish
+## Current Wife-Beta Evidence
+
+Jamie's wife has already:
+
+- Logged into production
+- Navigated around the application
+- Reported that the application looks clean
+- Reported that navigation is easy
+- Reported that she could tell where to go for what she wanted to do
+
+Interpretation:
+
+- Initial information architecture is understandable.
+- Initial navigation does not need redesign based on assumptions.
+- The next evidence must come from a real cleaning job.
+
+---
+
+## Active Execution Route
+
+### 1. Complete One Low-Risk Real Job
 
 **Status:** Active now
 
-Only three items are approved before the live smoke test:
+Golden path:
 
-1. Dashboard first-run empty state
-2. Booking cancel button
-3. Copy-ready payment link message
+```text
+Login
+→ Dashboard
+→ add or select customer
+→ create estimate
+→ review request
+→ create booking
+→ confirm booking
+→ prepare for job
+→ use Field Mode
+→ complete job
+→ review job and payment status
+```
 
-Rules:
+Record:
 
-- Do not rebuild existing flows.
-- Do not touch Stripe confirmation logic.
-- Do not touch platform fees, webhooks, refunds, checkout backend, or payment truth rules.
-- Do not touch GrowthAI.
-- Do not touch Training Library.
-- Do not touch recurring services UI.
-- Do not add SMS.
-- Do not add real email sending.
-- Copy-only is acceptable.
-- Preserve tenant isolation.
-- No fake success states.
+- What she was trying to do
+- What she expected
+- What happened
+- Device used
+- Customer or booking involved
+- Screenshot when useful
+- Whether she could continue
+- Severity
 
-Acceptance:
+Stop immediately for:
 
-- Dashboard empty state is helpful and honest.
-- Booking can be marked cancelled without deleting payment history.
-- Payment message can be copied without claiming it was sent.
-- Lint/test/build pass.
-- Manual smoke passes.
+- Data loss
+- Tenant or customer data leakage
+- Crash
+- Incorrect price
+- Incorrect date or time
+- Duplicate booking
+- Payment or Stripe risk
+- Inability to finish the job
+- Required information disappearing or changing unexpectedly
 
----
-
-### 2. Freeze and Prep for Live Manual Smoke Test
-
-**Status:** Next after smoke-test polish
-
-No new features.
-
-Prep checklist:
-
-- Deploy latest stable build.
-- Walk through the deployed app manually.
-- Confirm login/logout.
-- Confirm Dashboard loads.
-- Confirm lead/request flow.
-- Confirm estimate/review flow.
-- Confirm booking creation.
-- Confirm payment link creation/copy.
-- Confirm manual payment tracking.
-- Confirm booking cancellation does not delete payment history.
-- Confirm Calendar loads.
-- Confirm Field Mode/job packet loads.
-- Confirm mobile navigation.
-- Prepare test data.
-- Prepare July 20 notes template.
+Do not interrupt the job for minor spacing, wording, convenience, or extra-click observations unless they become blocking.
 
 ---
 
-### 3. July 20 Live Manual Smoke Test
+### 2. Triage Real-Job Findings
 
-**Status:** Scheduled milestone
+**Status:** Immediately after each wife-beta job
+
+Classify findings as:
+
+1. Beta-critical blocker
+2. High-risk workflow defect
+3. Usability friction
+4. V1 polish
+5. Future idea
+
+Only beta-critical blockers and high-risk defects should interrupt the current route.
+
+Do not turn every observation into an immediate coding task.
+
+---
+
+### 3. Fix Only Beta-Critical Friction
+
+**Status:** After real-job evidence
+
+Each fix must be isolated and controlled.
+
+Before coding:
+
+- Confirm branch and exact base SHA
+- Confirm clean working tree
+- Read repository instructions and relevant planning docs
+- Name files in scope
+- Name files and systems to avoid
+- Define acceptance criteria
+- Define tests and smoke checks
+- Define stop conditions
+
+Validation baseline:
+
+```bash
+npm run lint
+npm run test -- --run
+npm run build
+```
+
+Also run Functions, Firestore rules, Storage rules, parity, secret, and deployment checks whenever the change touches those surfaces.
+
+---
+
+### 4. Repeat With Another Real Job
+
+**Status:** After beta-critical fixes are deployed and smoke-tested
 
 Goal:
 
 ```text
-Can a real user move through the business workflow without Jamie explaining every step?
+Confirm the fix under real use
+and determine whether the core workflow is stable enough
+for the photo layer.
 ```
 
-Core flow to test:
+Do not add unrelated features between the first and second real-job observations.
+
+---
+
+### 5. Multi-Photo Job Workflow
+
+**Status:** Next approved product layer after the operational core proves stable
+
+Build the smallest reliable version:
 
 ```text
-lead / quote request
-→ estimate / owner review
-→ booking
-→ payment link or manual payment tracking
-→ calendar visibility
-→ field/job packet visibility
+Select room or area
+→ choose before or after
+→ choose room, issue, or detail
+→ add one or more photos
+→ add optional note
+→ save
 ```
 
-Record issues as:
+Required controls:
 
-- Blocker
-- High
-- Medium
-- Low
-- Idea
+- Multiple photos per room
+- Multiple rooms per job
+- Required room/area label
+- Before/after stage
+- Room/issue/detail category
+- Optional note
+- Unique photo ID and storage path
+- Uploader and timestamp
+- Marketing-use status
+- Privacy-review status
+- Missing-coverage warning, not hard completion block
 
-Only blockers/high issues should interrupt the next build route.
+Image rules:
 
----
+- Preserve aspect ratio and vertical orientation
+- Maximum long edge around 2400–2560 pixels
+- JPEG quality around 85–90%
+- Target roughly 1–2 MB when useful
+- Do not recompress already-small images unnecessarily
 
-### 4. Smoke-Test Findings Triage
-
-**Status:** Immediately after July 20
-
-Sort findings into:
-
-1. Must fix before real customer use
-2. Should fix before wife beta continues
-3. V1 polish
-4. V1.5 backlog
-5. Parked future
-
-Do not fix every annoyance immediately.
+Do not build the GrowthAI Post Builder until photo records are reliable, labeled, tenant-safe, and privacy-reviewable.
 
 ---
 
-### 5. Core Workflow Fixes
+### 6. Focused GrowthAI Post Builder
 
-**Status:** After triage
+**Status:** After the multi-photo workflow is stable
 
-Address only issues found in the live smoke test that affect the core owner workflow:
+This is the first narrow GrowthAI feature inside ServicesOS.
 
-- Customer/lead visibility
-- Estimate/review clarity
-- Booking creation/editing/cancellation
-- Payment status honesty
-- Calendar visibility
-- Mobile usability
-- Data persistence
+Core promise:
 
-Acceptance:
+> Turn completed cleaning jobs into branded marketing content in minutes.
 
-- No workflow blocker remains.
-- No confusing fake success state remains.
-- No payment state lies to the owner/customer.
-
----
-
-### 6. Payment Honesty / Financial Safety Hardening
-
-**Status:** After core workflow fixes
-
-Focus:
-
-- Stripe-confirmed payment states
-- Manual payment states
-- Payment link created vs paid distinction
-- External/manual payment wording
-- Refund/chargeback/fee clarity if surfaced
-
-Rules:
+Workflow:
 
 ```text
-Booking created does not mean paid.
-Payment link created does not mean paid.
-Manual payment recorded does not equal Stripe-confirmed payment.
-No Stripe confirmation = do not mark Stripe paid.
+Completed booking
+→ approved labeled photos
+→ select 1–4 photos
+→ choose post style
+→ generate collage and copy
+→ human review
+→ download image
+→ copy caption, CTA, and hashtags
+→ post manually
 ```
 
----
+First-version outputs:
 
-### 7. Field Mode / Job Packet Hardening
+- Before-and-after collage
+- Optional single-image post
+- Caption draft
+- CTA
+- Hashtags
+- Optional short and long caption variations
 
-**Status:** After payment/core workflow confidence
-
-Focus:
-
-- Job packet clarity
-- Customer/address/job notes
-- Phone/maps links
-- Field checklist readiness
-- Before/after photo path if active
-- Mobile browser usability
-- Missing job information warnings
-
-Do not start full React Native/mobile employee app here unless explicitly approved.
-
----
-
-### 8. Expenses & Mileage v0.1
-
-**Status:** Post-July-20 / V1.5 planning
-
-Reference doc:
-
-```text
-01_ServicesOS/Finance/ServicesOS_Expenses_And_Mileage_Tracking_Plan.md
-```
-
-Build in this order:
-
-1. Manual expense log
-2. Mileage log
-3. Monthly totals
-4. CSV export
-5. Optional job/customer linking
-6. Receipt upload/photo
-7. Simple job cost/profit view
-
-Rules:
-
-- No bank syncing.
-- No OCR.
-- No automatic receipt parsing.
-- No automatic tax filing.
-- No tax advice claims.
-- Owner/bookkeeper reviews exports.
-
----
-
-### 9. Training Library v0.1
-
-**Status:** V1.5 / after core business workflow is stable
-
-Source content:
-
-```text
-01_ServicesOS/SOP Library
-```
-
-Build in this order:
-
-1. SOP Library index/manifest
-2. Preset training modules
-3. Read-only lesson/slideshow view
-4. Simple quiz
-5. Employee assignment
-6. Completion status
-7. Owner/admin completion view
-
-Rules:
-
-- Do not build standalone EducationOS.
-- Do not add SCORM/LTI/SSO.
-- AI may draft later, but owner approves before publishing.
-
----
-
-### 10. Recurring Services UI
-
-**Status:** Backlog until needed by real usage
-
-The service layer may exist, but UI should only be activated when needed for actual recurring customer workflows.
-
-Start small:
-
-- Mark customer as recurring interest
-- Basic recurring schedule
-- Pause/resume
-- Manual review before generating future jobs if needed
-
----
-
-### 11. GrowthAI Expansion
-
-**Status:** Parked unless explicitly activated
-
-Current GrowthAI Phase 0/0.1 is allowed as an internal helper only.
-
-Do not expand GrowthAI until ServicesOS core customer-ready V1 is stable.
-
-Allowed later:
-
-- Aunt B's content drafts
-- ServicesOS founder posts
-- Lead-source tracking
-- Human-approved outreach drafts
-
-Rules:
+Human-control rule:
 
 ```text
 AI notices.
+AI suggests.
 AI drafts.
-Human approves.
+Human reviews and approves.
+Human posts.
 System records.
 ```
 
+Out of scope:
+
+- Auto-posting
+- Social scheduler
+- Ad management
+- Broad campaign automation
+- Lead scraping
+- Autonomous outreach
+- Full analytics platform
+- General-purpose content studio
+- Separate GrowthAI application
+
 ---
 
-### 12. Future Products
+### 7. Server-Enforced AI Credits
 
-**Status:** Parked future planning
+**Status:** Required with the first customer-facing GrowthAI release
 
-Do not build before ServicesOS is stable and has real usage.
+Core rules:
 
-Parked areas:
+- Browser is never authoritative.
+- Track monthly, purchased, and promotional/admin credits separately.
+- Core ServicesOS remains usable with zero AI credits.
+- Monthly credits reset on the subscription cycle.
+- Purchased credits do not expire initially.
 
-- EducationOS
-- RetailOS / PharmacyOS
-- ComplianceAI
-- FutureAI
-- SLAIOS
-- Full corporate Training Engine
+Generation lifecycle:
 
-These can remain documented in the planning repo, but they should not drive current coding scope.
+```text
+Validate tenant and user
+→ validate available credits
+→ reserve credits
+→ generate
+→ finalize charge on success
+→ restore reservation on failure
+```
+
+Required protections:
+
+- Request/idempotency key
+- No duplicate generation charge
+- No duplicate purchased-credit grant
+- Stripe webhook idempotency
+- Ledger with tenant, user, action, model/route, reserved/charged credits, status, timestamps, and failure reason
+
+Pricing rule:
+
+- Credit packs must cover provider cost, payment fees, infrastructure, retries, support, maintenance, and profit.
+- Do not sell AI usage as cost pass-through.
+- Recalculate final pricing from current provider and Stripe costs before launch.
+
+---
+
+### 8. First Supported External Pilot
+
+**Status:** After the wife-beta, photo, focused GrowthAI, and credit gates are ready
+
+Ideal first customer:
+
+- Owner-operated cleaning business
+- Roughly 1–5 workers
+- Uses texts, paper, calendars, spreadsheets, or disconnected tools
+- Accepts direct founder support
+- Needs stronger job organization and consistent marketing
+- Is not deeply embedded in a mature competitor platform
+
+Positioning:
+
+> ServicesOS helps you run today's job and turn it into tomorrow's customer.
+
+Do not launch broadly. Start with one controlled founder-supported customer.
 
 ---
 
 ## Current Do-Not-Touch List
 
-Until the July 20 smoke test is complete, do not start:
+Until the active route reaches the relevant gate, do not start:
 
-- Training Library implementation
-- EducationOS implementation
+- Broad GrowthAI platform
+- Autonomous GrowthAI outreach
+- Full employee mobile expansion
 - Tap to Pay
-- Recurring Services UI
-- Customer timeline
-- Full archive system
-- AI generation expansion
-- SMS/email sending
-- Bank sync
-- Expense OCR
-- New product verticals
+- Route optimization
+- GPS tracking
+- Payroll
+- Break/lunch tracking
+- Training library
+- Push notifications
+- Offline mode
+- Full customer portal expansion
+- EducationOS
+- RetailOS / PharmacyOS
+- ComplianceAI
+- FutureAI
+- SLAIOS
+
+These ideas may remain documented, but they must not drive current coding scope.
 
 ---
 
-## Current Approved Codex Target
+## Immediate Next Action
 
 ```text
-Dashboard empty state
-Booking cancel button
-Copy payment message
+Wife completes one low-risk real cleaning job
+→ Jamie records observations
+→ fix only beta-critical friction
+→ repeat with another real job
+→ begin multi-photo implementation
 ```
 
-Anything outside that requires explicit approval before coding.
+Do not begin another feature pass merely because the current application looks ready. Let real use choose the next fix.
