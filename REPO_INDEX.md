@@ -2,7 +2,7 @@
 
 Document Status: Living Index  
 Implementation Status: Active Planning Reference  
-Last Updated: 2026-07-11  
+Last Updated: 2026-07-30  
 Repository: `stellarlogicai/SLAI-Master-Planning`  
 Primary Active Build: ServicesOS
 
@@ -65,6 +65,7 @@ ServicesOS planning. This is the active product and current company proof engine
 Key areas include:
 
 - `Active-Beta/` — active wife-beta and employee-field-MVP planning
+- `Active-Beta/servicesos-wife-beta-photo-growthai-plan.md` — current canonical wife-beta route, multi-photo specification, focused GrowthAI Post Builder scope, AI-credit controls, and external-pilot gates
 - `Future-Mobile/` — parked owner/admin and future mobile direction
 - `Future-Technical/` — parked technical architecture and provider watchlists
 - `Future-Verticals/` — parked service-vertical expansion
@@ -73,6 +74,16 @@ Key areas include:
 Core rule:
 
 > ServicesOS remains the only active build until beta-critical workflows are stable.
+
+Current execution anchor:
+
+```text
+Complete real wife-beta jobs
+→ fix only beta-critical friction
+→ stabilize the multi-photo workflow
+→ add the focused GrowthAI Post Builder and server-enforced AI credits
+→ begin one controlled founder-supported external pilot
+```
 
 ## `02_Website/`
 
@@ -111,7 +122,7 @@ Core rule:
 
 > AI notices. AI suggests. Human approves. System records.
 
-Status: Parked.
+Status: Parked as a broad standalone product. The narrow completed-job Post Builder documented inside ServicesOS Active Beta is allowed only because it directly supports the current ServicesOS workflow and remains human-approved.
 
 ## `06_EducationOS/`
 
@@ -248,6 +259,10 @@ Shared rulebook for AI coding assistants, including scope control, validation ex
 
 This living repository map. Update it whenever folders or material planning files are added, renamed, moved, or archived.
 
+## `SERVICESOS_WORKING_ROUTE.md`
+
+Current ServicesOS execution sequence. It should point to the canonical active-beta planning document and must be updated whenever the live beta route materially changes.
+
 ## `.gitignore`
 
 Repository exclusion rules.
@@ -306,6 +321,7 @@ Implemented = code exists, is validated, and is pushed in the implementation rep
 Unless Jamie explicitly says otherwise:
 
 - ServicesOS is active.
+- The narrow ServicesOS Post Builder may proceed only after the operational and photo gates documented in Active Beta.
 - GrowOS is advanced discovery only.
 - Everything else is parked, internal future planning, or research.
 
@@ -316,16 +332,18 @@ Before coding, agents should read:
 1. `README.md`
 2. `AI_CODING_ASSISTANT_RULES.md`
 3. `REPO_INDEX.md`
-4. the specific product-area document
-5. the active implementation handoff when coding ServicesOS
+4. `SERVICESOS_WORKING_ROUTE.md` for current ServicesOS execution
+5. the specific product-area document
+6. the active implementation handoff when coding ServicesOS
 
 ## Current Execution Anchor
 
 ```text
-Finish ServicesOS testing after refactoring
+Complete wife beta through real jobs
 → fix beta-critical bugs
-→ complete wife beta
-→ fine-tune UI
+→ stabilize the multi-photo workflow
+→ implement the focused GrowthAI Post Builder with server-enforced credits
+→ fine-tune UI from real evidence
 → stabilize payments
 → then consider Tap to Pay and later product promotion
 ```
