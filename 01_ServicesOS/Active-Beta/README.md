@@ -1,7 +1,7 @@
 # ServicesOS Active Beta Planning
 
 Status: Active planning  
-Date: 2026-07-30  
+Date: 2026-08-02  
 Owner: Jamie Brown / Stellar Logic AI
 
 ## Purpose
@@ -67,6 +67,7 @@ and short-term rental turnover-style work.
 ### Core Beta / Product Planning
 
 - `servicesos-wife-beta-photo-growthai-plan.md` — canonical active plan for wife beta, the multi-photo workflow, the focused GrowthAI Post Builder, AI-credit controls, production status, and the sequence toward the first supported external pilot.
+- `servicesos-cleaning-sensitivities-product-restrictions.md` — structured customer/property cleaning-product restrictions, approved alternatives, booking snapshots, supply filtering, and Field Mode safety warnings. This is planning only until Jamie promotes it as a controlled ServicesOS task.
 - `implementation-status-tracker.md` — central tracker for planned, in-progress, reported-local, validated, complete, and future-roadmap beta work.
 - `wife-beta-admin-sidebar-workflow.md` — decided sidebar and owner workflow plan.
 - `route-helper-crew-gps-design.md` — route, GPS, crew, mileage, and job timeline design notes.
@@ -101,7 +102,7 @@ Route, crew, GPS, broad AI, payroll, employee app expansion, and job-costing des
 
 Do not overbuild advanced optimization, payroll processing, employee app scope, or autonomous AI before the basic owner workflow is stable.
 
-The current work order is controlled wife beta first, then the multi-photo workflow, then the focused GrowthAI Post Builder with server-enforced AI credits. More advanced Schedule, Crew, Route Helper, AI Day Planner, Employee App, and Payroll Assist work remain separate future promoted tasks.
+The current work order is controlled wife beta first, then the multi-photo workflow, then the focused GrowthAI Post Builder with server-enforced AI credits. Cleaning-product restrictions may be promoted earlier as a separate safety task when real customer/property use requires it; they must not be combined with the multi-photo task. More advanced Schedule, Crew, Route Helper, AI Day Planner, Employee App, and Payroll Assist work remain separate future promoted tasks.
 
 ## Market-Entry Guardrail
 
