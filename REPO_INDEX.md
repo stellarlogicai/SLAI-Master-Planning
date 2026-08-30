@@ -2,7 +2,7 @@
 
 Document Status: Living Index  
 Implementation Status: Active Planning Reference  
-Last Updated: 2026-07-30  
+Last Updated: 2026-08-30  
 Repository: `stellarlogicai/SLAI-Master-Planning`  
 Primary Active Build: ServicesOS
 
@@ -101,18 +101,39 @@ This folder defines how Stellar Logic AI is structured as a company.
 
 SLAIOS internal company operating-system planning.
 
-Primary future purpose:
+Core future direction:
 
-- company knowledge,
-- decision history,
-- product priorities,
-- planning context,
-- AI context packs,
-- customer feedback,
-- handoffs,
-- and internal operating visibility.
+- executive / co-CEO-style decision support while humans retain authority,
+- role-aware employee workspaces,
+- company memory and decision history,
+- remote-first internal communication,
+- People / HR and payroll-provider coordination,
+- contribution provenance with timeframes and shared credit,
+- optional rewards, leaderboards, swag, meal/lunch credits, and remote-culture tooling,
+- live Product Fleet intelligence,
+- Product Studio for disciplined idea-to-product workflows,
+- Luna / Terra / Sol model orchestration,
+- and **SLAIOS Forge** as the future engineering-execution add-on.
 
-Status: Parked until ServicesOS reaches stable customer-ready V1 with real usage.
+Forge is intentionally nested under SLAIOS rather than treated as a separate operating system. SLAIOS owns company context, identity, permissions, priorities, contribution tracking, approvals, and business knowledge; Forge owns isolated engineering execution, tests/builds, QA evidence, and PR preparation.
+
+Key planning files include:
+
+- `SLAIOS_Vision.md`
+- `SLAIOS_Architecture_and_Vision.md`
+- `Employee_Workspace_People_HR_and_Payroll.md`
+- `Contribution_Ledger_Rewards_and_Remote_Culture.md`
+- `Product_Fleet_and_Product_Studio.md`
+- `White_Label_and_Productization.md`
+- `Forge/README.md`
+- `Forge/Architecture_and_Execution_Model.md`
+- `Forge/Engineering_QA_and_Organization_Model.md`
+
+Core rule:
+
+> AI supports the user. Humans remain responsible for consequential decisions.
+
+Status: Parked until ServicesOS reaches stable customer-ready V1 with real usage and SLAI has enough operating need/capacity to justify activation.
 
 ## `05_GrowthAI/`
 

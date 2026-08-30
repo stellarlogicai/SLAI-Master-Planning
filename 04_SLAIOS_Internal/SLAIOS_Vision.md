@@ -1,105 +1,167 @@
-# SLAIOS Vision & Initial Architecture
+# SLAIOS Vision
 
 ## Mission
-SLAIOS is the operating system for SLAI.
 
-It combines:
-- Dashboard
-- Company Memory
-- AI Assistant
-- Project Monitoring
-- Metrics
-- Suggestions System
-- Developer Assistant
+SLAIOS is the operating system for Stellar Logic AI.
 
----
+It should unify company knowledge, work, people, communications, products, AI assistance, and decision history so the company can operate with a small, highly capable human team.
 
-## Dashboard First, AI Second
+The goal is not to automate leadership away.
 
-Founder questions:
-- What broke?
-- What needs my attention?
-- Which projects are healthy?
-- Where is revenue growing?
-- Which bugs are critical?
+The goal is:
 
-### Dashboard Sections
+> **AI supports the user. Humans remain responsible for important decisions.**
 
-#### Revenue
-- MRR
-- ARR
-- Expenses
-- Profit
+## Executive Operating Partner
 
-#### Projects
-- ServicesOS
-- RetailOS
-- Anti-Cheat
-- Future Products
+For the founder and future executives, SLAIOS may function like an AI operating partner:
 
-#### Customers
-- Growth
-- Churn
-- Support Tickets
+- prepare a CEO briefing,
+- surface what changed,
+- identify risks and opportunities,
+- challenge assumptions,
+- compare options,
+- preserve decision reasoning,
+- coordinate approved tools,
+- and recommend the next action.
 
-#### Development
-- Critical Bugs
-- Deployments
-- Test Coverage
+It may feel like a "co-CEO," but it has no independent executive authority.
 
-#### AI Suggestions
-- Trending complaints
-- Documentation gaps
-- Revenue opportunities
-- Risk alerts
+SLAIOS should be willing to disagree with the founder when company priorities, evidence, risk, or prior decisions support a different recommendation.
 
----
+## Employee Operating System
+
+SLAIOS is not founder-only.
+
+Every employee should have a role-aware workspace containing the work, communication, knowledge, people tools, AI capabilities, and company context appropriate to that employee.
+
+The same system may show:
+
+- a founder: company strategy, financial health, product fleet, executive decisions, and cross-company risk;
+- a manager: team priorities, blockers, approvals, PTO requests, and authorized performance evidence;
+- an engineer: assigned products, repositories, decisions, technical context, and engineering workflows;
+- an employee: today's work, messages, knowledge, training, contributions, rewards, PTO, payroll self-service, and approved AI assistance.
+
+## Remote-First Company
+
+SLAI is expected to be primarily or entirely remote.
+
+SLAIOS should therefore be designed around:
+
+- async-first communication,
+- time-zone awareness,
+- clear handoffs,
+- searchable decisions,
+- transparent ownership,
+- remote onboarding and offboarding,
+- recognition of work that may otherwise be invisible,
+- and presence without surveillance.
+
+No keystroke monitoring, webcam monitoring, mouse tracking, hidden sentiment scoring, or "hours online" productivity scoring.
 
 ## Company Memory
-SLAIOS reads:
-- Vision
-- Roadmaps
-- SOPs
-- Training
-- Testing
-- Metrics
-- Architecture
-- Database Schemas
-- Feature Requests
 
-Goal:
-AI understands the company before answering questions.
+SLAIOS should preserve why the company works the way it does.
 
----
+Memory should connect:
 
-## Developer Assistant
-Capabilities:
-- Search planning docs
-- Search codebase
-- Explain architecture
-- Suggest fixes
-- Draft PRs
-- Recommend tests
+- vision,
+- priorities,
+- decisions,
+- roadmaps,
+- architecture,
+- policies,
+- product requirements,
+- customer feedback,
+- communication,
+- source code and PR evidence where authorized,
+- metrics,
+- incidents,
+- contribution records,
+- and outcomes.
 
----
+Company memory should be source-grounded, time-aware, permission-aware, and auditable.
 
-## Suggestions System
-Employee -> Submit Suggestion -> AI Categorizes -> AI Summarizes -> Founder Reviews -> Approve -> Track Results
+## Product Fleet
 
----
+SLAIOS should eventually track SLAI's live products as a company control tower.
 
-## Scope
-Phase 1:
-Run SLAI internally.
+It should answer:
 
-Phase 2:
-Offer SLAIOS to customers.
+- What changed?
+- Which product needs attention?
+- Why does it matter?
+- What needs a human decision?
 
----
+Technical, customer, business, product, and AI health should be connected without becoming a wall of vanity metrics.
 
-## Long-Term Vision
-SLAIOS becomes the brain of SLAI.
+## Product Studio
 
-All projects feed data into one dashboard.
-AI helps organize information and surface priorities.
-Humans make the final decisions.
+SLAIOS should help authorized employees turn ideas into disciplined product work:
+
+Idea -> problem -> evidence -> workflow -> MVP -> design -> architecture -> review -> build plan -> testing -> launch -> outcome.
+
+It should also help reject, defer, merge, or park ideas that do not earn implementation.
+
+## People, Contributions, and Culture
+
+SLAIOS should make verified contribution visible.
+
+It should preserve who contributed what, when, with what evidence, and toward what outcome so quiet work is not lost and credit cannot easily be reassigned later.
+
+A separate optional rewards layer may turn verified contributions into points, badges, team quests, leaderboards, swag, food credits, workspace rewards, training rewards, or other company perks.
+
+Serious employment decisions must use human judgment and evidence, not gamified points.
+
+## Luna, Terra, and Sol
+
+SLAIOS should route AI work by cost, capability, risk, and authority:
+
+- **Luna** — high-volume operations, documentation, retrieval, organization, and lower-risk assistance
+- **Terra** — normal implementation, workflow design, analysis, testing, and execution planning
+- **Sol** — high-risk architecture, security, payments, production, strategic review, and other work where being wrong is expensive
+
+SLAIOS controls what each model can see and what tools it can use.
+
+## Forge
+
+**SLAIOS Forge** is a future engineering-execution add-on.
+
+Forge relies on SLAIOS for:
+
+- company context,
+- identity,
+- permissions,
+- product priorities,
+- repository ownership,
+- model routing,
+- contribution tracking,
+- approval policy,
+- and business knowledge.
+
+Forge owns the controlled execution environments used for software work.
+
+Forge is not a separate company operating system.
+
+## External Future
+
+SLAIOS should first prove itself inside SLAI.
+
+If it becomes externally viable, the reusable platform may later support:
+
+- multi-tenant company operating systems,
+- modular add-ons,
+- customer branding,
+- configurable terminology,
+- enterprise governance,
+- and white-label/OEM deployments.
+
+SLAIOS itself should be treated as the first internal tenant of that future reusable platform.
+
+## Activation Rule
+
+This vision is future planning only.
+
+Do not activate SLAIOS development merely because the concept is compelling.
+
+ServicesOS remains the execution anchor until its customer-ready and real-usage gates are satisfied.

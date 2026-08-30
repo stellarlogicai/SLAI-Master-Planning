@@ -1,69 +1,59 @@
-1.
+# SLAIOS Development Principles
 
-SLAIOS is internal first.
+1. **ServicesOS remains the current execution anchor.**
 
-External customers are optional.
+   SLAIOS is parked until ServicesOS has stable customer-ready V1, real usage, and enough operating need to justify building SLAIOS.
 
----
+2. **Internal first.**
 
-2.
+   SLAIOS should run SLAI before SLAI attempts to sell or white-label it.
 
-SLAIOS exists to amplify people.
+3. **AI supports the user.**
 
-Not replace them.
+   AI amplifies people. It does not replace human responsibility for consequential decisions.
 
----
+4. **Humans remain responsible.**
 
-3.
+   Human approval is required for high-impact areas such as hiring, termination, compensation, pricing, legal decisions, major architecture, production release, and other consequential actions.
 
-Human approval required for:
+5. **Build simple first. Complexity is earned.**
 
-Pricing
+   Do not build enterprise abstractions, large agent fleets, or universal configuration before internal usage proves the need.
 
-Hiring
+6. **SLAIOS learns continuously; it does not act continuously.**
 
-Legal
+   Memory, monitoring, and suggestions do not grant autonomous authority.
 
-Terminations
+7. **Authorization before retrieval.**
 
-Major Architecture
+   AI sees only what the current user and workflow are allowed to see.
 
----
+8. **Knowledge belongs to the company, with provenance.**
 
-4.
+   Preserve sources, decisions, contributors, timeframes, and why choices were made.
 
-SLAIOS learns continuously.
+9. **Contribution is not surveillance.**
 
-SLAIOS does not act continuously.
+   Track verified work and outcomes. Do not measure people through keystrokes, chat volume, webcam monitoring, time online, or hidden personality/productivity scores.
 
----
+10. **Gamification is culture, not employment judgment.**
 
-5.
+    Points, badges, leaderboards, swag, food credits, and prizes may recognize work, but formal HR decisions rely on human judgment and evidence.
 
-Internal products are funded by external products.
+11. **Founder time is valuable; protect it without creating a founder bottleneck.**
 
----
+    SLAIOS should remove clerical friction, surface decisions, and eventually distribute safe company knowledge to authorized leaders and employees.
 
-6.
+12. **Internal products are funded by real external value.**
 
-Knowledge belongs to the company.
+    SLAI should earn the right to build SLAIOS and Forge through successful customer products.
 
-Not to a single person.
+13. **Forge executes; SLAIOS governs.**
 
----
+    Forge relies on SLAIOS for context, permissions, priorities, tracking, and approvals.
 
-7.
+14. **White-labeling comes after proof.**
 
-Founder time is the most valuable resource.
+    Productize the proven internal platform; do not build hypothetical customer configurability first.
 
-Protect it.
-
----
-
-8.
-
-SLAIOS should make:
-
-Good decisions easier.
-
-Bad decisions harder.
+15. **Make good decisions easier and bad decisions harder.**

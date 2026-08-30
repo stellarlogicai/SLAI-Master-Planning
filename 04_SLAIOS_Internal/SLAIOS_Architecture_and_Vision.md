@@ -1,358 +1,294 @@
-# SLAIOS - Vision, Architecture, and Purpose
+# SLAIOS — Architecture and Operating Model
 
-## What SLAIOS Is
+## System Boundary
 
-SLAIOS is not just an AI chatbot.
+SLAIOS is the company control, knowledge, people, communication, and AI-orchestration layer for Stellar Logic AI.
 
-It is the complete operating system for SLAI.
-
-```text
-SLAIOS
-=
-Company Command Center
-+
-Project Management
-+
-Company Memory
-+
-AI Assistant
-+
-Developer Assistant
-+
-Issue Tracking
-+
-Suggestions System
-+
-Metrics Hub
-+
-Internal Communication
-```
-
-The goal is simple:
-
-**One place to run the company.**
-
----
-
-# Why SLAIOS Exists
-
-Jamie's brain is full of:
-
-- Ideas
-- Projects
-- Features
-- Documentation
-- Future plans
-- Customers
-- Employees
-- Metrics
-
-SLAIOS exists to:
-
-- Keep Jamie focused
-- Keep projects organized
-- Surface important information
-- Preserve company knowledge
-- Help future employees onboard quickly
-- Give AI enough context to provide useful assistance
-
----
-
-# Dashboard First, AI Second
-
-The dashboard is the main screen.
-
-Questions it should answer:
-
-- What broke?
-- What needs my attention?
-- Which project is healthy?
-- Which project is behind?
-- What should I work on today?
-- Are customers happy?
-- Are employees supported?
-
-## Dashboard Sections
-
-### Revenue
-
-- MRR
-- ARR
-- Expenses
-- Profit
-- Growth
-
-### Projects
-
-- ServicesOS
-- SLAIOS
-- RetailOS
-- Anti-Cheat
-- Future Products
-
-Track:
-
-- Status
-- Progress
-- Open bugs
-- Next milestone
-- AI recommendations
-
-### Customers
-
-- Total customers
-- Growth
-- Churn
-- Support tickets
-- Satisfaction
-
-### Development
-
-- Critical bugs
-- Deployments
-- Test coverage
-- Open issues
-- Pull requests
-
-### AI Suggestions
-
-Examples:
-
-- Scheduling complaints increasing
-- Documentation gap detected
-- Feature requests trending
-- Potential churn risk
-- Revenue opportunities
-
----
-
-# AI Assistant
-
-The AI assistant is a side panel.
-
-Example questions:
-
-- Why are bugs increasing?
-- What should I prioritize?
-- Summarize ServicesOS.
-- Explain employee scheduling.
-- Find Stripe issues.
-- Draft a fix ticket.
-
-The AI does NOT replace leadership.
-
-It:
-
-- Summarizes
-- Organizes
-- Suggests
-- Explains
-
-Humans make decisions.
-
----
-
-# Company Memory
-
-This is one of the most important modules.
-
-SLAIOS should understand:
-
-- Vision
-- Roadmaps
-- SOPs
-- Training
-- Testing
-- Architecture
-- Database schemas
-- Metrics
-- Feature requests
-- Meeting notes
-- Customer feedback
-
-Goal:
+It is not one giant autonomous agent.
 
 ```text
-AI understands the company
-before answering questions.
+                         SLAIOS
+                 Company Control Plane
+                          |
+      +-------------------+-------------------+
+      |                   |                   |
+ Executive/CEO        Employee Work       Company Memory
+ Intelligence           & People          & Decisions
+      |                   |                   |
+      +-------------+-----+-----+-------------+
+                    |           |
+              AI Orchestrator   Permissions
+             Luna/Terra/Sol     & Audit
+                    |
+       +------------+-------------+
+       |            |             |
+ Product Fleet  Product Studio   Add-ons
+                                  |
+                                Forge
 ```
 
----
+## Core Modules
 
-# Developer Assistant
-
-Future capabilities:
-
-- Search planning docs
-- Search codebase
-- Explain architecture
-- Find related files
-- Draft fixes
-- Suggest tests
-- Draft pull requests
-
-Developer onboarding becomes:
-
-```text
-Ask SLAIOS.
-```
-
----
-
-# Suggestions System
-
-Workflow:
-
-Employee
-↓
-Submit Suggestion
-↓
-AI Categorizes
-↓
-AI Summarizes
-↓
-AI Scores
-↓
-Founder Reviews
-↓
-Approve
-↓
-Assign
-↓
-Track Results
-
-The goal:
-
-Every employee has a voice.
-
----
-
-# Project Focus System
-
-One of the most valuable features.
-
-SLAIOS should know:
-
-Current Focus:
-
-```text
-ServicesOS
-↓
-Employee App
-↓
-Job Details Screen
-```
-
-All other projects:
-
-```text
-Archived
-No action needed.
-```
-
-AI reminders:
-
-```text
-Current Build Order:
-
-1 ServicesOS
-2 Wife Beta
-3 Customer Beta
-4 Website
-5 Launch
-6 SLAIOS
-```
+### Executive Intelligence
 
 Purpose:
 
-Keep Jamie focused.
+- CEO briefings,
+- company health,
+- priorities,
+- risk,
+- opportunities,
+- finance visibility,
+- staffing constraints,
+- product decisions,
+- and cross-company recommendations.
 
----
+The AI may challenge assumptions. Humans decide.
 
-# Internal First
+### Role-Aware Employee Workspace
 
-Phase 1:
+Each employee receives only the information and capabilities appropriate to:
 
-SLAIOS runs SLAI.
+- role,
+- department,
+- project,
+- sensitivity level,
+- current assignment,
+- and temporary delegated authority.
 
-Tracks:
+The employee workspace should unify work, communication, knowledge, self-service people tools, contributions, rewards, and authorized AI assistance.
 
-- ServicesOS
-- SLAIOS
-- RetailOS
-- Anti-Cheat
-- Future Projects
+### Company Memory and Decision System
 
-Phase 2:
+Store and connect:
 
-Offer SLAIOS to customers.
+- canonical plans,
+- approved decisions and rationale,
+- source documents,
+- product history,
+- customer feedback,
+- incidents,
+- metrics,
+- contribution provenance,
+- communication-derived decisions,
+- and authorized engineering history.
 
-Customers receive:
+Memory is evidence, not authority.
 
-- Dashboard
-- AI Assistant
-- Suggestions System
-- Knowledge Base
-- Metrics
-- Documentation
+### Internal Communication
 
----
+Native remote-first communication should include:
 
-# The Real Secret
+- company and team channels,
+- project/product channels,
+- DMs and groups,
+- announcements,
+- searchable decisions,
+- handoffs,
+- role-aware AI catch-up summaries,
+- and links between communication and work.
 
-All the markdown files being written today:
+### People / HR
 
-- Vision
-- Build Order
-- Metrics
-- Database Schema
-- Security Model
-- SOPs
-- Training
-- Developer Onboarding
+SLAIOS should eventually support:
 
-are not just documentation.
+- employee profiles,
+- organization structure,
+- onboarding,
+- offboarding,
+- PTO and leave workflows,
+- training,
+- certifications,
+- policy acknowledgements,
+- goals/check-ins,
+- equipment/access records,
+- and restricted employment documents.
 
-They are:
+AI assists; humans make hiring, discipline, promotion, compensation, and termination decisions.
+
+### Payroll Coordination
+
+SLAIOS should initially be the payroll operating layer, not a homegrown payroll-tax engine.
+
+It may manage approved source data such as:
+
+- salary/hourly status,
+- approved hours,
+- PTO,
+- bonuses,
+- payroll changes,
+- pay periods,
+- and employee-facing payroll status.
+
+An established payroll provider should initially remain responsible for tax calculation, withholding, filing, and regulated payroll execution.
+
+### Contribution Ledger and Rewards
+
+The factual ledger records verified work, timeframe, provenance, collaborators, review, and outcome.
+
+The rewards layer may add optional points, badges, team quests, leaderboards, and perks.
+
+Never use reward points as the sole basis for employment decisions.
+
+### Product Fleet
+
+Every live SLAI product may feed controlled operational signals into SLAIOS:
+
+- technical health,
+- customer health,
+- business health,
+- product health,
+- AI/provider health,
+- releases,
+- incidents,
+- support,
+- and relevant financial performance.
+
+SLAIOS should summarize what changed and what requires attention.
+
+### Product Studio
+
+Authorized users may use SLAIOS to:
+
+- capture ideas,
+- retrieve prior related work,
+- validate problems,
+- define users and evidence,
+- scope MVPs,
+- produce UX concepts,
+- prepare architecture,
+- assess risks,
+- generate product briefs,
+- and preserve the decision trail.
+
+The system should help kill or park weak ideas rather than encouraging unlimited building.
+
+### AI Orchestrator
+
+SLAIOS chooses model, context, tools, and autonomy based on:
+
+- task type,
+- user permissions,
+- risk,
+- cost,
+- required quality,
+- and consequential impact.
 
 ```text
-SLAIOS Training Data
-Version 0.1
+Luna  -> retrieve / organize / document / lower-risk work
+Terra -> implement / analyze / test / normal execution
+Sol   -> strategic / security / architecture / payments / high-risk review
 ```
 
-Company Memory is being built BEFORE Company AI.
+### Boardroom Workflow
 
----
-
-# Long Term Vision
-
-SLAIOS becomes:
+For difficult company decisions, SLAIOS may ask multiple models to examine different dimensions and synthesize the result.
 
 ```text
-The Brain of SLAI.
+Question
+  |
+Evidence + prior decisions
+  |
+Luna ---- Terra ---- Sol
+  |         |         |
+history   execution   challenge/risk
+  +---------+---------+
+            |
+       SLAIOS synthesis
+            |
+       Human decision
+            |
+     decision recorded
 ```
 
-All projects feed information into one place.
+This is structured decision support, not autonomous governance.
 
-AI organizes:
+## Permission Architecture
 
-- Knowledge
-- Metrics
-- Documentation
-- Projects
-- Bugs
-- Suggestions
-- Customers
-- Employees
+Authorization happens before retrieval.
 
-Humans make the final decisions.
+The AI should never receive sensitive information merely because the application can technically access it.
 
-The goal is not to replace people.
+Permission inputs should include:
 
-The goal is:
+- role,
+- department,
+- project,
+- data sensitivity,
+- employee relationship,
+- task purpose,
+- and temporary grants.
+
+Highly restricted domains such as payroll, compensation, HR-confidential material, executive strategy, secrets, and production credentials require stronger boundaries.
+
+## Add-on Architecture
+
+Specialist modules should rely on SLAIOS rather than recreate identity, context, permissions, memory, or audit systems.
 
 ```text
-Help good people
-make better decisions
-faster.
+SLAIOS Core
+ |
+ +-- Product Studio
+ +-- People / HR
+ +-- Rewards
+ +-- Product Fleet
+ +-- future specialist modules
+ |
+ +-- Forge
+      Engineering execution
 ```
+
+## Forge Relationship
+
+Forge asks SLAIOS:
+
+- Is this user authorized?
+- Which product/repo is in scope?
+- What priority and decision history applies?
+- Which model is appropriate?
+- What files/tools are allowed?
+- What review is required?
+- Who owns final approval?
+
+Forge then executes in an isolated worker and returns:
+
+- changes,
+- tests,
+- QA evidence,
+- reports,
+- contributor information,
+- timestamps,
+- and PR/review state.
+
+SLAIOS records the result in company memory and the contribution ledger.
+
+## Human-Control Rule
+
+Consequential actions should preserve:
+
+```text
+AI notices or prepares
+        |
+Human reviews
+        |
+Human decides
+        |
+System records
+```
+
+AI should not independently:
+
+- hire or terminate employees,
+- set compensation,
+- publish externally,
+- make binding legal decisions,
+- move money,
+- merge high-risk production changes,
+- deploy to production,
+- or override company policy.
+
+## Internal-First Rule
+
+SLAIOS should become useful for SLAI before becoming configurable for everyone.
+
+Reusable abstractions and white-label support are earned only after internal workflows prove what actually matters.
