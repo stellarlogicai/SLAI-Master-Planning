@@ -2,7 +2,7 @@
 
 Document Status: Living Index  
 Implementation Status: Active Planning Reference  
-Last Updated: 2026-08-30  
+Last Updated: 2026-09-01  
 Repository: `stellarlogicai/SLAI-Master-Planning`  
 Primary Active Build: ServicesOS
 
@@ -87,15 +87,29 @@ Complete real wife-beta jobs
 
 ## `02_Website/`
 
-SLAI website positioning, content, funnel, and company/product website planning.
+SLAI company website planning plus the future **SLAI Web** productized website/managed-web lane.
 
-Status: Behind ServicesOS beta-critical work.
+Key new planning:
+
+- `02_Website/SLAI_Web_Engine.md` — reusable web core, up-to-10 layout systems, ServicesOS-powered public business data, native booking architecture, low-AI-usage build flow, human QA, and scaling model.
+- `02_Website/American_Barbershop_Concept_and_Validation.md` — first concrete web/ServicesOS-Barber validation case.
+- `03_SLAI_Company/SLAI_Web_Services_Business_Model.md` — $100 Managed Web, $100 ServicesOS, working website-build economics, founder-compensation intent, and website-to-ServicesOS acquisition funnel.
+
+Core framing:
+
+> The website is the front door. ServicesOS is the operating engine behind the business.
+
+Status: Support/future go-to-market work. Behind ServicesOS beta-critical/customer-ready V1 work unless Jamie explicitly promotes a narrow task.
 
 ## `03_SLAI_Company/`
 
-Company strategy, software-division structure, pricing philosophy, organization, business model, and long-term company planning.
+Company strategy, software-division structure, pricing philosophy, organization, business model, compensation, and long-term company planning.
 
 This folder defines how Stellar Logic AI is structured as a company.
+
+Key current business-model file:
+
+- `03_SLAI_Company/SLAI_Web_Services_Business_Model.md` — services-funded SaaS strategy where website builds can provide near-term founder/company cash flow, managed web creates recurring SLAI revenue, and website customers can become ServicesOS leads.
 
 ## `04_SLAIOS_Internal/`
 
@@ -128,6 +142,7 @@ Key planning files include:
 - `Forge/README.md`
 - `Forge/Architecture_and_Execution_Model.md`
 - `Forge/Engineering_QA_and_Organization_Model.md`
+- `SLAIOS_Web_Production_Orchestration.md` — future website-order orchestration, ServicesOS context pull, AI task packaging, automated checks, human QA, approvals, and deployment tracking
 
 Core rule:
 
