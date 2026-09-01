@@ -505,3 +505,118 @@ The goal is:
 Build once.
 
 Reuse forever.
+
+
+---
+
+# Appointment / Barber Vertical
+
+Appointment-driven businesses are a deliberate future test of the vertical architecture because they reuse the ServicesOS core while changing the customer flow.
+
+Shared core:
+
+* Customers
+* Staff
+* Services
+* Scheduling
+* Payments
+* Messaging
+* Reviews
+* Repeat-customer history
+* GrowthAI / retention opportunities
+* Business settings
+* Permissions
+
+Barber-specific or appointment-specific additions may include:
+
+* staff/barber availability
+* service duration
+* staff-specific service/pricing eligibility
+* preferred barber
+* time off / blocked slots
+* appointment buffers
+* no-show/cancellation rules
+* deposits
+* tips
+* fast rebooking
+* public appointment booking flow
+
+Example:
+
+```text
+Customer -> Service -> Barber -> Available Time -> Confirm
+                                             ↓
+                                      ServicesOS owns
+                                      booking truth
+```
+
+See `Future-Verticals/appointment-services-barber-salon-flow.md`.
+
+---
+
+# Public Website Integration
+
+ServicesOS may eventually power approved public business information on a connected customer website.
+
+Core architectural rule:
+
+> **ServicesOS owns canonical business data. The website displays approved public data.**
+
+Potential shared fields:
+
+* business name
+* logo and brand colors
+* contact information
+* locations/service area
+* hours/holiday hours
+* staff profiles
+* services
+* pricing
+* duration
+* approved photos
+* social links
+* booking rules
+* availability
+
+A business should update this information once in ServicesOS and publish approved changes to connected surfaces.
+
+Routine example:
+
+```text
+Owner updates service price in ServicesOS
+↓
+Save / Review / Publish
+↓
+ServicesOS booking uses new price
+↓
+Connected SLAI website reflects new price
+```
+
+The public website remains a separate customer-facing surface.
+
+ServicesOS must continue to work when:
+
+* the customer has no website,
+* the customer uses a third-party website,
+* the customer leaves SLAI managed-web service.
+
+Future third-party integrations may use a supported API/widget/embed, but the deepest integration can be offered through SLAI-built/managed websites.
+
+See `../02_Website/SLAI_Web_Engine.md`.
+
+---
+
+# Booking Source-of-Truth Rule
+
+For connected booking websites, the website must not hardcode availability as truth.
+
+At final booking:
+
+1. website requests valid slots from ServicesOS,
+2. customer selects a slot,
+3. ServicesOS re-validates the slot,
+4. ServicesOS atomically creates/reserves the appointment,
+5. the slot becomes unavailable to other customers,
+6. owner/staff see the booking inside ServicesOS.
+
+This prevents double-booking and keeps all customer-facing surfaces aligned with the operating system.
