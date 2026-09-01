@@ -1,6 +1,6 @@
 # ServicesOS Expansion & Pricing Strategy
 
-Version: 1.0
+Version: 1.1
 
 Author: Jamie Brown
 
@@ -172,139 +172,118 @@ A customer should not be forced into multiple platforms.
 
 # Pricing Philosophy
 
-Pricing should scale based on:
+Pricing should remain simple enough that a small service-business owner can understand the offer immediately.
 
-* Company Size
-* Platform Usage
-* Enabled Service Modules
+Pricing should:
 
-Pricing should never punish customer growth.
-
-Pricing should always provide significantly more value than cost.
-
----
-
-# Base Subscription Model
-
-Includes:
-
-* Core Platform
-* One Service Module
-
-Examples:
-
-Starter Plan
-
-Includes:
-
-* Core Platform
-* Cleaning Module
-
-or
-
-* Core Platform
-* Landscaping Module
-
-or
-
-* Core Platform
-* Pressure Washing Module
+* provide significantly more value than cost,
+* avoid unnecessary per-seat/per-feature complexity during V1,
+* protect SLAI from truly variable provider costs,
+* be reevaluated from real usage instead of hypothetical packaging,
+* never punish normal customer growth.
 
 ---
 
-# Additional Module Pricing
+# Current ServicesOS V1 Pricing Decision
 
-Additional service modules may be enabled for a modest monthly fee.
+**Decision date:** 2026-09-01
 
-Purpose:
+Current launch/base price:
 
-* Cover infrastructure costs
-* Cover development costs
-* Cover support costs
+> **ServicesOS — $100/month flat**
 
-Additional module pricing should remain affordable.
+This replaces earlier example pricing such as $79/month, $149/month, or $99.99/month.
 
-Goal:
+The purpose of the $100 V1 price is:
 
-Enable growth.
+* simple sales conversation,
+* simple invoicing/bookkeeping,
+* strong early-customer value,
+* enough recurring revenue to begin funding SLAI,
+* real-world pricing validation before creating more plans.
 
-Not restrict growth.
+The $100 price is a **current V1/base market-entry decision, not a permanent ceiling**.
 
----
+After real usage, SLAI may reevaluate pricing using:
 
-# Example Pricing Structure
-
-Starter
-
-Includes:
-
-* Core Platform
-* One Service Module
-
-Example:
-
-$79/month
-
----
-
-Growth
-
-Includes:
-
-* Core Platform
-* One Service Module
-
-Example:
-
-$149/month
+* support load,
+* average users/employees,
+* AI/provider cost,
+* photo/storage cost,
+* messaging cost,
+* payment usage,
+* retention,
+* demonstrated customer value,
+* larger-team needs.
 
 ---
 
-Additional Modules
+# Included Value / Variable-Cost Protection
 
-Examples:
+ServicesOS should not promise unlimited use of genuinely variable-cost providers.
 
-Pressure Washing
+Examples that may remain separately governed:
 
-+$20/month
+* Stripe/payment processing fees,
+* high-volume messaging/SMS,
+* provider-backed AI usage/credits,
+* unusually high storage or other future variable-cost infrastructure.
 
-Window Cleaning
-
-+$20/month
-
-Gutter Cleaning
-
-+$20/month
-
-Pool Service
-
-+$25/month
+Current AI-credit controls should remain canonical where implemented.
 
 ---
 
-Example Customer
+# Vertical / Module Pricing
 
-ABC Home Services
+The platform architecture still supports multiple vertical modules.
 
-Base Subscription:
+However, V1 should **not pre-commit to a complicated module fee table**.
 
-$149
+Future multi-vertical or premium add-on pricing should be based on real customer behavior after the core platform is proven.
 
-Cleaning Module:
+Core principle:
 
-Included
+> Build once. Reuse across verticals. Charge for demonstrated value, not arbitrary fragmentation.
 
-Pressure Washing Module:
+---
 
-+$20
+# Relationship to SLAI Managed Web
 
-Window Cleaning Module:
+SLAI Managed Website is a separate service from ServicesOS.
 
-+$20
+Current company-level planning price:
 
-Total:
+> **SLAI Managed Website — $100/month**
 
-$189/month
+A customer using both would currently be:
+
+```text
+ServicesOS          $100/month
+Managed Website     $100/month
+-------------------------------
+Combined            $200/month
+```
+
+The website build itself remains a separate one-time project.
+
+Automatic website synchronization is a benefit of an integrated SLAI-built/managed website, not a requirement for using ServicesOS.
+
+See:
+
+* `../02_Website/SLAI_Web_Engine.md`
+* `../03_SLAI_Company/SLAI_Web_Services_Business_Model.md`
+
+---
+
+# Early Customer / Design-Partner Rule
+
+Do not automatically discount ServicesOS for family connections, design partners, or first vertical customers.
+
+Current standard:
+
+> **$100/month unless Jamie explicitly approves a promotion.**
+
+Feedback is valuable, but the standard software value should remain visible.
 
 ---
 
