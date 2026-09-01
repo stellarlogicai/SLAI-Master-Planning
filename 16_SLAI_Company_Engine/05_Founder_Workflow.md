@@ -158,6 +158,65 @@ Future ideas are allowed. They just need to be parked properly.
 
 ---
 
+## Brainstorming vs Company Operations
+
+Jamie may continue using ChatGPT for freeform founder brainstorming where random ideas can be explored without immediately turning them into company commitments.
+
+Preferred boundary:
+
+```text
+Random idea / brainstorming
+↓
+Pressure-test with ChatGPT
+↓
+Decide whether it is useful
+↓
+Promote approved decision into SLAIOS/company planning
+↓
+SLAIOS documents, prioritizes, and coordinates execution
+```
+
+Simple framing:
+
+> **Think here. Run the company there.**
+
+SLAIOS should not force every unfinished idea into the company task system.
+
+---
+
+## SLAI Web Founder Workflow
+
+If SLAI Web becomes active later, the founder should not manually coordinate every website build.
+
+Preferred flow:
+
+```text
+Customer/ServicesOS business data ready
+↓
+SLAIOS prepares website job packet
+↓
+Approved layout selected
+↓
+AI customizes customer layer
+↓
+Automated checks
+↓
+Web Implementation / QA human review
+↓
+Founder/client approval only where needed
+↓
+Deploy
+```
+
+Jamie's long-term role should move toward reviewing context, approving direction, and handling exceptional decisions rather than repeatedly coding routine websites.
+
+See:
+
+- `../02_Website/SLAI_Web_Engine.md`
+- `../04_SLAIOS_Internal/SLAIOS_Web_Production_Orchestration.md`
+
+---
+
 ## What This Should Prevent
 
 - Losing important ideas
