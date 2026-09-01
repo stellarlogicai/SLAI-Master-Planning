@@ -14,6 +14,7 @@ SLAI is building a connected family of practical AI-assisted operating systems f
 
 ```text
 ServicesOS proves the model.
+SLAI Web creates a branded front door, near-term cash flow, and a ServicesOS acquisition surface.
 Security Foundation protects the ecosystem.
 SLAI OS helps run the company.
 GrowthAI helps create customers.
@@ -192,6 +193,24 @@ Purpose:
 - generate real operating data
 - prove customers will pay
 
+### SLAI Web
+
+The productized website, managed-web, and ServicesOS customer-acquisition layer.
+
+Purpose:
+
+- build professional owned websites for small businesses
+- create near-term project cash flow
+- create recurring managed-web revenue
+- discover real business workflows
+- produce warm ServicesOS leads
+- provide a customer-facing website surface that can display approved ServicesOS data
+- connect native booking/request flows to ServicesOS later
+
+SLAI Web is a service/business layer, not a replacement for ServicesOS.
+
+See `../02_Website/SLAI_Web_Engine.md`.
+
 ### Security Foundation
 
 The protection layer across all SLAI products.
@@ -295,6 +314,8 @@ Build ServicesOS
 ↓
 Get real users and real operating data
 ↓
+Use SLAI Web selectively to create cash flow, customer relationships, and ServicesOS leads
+↓
 Use Security Foundation principles to protect the ecosystem
 ↓
 Use SLAI OS to manage product/company focus
@@ -389,11 +410,15 @@ Goal:
 - 5 customers
 - revenue proof
 
-### Stage 2 — Website and Growth Engine
+### Stage 2 — SLAI Web and Growth Engine
 
 Goal:
 
-- credible SLAI website
+- credible SLAI company website
+- validate productized customer website builds with one or two real businesses
+- validate $100/month managed-web service
+- use website work as ServicesOS workflow discovery and customer acquisition
+- keep ServicesOS as the operating product
 - internal GrowthAI lead tracking
 - founder-led outreach
 - customer acquisition workflow
