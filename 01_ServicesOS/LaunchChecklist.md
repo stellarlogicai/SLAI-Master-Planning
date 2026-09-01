@@ -163,7 +163,7 @@ Complete Job
 Until ServicesOS has paying customers and Jamie intentionally raises the limits:
 
 - [ ] Target normal Firebase / Google Cloud spend is kept within the lowest practical no-cost / low-cost usage bands.
-- [ ] Founder-defined pre-revenue monthly comfort ceiling is documented before Blaze is restored.
+- [ ] Pre-revenue Firebase / Google Cloud target is $10–$15/month, with $20/month treated as the current founder-defined absolute comfort ceiling until paying customers justify a deliberate increase.
 - [ ] Billing limits may only be raised intentionally after reviewing real usage and customer revenue.
 - [ ] Nonessential paid infrastructure remains disabled unless required for a current V1 workflow.
 
