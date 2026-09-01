@@ -2,7 +2,7 @@
 
 Document Status: Complete
 Implementation Status: Future Roadmap
-Last Updated: 2026-06-24
+Last Updated: 2026-09-01
 Implementation Repo: N/A
 Planning Repo: `stellarlogicai/SLAI-Master-Planning`
 Related Commits:
@@ -202,3 +202,123 @@ Validate owner workflow.
 Stabilize cleaning-business beta.
 Then revisit future verticals later.
 ```
+
+
+---
+
+## 2026-09-01 American Barbershop Validation Update
+
+A deeper review of American Barbershop in Bolivar, Missouri strengthened the future vertical case.
+
+The shop currently uses Booksy for:
+
+- booking,
+- staff calendars,
+- services/pricing,
+- reviews,
+- photos,
+- gift cards/packages,
+- customer-facing marketplace profile.
+
+The shop does **not** appear to have a separately owned branded website, which creates a second opportunity:
+
+```text
+SLAI Web = branded customer-facing front door
+ServicesOS = future operating/booking engine
+```
+
+See:
+
+- `../../02_Website/American_Barbershop_Concept_and_Validation.md`
+- `../../02_Website/SLAI_Web_Engine.md`
+- `../../03_SLAI_Company/SLAI_Web_Services_Business_Model.md`
+
+### Booksy Cost Benchmark
+
+During the 2026-08-31 research session, then-current U.S. Booksy pricing suggested a three-staff base setup around **$69.99/month** before payment/marketing extras.
+
+Re-verify competitor pricing before external sales use.
+
+### Website-First Bridge
+
+If the shop chooses an SLAI website before ServicesOS Barber exists:
+
+```text
+American Barbershop website
+↓
+Book Now
+↓
+Booksy
+```
+
+Later:
+
+```text
+American Barbershop website
+↓
+Native booking UI
+↓
+ServicesOS
+```
+
+The website can remain visually stable while the underlying booking engine changes.
+
+### Native ServicesOS Booking Direction
+
+Preferred customer experience:
+
+```text
+Choose barber
+↓
+Choose service
+↓
+Choose live available time
+↓
+Confirm
+↓
+ServicesOS atomically reserves slot
+↓
+Owner/barber sees appointment
+```
+
+ServicesOS should own the schedule truth and prevent double-booking.
+
+### Business Data Sync
+
+If the shop uses both ServicesOS and an integrated SLAI website, the owner may eventually manage approved public data from ServicesOS:
+
+- logo,
+- colors,
+- barbers,
+- staff photos/bios,
+- services,
+- prices,
+- duration,
+- hours,
+- social links,
+- gallery,
+- booking availability.
+
+Use Save Draft / Publish controls rather than pushing every edit live automatically.
+
+### Pricing Position
+
+Current company-level decision:
+
+- ServicesOS: **$100/month**
+- Managed SLAI Website: **$100/month**
+- website build: separate one-time project
+
+American Barbershop should not automatically receive a discounted ServicesOS subscription merely because Jamie's brother works there.
+
+### Validation Path
+
+If American Barbershop wants ServicesOS Barber after the core is stable:
+
+1. keep Booksy live,
+2. run ServicesOS Barber beside it,
+3. compare workflows,
+4. fix gaps,
+5. migrate only after confidence is earned.
+
+This remains future work and does not change the current ServicesOS V1 priority.
