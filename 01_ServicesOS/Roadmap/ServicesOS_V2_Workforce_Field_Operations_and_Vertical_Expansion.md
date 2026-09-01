@@ -565,6 +565,403 @@ ServicesOS V2 is successful when:
 
 ---
 
+
+# Additive V2 Planning — Website-Ready Business Data & Manual Website Production Foundation
+
+This section adds website-readiness planning to V2 without changing the existing V2 priorities or build order.
+
+The purpose is **not** to build an autonomous AI website generator in V2.
+
+The purpose is to make ServicesOS business data reusable for websites and establish a simple, reusable website structure that can support rapid **human-directed** website production by Jamie + ChatGPT + Codex.
+
+## Website-Ready Business Data
+
+ServicesOS should progressively structure owner-entered business information so the same canonical data can later feed a customer-facing website without requiring the owner to re-enter the same information in a separate website system.
+
+Potential website-ready fields include:
+
+### Business Identity
+
+- Business display name
+- Logo
+- Brand colors
+- Short tagline
+- Short business description
+- Full About description
+
+### Contact & Location
+
+- Business phone
+- Business email
+- Business address
+- Service area
+- Business hours
+- Social links
+
+### Services
+
+- Service name
+- Service category
+- Service description
+- Price
+- Starting-at price where applicable
+- Duration where applicable
+- Booking availability
+- Optional service image
+
+### Team / Staff
+
+- Name
+- Role/title
+- Short bio
+- Profile photo
+- Services provided
+- Availability where the vertical supports staff-specific scheduling
+
+### Media
+
+- Hero images
+- Business/gallery photos
+- Before/after photos where appropriate
+- Staff/portfolio images
+
+### Trust & Customer Information
+
+- Testimonials/reviews selected for website use
+- FAQs
+- Cancellation/no-show policy
+- Deposit/payment policy
+- Other customer-facing policies
+- Licenses/certifications where relevant
+
+### Calls to Action
+
+- Book now
+- Request estimate
+- Call
+- Contact
+- Other vertical-appropriate primary actions
+
+## Canonical Data Rule
+
+> **Website content should consume canonical ServicesOS business data wherever practical instead of requiring owners to maintain duplicate copies of the same information.**
+
+Website-specific presentation may differ from the ServicesOS owner/admin UI, but the underlying factual business information should remain reusable.
+
+## Reusable Website Component Foundation
+
+The first website engine should be intentionally simple.
+
+It should establish reusable components such as:
+
+```text
+Website Components
+├── Header
+├── Navigation
+├── Hero
+├── Services Grid
+├── Service Detail
+├── Pricing
+├── Team / Staff
+├── Gallery
+├── Before / After
+├── Testimonials
+├── FAQ
+├── Hours
+├── Service Area
+├── Contact
+├── Booking CTA
+├── Estimate CTA
+├── Policies
+└── Footer
+```
+
+Vertical-specific websites should be composed from these shared building blocks instead of creating a completely separate website codebase for every industry.
+
+## Template / Layout Foundation
+
+V2 may establish a small set of reusable layout structures and visual starting points.
+
+The objective is a **cookie-cutter foundation that is fast to customize**, not a large theme marketplace.
+
+Examples:
+
+- Generic Service Business
+- Field Service / Home Service
+- Appointment / Location-Based Service
+- Barbershop
+- Future vertical layouts as justified
+
+A template may define:
+
+- default section order
+- supported section types
+- layout patterns
+- default spacing/typography behavior
+- CTA placement
+- navigation structure
+
+The business's real data, branding, photos, copy, and human-directed customization should make the finished site specific to that customer.
+
+## Initial Website Production Workflow
+
+The intended V2 workflow is deliberately human-directed:
+
+```text
+Owner completes ServicesOS business setup
+        ↓
+ServicesOS holds website-ready business data
+        ↓
+Jamie reviews the business and available content
+        ↓
+Jamie + ChatGPT choose/refine:
+- page structure
+- section order
+- copy
+- CTA wording
+- missing information
+- appropriate reusable layout
+        ↓
+Codex adapts/builds the website from reusable components
+        ↓
+Jamie performs visual and workflow QA
+        ↓
+ChatGPT assists with review/copy refinement/problem analysis
+        ↓
+Codex applies approved corrections
+        ↓
+Jamie approves the final result
+        ↓
+Publish through the chosen hosting/domain workflow
+```
+
+## V2 Website Non-Goals
+
+The V2 foundation should **not require**:
+
+- Autonomous AI website generation
+- Automatic template selection
+- Automatic publishing
+- Automatic domain purchasing
+- Autonomous copy approval
+- Autonomous image selection
+- Large-scale website orchestration
+- A drag-and-drop consumer website builder
+- A full CMS competing with dedicated website platforms
+- GrowthAI automatically building or publishing websites
+
+Those capabilities may be considered later if real usage justifies them.
+
+## Design Principle
+
+> **ServicesOS maintains structured, website-ready business data and a reusable component/template foundation that supports rapid human-directed website production.**
+
+The initial operational model is:
+
+> **Build the reusable structure first. Jamie, ChatGPT, and Codex handle customization and QA. Automation is earned later.**
+
+This keeps the website capability useful for SLAI's own service offering without expanding V2 into a large autonomous website-generation product.
+
+
+# Additive V2 Planning — Barbershop Vertical
+
+This section expands the existing Barber / Salon candidate note without changing the current Lawn Care validation priority.
+
+Barbershop should be treated as a strong future V2 vertical because it tests ServicesOS against a **location-based, staff-specific appointment business**, which is meaningfully different from Cleaning and Lawn Care.
+
+The objective is to reuse ServicesOS Core while introducing only the appointment-business behavior that cannot be represented cleanly through the existing vertical framework.
+
+## Barbershop Business Model / Setup Data
+
+Potential vertical configuration should support:
+
+- Shop name and branding
+- Shop location
+- Shop-wide operating hours
+- Individual barber/provider profiles
+- Individual barber availability
+- Services offered by each barber
+- Service durations
+- Service pricing
+- Optional provider-specific pricing where real workflows require it
+- Preferred barber/provider
+- Portfolio/gallery photos
+- Shop policies
+- Deposit rules where used
+- Cancellation/no-show policies
+- Tip support through the existing payment direction where appropriate
+- Walk-in support where validated
+- Appointment booking
+- Rebooking
+
+## Barber / Provider Profile
+
+A barber profile may include:
+
+- Name
+- Photo
+- Short bio
+- Services provided
+- Service duration differences where necessary
+- Individual availability
+- Portfolio/gallery images
+- Booking eligibility
+- Optional preferred-provider/customer history
+
+The architecture should avoid duplicating the general employee model merely to support barbers.
+
+Provider-specific behavior should extend the existing employee/scheduling architecture wherever practical.
+
+## Appointment Workflow
+
+A likely appointment workflow:
+
+```text
+Customer selects service
+        ↓
+Select preferred barber
+or choose any available barber
+        ↓
+Available time slots
+        ↓
+Appointment confirmation
+        ↓
+Reminder / customer communication
+        ↓
+Service completed
+        ↓
+Payment / tip where supported
+        ↓
+Rebooking opportunity
+```
+
+Exact booking behavior should be validated with a real barbershop before implementation.
+
+## Walk-In / Queue Consideration
+
+Barbershops may require a workflow that field-service businesses do not:
+
+- Walk-in arrival
+- Waiting queue
+- Next available barber
+- Estimated wait
+- Convert walk-in into customer record where appropriate
+- Preserve appointment customers while handling walk-ins
+
+This should remain a **validate-first** workflow.
+
+Do not build a complex queue system until real barbershop usage proves what is necessary.
+
+## Customer Relationship Context
+
+Potential reusable customer context:
+
+- Preferred barber
+- Previous services
+- Last appointment
+- Typical rebooking interval
+- Upcoming appointment
+- No-show/cancellation history where appropriate
+- Customer notes that are safe and relevant to service delivery
+
+ServicesOS should use this information to support the owner/provider workflow, not create opaque customer scoring.
+
+## GrowthAI / SLAI Assistant Context
+
+For a future supported barbershop vertical, GrowthAI / SLAI Assistant may help surface or prepare:
+
+- Customers due for a haircut/rebooking
+- Open appointment gaps
+- Slow periods
+- Review-request opportunities
+- Draft customer messages
+- Marketing/post ideas
+- Reputation-response drafts from provided review text
+- Content opportunities using approved shop branding/photos
+
+Existing human-control rules continue to apply.
+
+Nothing should auto-message, auto-publish, change prices, or alter schedules without the required human action.
+
+## Barbershop Website-Ready Data
+
+Barbershop is also a useful validation target for the website-ready business-data foundation.
+
+Likely website inputs:
+
+- Shop name
+- Logo / branding
+- Location
+- Hours
+- Phone/contact
+- Booking CTA
+- Services and pricing
+- Barber profiles
+- Barber photos
+- Portfolio/gallery images
+- Reviews/testimonials
+- Policies
+- Social links
+
+A reusable barbershop website composition may begin with:
+
+```text
+Hero
+  ↓
+Book Appointment CTA
+  ↓
+Services / Pricing
+  ↓
+Meet the Barbers
+  ↓
+Portfolio / Gallery
+  ↓
+Reviews
+  ↓
+Hours / Location
+  ↓
+Policies
+  ↓
+Book Now
+```
+
+This should be a reusable starting structure, not a mandatory final design.
+
+Jamie + ChatGPT + Codex should remain free to adjust layout, copy, imagery, and presentation for the actual customer while reusing the shared website components.
+
+## Architecture Rule
+
+Barbershop should validate that:
+
+```text
+ServicesOS Core
++
+Appointment / Provider Vertical Configuration
++
+Reusable Website Data / Components
+```
+
+can support a location-based appointment business without creating a separate BarberOS backend.
+
+## Barbershop Non-Goals for Initial Validation
+
+Do not assume the first barbershop slice needs:
+
+- Full salon/spa complexity
+- Booth-rental accounting
+- Payroll
+- Commission payroll calculation
+- Advanced chair/station optimization
+- Large walk-in queue orchestration
+- Marketplace discovery
+- Consumer social network features
+- Autonomous marketing
+- Autonomous appointment changes
+- A separate barbershop backend
+
+Those capabilities should only be added if real business validation earns them.
+
+
 # Relationship to Existing Planning
 
 This document should be read alongside:
