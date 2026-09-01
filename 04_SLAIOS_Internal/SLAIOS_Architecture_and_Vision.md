@@ -180,6 +180,69 @@ Terra -> implement / analyze / test / normal execution
 Sol   -> strategic / security / architecture / payments / high-risk review
 ```
 
+### Workflow Orchestration
+
+SLAIOS should coordinate repeatable company workflows by combining:
+
+- authorized context,
+- task state,
+- approved automation,
+- AI model routing,
+- human checkpoints,
+- QA evidence,
+- company memory,
+- and final outcome recording.
+
+The system should distinguish between:
+
+**Automatic routine work**
+
+- retrieval,
+- organization,
+- reversible preparation,
+- tests/checks,
+- monitoring,
+- report generation,
+- backups,
+- status updates.
+
+**Human approval work**
+
+- customer-facing publication,
+- production deployments,
+- meaningful pricing/policy changes,
+- unusual customer commitments,
+- high-risk engineering changes,
+- people/finance/legal decisions.
+
+The goal is not an approval click for every trivial action. Human attention should be reserved for places where judgment or accountability adds value.
+
+### Web Production Workflow
+
+A future specialist workflow may orchestrate SLAI Web production using ServicesOS/customer data and the approved Web Engine.
+
+```text
+Customer data
+↓
+Website job packet
+↓
+Layout + customer layer
+↓
+AI implementation
+↓
+Automated checks
+↓
+Human QA
+↓
+Client/founder approval
+↓
+Deploy
+↓
+Record history
+```
+
+See `SLAIOS_Web_Production_Orchestration.md`.
+
 ### Boardroom Workflow
 
 For difficult company decisions, SLAIOS may ask multiple models to examine different dimensions and synthesize the result.
@@ -232,6 +295,7 @@ SLAIOS Core
  +-- People / HR
  +-- Rewards
  +-- Product Fleet
+ +-- Web Production (future internal workflow)
  +-- future specialist modules
  |
  +-- Forge
