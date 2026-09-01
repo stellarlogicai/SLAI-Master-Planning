@@ -153,6 +153,117 @@ Complete Job
 
 ---
 
+
+# Phase 5A — Cost Safety / Billing Guardrails
+
+**V1 launch requirement:** ServicesOS must not rely on a Firebase/Google Cloud budget alert as its only protection against unexpected infrastructure charges.
+
+### Pre-Revenue Cost Policy
+
+Until ServicesOS has paying customers and Jamie intentionally raises the limits:
+
+- [ ] Target normal Firebase / Google Cloud spend is kept within the lowest practical no-cost / low-cost usage bands.
+- [ ] Founder-defined pre-revenue monthly comfort ceiling is documented before Blaze is restored.
+- [ ] Billing limits may only be raised intentionally after reviewing real usage and customer revenue.
+- [ ] Nonessential paid infrastructure remains disabled unless required for a current V1 workflow.
+
+### Google Cloud / Firebase Billing Controls
+
+- [ ] Firebase project is intentionally restored to Blaze only after billing guardrails are configured.
+- [ ] Google Cloud budget is configured below the founder's absolute monthly comfort ceiling.
+- [ ] Multiple budget alerts are configured before the ceiling is reached.
+- [ ] Budget alerts are treated as notifications only, **not** as a guaranteed hard spending cap.
+- [ ] Supported Firebase / Cloud Run spend caps are enabled for Cloud Functions and other supported services used by ServicesOS.
+- [ ] Cloud Functions / Cloud Run maximum-instance limits are explicitly configured instead of leaving cost exposure fully open-ended.
+- [ ] Pre-revenue Cloud Run / 2nd-gen Functions default target is a small maximum-instance count appropriate for beta traffic; Google currently recommends starting with a maximum of 3 instances as a cost safeguard.
+- [ ] Minimum instances remain 0 for services that do not have a proven V1 need to stay warm.
+- [ ] Request-based billing / scale-to-zero is preferred where compatible with the ServicesOS workload.
+- [ ] Function CPU / memory settings are no larger than required for the workload.
+- [ ] Unused Cloud Run services, functions, revisions, test resources, and other billable resources are removed or disabled.
+- [ ] Phone/SMS authentication and other directly metered paid services remain disabled unless a current V1 requirement explicitly needs them.
+- [ ] Firestore paid-only features such as PITR, backups, restore/clone workflows, and TTL policies are not enabled casually; each must have an explicit operational reason and cost review.
+
+### Important Hard-Cap Limitation
+
+Firebase currently supports spend caps for only some paid services, including Cloud Functions for Firebase, Firebase App Hosting, Firebase AI Logic, and Firebase Extensions.
+
+Firestore, Cloud Storage, Hosting, and other paid-tier products do **not** currently provide a universal hard dollar cap through Firebase.
+
+Therefore:
+
+- [ ] ServicesOS must use application-level safeguards for Firestore, Storage, Hosting, and any other uncapped usage surfaces.
+- [ ] No launch documentation may describe the Firebase budget as a guaranteed hard monthly cap.
+- [ ] Any future automated "disable billing at budget threshold" design must account for billing-reporting delay and the risk of shutting down production resources; it is not required for V1.
+
+### Application-Level Cost Guards
+
+ServicesOS should prevent accidental or abusive usage before requests become billable work.
+
+- [ ] Authentication and tenant authorization occur before protected backend work is performed.
+- [ ] Firebase App Check is evaluated and enabled/enforced for supported production surfaces when web/mobile compatibility has been verified.
+- [ ] Public or externally callable endpoints have explicit abuse protection appropriate to the endpoint.
+- [ ] Stripe webhooks continue to use Stripe signature verification and are not treated like ordinary client-originated requests.
+- [ ] Provider-backed / credit-backed actions enforce canonical credit availability before the paid provider call.
+- [ ] Provider-backed actions retain idempotency / duplicate-request protection.
+- [ ] Expensive or externally billed actions have server-side rate limits appropriate to beta usage.
+- [ ] Retry behavior is bounded; failed functions/jobs cannot retry indefinitely.
+- [ ] Scheduled/background jobs have bounded batch sizes and cannot fan out without an explicit limit.
+- [ ] Concurrency is deliberately controlled for resource-heavy work.
+- [ ] A server-side kill switch exists, or is planned before external beta where technically practical, for disabling nonessential paid/provider-backed actions without disabling the core ServicesOS operating workflows.
+- [ ] Cost guards fail closed for paid actions when canonical allowance/guard state cannot be verified.
+
+### Firestore Cost Guards
+
+Cloud Firestore billing is driven by document reads, writes, deletes, storage, index reads, and network bandwidth.
+
+- [ ] Realtime listeners are used only where the workflow benefits from realtime updates.
+- [ ] Queries are bounded/paginated where result sets can grow.
+- [ ] UI polling loops and repeated unnecessary refetches are avoided.
+- [ ] Bulk/background processing has explicit document/batch limits.
+- [ ] Firestore queries used by beta-critical screens are reviewed for accidental high-read patterns.
+- [ ] Security-rule dependent reads are considered when reviewing high-frequency access patterns.
+- [ ] Firestore Usage and Google Cloud billing metrics are reviewed during wife beta and early external beta.
+
+### Cloud Storage / Photo Cost Guards
+
+Cloud Storage for Firebase requires Blaze, even though no-cost usage remains available.
+
+- [ ] Photo upload file types are restricted to the formats ServicesOS actually supports.
+- [ ] Maximum upload size is enforced client-side **and** server/rules-side where technically possible.
+- [ ] Job/photo workflows have sensible count limits or workflow constraints so a bug cannot create unlimited uploads.
+- [ ] Duplicate/retry upload behavior is reviewed so failed uploads do not create repeated stored objects.
+- [ ] Image compression/resizing is used where appropriate instead of storing unnecessarily large originals.
+- [ ] Storage paths remain tenant-scoped and authorized.
+- [ ] Storage usage and download traffic are reviewed during beta.
+- [ ] Orphaned test uploads have an intentional cleanup process before customer launch.
+
+### Monitoring / Founder Visibility
+
+- [ ] Founder knows where to view Firebase Usage and Google Cloud Billing reports.
+- [ ] Billing alerts reach an email/account Jamie actively monitors.
+- [ ] Abnormal Functions, Firestore, Storage, or Hosting activity can be identified from available monitoring.
+- [ ] Any unexplained usage spike is treated as a launch-blocking incident until understood.
+- [ ] Usage is reviewed after major deployments and after enabling a new billable service.
+- [ ] Cost assumptions are rechecked after wife beta and before the first paying customer.
+
+### V1 Acceptance Criteria
+
+Cost safety is ready for customer-facing V1 when all of the following are true:
+
+- [ ] Blaze billing is active only with the approved billing account and founder-visible alerts.
+- [ ] Supported function/service spend caps are enabled where available.
+- [ ] Cloud Functions / Cloud Run scaling limits are explicitly bounded for pre-revenue traffic.
+- [ ] No unnecessary minimum instances or continuously billed resources remain.
+- [ ] Core provider-backed actions have server-side allowance, idempotency, retry, and abuse protections.
+- [ ] Photo/storage workflows have explicit upload limits.
+- [ ] Firestore high-frequency workflows have been reviewed for obvious runaway-read/write patterns.
+- [ ] Jamie can disable nonessential paid/provider-backed functionality without losing the core customer/job/booking workflow where technically practical.
+- [ ] A normal beta smoke test does not produce unexplained billable-usage spikes.
+- [ ] Any known service without a true hard spend cap is documented so the founder does not mistake a budget alert for guaranteed protection.
+
+---
+
+
 # Phase 6 — Automated Testing
 
 - [ ] Smoke tests created
