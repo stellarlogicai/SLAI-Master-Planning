@@ -63,6 +63,25 @@ No heavy automation yet.
 
 ---
 
+## Phase 1.5 — Proven Internal Service Workflows
+
+Goal:
+
+Capture repeatable SLAI operating workflows that have proven real value before automating them deeply.
+
+Potential examples:
+
+- SLAI Web intake -> build -> QA -> client approval -> deployment,
+- support intake -> evidence -> fix -> validation -> customer update,
+- product feedback -> decision -> scoped engineering handoff,
+- recurring company/tooling administration.
+
+For SLAI Web specifically, only add orchestration after real paying website work proves the process.
+
+See `../04_SLAIOS_Internal/SLAIOS_Web_Production_Orchestration.md`.
+
+---
+
 ## Phase 2 — GrowthAI-Assisted Lead Workflow
 
 Goal:
