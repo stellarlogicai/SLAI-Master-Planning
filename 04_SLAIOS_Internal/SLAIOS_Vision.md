@@ -42,6 +42,82 @@ The same system may show:
 - an engineer: assigned products, repositories, decisions, technical context, and engineering workflows;
 - an employee: today's work, messages, knowledge, training, contributions, rewards, PTO, payroll self-service, and approved AI assistance.
 
+## AI-Enhanced Workflows in One Place
+
+A major purpose of SLAIOS is to make employee and founder work easier by putting the relevant work, context, AI assistance, approvals, and history in one operating location.
+
+The target is not "AI replaces the employee."
+
+The target is:
+
+```text
+Work arrives
+↓
+SLAIOS gathers authorized context
+↓
+AI handles routine/reversible preparation and execution
+↓
+AI summarizes what changed and what matters
+↓
+Human receives the decision with context
+↓
+Human approves / modifies / rejects where judgment matters
+↓
+SLAIOS records the outcome
+```
+
+Employees should spend less time on:
+
+- hunting for files,
+- reconstructing prior decisions,
+- writing repetitive status reports,
+- re-explaining task context to AI,
+- performing mechanical setup,
+- moving information between systems,
+- checking routine results manually.
+
+Employees should spend more time on:
+
+- judgment,
+- customer understanding,
+- design quality,
+- engineering decisions,
+- exception handling,
+- communication,
+- creative/problem-solving work.
+
+Approval prompts should include enough context to make a real decision:
+
+- what changed,
+- why,
+- who/what triggered it,
+- source evidence,
+- tests/checks,
+- risk,
+- recommended action,
+- effect of approval.
+
+The goal is a small, highly capable human team amplified by organized automation.
+
+### Example: SLAI Web
+
+A future website QA employee could receive:
+
+```text
+Customer: American Barbershop
+Layout: Booking First v3
+ServicesOS data: verified
+Build: passed
+Mobile: passed
+Booking connector: passed
+Open issue: hero crop needs review
+Recommended action: adjust crop, then approve preview
+```
+
+The employee reviews the actual quality instead of reconstructing the project from chats and repos.
+
+See `SLAIOS_Web_Production_Orchestration.md`.
+
 ## Remote-First Company
 
 SLAI is expected to be primarily or entirely remote.
