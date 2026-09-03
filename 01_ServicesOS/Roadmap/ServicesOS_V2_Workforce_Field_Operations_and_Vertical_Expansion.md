@@ -234,9 +234,10 @@ Examples:
 - “This schedule leaves a large gap between two nearby jobs.”
 - “Several incidents reference the same type of hazard.”
 
-### V2 Marketing Image Generation
+### V1 Image Generation Boundary
 
-Planned customer-facing actions:
+Marketing image generation was promoted into the locked ServicesOS V1 scope as a
+separate controlled implementation slice. The V1 customer-facing contract is:
 
 ```text
 Generate post — 1 credit
@@ -244,17 +245,13 @@ Generate post — 1 credit
 Generate post + image — 5 credits total
 ```
 
-The 5-credit action should produce:
+The 5-credit action produces the text package plus an actual AI-generated image.
+The owner receives the finished image, not a raw image-generation prompt.
+Nothing auto-posts.
 
-- Full caption
-- Short caption
-- CTA
-- Hashtags
-- Actual AI-generated image
-
-The owner should receive the finished image, not a raw image-generation prompt.
-
-Image generation remains human-reviewed. Nothing auto-posts.
+V2 does not re-own this feature. V2 may build on the V1 image-generation
+foundation when adding broader operational awareness or future marketing
+workflows.
 
 ### Human Control
 
@@ -513,7 +510,6 @@ ServicesOS V1 launch + stabilization
 4. Employee App V2 integration
         ↓
 5. SLAI Assistant V2 operational awareness
-   + post/image generation
         ↓
 6. Operational analytics
         ↓
