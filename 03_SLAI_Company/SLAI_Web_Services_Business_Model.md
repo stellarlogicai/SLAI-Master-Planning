@@ -2,7 +2,7 @@
 
 **Document Status:** Strategic company planning  
 **Implementation Status:** Future / post-ServicesOS-V1 go-to-market lane  
-**Last Updated:** 2026-09-01  
+**Last Updated:** 2026-09-05  
 **Owner:** Jamie Brown / Stellar Logic AI
 
 ## Core Thesis
@@ -355,3 +355,86 @@ Use one or two web projects to validate SLAI Web
 ↓
 Productize further only if demand and conversion justify it
 ```
+
+
+## 2026-09-05 Operating-Model Refinement
+
+Detailed ServicesOS onboarding should reduce the manual discovery and setup burden for SLAI Web.
+
+Where practical, ServicesOS onboarding/business setup should capture structured business information such as:
+
+- business identity,
+- services and pricing,
+- hours,
+- staff/provider profiles,
+- contact information,
+- policies,
+- branding,
+- logo,
+- social links,
+- public website-ready content.
+
+This changes the expected web-production flow:
+
+```text
+Customer completes ServicesOS setup
+↓
+Canonical business data already exists
+↓
+SLAI Web starts from verified structured inputs
+↓
+Less founder discovery/chasing
+↓
+Faster build and lower support burden
+```
+
+Routine factual website edits should increasingly happen through ServicesOS rather than through manual SLAI web-support requests.
+
+Examples include:
+
+- hours,
+- prices,
+- services,
+- staff/provider profiles,
+- photos,
+- contact information,
+- public policies,
+- social links,
+- approved announcements.
+
+Preferred rule:
+
+> **Customers manage their business facts. SLAI manages the website system, quality, integrations, and major structural/design changes.**
+
+This is important to founder focus and managed-web margins.
+
+### Future Hosted Business Page / Marketplace Option
+
+A future ServicesOS-hosted business-page or marketplace/discovery layer may reuse the same approved public-data system.
+
+The hosted page should be capable of looking like a branded microsite rather than a generic listing, with:
+
+- logo,
+- brand styling,
+- hero imagery,
+- services/pricing,
+- provider profiles,
+- gallery,
+- reviews,
+- hours/location,
+- policies,
+- booking,
+- SEO metadata.
+
+This is a future option only.
+
+Do not build a consumer marketplace before ServicesOS is stable, SLAI Web has proven customers, and discovery itself becomes a validated opportunity.
+
+### Barbershop Pricing Relationship
+
+Current Barbershop pricing/packaging hypotheses are documented separately in:
+
+- `../01_ServicesOS/Future-Verticals/ServicesOS_Barbershop_Pricing_and_Value_Strategy.md`
+
+The current public ServicesOS benchmark remains approximately $100/month, while temporary founder/design-partner pricing may be explicitly approved for a defined validation period.
+
