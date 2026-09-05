@@ -1,6 +1,6 @@
 # ServicesOS Expansion & Pricing Strategy
 
-Version: 1.1
+Version: 1.2
 
 Author: Jamie Brown
 
@@ -372,3 +372,83 @@ Build a modular operating system capable of supporting multiple service industri
 Every new service module should increase the value of the platform while strengthening the SLAI Framework.
 
 The objective is to create a scalable ecosystem that helps service businesses operate more efficiently, grow more effectively, and reduce operational complexity.
+
+
+---
+
+# Vertical Pricing Direction — 2026-09-05
+
+ServicesOS should not assume every future vertical must permanently use the exact same public price.
+
+The current $100/month base remains the working ServicesOS market-entry reference, but future vertical pricing may differ when evidence shows a meaningful difference in:
+
+* customer value,
+* competitive alternatives,
+* workflow intensity,
+* average team size,
+* support burden,
+* variable provider cost,
+* demonstrated operational or growth impact.
+
+Do not create a fragmented price list for every industry.
+
+Preferred future options to validate:
+
+1. one universal ServicesOS price,
+2. a small number of workflow-class / vertical price bands,
+3. simple business-size bands,
+4. base subscription plus truly variable-cost usage.
+
+Core rule:
+
+> **Keep pricing simple. Charge for demonstrated value and real cost exposure, not merely because a vertical required code to exist.**
+
+## Normal Team Growth
+
+ServicesOS should avoid unnecessarily punishing ordinary customer growth through aggressive per-seat pricing when another employee/provider adds little direct platform cost.
+
+For appointment verticals such as Barbershop, a generous included provider count may become a deliberate value advantage.
+
+Current planning hypothesis:
+
+> **Approximately $100/month per barbershop with roughly 5–10 providers included, subject to pricing research and real-unit-economics validation.**
+
+Do not treat this as final public packaging until competitive research and a real pilot confirm it.
+
+## Temporary Founder / Design-Partner Pricing
+
+Jamie may explicitly approve a temporary founder/design-partner rate when a customer materially helps validate a new vertical.
+
+The discount should:
+
+* have a defined duration or end condition,
+* preserve the standard list price,
+* keep SMS/AI/other variable-cost allowances bounded,
+* avoid unlimited manual support,
+* and generate real cost/usage evidence.
+
+Current American Barbershop planning hypothesis:
+
+> **Approximately $80/month temporarily during a defined Barbershop founder-beta/design-partner period.**
+
+This is not an automatic family discount and is not permanent pricing.
+
+See:
+
+* `Future-Verticals/ServicesOS_Barbershop_Pricing_and_Value_Strategy.md`
+
+## Communication Pricing Principle
+
+Messaging should be treated primarily as customer value plus transparent cost recovery, not as a major profit center.
+
+Preferred structure:
+
+```text
+Base allowance
+→ optional communication package at a better effective rate
+→ modest overage
+→ owner-visible usage and spending controls
+```
+
+Exact SMS package and overage cents remain **TBD until provider/carrier/A2P/segment economics are validated**.
+
