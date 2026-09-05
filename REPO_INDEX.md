@@ -2,7 +2,7 @@
 
 Document Status: Living Index  
 Implementation Status: Active Planning Reference  
-Last Updated: 2026-09-01  
+Last Updated: 2026-09-05  
 Repository: `stellarlogicai/SLAI-Master-Planning`  
 Primary Active Build: ServicesOS
 
@@ -69,6 +69,7 @@ Key areas include:
 - `Future-Mobile/` — parked owner/admin and future mobile direction
 - `Future-Technical/` — parked technical architecture and provider watchlists
 - `Future-Verticals/` — parked service-vertical expansion
+- `Future-Verticals/ServicesOS_Barbershop_Pricing_and_Value_Strategy.md` — current Barbershop pricing/value hypotheses, staff-inclusive packaging direction, temporary founder-beta concept, communication-cost philosophy, onboarding/web-maintenance leverage, and future hosted-page option
 - `FutureModules/` — parked cross-product and future module planning
 
 Core rule:
