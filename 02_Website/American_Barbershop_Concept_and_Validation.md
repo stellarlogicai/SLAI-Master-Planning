@@ -2,7 +2,7 @@
 
 **Document Status:** Validation / concept planning  
 **Implementation Status:** No customer commitment; concept only  
-**Last Updated:** 2026-09-01  
+**Last Updated:** 2026-09-05  
 **Related Vertical:** ServicesOS Appointment Services / Barber & Salon  
 **Purpose:** Preserve the American Barbershop research, website concept, Booksy benchmark, and potential path into ServicesOS Barber without treating the shop as a committed customer.
 
@@ -240,3 +240,66 @@ This one account can validate several hypotheses:
 Do not turn this concept into active Barber engineering before ServicesOS V1 gates are met.
 
 The concept may be shown or sold as a website project when Jamie decides the timing is safe, but ServicesOS Barber remains future vertical work until explicitly promoted.
+
+
+## 2026-09-05 Founder-Beta Pricing and Validation Notes
+
+American Barbershop remains a validation candidate, not a committed customer.
+
+Current pricing hypothesis for a future ServicesOS Barbershop pilot:
+
+- public target to validate: approximately **$100/month per location**,
+- temporary American Barbershop founder/design-partner rate: approximately **$80/month** if Jamie explicitly approves it,
+- the temporary rate should have a defined duration or beta/validation end condition,
+- normal variable-cost protections for messaging, AI, and unusually heavy support should still apply.
+
+The purpose of the founder rate is not a permanent family discount.
+
+It is to reduce switching friction while the shop helps validate:
+
+- booking replacement quality,
+- staff/provider workflow,
+- migration,
+- GrowthAI usefulness,
+- website/data integration,
+- support burden,
+- real monthly unit economics.
+
+### Staff-Inclusive Value Hypothesis
+
+Because the shop currently has approximately three barbers, it is a useful test of a team-friendly ServicesOS model.
+
+Working direction to research:
+
+> **Include a generous number of barbers/providers in the normal shop subscription rather than charging aggressively per provider.**
+
+Planning range: roughly **5–10 included providers** at the approximately $100 public price.
+
+This is not final public packaging.
+
+### Website Maintenance Advantage
+
+The detailed ServicesOS onboarding and future public-data publication model should reduce manual SLAI Web work.
+
+Routine customer-facing facts such as:
+
+- hours,
+- services,
+- pricing,
+- barber profiles,
+- photos,
+- policies,
+- contact information,
+- social links,
+
+should increasingly be maintained through ServicesOS and published to the website through an approved public-data boundary.
+
+This supports fast web production and keeps SLAI focused on higher-value design, integration, QA, and product work.
+
+### Related Pricing Strategy
+
+See:
+
+- `../01_ServicesOS/Future-Verticals/ServicesOS_Barbershop_Pricing_and_Value_Strategy.md`
+
+Exact competitor pricing and SMS economics should be re-researched before any external sales comparison.
