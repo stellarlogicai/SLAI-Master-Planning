@@ -2,7 +2,7 @@
 
 Document Status: Complete
 Implementation Status: Future Roadmap
-Last Updated: 2026-09-01
+Last Updated: 2026-09-05
 Implementation Repo: N/A
 Planning Repo: `stellarlogicai/SLAI-Master-Planning`
 Related Commits:
@@ -322,3 +322,27 @@ If American Barbershop wants ServicesOS Barber after the core is stable:
 5. migrate only after confidence is earned.
 
 This remains future work and does not change the current ServicesOS V1 priority.
+
+
+---
+
+## 2026-09-05 Pricing / Packaging Direction
+
+Current Barbershop packaging hypotheses are now documented in:
+
+- `ServicesOS_Barbershop_Pricing_and_Value_Strategy.md`
+
+Key working direction:
+
+- approximately **$100/month per location** remains the public target to validate,
+- normal shop growth should not automatically trigger aggressive per-barber pricing,
+- a planning range of roughly **5–10 included barbers/providers** should be tested,
+- American Barbershop may be offered a **temporary ~$80/month founder/design-partner rate** if Jamie explicitly approves it,
+- messaging and provider-backed AI should remain bounded by transparent allowances/overages rather than unlimited usage,
+- exact competitor comparisons and exact SMS economics remain unvalidated until the dedicated pricing/value research is run.
+
+The product should compete on value per dollar rather than simply being the cheapest calendar.
+
+The intended premium layer remains broader operations + GrowthAI + website/data integration, while core booking/scheduling/payment features are treated as competitive table stakes.
+
+This remains future planning and does not change ServicesOS V1 priority.
