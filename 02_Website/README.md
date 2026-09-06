@@ -13,6 +13,11 @@ Website work may support ServicesOS launch and customer acquisition, but it must
 ## Key Planning
 
 - `SLAI_Web_Engine.md` — reusable customer-website platform, layout library, ServicesOS website integration, booking architecture, AI-assisted build workflow, human QA, and scaling model.
+- `SLAI_Web_Architecture_Spec.md` — operational core/layout/customer-layer boundaries, versioning, protected paths, public-data and booking boundaries.
+- `SLAI_Web_Layout_Contract.md` — layout responsibilities, compatibility, required manifest fields, and customer-override rules.
+- `SLAI_Web_QA_and_Release_Gates.md` — automated/human release evidence required before production.
+- `Templates/` — customer-site manifest, intake/readiness, job packet, human QA, and client approval/deployment templates.
+- `../01_ServicesOS/Website_Public_Data_and_Booking_Contract.md` — public-data projection and booking source-of-truth contract.
 - `American_Barbershop_Concept_and_Validation.md` — first real-world website/ServicesOS-Barber validation case.
 - `../03_SLAI_Company/SLAI_Web_Services_Business_Model.md` — pricing, revenue, founder-compensation intent, managed-web model, and ServicesOS acquisition strategy.
 - existing numbered files — SLAI company website content, page, brand, research, and coding planning.
