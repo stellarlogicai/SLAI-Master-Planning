@@ -51,6 +51,7 @@ Only after the internal system proves useful should SLAI extract reusable platfo
 - `Forge/Architecture_and_Execution_Model.md` — controlled coding-worker architecture
 - `Forge/Engineering_QA_and_Organization_Model.md` — future human engineering + QA operating model
 - `SLAIOS_Web_Production_Orchestration.md` — future ServicesOS-data-driven website production queue, AI task packaging, human QA, approvals, and deployment orchestration
+- `SLAIOS_Audit_and_Authority_Model.md` — future risk-based automation authority, approval-context requirements, audit-event minimums, and immutable context-snapshot rules
 
 Existing supporting planning such as Department Intelligence, Company Memory, Dashboard, Research Agent, Client Finder, and the Suggestions System remains relevant unless superseded by a canonical file above.
 
