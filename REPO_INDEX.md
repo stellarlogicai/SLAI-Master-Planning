@@ -2,7 +2,7 @@
 
 Document Status: Living Index  
 Implementation Status: Active Planning Reference  
-Last Updated: 2026-09-05  
+Last Updated: 2026-09-06  
 Repository: `stellarlogicai/SLAI-Master-Planning`  
 Primary Active Build: ServicesOS
 
@@ -93,6 +93,11 @@ SLAI company website planning plus the future **SLAI Web** productized website/m
 Key new planning:
 
 - `02_Website/SLAI_Web_Engine.md` — reusable web core, up-to-10 layout systems, ServicesOS-powered public business data, native booking architecture, low-AI-usage build flow, human QA, and scaling model.
+- `02_Website/SLAI_Web_Architecture_Spec.md` — operational production contract for shared core, layouts, customer layer, versioning, protected boundaries, public-data consumption, booking authority, AI boundaries, and release requirements.
+- `02_Website/SLAI_Web_Layout_Contract.md` — declarative layout contract and compatibility rules.
+- `02_Website/SLAI_Web_QA_and_Release_Gates.md` — automated + human QA/release evidence model.
+- `02_Website/Templates/` — site manifest, intake/readiness, Web Job Packet, Human QA, and client approval/deployment templates.
+- `01_ServicesOS/Website_Public_Data_and_Booking_Contract.md` — future ServicesOS public projection, publish semantics, and native booking source-of-truth contract.
 - `02_Website/American_Barbershop_Concept_and_Validation.md` — first concrete web/ServicesOS-Barber validation case.
 - `03_SLAI_Company/SLAI_Web_Services_Business_Model.md` — $100 Managed Web, $100 ServicesOS, working website-build economics, founder-compensation intent, and website-to-ServicesOS acquisition funnel.
 
@@ -144,6 +149,7 @@ Key planning files include:
 - `Forge/Architecture_and_Execution_Model.md`
 - `Forge/Engineering_QA_and_Organization_Model.md`
 - `SLAIOS_Web_Production_Orchestration.md` — future website-order orchestration, ServicesOS context pull, AI task packaging, automated checks, human QA, approvals, and deployment tracking
+- `SLAIOS_Audit_and_Authority_Model.md` — future risk-based authority levels, approval boundaries, audit-event requirements, and immutable context-snapshot principles
 
 Core rule:
 
