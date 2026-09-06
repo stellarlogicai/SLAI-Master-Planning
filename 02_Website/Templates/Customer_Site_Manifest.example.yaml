@@ -1,0 +1,50 @@
+# Example only. Machine-readable production contract for one customer site.
+site:
+  customer_id: american-barbershop
+  servicesos_tenant_id: tenant_123
+  manifest_version: "1.0"
+
+platform:
+  core_version: "1.2.0"
+
+layout:
+  id: booking-first
+  version: "3.1.0"
+
+content:
+  source: servicesos_public
+  release_id: public_release_47
+  allow_local_overrides:
+    - hero_headline
+    - story_copy
+
+brand:
+  logo_asset: logo_primary
+  token_set: american_barbershop
+
+integrations:
+  booking:
+    provider: servicesos
+    connector_version: "1.1.0"
+  analytics:
+    enabled: true
+
+permissions:
+  customer_layer_editable: true
+  shared_core_editable: false
+  booking_connector_editable: false
+
+release:
+  automated_qa_required: true
+  human_qa_required: true
+  client_approval_required: true
+  production_approval_required: true
+
+protection:
+  allowed_paths:
+    - customer/**
+  protected_paths:
+    - core/**
+    - integrations/booking/**
+    - deploy/**
+    - auth/**
