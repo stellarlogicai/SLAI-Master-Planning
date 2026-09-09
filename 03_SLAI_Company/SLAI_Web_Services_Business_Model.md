@@ -438,3 +438,47 @@ Current Barbershop pricing/packaging hypotheses are documented separately in:
 
 The current public ServicesOS benchmark remains approximately $100/month, while temporary founder/design-partner pricing may be explicitly approved for a defined validation period.
 
+## 2026-09-09 Pricing and Product-Model Refinement
+
+The working model has evolved from “website build + managed maintenance” into **SLAI Web Platform + optional implementation services**.
+
+Working hypotheses to validate:
+
+```text
+DIY
+$0 build fee
+$100/month SLAI Web
+
+Done-for-you
+~$750-$1,000 one-time
+$100/month SLAI Web
+
+Custom
+~$1,500-$2,000+ one-time
+$100/month SLAI Web
+```
+
+These are planning hypotheses, not locked public pricing.
+
+The $100/month SLAI Web subscription should include real platform value such as the customer dashboard, hosting, SSL, publishing, version history/rollback, backups, ongoing technical maintenance, access to approved evolving layouts/themes/sections, domain/DNS assistance, bounded support, and SLAI Intelligence assistance.
+
+A custom website should still run on the same SLAI Web platform. Custom pricing pays for bespoke design/functionality, not for a separate maintenance architecture.
+
+Routine site changes should increasingly be self-service through the SLAI Web Dashboard or ServicesOS when connected.
+
+This creates three revenue types:
+
+1. recurring SLAI Web platform revenue,
+2. optional one-time implementation/custom-build revenue,
+3. ServicesOS recurring revenue when the customer also adopts ServicesOS.
+
+The current strategic sequence is:
+
+```text
+Stable customer-facing ServicesOS V1
+→ SLAI Web V1
+→ validate Web + ServicesOS acquisition/retention economics
+→ larger ServicesOS V2 expansion
+```
+
+Founder compensation from build work remains a planning intent subject to proper company/tax treatment; recurring product revenue should primarily strengthen SLAI until the company is stable.
