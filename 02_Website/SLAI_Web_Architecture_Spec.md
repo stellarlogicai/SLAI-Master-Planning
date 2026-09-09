@@ -170,3 +170,25 @@ No customer-facing production deployment is complete until:
 ## Scope Guardrail
 
 This document defines the future production contract. It does not authorize building the Web Engine before ServicesOS V1 is stable.
+
+## 2026-09-09 Shared Platform and Customer-Control Addendum
+
+SLAI Web should reuse proven SLAI platform primitives for identity, tenant/customer records, roles, entitlements, audit conventions, and security patterns when those primitives are actually ready.
+
+ServicesOS and SLAI Web should remain sibling products rather than SLAI Web depending on ServicesOS internals.
+
+A canonical Website Profile should sit beneath both supported control surfaces:
+
+```text
+Canonical Website Profile
+├── SLAI Web Dashboard
+└── ServicesOS website/business settings
+```
+
+The SLAI Web Dashboard is required for standalone Web customers. ServicesOS may edit compatible public website fields through a defined interface/release contract when the customer subscribes to both.
+
+The architecture should support approved page schemas, section variants, theme/layout versions, preview, publish, rollback, and customer-safe controls without allowing unrestricted code-level mutation.
+
+Custom customer websites must remain inside the same platform boundaries. Bespoke layout/components may vary, but shared hosting, content model, publishing, versioning, support, QA, and public-data contracts remain common.
+
+See `SLAI_Web_Platform_V1_and_Customer_Control_Model.md` for the current detailed product/control model.
