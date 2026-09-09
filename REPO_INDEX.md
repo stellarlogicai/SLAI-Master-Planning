@@ -390,3 +390,53 @@ Complete wife beta through real jobs
 → stabilize payments
 → then consider Tap to Pay and later product promotion
 ```
+
+## 2026-09-09 Planning Additions
+
+### SLAI Web
+
+New canonical detailed planning:
+
+- `02_Website/SLAI_Web_Platform_V1_and_Customer_Control_Model.md`
+
+This captures the expanded SLAI Web direction:
+
+- $100/month managed website platform hypothesis,
+- DIY, done-for-you, and custom implementation paths,
+- standalone SLAI Web Dashboard,
+- ServicesOS as an alternate control surface,
+- canonical website profile,
+- guided onboarding/recommended-site generation,
+- page/section system,
+- continuously versioned UI/UX styles,
+- safe customer controls,
+- preview/publish/rollback,
+- SLAI Intelligence assistance,
+- audited SLAI support mode,
+- customer domain/content ownership and cancellation/handoff principles,
+- shared SLAI auth/customer/entitlement foundations,
+- cross-product public-data integration,
+- post-ServicesOS-V1 sequencing.
+
+### Shared Inventory Intelligence and Communication
+
+New platform-core planning:
+
+- `15_SLAI_Platform_Core/SLAI_Inventory_Intelligence_and_Communication_Architecture.md`
+
+This preserves the September 2026 inventory-intelligence architecture as a future reusable shared capability:
+
+- inventory event ledger,
+- movement-vs-demand separation,
+- deterministic forecasting,
+- stockout/outdate/overstock/count/shrink exceptions,
+- human-reviewed recommendations,
+- independent multi-tenant service design,
+- RetailOS/ServicesOS/future-product integration,
+- shared SLAI communication SLM,
+- deterministic/local-SLM/frontier routing,
+- local/edge deployment considerations,
+- evaluation strategy,
+- Walgreens shadow-pilot/IP/permission boundaries.
+
+Status remains future planning only.
