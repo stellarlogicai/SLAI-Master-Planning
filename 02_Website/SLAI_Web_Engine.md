@@ -408,3 +408,39 @@ Low-touch recurring managed-web revenue
 ```
 
 without becoming a founder-time-heavy agency.
+
+## 2026-09-09 Platform Expansion — Dashboard, DIY, Custom, and Shared SLAI Core
+
+SLAI Web is now planned as a **managed website platform plus optional professional services**, not only a managed website service.
+
+Canonical detailed planning lives in:
+
+- `SLAI_Web_Platform_V1_and_Customer_Control_Model.md`
+
+Key additions:
+
+- standalone DIY customer path at the working $100/month platform price,
+- optional done-for-you and custom implementation fees,
+- SLAI Web Dashboard for customers who do not use ServicesOS,
+- ServicesOS as an alternate control surface over the same website/public profile,
+- guided business onboarding that can recommend a starting site,
+- approved page types and section systems,
+- safe self-service design controls,
+- continuously evolving versioned UI/UX styles,
+- preview/publish/version/rollback,
+- bounded SLAI Intelligence help,
+- secure audited support mode instead of a hidden backdoor,
+- custom websites remaining on the same shared platform,
+- customer domain/content ownership with platform access tied to an active subscription,
+- shared SLAI authentication/customer/entitlement foundations where proven,
+- future cross-product public-data connectors.
+
+Core architecture rule:
+
+> **Content and business facts are durable. Presentation is replaceable.**
+
+Core product rule:
+
+> **Custom presentation must not create a custom maintenance stack.**
+
+The active-build gate is unchanged: ServicesOS must first reach stable customer-facing V1.
