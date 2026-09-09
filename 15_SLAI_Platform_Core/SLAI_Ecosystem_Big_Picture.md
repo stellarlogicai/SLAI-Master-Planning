@@ -525,3 +525,40 @@ A practical AI operating-system company for real-world business, security, integ
 ```
 
 ServicesOS is the first proof. Security Foundation protects the ecosystem. SLAI OS and GrowthAI help the company survive and grow. The rest of the ecosystem grows only after the first product proves the model.
+
+## 2026-09-09 Ecosystem Refinement — Web as Public Layer, Shared Intelligence as Capability
+
+SLAI Web is now planned as a reusable **public-facing website platform** for small businesses and, later, for approved public projections from multiple SLAI products.
+
+Future pattern:
+
+```text
+SLAI Product
+→ approved public-data projection
+→ SLAI Web
+→ customer-facing website
+```
+
+SLAI Web should not become the source of private operational truth.
+
+The company direction is increasingly a **one-stop technology partner for small businesses** while preserving modular products underneath a shared account/platform foundation.
+
+Also added to SLAI Platform Core:
+
+- reusable Inventory Intelligence Platform planning,
+- deterministic-first inventory forecasting/exception logic,
+- shared communication-model strategy,
+- deterministic → local/shared SLM → frontier API routing.
+
+These are reusable capabilities, not justification to build everything at once.
+
+Post-V1 execution hypothesis:
+
+```text
+ServicesOS stable customer-facing V1
+→ SLAI Web V1
+→ validate acquisition + recurring web economics
+→ ServicesOS V2 and later products as evidence supports
+```
+
+ServicesOS remains the current active build.
