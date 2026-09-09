@@ -46,3 +46,15 @@ Potential shared capabilities include:
 - Shared services must reduce complexity for divisions and customers, not create new coupling.
 - A product must not depend on an unfinished future division to complete its current MVP.
 - Complexity belongs inside the platform, not inside the customer’s day.
+
+## 2026-09-09 New Shared Planning
+
+New reusable platform planning:
+
+- `SLAI_Inventory_Intelligence_and_Communication_Architecture.md` — independent inventory-intelligence service concept, event-ledger model, deterministic forecasting/exceptions, cross-product inventory APIs, shared communication SLM strategy, cheapest-capable routing, evaluation, and validation boundaries.
+
+The inventory capability is intentionally not owned by RetailOS. RetailOS is a future consumer; ServicesOS and other products may consume it later where justified.
+
+Shared intelligence principle:
+
+> **The intelligence systems specialize; the communication model generalizes; frontier AI is an escalation layer, not the default engine behind every sentence.**
