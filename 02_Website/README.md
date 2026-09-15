@@ -37,10 +37,12 @@ Firebase / Google Cloud provider ecosystem
 + static-first customer public sites
 + dynamic APIs only for authoritative/fresh workflows
 + Stripe billing
-+ bounded ServicesOS public-data / booking integration
++ bounded product connectors, with ServicesOS first
 ```
 
 SLAI Web remains fully standalone-capable. When a customer also uses ServicesOS, ServicesOS owns overlapping business/operational truth and SLAI Web owns website presentation/publication.
+
+The connector/authority model is intentionally product-generic so future approved SLAI products can connect through bounded adapters without forcing a redesign of the Website Profile core. **V1 still implements only the ServicesOS connector; future integrations remain parked until their own priority gate.**
 
 The active-build stack gate is a **verification gate, not a broad architecture/provider-shopping exercise**. Locked decisions should reopen only for a documented blocker.
 
@@ -49,6 +51,7 @@ See:
 - `SLAI_Web_V1_Architecture_Decisions.md`
 - `SLAI_Web_V1_Provider_Baseline.md`
 - `SLAI_Web_V1_Website_Profile_Schema.md`
+- `SLAI_Web_V1_Product_Connector_and_Authority_Contract.md`
 
 ## SLAI Web — Authoritative Planning Set
 
@@ -62,6 +65,7 @@ See:
 
 - `SLAI_Web_V1_Architecture_Decisions.md` — locked V1 cloud/environment, Next.js + TypeScript, static-first hybrid delivery, deployment-target abstraction, ServicesOS relationship, and provider strategy.
 - `SLAI_Web_V1_Website_Profile_Schema.md` — authoritative typed semantic Website Profile schema `1.0`, including standalone/connected authority, business facts, website-owned content, presentation, CTAs/forms, SEO, integrations, source-state, publish readiness, and separate platform-record boundaries.
+- `SLAI_Web_V1_Product_Connector_and_Authority_Contract.md` — generic product connector seam, domain-specific authority, product-generic provenance, bounded capabilities, versioning, failure behavior, and the rule that ServicesOS is the first concrete connector without making it the only possible future source product.
 - `SLAI_Web_V1_Product_and_Data_Contracts.md` — product-state, source-of-truth, operating-mode, publication/version, role, media/form, and public/private data contracts.
 - `SLAI_Web_Architecture_Spec.md` — shared core/layout/customer-layer boundaries, protected paths, versioning, public-data and booking boundaries.
 - `SLAI_Web_Layout_Contract.md` — layout responsibilities, compatibility, manifest fields, and customer-override rules.
@@ -105,7 +109,7 @@ canonical Website Profile
 +
 customer branding/content
 +
-ServicesOS public-data/booking integration when applicable
+bounded product connector(s) when applicable
 +
 deterministic preview/publish/deploy
 +
@@ -116,6 +120,6 @@ human QA
 
 ## Build Guardrail
 
-Do not begin by building ten layouts, unrestricted page-builder functionality, or broad custom integrations.
+Do not begin by building ten layouts, unrestricted page-builder functionality, broad custom integrations, or unused future-product adapters.
 
 Prove one or two excellent layouts and one real customer workflow first. Every significant variable-cost feature must be attributable and bounded, and normal website operation must remain functional without AI.
