@@ -52,13 +52,14 @@ See:
 - `SLAI_Web_V1_Provider_Baseline.md`
 - `SLAI_Web_V1_Website_Profile_Schema.md`
 - `SLAI_Web_V1_Product_Connector_and_Authority_Contract.md`
+- `SLAI_Web_V1_Permissions_and_Authority_Matrix.md`
 
 ## SLAI Web — Authoritative Planning Set
 
 ### Execution / scope
 
 - `SLAI_Web_V1_Execution_Plan.md` — authoritative V1 scope lock, build order, milestone gates, acceptance criteria, first-customer proof, and Codex stop conditions.
-- `SLAI_Web_V1_Open_Decisions_Checklist.md` — remaining unresolved decisions; first four major architecture questions are now locked, leaving permissions and Stripe-entitlement mapping as the next mandatory decisions.
+- `SLAI_Web_V1_Open_Decisions_Checklist.md` — remaining unresolved decisions; five of six major pre-build questions are now locked, leaving Stripe entitlement mapping as the final mandatory decision.
 - `SLAI_Web_Platform_V1_and_Customer_Control_Model.md` — detailed product model: DIY/done-for-you/custom paths, dashboard, shared profile, page/section system, evolving design system, support mode, SLAI Intelligence, ownership/handoff, and product sequencing.
 
 ### Core product / data contracts
@@ -66,6 +67,7 @@ See:
 - `SLAI_Web_V1_Architecture_Decisions.md` — locked V1 cloud/environment, Next.js + TypeScript, static-first hybrid delivery, deployment-target abstraction, ServicesOS relationship, and provider strategy.
 - `SLAI_Web_V1_Website_Profile_Schema.md` — authoritative typed semantic Website Profile schema `1.0`, including standalone/connected authority, business facts, website-owned content, presentation, CTAs/forms, SEO, integrations, source-state, publish readiness, and separate platform-record boundaries.
 - `SLAI_Web_V1_Product_Connector_and_Authority_Contract.md` — generic product connector seam, domain-specific authority, product-generic provenance, bounded capabilities, versioning, failure behavior, and the rule that ServicesOS is the first concrete connector without making it the only possible future source product.
+- `SLAI_Web_V1_Permissions_and_Authority_Matrix.md` — authoritative V1 Owner/Editor/Viewer permissions, scoped SLAI Support Mode, emergency Platform Operator boundary, publish/rollback authority, billing/domain/user/connector controls, AI permission inheritance, and audit/re-auth rules.
 - `SLAI_Web_V1_Product_and_Data_Contracts.md` — product-state, source-of-truth, operating-mode, publication/version, role, media/form, and public/private data contracts.
 - `SLAI_Web_Architecture_Spec.md` — shared core/layout/customer-layer boundaries, protected paths, versioning, public-data and booking boundaries.
 - `SLAI_Web_Layout_Contract.md` — layout responsibilities, compatibility, manifest fields, and customer-override rules.
@@ -86,7 +88,7 @@ See:
 - `Templates/Human_QA_Checklist.md` — human QA evidence.
 - `Templates/Client_Approval_and_Deployment_Record.md` — client/release approval and deployment evidence.
 - `Templates/Website_Pricing_and_Scope_Matrix.md` — current DIY/done-for-you/custom working pricing hypotheses.
-- `Templates/Website_Customer_Control_Matrix.md` — customer vs SLAI vs custom-work authority.
+- `Templates/Website_Customer_Control_Matrix.md` — high-level customer vs SLAI vs custom-work authority; defer to the V1 permissions matrix for role-specific access.
 - `Templates/Website_Proof_Metrics_Record.md` — early-customer production, cost, support, self-service, and commercial validation metrics.
 - `Templates/Customer_Site_Manifest.example.yaml` — example customer-site manifest direction.
 
