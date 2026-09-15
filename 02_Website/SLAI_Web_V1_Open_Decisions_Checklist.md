@@ -7,7 +7,7 @@
 
 ## Purpose
 
-Track the remaining SLAI Web V1 decisions that still need explicit definitions after the V1 scope, provider baseline, architecture decisions, Website Profile schema, permissions model, operations boundaries, pricing model, and QA gates were established.
+Track the remaining SLAI Web V1 decisions that still need explicit definitions after the V1 scope, provider baseline, architecture decisions, Website Profile schema, permissions model, billing/entitlement model, operations boundaries, pricing model, and QA gates were established.
 
 This file is not permission to reopen the whole product design.
 
@@ -123,30 +123,45 @@ Locked rules include:
 - AI inherits the invoking human's permission boundary,
 - high-risk actions require server-authoritative checks and appropriate confirmation/re-authentication.
 
+## 6. Billing / entitlement state mapping — LOCKED
+
+Authoritative contract:
+
+`SLAI_Web_V1_Billing_and_Entitlement_Contract.md`
+
+Recurring V1 pricing:
+
+```text
+Monthly: $100/month
+Annual:  $1,000/year
+         = two months free vs monthly
+```
+
+Monthly and annual use the same normal platform entitlement and feature set.
+
+Locked billing rules include:
+
+- Stripe remains the payment/subscription authority,
+- SLAI Web maintains a canonical internal billing/entitlement projection,
+- browser state cannot fabricate paid access,
+- V1 launch does not require a free recurring-platform trial,
+- one-time implementation/custom charges remain separate from recurring platform entitlement,
+- canonical states are `setup`, `active`, `cancel_at_period_end`, `past_due_grace`, `suspended`, `cancelled`, and `comped`,
+- billing interval is separate from billing state (`monthly` or `annual`),
+- `active`, `cancel_at_period_end`, and valid `comped` allow normal paid product entitlement,
+- recurring payment failure enters a 7-day `past_due_grace`,
+- during grace the existing live site remains online and editing/preview may continue, but new production publishing is blocked,
+- successful verified payment recovery automatically restores active entitlement,
+- suspension is not destructive deletion,
+- cancellation preserves full service through the paid-through date,
+- annual customers retain service through their paid annual term even if renewal is cancelled early,
+- comped/manual entitlement is explicit, reason-bound, and audited,
+- billing event handling must be server-authoritative and idempotent/duplicate-safe,
+- permissions, billing entitlement, site state, source authority, and release gates remain separate checks.
+
 ---
 
-# B. Remaining decision required before implementation begins
-
-## 6. Billing / entitlement state mapping — NEXT
-
-Stripe remains default authority.
-
-Still define:
-
-- Stripe product/price structure,
-- recurring subscription mapping,
-- one-time implementation/custom payment flow,
-- webhook events used,
-- canonical internal billing states,
-- idempotency rules,
-- entitlement behavior per state,
-- whether a trial exists,
-- exact past-due grace behavior,
-- reactivation behavior.
-
----
-
-# C. Decisions that can wait until the related feature is being built
+# B. Decisions that can wait until the related feature is being built
 
 ## 7. Custom domain / DNS workflow
 
@@ -280,21 +295,22 @@ Avoid promising 24/7 support before staffing supports it.
 
 ## 16. Cancellation / suspension / handoff timing
 
-Define exact timing for:
+The billing-state behavior is now locked, including paid-through cancellation and the 7-day past-due grace period.
 
-- cancel-at-period-end,
-- payment-failure grace period,
-- editor/publish restrictions,
-- live-site suspension/unpublish,
+Still define before public launch:
+
+- exact post-suspension live-site duration,
+- when a suspended/cancelled site is unpublished,
 - export/handoff window,
-- data retention/deletion,
-- domain transition.
+- data retention/deletion timing,
+- domain-transition timing,
+- customer-facing notices and reminders.
 
 Do not immediately delete customer-owned content for a transient billing failure.
 
 ---
 
-# D. Decisions best validated with the first real customer
+# C. Decisions best validated with the first real customer
 
 ## 17. One versus two launch layouts
 
@@ -325,18 +341,20 @@ Use first-customer telemetry before locking marketing claims for:
 
 ## 20. SLAI Web pricing validation
 
-Current working authority remains:
+Current working authority:
 
-- DIY: $0 build / $100 month,
-- Done-for-you: approximately $750-$1,000 build / $100 month,
-- Custom: approximately $1,500-$2,000+ build / $100 month,
+- recurring monthly: $100/month,
+- recurring annual: $1,000/year (two months free vs monthly),
+- DIY: $0 build,
+- Done-for-you: approximately $750-$1,000 build,
+- Custom: approximately $1,500-$2,000+ build,
 - true exceptions quoted separately.
 
-Validate against conversion, build time, direct cost, support burden, self-service, retention, and ServicesOS conversion.
+Validate against conversion, annual-plan adoption, build time, direct cost, support burden, self-service, retention, and ServicesOS conversion.
 
 ---
 
-# E. Decisions explicitly not required before V1 starts
+# D. Decisions explicitly not required before V1 starts
 
 Do not block SLAI Web V1 waiting to define:
 
@@ -358,21 +376,29 @@ Those are earned by real demand.
 
 # Milestone 0 Exit Rule
 
-Five of the six primary architecture/product questions are now locked.
+**All six primary SLAI Web V1 pre-build architecture/product decisions are now locked.**
 
-Remaining mandatory question before implementation begins:
+Locked set:
 
-1. How does Stripe state map to SLAI Web entitlement?
+1. Firebase / Google Cloud project boundary
+2. Next.js + TypeScript runtime
+3. Static-first hybrid production delivery
+4. Website Profile schema `1.0`
+5. Permissions and authority matrix
+6. Stripe billing and SLAI Web entitlement mapping
 
-At active-build start, also verify rather than redesign:
+At active-build start, verify rather than redesign:
 
 - Firebase project/environment setup,
+- current provider pricing/capabilities,
 - Next.js + TypeScript fit,
 - static-first hybrid publishing/deployment,
 - Website Profile schema `1.0`,
 - permissions/authority matrix,
+- monthly/annual Stripe product and price objects,
+- billing webhook/API-version details,
 - product connector/public-data boundary,
 - variable-cost safeguards,
 - first-customer validation plan.
 
-Everything else may be resolved just-in-time before its dependent feature ships, provided it does not force a broad architectural rewrite.
+Remaining items in this checklist may be resolved just-in-time before their dependent feature ships, provided they do not force a broad architectural rewrite.
