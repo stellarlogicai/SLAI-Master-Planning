@@ -7,7 +7,7 @@
 
 ## Purpose
 
-Track the remaining SLAI Web V1 decisions that still need explicit definitions after the V1 scope, provider baseline, architecture decisions, Website Profile schema, operations boundaries, pricing model, and QA gates were established.
+Track the remaining SLAI Web V1 decisions that still need explicit definitions after the V1 scope, provider baseline, architecture decisions, Website Profile schema, permissions model, operations boundaries, pricing model, and QA gates were established.
 
 This file is not permission to reopen the whole product design.
 
@@ -70,7 +70,7 @@ See `SLAI_Web_V1_Architecture_Decisions.md`.
 
 ## 4. Canonical Website Profile schema v1 — LOCKED
 
-The V1 typed semantic contract is now defined in:
+The V1 typed semantic contract is defined in:
 
 `SLAI_Web_V1_Website_Profile_Schema.md`
 
@@ -79,47 +79,55 @@ Locked concepts include:
 - schema version `1.0`,
 - stable IDs,
 - money stored in minor units,
-- standalone versus ServicesOS-connected modes,
+- standalone versus connected modes,
 - business facts separated from website-owned content/presentation,
 - service/team presentation overlays rather than fact overrides,
 - typed pages/sections/navigation/CTAs/forms/SEO/integrations,
-- source-authority map,
+- generic source-authority map,
 - publish-readiness versus schema-validity distinction,
 - separate platform records for billing, deployment, audit, domains, support sessions, and form submissions,
-- explicit ServicesOS disconnect transition.
+- explicit source-product disconnect transition.
 
-Standalone SLAI Web owns its public business facts. In connected mode, ServicesOS owns overlapping business/operational truth and SLAI Web owns website presentation/publication.
+Standalone SLAI Web owns its public business facts. In connected mode, the bound source product owns overlapping authoritative domains while SLAI Web owns website presentation/publication.
+
+## 5. Minimal role / permission set — LOCKED
+
+Authoritative contract:
+
+`SLAI_Web_V1_Permissions_and_Authority_Matrix.md`
+
+V1 persistent customer roles:
+
+```text
+Owner
+Editor
+Viewer
+```
+
+Internal access is separate:
+
+```text
+SLAI Support Mode
+SLAI Platform Operator
+```
+
+Locked rules include:
+
+- Owner controls publish, rollback, users, billing, domains, connectors, and support approval,
+- Editor may edit/preview/request publication but cannot directly publish in V1,
+- Viewer is read-only and does not receive form/lead PII by default,
+- connected authoritative facts stay read-only regardless of SLAI Web customer role,
+- Support Mode is scoped/time-bounded/audited rather than permanent tenant membership,
+- Platform Operator authority is emergency/reliability/security-only and distinct from normal support,
+- at least one Owner must always remain,
+- AI inherits the invoking human's permission boundary,
+- high-risk actions require server-authoritative checks and appropriate confirmation/re-authentication.
 
 ---
 
-# B. Remaining decisions required before implementation begins
+# B. Remaining decision required before implementation begins
 
-## 5. Minimal role / permission set — NEXT
-
-Current V1 roles:
-
-- Owner,
-- Editor,
-- Viewer,
-- controlled SLAI Support Mode.
-
-Still define the exact permission matrix for:
-
-- edit standalone business facts,
-- view ServicesOS-authoritative facts,
-- edit website presentation/content,
-- upload/delete assets,
-- preview,
-- request publication,
-- publish,
-- rollback,
-- manage domains,
-- manage billing,
-- invite/remove users,
-- connect/disconnect ServicesOS,
-- access/approve support-mode functions.
-
-## 6. Billing / entitlement state mapping
+## 6. Billing / entitlement state mapping — NEXT
 
 Stripe remains default authority.
 
@@ -189,7 +197,7 @@ Internal safeguards should exist before public numeric limits are marketed.
 Define:
 
 - standalone form-submission storage,
-- ServicesOS lead/request handoff when connected,
+- connected product lead/request handoff when supported,
 - customer notification channel,
 - spam/bot protection,
 - rate limits,
@@ -222,7 +230,7 @@ Define the smallest reliable set for:
 - failed deployment,
 - form failures,
 - domain/SSL issues,
-- ServicesOS connector failures,
+- product connector failures,
 - billing webhook failures,
 - unusual usage/cost,
 - security/tenant-isolation alerts.
@@ -341,7 +349,7 @@ Do not block SLAI Web V1 waiting to define:
 - custom email hosting,
 - complex analytics warehouse,
 - autonomous AI publishing,
-- every future ServicesOS vertical integration,
+- every future SLAI product integration,
 - future SLAIOS orchestration.
 
 Those are earned by real demand.
@@ -350,12 +358,11 @@ Those are earned by real demand.
 
 # Milestone 0 Exit Rule
 
-Four of the six primary architecture questions are now locked.
+Five of the six primary architecture/product questions are now locked.
 
-Remaining mandatory questions before implementation begins:
+Remaining mandatory question before implementation begins:
 
-1. What are the exact V1 roles/permissions?
-2. How does Stripe state map to SLAI Web entitlement?
+1. How does Stripe state map to SLAI Web entitlement?
 
 At active-build start, also verify rather than redesign:
 
@@ -363,7 +370,8 @@ At active-build start, also verify rather than redesign:
 - Next.js + TypeScript fit,
 - static-first hybrid publishing/deployment,
 - Website Profile schema `1.0`,
-- ServicesOS public-data/booking boundary,
+- permissions/authority matrix,
+- product connector/public-data boundary,
 - variable-cost safeguards,
 - first-customer validation plan.
 
