@@ -25,6 +25,24 @@ Finish / stabilize ServicesOS V1
 
 The revenue purpose is intentional: SLAI Web is expected to create earlier implementation revenue, recurring managed-web/platform revenue, and a customer-acquisition path into ServicesOS.
 
+## SLAI Web — Provider Baseline
+
+SLAI Web should reuse the proven ServicesOS provider ecosystem by default rather than creating a separate vendor stack.
+
+Current planning assumption:
+
+```text
+Firebase / Google Cloud
++ Stripe
++ bounded ServicesOS public-data / booking integration
+```
+
+Prefer a separate SLAI Web Firebase/Google Cloud project under the same company cloud/billing ecosystem unless the active-build architecture audit finds a stronger reason to share a project.
+
+The active-build stack gate is therefore a **verification gate, not a broad provider-shopping exercise**. New providers require a documented technical, security, reliability, cost, compliance, or operational reason.
+
+See `SLAI_Web_V1_Provider_Baseline.md`.
+
 ## SLAI Web — Authoritative Planning Set
 
 ### Execution / scope
@@ -41,7 +59,8 @@ The revenue purpose is intentional: SLAI Web is expected to create earlier imple
 
 ### Deployment / billing / operations
 
-- `SLAI_Web_V1_Deployment_Billing_and_Operations_Contracts.md` — stack-decision gate, deployment/domain/SSL, billing/entitlements, cancellation/handoff, support boundaries, variable-cost controls, monitoring, and recovery.
+- `SLAI_Web_V1_Provider_Baseline.md` — default reuse of Firebase/Google Cloud + Stripe, project-separation preference, usage-based cost philosophy, and provider-replacement gate.
+- `SLAI_Web_V1_Deployment_Billing_and_Operations_Contracts.md` — stack verification gate, deployment/domain/SSL, billing/entitlements, cancellation/handoff, support boundaries, variable-cost controls, monitoring, and recovery.
 - `SLAI_Web_QA_and_Release_Gates.md` — automated/human release evidence required before production.
 - `../03_SLAI_Company/SLAI_Web_Services_Business_Model.md` — revenue model, pricing hypotheses, founder-compensation intent, managed-web economics, and ServicesOS acquisition strategy.
 
