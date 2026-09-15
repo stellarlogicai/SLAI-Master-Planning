@@ -48,6 +48,7 @@ See `SLAI_Web_V1_Provider_Baseline.md`.
 ### Execution / scope
 
 - `SLAI_Web_V1_Execution_Plan.md` — authoritative V1 scope lock, build order, milestone gates, acceptance criteria, first-customer proof, and Codex stop conditions.
+- `SLAI_Web_V1_Open_Decisions_Checklist.md` — remaining decisions to resolve in Milestone 0 or just before their dependent feature ships; prevents reopening already-settled product strategy.
 - `SLAI_Web_Platform_V1_and_Customer_Control_Model.md` — detailed product model: DIY/done-for-you/custom paths, dashboard, shared profile, page/section system, evolving design system, support mode, SLAI Intelligence, ownership/handoff, and product sequencing.
 
 ### Core product / data contracts
