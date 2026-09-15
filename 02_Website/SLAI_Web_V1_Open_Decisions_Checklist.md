@@ -1,127 +1,129 @@
 # SLAI Web V1 Open Decisions Checklist
 
 **Status:** Planning checklist / resolve during Milestone 0 or before the related feature ships  
-**Created:** 2026-09-15  
+**Updated:** 2026-09-15  
 **Product:** SLAI Web  
 **Owner:** Jamie Brown / Stellar Logic AI
 
 ## Purpose
 
-Track the remaining SLAI Web V1 decisions that still need explicit definitions after the V1 scope, data contracts, provider baseline, operations boundaries, pricing model, and QA gates were established.
+Track the remaining SLAI Web V1 decisions that still need explicit definitions after the V1 scope, provider baseline, architecture decisions, Website Profile schema, operations boundaries, pricing model, and QA gates were established.
 
-This file is not permission to reopen the whole product design. Most of the product direction is already decided.
+This file is not permission to reopen the whole product design.
 
-> **Default rule: preserve the current SLAI Web plan and ServicesOS provider ecosystem unless a real requirement forces a change.**
+> **Default rule: preserve locked decisions unless a concrete requirement forces a documented change.**
 
 ---
 
-# A. Decisions that should be resolved before implementation begins
+# A. Locked before implementation
 
-## 1. Firebase / Google Cloud project boundary
+## 1. Firebase / Google Cloud project boundary — LOCKED
 
-Current planning preference:
+Decision:
 
-- reuse Firebase / Google Cloud,
-- use Stripe for billing,
-- prefer a separate SLAI Web Firebase/Google Cloud project under the same company cloud/billing ecosystem,
-- keep ServicesOS private operational data behind the approved public-data / booking boundary.
+```text
+Stellar Logic AI cloud / billing account
+├── ServicesOS project(s)
+└── SLAI Web
+    ├── slai-web-staging
+    └── slai-web-prod
 
-Still define:
+Local development
+└── Firebase Emulator Suite / local tooling
+```
 
-- final project/account layout,
-- dev/test/staging/production environment strategy,
-- which resources are shared at company-account level versus isolated by product,
-- how service accounts/secrets are separated,
-- how costs are attributed to SLAI Web.
+Rules:
 
-## 2. Application framework / runtime
+- same Firebase / Google Cloud provider ecosystem as ServicesOS,
+- separate SLAI Web production resources,
+- separate staging and production boundaries,
+- separate secrets/rules/deployments/data,
+- SLAI Web costs attributable separately,
+- no broad direct access to ServicesOS private operational data.
 
-Define the exact implementation framework only when SLAI Web becomes active.
+See `SLAI_Web_V1_Architecture_Decisions.md` and `SLAI_Web_V1_Provider_Baseline.md`.
 
-Decision should consider:
+## 2. Application framework / runtime — LOCKED
 
-- reuse of Jamie/Codex knowledge from ServicesOS,
-- Firebase compatibility,
-- SEO/server-rendering needs,
-- static generation versus dynamic rendering,
-- preview/publish requirements,
-- custom-domain behavior,
-- deployment simplicity,
-- rollback/reproducibility,
-- low fixed cost.
+Decision:
 
-Do not change providers merely because a framework has a fashionable default host.
+```text
+Next.js + TypeScript
+```
 
-## 3. Production delivery topology
+Public sites should be static-first. Dynamic/server execution is reserved for workflows that actually require fresh or authoritative state.
 
-Choose between:
+See `SLAI_Web_V1_Architecture_Decisions.md`.
 
-- shared multi-tenant rendering,
-- generated/static per-site output,
-- controlled hybrid.
+## 3. Production delivery topology — LOCKED
 
-Must define:
+Decision:
 
-- what a published release produces,
-- how preview differs from production,
-- how a release is promoted,
-- how rollback works,
-- how one tenant failure is contained,
-- how deployments are identified/versioned.
+- dynamic/authenticated SLAI Web control platform,
+- static-first customer public websites,
+- dynamic APIs only where needed,
+- immutable versioned published releases,
+- rollback to prior known-good releases without erasing history,
+- provider/deployment-target abstraction so customer identity is not tied to a single hosting resource.
 
-## 4. Canonical Website Profile schema v1
+See `SLAI_Web_V1_Architecture_Decisions.md`.
 
-The conceptual contract exists. Before implementation, lock the actual typed schema for:
+## 4. Canonical Website Profile schema v1 — LOCKED
 
-- identity,
-- contact,
-- location/service area,
-- hours,
-- services/pricing,
-- team/providers,
-- brand,
-- media,
-- social links,
-- policies,
-- pages,
-- sections,
-- CTAs,
-- SEO metadata,
-- forms,
-- integrations,
-- layout/theme/version references,
-- provenance,
-- public/private classification.
+The V1 typed semantic contract is now defined in:
 
-Also define required versus optional fields and schema-version migration behavior.
+`SLAI_Web_V1_Website_Profile_Schema.md`
 
-## 5. Minimal role / permission set
+Locked concepts include:
 
-Current likely V1 shape:
+- schema version `1.0`,
+- stable IDs,
+- money stored in minor units,
+- standalone versus ServicesOS-connected modes,
+- business facts separated from website-owned content/presentation,
+- service/team presentation overlays rather than fact overrides,
+- typed pages/sections/navigation/CTAs/forms/SEO/integrations,
+- source-authority map,
+- publish-readiness versus schema-validity distinction,
+- separate platform records for billing, deployment, audit, domains, support sessions, and form submissions,
+- explicit ServicesOS disconnect transition.
+
+Standalone SLAI Web owns its public business facts. In connected mode, ServicesOS owns overlapping business/operational truth and SLAI Web owns website presentation/publication.
+
+---
+
+# B. Remaining decisions required before implementation begins
+
+## 5. Minimal role / permission set — NEXT
+
+Current V1 roles:
 
 - Owner,
 - Editor,
 - Viewer,
 - controlled SLAI Support Mode.
 
-Still define exact permission matrix for:
+Still define the exact permission matrix for:
 
-- edit business facts,
-- edit presentation,
+- edit standalone business facts,
+- view ServicesOS-authoritative facts,
+- edit website presentation/content,
 - upload/delete assets,
 - preview,
+- request publication,
 - publish,
 - rollback,
 - manage domains,
 - manage billing,
 - invite/remove users,
-- access support-mode functions.
+- connect/disconnect ServicesOS,
+- access/approve support-mode functions.
 
 ## 6. Billing / entitlement state mapping
 
 Stripe remains default authority.
 
-Define:
+Still define:
 
 - Stripe product/price structure,
 - recurring subscription mapping,
@@ -136,7 +138,7 @@ Define:
 
 ---
 
-# B. Decisions that can wait until the related feature is being built
+# C. Decisions that can wait until the related feature is being built
 
 ## 7. Custom domain / DNS workflow
 
@@ -154,8 +156,6 @@ Define:
 V1 does not need automated support for every registrar.
 
 ## 8. Media rules and numeric limits
-
-Provider family is expected to remain Firebase/Google Cloud unless proven otherwise.
 
 Set actual V1 numbers for:
 
@@ -182,27 +182,25 @@ Define:
 - high-traffic handling,
 - when a site moves into exception/custom infrastructure pricing.
 
-Avoid arbitrary customer-facing limits until real traffic data exists, but the system must still have cost-protection controls.
+Internal safeguards should exist before public numeric limits are marketed.
 
 ## 10. Forms / notification delivery
 
 Define:
 
-- where standalone Web form submissions are stored,
-- when connected submissions become ServicesOS leads/requests,
+- standalone form-submission storage,
+- ServicesOS lead/request handoff when connected,
 - customer notification channel,
 - spam/bot protection,
 - rate limits,
 - duplicate suppression,
 - retention/deletion,
 - failed-delivery behavior,
-- whether email requires a new provider or can reuse an existing SLAI/ServicesOS mechanism.
-
-Provider reuse is preferred.
+- provider reuse for email/notification delivery where practical.
 
 ## 11. SEO / analytics baseline
 
-Define the minimum V1 feature set for:
+Define minimum V1 behavior for:
 
 - page titles/descriptions,
 - canonical URLs,
@@ -211,7 +209,7 @@ Define the minimum V1 feature set for:
 - structured data,
 - social/share metadata,
 - Search Console setup assistance,
-- analytics provider/integration,
+- analytics integration,
 - privacy/consent requirements where applicable.
 
 Do not build an enterprise SEO suite.
@@ -229,7 +227,7 @@ Define the smallest reliable set for:
 - unusual usage/cost,
 - security/tenant-isolation alerts.
 
-Reuse Firebase/Google Cloud tooling where practical before adding another paid monitoring provider.
+Reuse Firebase/Google Cloud tooling where practical before adding another paid provider.
 
 ## 13. Backup / retention / deletion periods
 
@@ -244,33 +242,29 @@ Define exact policy for:
 - deleted sites,
 - export/handoff window.
 
-Technical retention must match future customer terms/privacy policy.
-
 ## 14. AI allowance / model policy
 
 Normal Web operation remains deterministic.
 
-Define only after measured use:
+Define after measured use:
 
 - which V1 AI actions are included,
-- which model/provider is used by default,
+- default model/provider,
 - monthly included allowance/credit model,
 - tenant usage metering,
 - behavior when allowance is exhausted,
-- whether extra AI use can be purchased,
-- provider failover only if actually needed.
+- whether additional AI use can be purchased.
 
 AI must never be required for a live site to function.
 
 ## 15. Standard support boundaries
 
-Planning boundaries already exist. Before public sale, define customer-facing terms for:
+Before public sale, define customer-facing terms for:
 
 - support channel,
-- expected response target,
-- what counts as platform support,
-- what becomes custom work,
-- revision expectations for done-for-you/custom builds,
+- response target,
+- platform support versus custom work,
+- revision expectations,
 - emergency/production-defect handling,
 - domain/DNS assistance boundaries.
 
@@ -292,7 +286,7 @@ Do not immediately delete customer-owned content for a transient billing failure
 
 ---
 
-# C. Decisions best validated with the first real customer
+# D. Decisions best validated with the first real customer
 
 ## 17. One versus two launch layouts
 
@@ -301,15 +295,11 @@ Default:
 - build one excellent layout first,
 - add a second only when the first real customer/vertical proves it materially useful.
 
-Validate whether one layout system with section variants provides enough visual differentiation.
-
 ## 18. Done-for-you revision count
 
-Pricing scope exists, but exact revision terms should be based on real delivery behavior.
+Track real:
 
-Track:
-
-- number of requested changes,
+- requested changes,
 - QA fixes versus preference changes,
 - founder minutes,
 - whether a formal included-round limit is necessary.
@@ -325,32 +315,20 @@ Use first-customer telemetry before locking marketing claims for:
 - build/publish frequency,
 - support usage.
 
-Internal safeguards should exist before public numeric allowances are advertised.
-
 ## 20. SLAI Web pricing validation
 
-Current planning authority remains:
+Current working authority remains:
 
 - DIY: $0 build / $100 month,
 - Done-for-you: approximately $750-$1,000 build / $100 month,
 - Custom: approximately $1,500-$2,000+ build / $100 month,
 - true exceptions quoted separately.
 
-Validate against:
-
-- conversion,
-- human build time,
-- direct infrastructure cost,
-- support minutes,
-- customer willingness to self-serve,
-- retention,
-- ServicesOS conversion.
-
-Do not lower price merely because automation makes SLAI faster.
+Validate against conversion, build time, direct cost, support burden, self-service, retention, and ServicesOS conversion.
 
 ---
 
-# D. Decisions explicitly not required before V1 starts
+# E. Decisions explicitly not required before V1 starts
 
 Do not block SLAI Web V1 waiting to define:
 
@@ -372,17 +350,21 @@ Those are earned by real demand.
 
 # Milestone 0 Exit Rule
 
-SLAI Web implementation may move from architecture setup into core product work when Jamie can answer, at minimum:
+Four of the six primary architecture questions are now locked.
 
-1. Which Firebase/Google Cloud project(s) are being used?
-2. What framework/runtime delivers SLAI Web?
-3. What does a publish produce and how is it rolled back?
-4. What is the typed Website Profile v1 schema?
-5. What are the V1 roles/permissions?
-6. How does Stripe state map to Web entitlement?
-7. How are dev/test/preview/production separated?
-8. How are ServicesOS public-data/booking boundaries enforced?
-9. How are variable costs measured and guarded?
-10. What must be proven by the first real customer before scaling?
+Remaining mandatory questions before implementation begins:
 
-Everything else may be resolved just-in-time before its dependent feature ships, provided the decision does not force a broad architectural rewrite.
+1. What are the exact V1 roles/permissions?
+2. How does Stripe state map to SLAI Web entitlement?
+
+At active-build start, also verify rather than redesign:
+
+- Firebase project/environment setup,
+- Next.js + TypeScript fit,
+- static-first hybrid publishing/deployment,
+- Website Profile schema `1.0`,
+- ServicesOS public-data/booking boundary,
+- variable-cost safeguards,
+- first-customer validation plan.
+
+Everything else may be resolved just-in-time before its dependent feature ships, provided it does not force a broad architectural rewrite.
