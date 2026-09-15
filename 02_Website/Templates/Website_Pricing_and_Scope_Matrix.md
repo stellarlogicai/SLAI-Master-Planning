@@ -1,7 +1,15 @@
 # Website Pricing and Scope Matrix
 
-**Status:** Working hypothesis template  
-**Last Updated:** 2026-09-09
+**Status:** Working hypothesis template / current pricing authority  
+**Last Updated:** 2026-09-15
+
+## Current Planning Authority
+
+For SLAI Web build/platform pricing, this file reflects the current working hypotheses.
+
+Older references to a default ~$2,000 standard website build in historical planning should be treated as superseded by the current DIY / done-for-you / custom model below unless Jamie explicitly changes pricing again.
+
+These are still planning hypotheses until real customers validate conversion, support burden, delivery time, and margins.
 
 ## Purpose
 
@@ -13,8 +21,6 @@ Keep SLAI Web pricing tied to actual scope, support burden, and variable cost ra
 | Done-for-you | ~$750-$1,000 | $100/mo | SLAI configures standard approved layout/sections and performs QA |
 | Custom | ~$1,500-$2,000+ | $100/mo | Bespoke presentation/components while staying on SLAI Web platform |
 | Complex/exception | Quote | $100/mo + true variable costs where needed | Ecommerce, unusual integrations, high traffic, special infrastructure |
-
-These are planning hypotheses until validated.
 
 ## Standard Platform Scope
 
