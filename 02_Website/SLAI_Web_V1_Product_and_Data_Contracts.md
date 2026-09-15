@@ -9,7 +9,9 @@
 
 ## 1. Core Product Rule
 
-> **Business facts are durable. Presentation is replaceable. Public state changes only through explicit publish actions.**
+> **SLAI Web must work as a complete standalone website platform. When a customer also uses ServicesOS, ServicesOS becomes the authority for overlapping business and operational truth, while SLAI Web remains the authority for website presentation and publication.**
+
+Business facts are durable. Presentation is replaceable. Public state changes only through explicit publish actions.
 
 SLAI Web must not confuse operational truth, website content, presentation configuration, or deployed output.
 
@@ -25,6 +27,7 @@ Conceptual top-level shape:
 
 ```text
 WebsiteProfile
+├── siteMode
 ├── identity
 ├── contact
 ├── locationAndServiceArea
@@ -51,6 +54,15 @@ WebsiteProfile
 ```
 
 The exact implementation schema should be finalized after the V1 stack/data-store decision, but the contract below should remain stable.
+
+`siteMode` should distinguish at minimum:
+
+```text
+standalone
+servicesos_connected
+```
+
+This mode determines where overlapping business facts are authoritative.
 
 ---
 
@@ -109,6 +121,8 @@ Each public service should have a stable ID and support:
 
 A website price must not silently drift from its approved source.
 
+When ServicesOS is connected, operational service facts such as canonical service name, configured price, duration, availability rules, and booking identifiers should come from the approved ServicesOS public projection. SLAI Web may still own website-specific presentation such as featured state, display order, section placement, image choice, and marketing copy that does not contradict the ServicesOS facts.
+
 ### Team / staff public profiles
 
 Support public-only fields such as:
@@ -123,6 +137,8 @@ Support public-only fields such as:
 
 Do not expose employee operational/private fields.
 
+When ServicesOS is connected, the underlying person/provider identity and operational relationship remain ServicesOS-owned. SLAI Web may control website-only presentation fields for the approved public projection.
+
 ### Brand
 
 - logo/brand asset IDs,
@@ -132,6 +148,8 @@ Do not expose employee operational/private fields.
 - optional brand notes.
 
 Customer-entered colors must pass deterministic validation/contrast rules before being allowed in supported placements.
+
+Connected customers may receive approved base brand facts/assets from ServicesOS where supported, while SLAI Web continues to own the website-specific application of those assets, layout, typography, section styling, and presentation-safe overrides.
 
 ### Media
 
@@ -159,6 +177,8 @@ Public policy documents/sections may include:
 - business-specific customer policies.
 
 SLAI Web should provide structure/display capability, not fabricate legal text as authoritative legal advice.
+
+Where a customer uses ServicesOS and a policy also controls an operational ServicesOS workflow, the operational policy value must come from ServicesOS. SLAI Web may present that approved policy but must not create a contradictory operational rule.
 
 ### Social links
 
@@ -214,9 +234,9 @@ CTA destinations must be validated and tenant-owned/approved.
 
 ### Booking / contact settings
 
-The website stores presentation/integration configuration only.
+For standalone SLAI Web customers, SLAI Web may support contact/request forms and approved external booking links without requiring ServicesOS.
 
-When ServicesOS booking is used, ServicesOS remains authority for:
+When ServicesOS booking is connected, ServicesOS remains authority for:
 
 - availability,
 - scheduling rules,
@@ -224,6 +244,8 @@ When ServicesOS booking is used, ServicesOS remains authority for:
 - reservation creation,
 - duplicate prevention,
 - booking truth.
+
+SLAI Web stores only the website-side integration/presentation configuration for that connected booking path.
 
 ### Pages
 
@@ -281,41 +303,173 @@ Every field that may come from multiple sources should be able to answer:
 
 ---
 
-# 4. Source-of-Truth Matrix
+# 4. Operating Modes and Authority
 
-SLAI Web and ServicesOS must not become competing databases.
+SLAI Web must support two first-class operating modes.
 
-Default V1 ownership model:
+## Standalone mode
 
-| Domain | Primary authority | Notes |
-|---|---|---|
-| Website pages/sections/navigation | SLAI Web | Website presentation/content structure |
-| Layout/theme/branding presentation | SLAI Web | ServicesOS may expose compatible controls later |
-| Website-specific copy | SLAI Web | May be AI-assisted, human approved |
-| Public business identity/contact | Canonical Website Profile with provenance | May be populated from ServicesOS public release or standalone onboarding |
-| Services and public prices | Source-dependent; ServicesOS authoritative when connected and configured as source | Conflicts must be surfaced |
-| Staff public profiles | Source-dependent; operational employee record remains ServicesOS/private when connected | Only public projection enters Web |
-| Business hours | Source-dependent public fact | Do not equate staffing schedule with public business hours |
-| Website assets/gallery | SLAI Web unless explicitly imported/projected | ServicesOS may contribute approved assets |
-| Booking availability | ServicesOS when native connector used | Web never becomes availability authority |
-| Booking record/status | ServicesOS | Web may show submission result only |
-| Payment truth | Product owning the payment workflow | Web must not infer paid state from browser-controlled signals |
-| Website subscription | SLAI Web billing authority | Separate from ServicesOS subscription |
-| Domain connection | SLAI Web platform record + DNS provider/customer ownership | Customer retains domain ownership |
+A customer may buy and operate SLAI Web without ServicesOS.
 
-### Conflict rule
+In standalone mode:
 
-If two sources disagree on a public fact:
+- SLAI Web owns the canonical Website Profile,
+- SLAI Web is authoritative for the public business facts stored for the website,
+- the customer edits those facts through SLAI Web,
+- contact/request forms remain SLAI Web workflows unless connected to another explicitly supported integration,
+- external booking links may be used,
+- ServicesOS is not required for the site to function.
 
-1. do not silently overwrite,
-2. identify the conflicting field and sources,
-3. require an authorized human to choose/resolve,
-4. record the decision/provenance,
-5. publish only after resolution.
+Conceptually:
+
+```text
+Customer
+   ↓
+SLAI Web Website Profile
+   ↓
+Draft / Preview / Publish
+   ↓
+Public Website
+```
+
+## ServicesOS-connected mode
+
+If the same customer also uses ServicesOS, ServicesOS becomes the authority for overlapping business and operational truth.
+
+Examples of ServicesOS-owned truth when connected include, where the field exists in ServicesOS:
+
+- business identity and operational contact facts,
+- locations/service areas,
+- business hours used operationally,
+- services,
+- operational/public prices,
+- service durations,
+- staff/provider identity,
+- booking availability/rules,
+- appointment/job records,
+- operational customer policies,
+- payment/booking truth.
+
+SLAI Web remains authoritative for website-only concerns such as:
+
+- pages,
+- section order,
+- layout/theme,
+- website-specific copy,
+- visual presentation,
+- featured service/team selections,
+- gallery composition,
+- image crops/focal points,
+- navigation,
+- SEO presentation fields,
+- website-only FAQs/testimonials/announcements where not supplied by ServicesOS,
+- preview/publish/release history,
+- domain/deployment state.
+
+Conceptually:
+
+```text
+ServicesOS operational truth
+        ↓
+approved public-data projection
+        ↓
+SLAI Web presentation layer
+        ↓
+Draft / Preview / Publish
+        ↓
+Public Website
+```
+
+### Connected-mode edit rule
+
+If a field is ServicesOS-authoritative, SLAI Web should not provide a second editable canonical value for that same fact.
+
+Instead, SLAI Web should either:
+
+- display the projected value as read-only with a clear source indicator, or
+- route the customer to the appropriate ServicesOS setting/workflow to change it.
+
+After ServicesOS publishes/updates the approved public projection, SLAI Web can incorporate the new fact into the next website draft/release.
+
+### Presentation overrides are not fact overrides
+
+SLAI Web may present ServicesOS facts differently without changing their meaning.
+
+Examples:
+
+- reorder services on the website,
+- feature one service on the homepage,
+- choose a marketing image,
+- use a shorter website heading,
+- add website-specific descriptive copy,
+- hide a service from a particular page while it remains operationally available,
+- choose staff display order,
+- change layout/theme/section style.
+
+SLAI Web must not use presentation controls to contradict authoritative ServicesOS facts such as price, duration, availability, address, or booking rules.
+
+### Disconnect transition
+
+If a customer disconnects ServicesOS but keeps SLAI Web:
+
+1. preserve the last approved public values and their provenance,
+2. create an explicit transition from `servicesos_connected` to `standalone`,
+3. copy/normalize the last approved shared facts into SLAI Web-owned standalone fields where appropriate,
+4. require an authorized confirmation before those formerly connected facts become independently editable,
+5. retain the historical source references in version/audit history.
+
+Disconnecting ServicesOS must not silently erase the website or silently create conflicting editable values.
 
 ---
 
-# 5. Website State Model
+# 5. Source-of-Truth Matrix
+
+SLAI Web and ServicesOS must not become competing databases.
+
+| Domain | Standalone SLAI Web | ServicesOS-connected customer |
+|---|---|---|
+| Public business identity/contact | SLAI Web | ServicesOS owns overlapping facts; Web presents approved projection |
+| Locations/service areas | SLAI Web | ServicesOS when represented there |
+| Business hours | SLAI Web | ServicesOS for connected operational/public hours |
+| Services | SLAI Web | ServicesOS owns service truth; Web owns presentation |
+| Public prices/durations | SLAI Web | ServicesOS |
+| Staff/provider identity | SLAI Web public profile | ServicesOS identity/projection; Web owns website presentation |
+| Website pages/sections/navigation | SLAI Web | SLAI Web |
+| Layout/theme/site styling | SLAI Web | SLAI Web |
+| Website-specific copy | SLAI Web | SLAI Web, provided it does not contradict ServicesOS facts |
+| Website assets/gallery | SLAI Web | SLAI Web unless an approved asset is projected/imported from ServicesOS |
+| FAQs/testimonials/announcements | SLAI Web | SLAI Web unless explicitly supplied from ServicesOS |
+| Operational customer policies | SLAI Web website fact only | ServicesOS where policy affects ServicesOS workflows |
+| Booking availability/rules | External integration or no native booking authority | ServicesOS |
+| Booking record/status | External provider if used | ServicesOS |
+| ServicesOS payment/job/appointment truth | Not applicable | ServicesOS |
+| Website subscription | SLAI Web billing authority | SLAI Web billing authority; separate from ServicesOS subscription |
+| Domain connection/deployment | SLAI Web | SLAI Web |
+| Publish/release history | SLAI Web | SLAI Web |
+
+### Conflict rule
+
+#### Standalone mode
+
+SLAI Web is the authority for its stored public business facts, subject to normal customer/SLAI review and provenance rules.
+
+#### ServicesOS-connected mode
+
+For overlapping ServicesOS-authoritative facts, SLAI Web does **not** offer a competing canonical override.
+
+If an authoritative ServicesOS value appears wrong:
+
+1. surface the field and its ServicesOS source,
+2. direct the authorized user to correct the value in ServicesOS,
+3. wait for/refresh the approved ServicesOS public projection,
+4. update the SLAI Web draft from that authoritative projection,
+5. require normal website review/publish before the public site changes.
+
+A human may approve presentation choices, but should not choose SLAI Web as a competing fact source while the ServicesOS connection remains authoritative.
+
+---
+
+# 6. Website State Model
 
 A tenant's website lifecycle should distinguish configuration state from deployment state.
 
@@ -341,7 +495,7 @@ Important rule:
 
 ---
 
-# 6. Publication State Machine
+# 7. Publication State Machine
 
 Preferred flow:
 
@@ -413,7 +567,7 @@ Preferred behavior:
 
 ---
 
-# 7. Versioning and Migration
+# 8. Versioning and Migration
 
 Every persisted contract should carry a schema/version marker where breaking changes may occur.
 
@@ -427,7 +581,7 @@ Breaking changes require:
 
 ---
 
-# 8. Customer Roles and Authority
+# 9. Customer Roles and Authority
 
 V1 should begin with the smallest useful role system.
 
@@ -445,6 +599,8 @@ May:
 - request/cancel support access,
 - view version history.
 
+For ServicesOS-connected authoritative fields, Owner edits the source in ServicesOS rather than creating a competing Web value.
+
 ### Editor
 
 May:
@@ -455,6 +611,8 @@ May:
 - possibly request publication.
 
 By default, Editor should not manage billing, user authority, sensitive integration secrets, or high-risk support controls.
+
+Editors also may not override ServicesOS-authoritative facts in connected mode.
 
 ### Viewer
 
@@ -470,7 +628,7 @@ Publishing, billing, domain, user-management, support-elevation, and security-se
 
 ---
 
-# 9. Entitlement Model
+# 10. Entitlement Model
 
 An authenticated user may have a valid tenant membership without having an active SLAI Web product entitlement.
 
@@ -481,13 +639,15 @@ V1 should distinguish:
 - role/permission,
 - product entitlement,
 - billing state,
-- site state.
+- site state,
+- site mode (`standalone` or `servicesos_connected`),
+- integration/link authority.
 
-This prevents "user exists" from being treated as "user may publish a paid website."
+This prevents "user exists" from being treated as "user may publish a paid website" and prevents a connected Web user from silently overriding ServicesOS-owned facts.
 
 ---
 
-# 10. Media Contract
+# 11. Media Contract
 
 ## Allowed behavior
 
@@ -524,7 +684,7 @@ Customer/SLAI must record confirmation that supplied media may be used. Do not t
 
 ---
 
-# 11. Form / Lead Contract
+# 12. Form / Lead Contract
 
 Standard contact/request forms should support:
 
@@ -556,29 +716,38 @@ A successful browser submission should only claim success when the authoritative
 
 If notification delivery fails after authoritative intake, retain enough status for SLAI/customer recovery rather than silently losing the lead.
 
+### Standalone intake
+
+For a standalone SLAI Web customer, SLAI Web is the authoritative intake system for the website form unless another explicitly supported external integration is configured.
+
 ### ServicesOS handoff
 
-When connected, the Web form may create a supported ServicesOS lead/request through a defined server-side connector.
+When ServicesOS is connected, supported contact/request forms should create the corresponding ServicesOS lead/request through a defined server-side connector when that workflow is enabled.
+
+ServicesOS then becomes the operational authority for the resulting lead/request.
 
 Do not write directly into arbitrary ServicesOS collections from public browser code.
 
 ---
 
-# 12. Public / Private Data Boundary
+# 13. Public / Private Data Boundary
 
 Every field exposed publicly should be allowlisted from the public Website Profile/release.
 
 Private tenant/account/operational fields must never become public merely because they are stored near public records.
 
+For ServicesOS-connected customers, the Web layer must consume only the approved public projection or explicitly bounded server-side connector response, not broad ServicesOS operational records.
+
 Public release generation should prefer explicit projection over broad object serialization.
 
 ---
 
-# 13. Deterministic vs AI Boundary
+# 14. Deterministic vs AI Boundary
 
 ## Deterministic
 
 - schema validation,
+- source-authority enforcement,
 - page/layout instantiation,
 - color/contrast checks,
 - rendering,
@@ -600,13 +769,19 @@ Public release generation should prefer explicit projection over broad object se
 
 AI output must remain distinguishable from verified business facts until approved.
 
+AI must never overwrite a ServicesOS-authoritative fact in connected mode.
+
 ---
 
-# 14. Contract Acceptance Criteria
+# 15. Contract Acceptance Criteria
 
 This product/data contract is implementation-ready when the chosen stack can demonstrate:
 
 - a typed/versioned Website Profile,
+- first-class standalone operation without ServicesOS,
+- explicit `standalone` versus `servicesos_connected` authority behavior,
+- ServicesOS ownership of overlapping business/operational truth when connected,
+- SLAI Web ownership of presentation/publication in both modes,
 - explicit provenance for shared facts,
 - strict tenant isolation,
 - separate membership/role/entitlement concepts,
@@ -615,5 +790,6 @@ This product/data contract is implementation-ready when the chosen stack can dem
 - safe media references,
 - server-authoritative form intake,
 - explicit public projection,
-- conflict handling between SLAI Web and ServicesOS sources,
+- clean disconnect transition without data loss or silent authority drift,
+- no competing Web override for ServicesOS-authoritative facts,
 - no required AI dependency for normal website operation.
