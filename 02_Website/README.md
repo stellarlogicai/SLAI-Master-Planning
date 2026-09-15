@@ -3,26 +3,63 @@
 **Status:** Support / future go-to-market work.  
 **Active build priority:** ServicesOS remains priority one.
 
-This folder now covers two related but distinct website lanes:
+This folder covers two related but distinct website lanes:
 
 1. the public Stellar Logic AI company/product website,
-2. the future **SLAI Web** productized website and managed-web service for small-business customers.
+2. the future **SLAI Web** productized website platform and managed-web service for small-business customers.
 
-Website work may support ServicesOS launch and customer acquisition, but it must not distract from ServicesOS beta/customer-ready V1.
+Website work may support ServicesOS launch and customer acquisition, but active SLAI Web implementation does not begin until ServicesOS V1 is stable enough to release engineering focus.
 
-## Key Planning
+## SLAI Web — Current Execution Order
 
-- `SLAI_Web_Platform_V1_and_Customer_Control_Model.md` — current detailed platform model: DIY/done-for-you/custom paths, dashboard, shared profile, page/section system, evolving design system, support mode, SLAI Intelligence, ownership/handoff, and post-ServicesOS-V1 build gate.
+```text
+Finish / stabilize ServicesOS V1
+→ customer-facing launch
+→ stabilize early usage
+→ promote SLAI Web V1 to active build
+→ build and validate SLAI Web V1
+→ prove at least one real customer / revenue path
+→ measure build time, direct cost, support burden, and self-service behavior
+→ then return to larger ServicesOS V2 expansion
+```
 
-- `SLAI_Web_Engine.md` — reusable customer-website platform, layout library, ServicesOS website integration, booking architecture, AI-assisted build workflow, human QA, and scaling model.
-- `SLAI_Web_Architecture_Spec.md` — operational core/layout/customer-layer boundaries, versioning, protected paths, public-data and booking boundaries.
-- `SLAI_Web_Layout_Contract.md` — layout responsibilities, compatibility, required manifest fields, and customer-override rules.
+The revenue purpose is intentional: SLAI Web is expected to create earlier implementation revenue, recurring managed-web/platform revenue, and a customer-acquisition path into ServicesOS.
+
+## SLAI Web — Authoritative Planning Set
+
+### Execution / scope
+
+- `SLAI_Web_V1_Execution_Plan.md` — authoritative V1 scope lock, build order, milestone gates, acceptance criteria, first-customer proof, and Codex stop conditions.
+- `SLAI_Web_Platform_V1_and_Customer_Control_Model.md` — detailed product model: DIY/done-for-you/custom paths, dashboard, shared profile, page/section system, evolving design system, support mode, SLAI Intelligence, ownership/handoff, and product sequencing.
+
+### Core product / data contracts
+
+- `SLAI_Web_V1_Product_and_Data_Contracts.md` — canonical Website Profile, source-of-truth matrix, draft/publish/version contracts, roles/entitlements, media/forms boundaries, and public/private data rules.
+- `SLAI_Web_Architecture_Spec.md` — shared core/layout/customer-layer boundaries, protected paths, versioning, public-data and booking boundaries.
+- `SLAI_Web_Layout_Contract.md` — layout responsibilities, compatibility, manifest fields, and customer-override rules.
+- `../01_ServicesOS/Website_Public_Data_and_Booking_Contract.md` — ServicesOS public-data projection and booking source-of-truth contract.
+
+### Deployment / billing / operations
+
+- `SLAI_Web_V1_Deployment_Billing_and_Operations_Contracts.md` — stack-decision gate, deployment/domain/SSL, billing/entitlements, cancellation/handoff, support boundaries, variable-cost controls, monitoring, and recovery.
 - `SLAI_Web_QA_and_Release_Gates.md` — automated/human release evidence required before production.
-- `Templates/` — customer-site manifest, intake/readiness, job packet, human QA, client approval/deployment, pricing/scope, customer-control, and proof-metrics templates.
-- `../01_ServicesOS/Website_Public_Data_and_Booking_Contract.md` — public-data projection and booking source-of-truth contract.
-- `American_Barbershop_Concept_and_Validation.md` — first real-world website/ServicesOS-Barber validation case.
-- `../03_SLAI_Company/SLAI_Web_Services_Business_Model.md` — pricing, revenue, founder-compensation intent, managed-web model, and ServicesOS acquisition strategy.
-- existing numbered files — SLAI company website content, page, brand, research, and coding planning.
+- `../03_SLAI_Company/SLAI_Web_Services_Business_Model.md` — revenue model, pricing hypotheses, founder-compensation intent, managed-web economics, and ServicesOS acquisition strategy.
+
+### Production system / templates
+
+- `SLAI_Web_Engine.md` — reusable web platform, layout library concept, ServicesOS integration, booking architecture, AI-assisted build workflow, human QA, and scale model.
+- `Templates/Website_Intake_and_Readiness.md` — launch-data readiness and provenance checklist.
+- `Templates/Web_Job_Packet.md` — scoped worker/Codex task contract with protected paths, tests, stop conditions, and report-back.
+- `Templates/Human_QA_Checklist.md` — human QA evidence.
+- `Templates/Client_Approval_and_Deployment_Record.md` — client/release approval and deployment evidence.
+- `Templates/Website_Pricing_and_Scope_Matrix.md` — current DIY/done-for-you/custom working pricing hypotheses.
+- `Templates/Website_Customer_Control_Matrix.md` — customer vs SLAI vs custom-work authority.
+- `Templates/Website_Proof_Metrics_Record.md` — early-customer production, cost, support, self-service, and commercial validation metrics.
+- `Templates/Customer_Site_Manifest.example.yaml` — example customer-site manifest direction.
+
+### Validation case
+
+- `American_Barbershop_Concept_and_Validation.md` — potential first real-world website/ServicesOS-Barber validation case; concept/design-partner planning only until the business agrees.
 
 ## Core Boundary
 
@@ -31,17 +68,25 @@ SLAI Web should not become a traditional founder-time-heavy agency.
 The desired model is:
 
 ```text
-Reusable web core
+Reusable Web Core
 +
-approved layout system
+versioned approved layout system
 +
-customer branding/data
+canonical Website Profile
 +
-ServicesOS integration when applicable
+customer branding/content
 +
-AI-assisted customization
+ServicesOS public-data/booking integration when applicable
++
+deterministic preview/publish/deploy
++
+bounded AI assistance
 +
 human QA
 ```
 
-Prove the model with one or two real businesses after ServicesOS V1 is stable, then productize further only if real demand justifies it.
+## Build Guardrail
+
+Do not begin by building ten layouts, unrestricted page-builder functionality, or broad custom integrations.
+
+Prove one or two excellent layouts and one real customer workflow first. Every significant variable-cost feature must be attributable and bounded, and normal website operation must remain functional without AI.
