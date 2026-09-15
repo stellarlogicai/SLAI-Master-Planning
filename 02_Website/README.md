@@ -25,35 +25,44 @@ Finish / stabilize ServicesOS V1
 
 The revenue purpose is intentional: SLAI Web is expected to create earlier implementation revenue, recurring managed-web/platform revenue, and a customer-acquisition path into ServicesOS.
 
-## SLAI Web — Provider Baseline
+## SLAI Web — Locked V1 Architecture Baseline
 
-SLAI Web should reuse the proven ServicesOS provider ecosystem by default rather than creating a separate vendor stack.
-
-Current planning assumption:
+Current approved architecture direction:
 
 ```text
-Firebase / Google Cloud
-+ Stripe
+Firebase / Google Cloud provider ecosystem
++ separate slai-web-staging and slai-web-prod product projects
++ Next.js + TypeScript
++ dynamic authenticated control platform
++ static-first customer public sites
++ dynamic APIs only for authoritative/fresh workflows
++ Stripe billing
 + bounded ServicesOS public-data / booking integration
 ```
 
-Prefer a separate SLAI Web Firebase/Google Cloud project under the same company cloud/billing ecosystem unless the active-build architecture audit finds a stronger reason to share a project.
+SLAI Web remains fully standalone-capable. When a customer also uses ServicesOS, ServicesOS owns overlapping business/operational truth and SLAI Web owns website presentation/publication.
 
-The active-build stack gate is therefore a **verification gate, not a broad provider-shopping exercise**. New providers require a documented technical, security, reliability, cost, compliance, or operational reason.
+The active-build stack gate is a **verification gate, not a broad architecture/provider-shopping exercise**. Locked decisions should reopen only for a documented blocker.
 
-See `SLAI_Web_V1_Provider_Baseline.md`.
+See:
+
+- `SLAI_Web_V1_Architecture_Decisions.md`
+- `SLAI_Web_V1_Provider_Baseline.md`
+- `SLAI_Web_V1_Website_Profile_Schema.md`
 
 ## SLAI Web — Authoritative Planning Set
 
 ### Execution / scope
 
 - `SLAI_Web_V1_Execution_Plan.md` — authoritative V1 scope lock, build order, milestone gates, acceptance criteria, first-customer proof, and Codex stop conditions.
-- `SLAI_Web_V1_Open_Decisions_Checklist.md` — remaining decisions to resolve in Milestone 0 or just before their dependent feature ships; prevents reopening already-settled product strategy.
+- `SLAI_Web_V1_Open_Decisions_Checklist.md` — remaining unresolved decisions; first four major architecture questions are now locked, leaving permissions and Stripe-entitlement mapping as the next mandatory decisions.
 - `SLAI_Web_Platform_V1_and_Customer_Control_Model.md` — detailed product model: DIY/done-for-you/custom paths, dashboard, shared profile, page/section system, evolving design system, support mode, SLAI Intelligence, ownership/handoff, and product sequencing.
 
 ### Core product / data contracts
 
-- `SLAI_Web_V1_Product_and_Data_Contracts.md` — canonical Website Profile, source-of-truth matrix, draft/publish/version contracts, roles/entitlements, media/forms boundaries, and public/private data rules.
+- `SLAI_Web_V1_Architecture_Decisions.md` — locked V1 cloud/environment, Next.js + TypeScript, static-first hybrid delivery, deployment-target abstraction, ServicesOS relationship, and provider strategy.
+- `SLAI_Web_V1_Website_Profile_Schema.md` — authoritative typed semantic Website Profile schema `1.0`, including standalone/connected authority, business facts, website-owned content, presentation, CTAs/forms, SEO, integrations, source-state, publish readiness, and separate platform-record boundaries.
+- `SLAI_Web_V1_Product_and_Data_Contracts.md` — product-state, source-of-truth, operating-mode, publication/version, role, media/form, and public/private data contracts.
 - `SLAI_Web_Architecture_Spec.md` — shared core/layout/customer-layer boundaries, protected paths, versioning, public-data and booking boundaries.
 - `SLAI_Web_Layout_Contract.md` — layout responsibilities, compatibility, manifest fields, and customer-override rules.
 - `../01_ServicesOS/Website_Public_Data_and_Booking_Contract.md` — ServicesOS public-data projection and booking source-of-truth contract.
