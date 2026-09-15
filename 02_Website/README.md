@@ -37,6 +37,7 @@ Firebase / Google Cloud provider ecosystem
 + static-first customer public sites
 + dynamic APIs only for authoritative/fresh workflows
 + Stripe billing
++ $100/month or $1,000/year recurring platform pricing
 + bounded product connectors, with ServicesOS first
 ```
 
@@ -53,13 +54,29 @@ See:
 - `SLAI_Web_V1_Website_Profile_Schema.md`
 - `SLAI_Web_V1_Product_Connector_and_Authority_Contract.md`
 - `SLAI_Web_V1_Permissions_and_Authority_Matrix.md`
+- `SLAI_Web_V1_Billing_and_Entitlement_Contract.md`
+
+## SLAI Web — Pre-Build Decision Status
+
+All six primary V1 pre-build architecture/product decisions are now locked:
+
+```text
+1. Firebase / Google Cloud project boundary
+2. Next.js + TypeScript runtime
+3. Static-first hybrid production delivery
+4. Website Profile schema 1.0
+5. Permissions and authority matrix
+6. Stripe billing and SLAI Web entitlement mapping
+```
+
+At active-build start, these decisions should be verified against current provider/API reality rather than redesigned without a concrete blocker.
 
 ## SLAI Web — Authoritative Planning Set
 
 ### Execution / scope
 
 - `SLAI_Web_V1_Execution_Plan.md` — authoritative V1 scope lock, build order, milestone gates, acceptance criteria, first-customer proof, and Codex stop conditions.
-- `SLAI_Web_V1_Open_Decisions_Checklist.md` — remaining unresolved decisions; five of six major pre-build questions are now locked, leaving Stripe entitlement mapping as the final mandatory decision.
+- `SLAI_Web_V1_Open_Decisions_Checklist.md` — records the six locked pre-build decisions plus the remaining just-in-time decisions that may be resolved before their dependent features ship.
 - `SLAI_Web_Platform_V1_and_Customer_Control_Model.md` — detailed product model: DIY/done-for-you/custom paths, dashboard, shared profile, page/section system, evolving design system, support mode, SLAI Intelligence, ownership/handoff, and product sequencing.
 
 ### Core product / data contracts
@@ -76,7 +93,8 @@ See:
 ### Deployment / billing / operations
 
 - `SLAI_Web_V1_Provider_Baseline.md` — default reuse of Firebase/Google Cloud + Stripe, project-separation preference, usage-based cost philosophy, and provider-replacement gate.
-- `SLAI_Web_V1_Deployment_Billing_and_Operations_Contracts.md` — stack verification gate, deployment/domain/SSL, billing/entitlements, cancellation/handoff, support boundaries, variable-cost controls, monitoring, and recovery.
+- `SLAI_Web_V1_Billing_and_Entitlement_Contract.md` — authoritative monthly/annual pricing, no-trial launch, one-time versus recurring payment separation, billing states, 7-day past-due grace, cancellation/reactivation, comped entitlement, and server-authoritative publish entitlement.
+- `SLAI_Web_V1_Deployment_Billing_and_Operations_Contracts.md` — deployment/domain/SSL, broader operations, cancellation/handoff, support boundaries, variable-cost controls, monitoring, and recovery.
 - `SLAI_Web_QA_and_Release_Gates.md` — automated/human release evidence required before production.
 - `../03_SLAI_Company/SLAI_Web_Services_Business_Model.md` — revenue model, pricing hypotheses, founder-compensation intent, managed-web economics, and ServicesOS acquisition strategy.
 
@@ -87,7 +105,7 @@ See:
 - `Templates/Web_Job_Packet.md` — scoped worker/Codex task contract with protected paths, tests, stop conditions, and report-back.
 - `Templates/Human_QA_Checklist.md` — human QA evidence.
 - `Templates/Client_Approval_and_Deployment_Record.md` — client/release approval and deployment evidence.
-- `Templates/Website_Pricing_and_Scope_Matrix.md` — current DIY/done-for-you/custom working pricing hypotheses.
+- `Templates/Website_Pricing_and_Scope_Matrix.md` — current DIY/done-for-you/custom build pricing plus $100/month or $1,000/year recurring pricing.
 - `Templates/Website_Customer_Control_Matrix.md` — high-level customer vs SLAI vs custom-work authority; defer to the V1 permissions matrix for role-specific access.
 - `Templates/Website_Proof_Metrics_Record.md` — early-customer production, cost, support, self-service, and commercial validation metrics.
 - `Templates/Customer_Site_Manifest.example.yaml` — example customer-site manifest direction.
