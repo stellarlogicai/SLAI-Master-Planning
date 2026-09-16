@@ -1,10 +1,27 @@
 # ServicesOS V1 Master Testing Structure
 
-Updated: 2026-09-15
+Updated: 2026-09-16
 
-Purpose: define the acceptance coverage for the actual customer-facing ServicesOS V1. This replaces older checklists that mixed V1 requirements with future payroll, training-library, advanced offline, inspection, and unrelated AI ideas.
+Purpose: define the acceptance coverage for the actual customer-facing ServicesOS V1. This replaces older checklists that mixed V1 requirements with future payroll, training-library, advanced offline, inspection, advanced routing, and unrelated AI ideas.
 
 A checked item means the capability is implemented or has an established tested foundation. An unchecked item means current integrated V1 acceptance/evidence is still required.
+
+## V1 basic-capability rule
+
+A V1 capability is the smallest safe, useful, connected form that lets a real service business operate end to end. It is not the most advanced future version of that feature family.
+
+For mobile V1:
+
+- routing = ordered work + clear next-job flow + directions handoff, not advanced optimization/fleet telemetry,
+- safety = emergency actions + tenant alert + limited active-job safety location + honest delivery state + owner review, not constant live GPS/monitoring-center/direct dispatch,
+- offline resilience = narrow critical safety behavior where required, not a full offline-first app,
+- Tap to Pay = authorized card-present collection + verified backend truth + owner audit trail, not every future mobile payment feature.
+
+## Small-slice validation rule
+
+To protect the late-October launch target, implementation and validation should be promoted in small, heavily defined slices. Each slice should have one capability delta with exact scope, exclusions, acceptance criteria, validation, stop conditions, and report-back.
+
+Do not combine onboarding, routing, field safety, Tap to Pay, and release hardening into one implementation task.
 
 ## 1. Owner / Web App V1
 
@@ -33,6 +50,7 @@ A checked item means the capability is implemented or has an established tested 
 - [ ] Logo / minimum brand setup captured
 - [ ] Stripe Connect offered with `Skip / do later`
 - [ ] `Just me` / `I have employees` team path
+- [ ] Employee created/linked through onboarding can authenticate into the canonical Employee App path
 - [ ] Onboarding progress persists
 - [ ] Interrupted onboarding resumes correctly
 - [ ] Review/setup completion step
@@ -72,6 +90,7 @@ A checked item means the capability is implemented or has an established tested 
 - [x] Assign employee foundation
 - [ ] Current-head employee assignment index/authorization smoke
 - [ ] Booking lifecycle integration test across scheduled → field work → completed
+- [ ] Cancellation/reschedule/reassignment changes reach employee-safe projection correctly
 
 ### E. Add-ons / extra work
 
@@ -139,13 +158,15 @@ A checked item means the capability is implemented or has an established tested 
 - [ ] Duplicate-submit/idempotency behavior
 - [ ] Camera/photo permission behavior
 
-### D. Extra work
+### D. Extra work / authoritative scope refresh
 
 - [x] Tenant add-ons available to employee
 - [x] Custom bounded extra-work request
 - [x] Employee note/context
 - [x] Submitted request visible for owner review foundation
 - [ ] Customer-approval/full-scope lifecycle acceptance
+- [ ] Approved change refreshes employee JobPacket/checklist/time/price safely
+- [ ] Declined/unapproved change never becomes authoritative employee work
 
 ### E. SLAI Work Assistant
 
@@ -156,7 +177,59 @@ A checked item means the capability is implemented or has an established tested 
 - [ ] Permission/tenant-boundary regression
 - [ ] Safety-critical escalation behavior acceptance
 
-### F. Mobile payments / Tap to Pay — V1 later phase
+### F. Basic routing / day progression — V1
+
+V1 routing is the practical employee field flow, not an optimization platform.
+
+- [x] Today/upcoming jobs foundation
+- [x] Employee-safe job address
+- [x] External maps/directions handoff foundation
+- [ ] Canonical ordered daily work sequence confirmed
+- [ ] Current-job / next-job progression is clear in mobile UX
+- [ ] Schedule/cancellation/reschedule/reassignment changes refresh safely
+- [ ] Owner/admin ↔ employee daily-work correspondence acceptance
+- [ ] Android/device directions acceptance
+
+Not V1 blockers unless re-scoped:
+
+- advanced route optimization
+- continuous/background GPS
+- fleet telemetry
+- automatic mileage
+- complex crew roll call / multi-crew logistics
+
+### G. Field Safety / Emergency — basic V1
+
+This is a field-safety capability, not a guaranteed emergency-response system.
+
+- [ ] Safety / Emergency entry point from active job
+- [ ] Call 911 via device dialer
+- [ ] Call owner/admin when contact is available
+- [ ] Tenant-scoped safety alert creation
+- [ ] Alert includes job/address/timestamp
+- [ ] Limited location attached when permission/connection allow
+- [ ] Honest sent / queued / failed / location-unavailable states
+- [ ] Narrow local queue for unsent safety alerts
+- [ ] Queued alert retry/sync when connection returns
+- [ ] Owner/admin sees active alert
+- [ ] Owner/admin can resolve/close alert
+- [ ] Basic missed-check-in / overdue safety state if included in promoted V1 slice
+- [ ] Limited on-demand active-job safety location ping when permitted
+- [ ] Tenant-isolation / permission tests
+- [ ] Offline/bad-service behavior acceptance
+- [ ] Physical-device call/location acceptance
+
+Not V1 blockers unless re-scoped:
+
+- monitoring center
+- direct police/public-safety dispatch integration
+- guaranteed emergency-response claims
+- hidden recording
+- constant live GPS
+- all-day employee surveillance
+- advanced escalation trees
+
+### H. Mobile payments / Tap to Pay — V1 later phase
 
 Tap to Pay remains part of V1 but is intentionally later in the mobile/payment sequence.
 
@@ -164,10 +237,23 @@ Tap to Pay remains part of V1 but is intentionally later in the mobile/payment s
 - [ ] Canonical mobile payment API
 - [ ] Stripe mobile SDK integration
 - [ ] Tap to Pay implementation
-- [ ] Confirmed payment state
+- [ ] Confirmed backend payment state
 - [ ] Owner visibility/audit trail
 - [ ] Failure/retry handling
 - [ ] Supported-device acceptance
+
+### I. Mobile release hardening
+
+- [ ] Current Android emulator pass
+- [ ] Physical-device pass
+- [ ] Camera/photo permission pass
+- [ ] Location-permission behavior for promoted V1 safety/routing slices
+- [ ] Network failure/retry pass
+- [ ] Duplicate-submit/idempotency pass
+- [ ] Auth expiration/session recovery pass
+- [ ] Reassignment-away denial pass
+- [ ] Cross-tenant denial pass
+- [ ] Full owner → assign → employee execute → owner review acceptance
 
 ## 3. Backend / Firebase / Security
 
@@ -181,6 +267,7 @@ Tap to Pay remains part of V1 but is intentionally later in the mobile/payment s
 - [ ] Current-head employee cannot access another tenant
 - [ ] Current-head customer cannot access internal employee/admin data
 - [ ] Current-head anonymous denial smoke
+- [ ] Field-safety alert tenant isolation after implementation
 
 ### B. Firestore / Storage
 
@@ -189,6 +276,7 @@ Tap to Pay remains part of V1 but is intentionally later in the mobile/payment s
 - [ ] Run full Firestore rules suite at release candidate
 - [ ] Run full Storage rules suite at release candidate
 - [ ] Verify field-photo metadata/object lifecycle parity
+- [ ] Verify any V1 safety-alert storage/state path is tenant scoped
 - [ ] Capture final deployed rules hashes before release
 
 ### C. Cloud Functions / server gateways
@@ -204,6 +292,7 @@ Tap to Pay remains part of V1 but is intentionally later in the mobile/payment s
 - [ ] Full current-head Functions suite
 - [ ] Current-head CORS/auth failure cases
 - [ ] Current-head stale/duplicate webhook handling
+- [ ] Field-safety server path validation after implementation
 
 ## 4. Stripe / Payments / Infrastructure
 
@@ -267,8 +356,12 @@ Testing style: give an end goal and observe whether the path is discoverable wit
 - [ ] Create estimate / approved scope
 - [ ] Schedule/assign job
 - [ ] Employee completes job from mobile app
+- [ ] Employee moves through current-job / next-job flow and opens directions
 - [ ] Employee requests extra work
 - [ ] Owner/customer handle extra-work approval
+- [ ] Approved extra work refreshes employee authoritative scope
+- [ ] Employee uses basic Field Safety / Emergency flow
+- [ ] Owner sees/resolves test safety alert
 - [ ] Owner reviews completed job
 - [ ] Customer payment flow
 - [ ] Tap to Pay flow once mobile payment phase is implemented
@@ -280,12 +373,17 @@ Testing style: give an end goal and observe whether the path is discoverable wit
 ## 6. Explicitly Deferred / Not V1 Blockers Unless Re-scoped
 
 - payroll/time-clock/break management
-- full offline queue
+- general/full offline queue beyond narrow critical safety resilience
 - Training Library expansion
 - inspection/scorecard system expansion
-- route optimization beyond approved V1 needs
+- advanced route optimization
+- continuous/all-day GPS tracking
+- fleet telemetry
+- automatic mileage
+- advanced crew-management/roll-call systems
 - office messaging
 - push notifications
+- monitoring-center/direct emergency-dispatch platform
 - broad multi-platform data import
 - AI pricing as authoritative pricing
 - autonomous AI actions
@@ -296,10 +394,13 @@ Testing style: give an end goal and observe whether the path is discoverable wit
 1. close remaining job-scope / extra-work edge
 2. finish owner onboarding
 3. finish monthly + annual SaaS billing and required lifecycle
-4. finish Employee App mobile/payment phase including Tap to Pay
-5. run full integrated security/test/build audit
-6. controlled V1 deployment
-7. wife V1 acceptance
-8. fix actual V1 findings
-9. UI fine-tuning
-10. final customer-release smoke
+4. finish Employee App web-linked correspondence pieces
+5. finish basic routing/day progression
+6. implement and validate basic V1 field safety
+7. implement and validate Tap to Pay/mobile payments
+8. run full integrated security/test/build audit
+9. controlled V1 deployment
+10. wife V1 acceptance
+11. fix actual V1 findings
+12. UI fine-tuning
+13. final customer-release smoke
