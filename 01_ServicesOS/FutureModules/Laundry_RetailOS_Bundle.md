@@ -1,38 +1,31 @@
 # ServicesOS Laundry Module + POS Add-On
 
 **Status:** Future planning only  
-**Active build priority:** Do not build before ServicesOS cleaning beta, wife beta testing, UI hardening, and payments stability.  
+**Active build priority:** Do not build before ServicesOS V1 is stable, wife beta is complete, UI/payment hardening is complete, and Jamie explicitly promotes the vertical.  
 **Primary product anchor:** ServicesOS  
 **Retail path:** POS add-on first; RetailOS linkage later if retail complexity grows  
+**Payment direction:** Provider-flexible; preserve existing Stripe or Square investment where practical  
 **Strategic layer:** SLAI cross-product linking
 
 ---
 
 ## Purpose
 
-This document captures a future laundromat / laundry services concept for SLAI.
+This document captures the future laundromat / laundry-services vertical for ServicesOS.
 
-The key architecture decision is:
-
-```text
-ServicesOS already owns the service workflow, customers, employees, inventory-style tracking, payments, scheduling, analytics, and tenant structure.
-
-The missing retail layer is POS.
-```
-
-So the correct future framing is not to immediately split laundromats into two separate products. The better model is:
+The core product decision is that laundromats should not automatically become a separate SLAI product. They are a strong ServicesOS vertical because they combine customers, employees, recurring service work, checklists, inventory, payments, physical assets, maintenance, commercial accounts, and optional retail/POS activity.
 
 ```text
 ServicesOS Laundry Module
 +
-POS Add-On
+POS / payment-provider integration
++
+optional RetailOS linkage later
 =
 Laundry / Laundromat Operations Bundle
-
-RetailOS linkage comes later only if retail complexity grows.
 ```
 
-This preserves ServicesOS as the operational anchor while keeping RetailOS available for deeper retail/POS complexity later.
+ServicesOS remains the operating layer. Existing payment hardware or machine-payment systems should be preserved when practical rather than forcing a business to replace working systems simply to adopt ServicesOS.
 
 ---
 
@@ -40,89 +33,214 @@ This preserves ServicesOS as the operational anchor while keeping RetailOS avail
 
 ```text
 Primary bucket:
-ServicesOS future module
+ServicesOS future vertical/module
 
-Add-on bucket:
-POS add-on
+Optional add-on bucket:
+POS / counter-sales capability
+
+Payment-provider direction:
+Stripe and/or Square through a provider abstraction
 
 Future linkage:
 RetailOS if retail complexity grows
 
-Bundle opportunity:
-Laundry / Laundromat Operations Bundle
-
 Build timing:
-After ServicesOS beta, wife beta testing, UI hardening, and payments stability
+After ServicesOS V1 stability and later roadmap gates
 ```
 
-This must remain future planning until ServicesOS cleaning is stable.
+This is future planning only.
 
 ---
 
-## Core Architecture Decision
+## Why Laundromats Fit ServicesOS
 
-Laundromat/laundry businesses have service operations and retail operations. ServicesOS can already cover much of the shared operational foundation.
+A laundromat may look like a retail/POS business from the counter, but many of its hardest operational problems are service-business problems.
 
-### ServicesOS already supports or is designed to support
+Potential ServicesOS-owned workflows include:
 
-- Customers
-- Employees
-- Service orders/jobs
-- Scheduling
-- Checklists
-- Payments
-- Inventory-style tracking
-- Tenant structure
-- Notifications
-- Analytics foundation
+- customer records,
+- wash-and-fold orders,
+- drop-off intake,
+- pickup and delivery,
+- commercial laundry accounts,
+- recurring service,
+- employee scheduling,
+- employee task lists and checklists,
+- order status,
+- customer preferences,
+- inventory/supply usage,
+- notifications,
+- payment status,
+- machine/asset records,
+- maintenance and downtime tracking,
+- issue history,
+- analytics.
 
-### POS add-on adds
+The goal is not to build a laundromat-specific monolith. Reuse ServicesOS core and add the smallest vertical-specific layer required.
 
-- Product catalog
-- Cart/checkout flow
-- Receipt generation
-- Sales tax handling
-- Refunds/returns
-- Counter sales
-- Cash/card tracking
-- End-of-day summary
-- Optional barcode/SKU support later
+---
 
-### RetailOS linkage later adds deeper retail complexity
+## Payment Provider and Existing Hardware Strategy
 
-- Advanced SKU inventory
-- Supplier/vendor purchasing
-- Register sessions
-- Multi-location retail reporting
-- Product margin reporting
-- Barcode workflows
-- Retail-specific analytics
+A future laundromat customer should not have to abandon a working payment setup just to use ServicesOS.
+
+Preferred architecture:
+
+```text
+ServicesOS
+        ↓
+Payment Provider Layer
+   ┌───────────────┐
+   │               │
+Stripe           Square
+   │               │
+Stripe account   Square seller account
+Stripe Tap to Pay / Terminal
+                 Square Tap to Pay / Terminal / Reader where supported
+```
+
+### Provider abstraction principle
+
+ServicesOS should think in product-level payment actions rather than scattering Stripe-specific assumptions throughout the application.
+
+Conceptual provider operations:
+
+```text
+connectMerchant()
+createPayment()
+startInPersonCheckout()
+getPaymentStatus()
+refundPayment()
+collectPlatformFee()
+handleWebhook()
+disconnectMerchant()
+```
+
+Each payment-provider adapter translates those operations into the provider-specific API.
+
+### Existing Square businesses
+
+If a laundromat already uses Square at the counter, the future goal should be:
+
+> **Keep the Square setup they already use. Connect it to ServicesOS.**
+
+Planning direction:
+
+- owner authorizes the business's Square seller account through the provider's supported authorization flow,
+- ServicesOS stores the provider connection and relevant merchant/location identifiers,
+- ServicesOS can initiate or track supported Square payments,
+- provider-originated payment events update ServicesOS payment/invoice/order state,
+- refunds and reconciliation remain provider-aware,
+- SLAI platform/application fees may be used only where supported and commercially appropriate,
+- exact Square APIs, SDKs, fee mechanics, hardware support, permissions, and event names must be verified against current Square documentation at implementation time.
+
+### Stripe businesses
+
+Businesses already using the ServicesOS Stripe/Stripe Connect path should continue using Stripe without being forced onto Square.
+
+The goal is provider choice, not provider duplication in every screen.
+
+### Square hardware cannot be treated as Stripe hardware
+
+Do not design around the assumption that Stripe processing can simply run through Square-branded hardware. Each provider's supported hardware and Tap to Pay path should remain provider-native.
+
+ServicesOS can normalize the business workflow while the payment provider remains authoritative for the actual card transaction.
+
+---
+
+## Laundromat Machine Payments Are a Separate Boundary
+
+The front-counter payment provider and the washer/dryer payment system may be completely different.
+
+Example:
+
+```text
+Counter / wash-and-fold
+→ Square or Stripe
+
+Washers and dryers
+→ coins / laundry card / proprietary app / machine vendor system
+
+Employees
+→ ServicesOS
+
+Inventory
+→ ServicesOS / future RetailOS depending on use
+
+Maintenance
+→ ServicesOS asset and issue records
+```
+
+ServicesOS should not require replacement of a proprietary washer/dryer payment system in the first laundromat release.
+
+Machine-payment integration, if ever justified, should be a separate future connector with a clear source-of-truth contract.
+
+---
+
+## Machine / Asset Operations
+
+Physical machines make the laundromat vertical especially interesting for ServicesOS.
+
+A future asset record could include:
+
+- asset ID,
+- location,
+- washer/dryer/type,
+- manufacturer/model,
+- capacity,
+- serial/reference number,
+- active/out-of-service state,
+- last inspection,
+- last maintenance,
+- open issue,
+- repair history,
+- notes/photos,
+- vendor/service contact.
+
+Potential workflows:
+
+```text
+Employee reports machine issue
+        ↓
+Machine marked degraded/out of service
+        ↓
+Owner/manager reviews
+        ↓
+Repair task/vendor visit recorded
+        ↓
+Resolution documented
+        ↓
+Machine returned to service
+```
+
+This is operational asset management, not machine-control IoT. Remote machine control should remain out of scope unless real customer demand and vendor access justify it.
 
 ---
 
 ## Service Inventory vs Retail Inventory
 
-This distinction should become a general SLAI product rule.
+This distinction should remain a general SLAI product rule.
 
 ```text
-Service inventory = supplies used to complete jobs/orders.
+Service inventory = supplies consumed to perform work.
 Retail inventory = products sold directly to customers.
 ```
 
-Example:
+Examples:
 
 ```text
-Detergent used by employees for wash-and-fold = ServicesOS inventory.
-Detergent sold to walk-in customers = POS / Retail inventory.
+Detergent used by employees for wash-and-fold
+→ ServicesOS service inventory
+
+Detergent sold to a walk-in customer
+→ POS / Retail inventory
 ```
 
-This allows the same business to track supplies without confusing internal usage with direct retail sales.
+This allows one business to track internal supply usage separately from merchandise sales.
 
 ---
 
 ## Business Types Covered
-
-Laundry/laundromat businesses usually split into two operational sides.
 
 ### 1. Laundry Service Operations
 
@@ -130,124 +248,66 @@ Best fit: ServicesOS.
 
 Examples:
 
-- Wash-and-fold orders
-- Drop-off orders
-- Pickup and delivery laundry
-- Commercial laundry accounts
-- Recurring laundry service
-- Employee task checklists
-- Order status tracking
-- Customer preferences
-- Ready-for-pickup notifications
+- wash-and-fold,
+- drop-off laundry,
+- pickup/delivery laundry,
+- commercial laundry,
+- recurring laundry service,
+- employee task checklists,
+- order status,
+- saved customer preferences,
+- ready-for-pickup notifications.
 
 ### 2. Laundromat Retail / POS Operations
 
-Best fit: POS add-on first, RetailOS linkage later.
+Best fit: bounded POS capability first, RetailOS only when justified.
 
 Examples:
 
-- Walk-in product transactions
-- Detergent and fabric softener sales
-- Vending inventory
-- Machine refunds
-- Cash/card counter activity
-- Product stock
-- Daily sales reports
+- detergent/fabric-softener sales,
+- vending items,
+- counter checkout,
+- receipts,
+- refunds,
+- tips,
+- daily sales summary.
 
----
+### 3. Physical Asset Operations
 
-## Future Bundle Concept
+Best fit: ServicesOS asset/maintenance layer.
 
-```text
-ServicesOS Laundry Module
-+
-POS Add-On
-=
-Laundry / Laundromat Operations Bundle
-```
+Examples:
 
-The bundle would allow a laundromat or laundry service business to manage service orders, counter sales, employees, customers, payments, and inventory from a connected SLAI ecosystem.
-
-The modules should not become a tangled product. They should share the right core data while keeping workflows separate.
-
----
-
-## SLAI Cross-Product Linking Principle
-
-Every SLAI product should be able to stand alone, but related SLAI products should be linkable when their data naturally overlaps.
-
-Core principle:
-
-```text
-Do not merge products too early.
-Do make products linkable later.
-```
-
-The product that owns the main workflow should remain the anchor.
-
-For laundromats:
-
-```text
-ServicesOS owns laundry service operations.
-POS add-on owns counter checkout.
-RetailOS becomes relevant if the retail side grows into advanced inventory, register, supplier, and multi-location retail workflows.
-```
-
----
-
-## Example Customer Journey
-
-A customer buys detergent at the counter:
-
-```text
-POS add-on transaction
-```
-
-The same customer drops off clothes for wash-and-fold:
-
-```text
-ServicesOS laundry order
-```
-
-The customer pays for the service order:
-
-```text
-Shared customer/payment history
-```
-
-Later, the owner can see a combined customer view:
-
-```text
-Retail purchase: $6 detergent
-Laundry service: $42 wash-and-fold
-Delivery fee: $8
-Total customer value: $56
-```
-
-This is the long-term value of SLAI cross-product linking: the business sees the full operational picture instead of disconnected systems.
+- washer/dryer records,
+- downtime,
+- maintenance,
+- repair history,
+- inspections,
+- issue evidence.
 
 ---
 
 ## ServicesOS Laundry Module MVP
 
-The MVP should focus on service operations, not full laundromat POS, vending, machine IoT, or advanced retail.
+The first validated laundry vertical should focus on service operations rather than trying to replace every machine, POS, vending, inventory, and retail system at once.
 
 ### MVP Features
 
-- Customer profile
-- Saved laundry preferences
-- Create laundry order
-- Pickup/drop-off choice
-- Bag count
-- Weight after intake
-- Service type
-- Wash/dry/fold preferences
-- Stain or special instructions
-- Employee checklist
-- Order status tracking
-- Ready notification
-- Payment status
-- Basic owner/admin dashboard
+- customer profile,
+- saved laundry preferences,
+- create laundry order,
+- pickup/drop-off choice,
+- bag count,
+- weight after intake,
+- service type,
+- wash/dry/fold preferences,
+- stain/special instructions,
+- employee checklist,
+- order status,
+- ready notification,
+- payment status,
+- basic owner/admin dashboard,
+- basic machine/asset issue logging if validated as high-value.
 
 ### MVP Workflow
 
@@ -296,155 +356,134 @@ Recurring customer preferences saved
 
 ## Customer Intake Fields
 
-First-time customer intake should capture detailed preferences:
+First-time customer intake may capture:
 
-- Name
-- Phone/email
-- Pickup/drop-off preference
-- Address if pickup/delivery
-- Service type
-- Bag count
-- Estimated weight
-- Wash temperature preference
-- Dry temperature preference
-- Detergent preference
-- Fabric softener preference
-- Scent-free preference
-- Bleach allowed
-- Separate whites/colors
-- Fold or hang preference
-- Special items
-- Stain notes
-- Pickup/delivery time window
-- Payment method
-- Recurring schedule preference
+- name,
+- phone/email,
+- pickup/drop-off preference,
+- address when needed,
+- service type,
+- bag count,
+- estimated weight,
+- wash temperature,
+- dry temperature,
+- detergent preference,
+- fabric softener preference,
+- scent-free preference,
+- bleach allowed,
+- whites/colors separation preference,
+- fold/hang preference,
+- special items,
+- stain notes,
+- pickup/delivery window,
+- payment preference,
+- recurring schedule preference.
 
-Returning customers should be able to reuse saved preferences and only answer what changed.
-
-```text
-Detailed first intake
-↓
-Saved preference profile
-↓
-Future orders only ask what changed
-```
+Returning customers should reuse saved preferences and only confirm what changed.
 
 ---
 
 ## Employee Workflow
 
-The employee experience should stay simple.
+The employee experience should stay simple and step-based.
 
-The employee should see:
+Employee-visible context may include:
 
-- Customer name
-- Order type
-- Bag count
-- Weight
-- Preferences
-- Special instructions
-- Current step
-- Next action
+- customer,
+- order type,
+- bag count,
+- weight,
+- preferences,
+- special instructions,
+- current step,
+- next action.
 
-Example employee checklist:
+Example checklist:
 
-- Confirm customer/order label
-- Confirm bag count
-- Weigh order
-- Check pockets
-- Note stains/damage
-- Sort laundry
-- Wash
-- Dry
-- Fold/hang
-- Quality check
-- Bag/package
-- Mark ready
+- confirm customer/order label,
+- confirm bag count,
+- weigh order,
+- check pockets,
+- note stains/damage,
+- sort,
+- wash,
+- dry,
+- fold/hang,
+- quality check,
+- bag/package,
+- mark ready.
 
-This supports one of the most important laundromat requirements: preventing order mix-ups.
+Preventing order mix-ups is a primary workflow requirement.
 
 ---
 
 ## Order Labels and Tracking
 
-A simple MVP label could include:
+A simple label may include:
 
-- Order number
-- Customer initials
-- Bag count
-- Status
-- Pickup/delivery date
+- order number,
+- customer initials,
+- bag count,
+- status,
+- pickup/delivery date.
 
-Future enhancements:
-
-- QR code labels
-- Bag stickers
-- Printable receipts
-- Scan-to-update status
-- Photo proof at pickup/delivery
+Later enhancements may include QR labels, scan-to-update status, printable receipts, and pickup/delivery proof.
 
 ---
 
-## Pricing Model
+## Pricing Model for Laundry Services
 
-Laundry pricing differs from cleaning because the final price often depends on weight.
+Laundry pricing often depends on weight and may not be final until intake.
 
-Potential pricing fields:
+Potential fields:
 
-- Price per pound
-- Minimum order fee
-- Pickup fee
-- Delivery fee
-- Rush fee
-- Special item fee
-- Comforter/bedding fee
-- Stain treatment fee
-- Hang-dry fee
-- Hypoallergenic detergent fee
-- Commercial account pricing
-- Recurring customer discount
+- price per pound,
+- minimum order,
+- pickup fee,
+- delivery fee,
+- rush fee,
+- special item fee,
+- bedding/comforter fee,
+- stain treatment,
+- hang dry,
+- special detergent,
+- commercial-account pricing,
+- recurring-customer discount.
 
-Example model:
-
-```text
-Base: $1.75/lb
-Minimum: $25
-Pickup/delivery: $5–$15
-Rush: +25%
-Comforter: flat $20
-Stain treatment: $5/item
-```
-
-Important product note:
+Core rule:
 
 ```text
-Customer estimate happens before weighing.
-Final price is confirmed after intake/weight is recorded.
+Customer estimate may occur before weighing.
+Final price is confirmed after authoritative intake/weight is recorded.
 ```
+
+Exact market pricing belongs in future validation, not hard-coded planning assumptions.
 
 ---
 
-## POS Add-On Scope
+## POS / Counter Sales Scope
 
-Minimum POS add-on:
+Minimum bounded POS capability may include:
 
-- Product catalog
-- Cart
-- Checkout
-- Receipt
-- Sales tax
-- Refunds
-- Cash/card tracking
-- End-of-day summary
+- product catalog,
+- cart,
+- checkout,
+- receipt,
+- sales tax support,
+- refunds,
+- cash/card tracking,
+- tips,
+- end-of-day summary.
 
-Later POS features:
+Later only if justified:
 
-- Barcode scanning
-- Cash drawer
-- Register sessions
-- Vending inventory
-- Machine payments
-- Multi-location retail reporting
+- barcode scanning,
+- cash drawer/register sessions,
+- vending inventory,
+- machine-payment connectors,
+- multi-location retail reporting.
+
+A future Square connection may satisfy much of the card-present checkout need without SLAI rebuilding the payment hardware layer.
 
 ---
 
@@ -452,146 +491,107 @@ Later POS features:
 
 RetailOS should become involved only when the business has enough retail complexity to justify it.
 
-Examples that may justify RetailOS linkage:
+Signals include:
 
-- Multiple retail locations
-- Large product catalog
-- Supplier/vendor management
-- Advanced stock reporting
-- Barcode-heavy workflows
-- Product margin tracking
-- Retail-specific analytics
-- Front-counter POS becomes as important as service workflow
-
----
-
-## Shared Data
-
-A laundromat bundle should link data through shared identifiers.
-
-Shared data examples:
-
-- `tenantId`
-- `customerId`
-- `employeeId`
-- `paymentId`
-- `invoiceId`
-- `receiptId`
-- `auditLogId`
-
-Example linked records:
-
-```text
-POS transaction:
-customerId = customer_123
-items = detergent, dryer sheets
-
-ServicesOS laundry order:
-customerId = customer_123
-serviceType = wash_and_fold
-status = ready_for_pickup
-
-SLAI analytics:
-customer_123 total value = retail + service revenue
-```
+- multiple retail locations,
+- large merchandise catalog,
+- supplier/vendor purchasing,
+- advanced stock reporting,
+- barcode-heavy workflows,
+- product margins,
+- stock transfers,
+- retail-specific analytics,
+- front-counter retail becoming as important as service workflow.
 
 ---
 
 ## Commercial Laundry Accounts
 
-Commercial laundry could become a strong later feature because it creates recurring revenue.
+Commercial laundry is a strong later opportunity because it creates recurring service relationships.
 
-Potential commercial customers:
+Potential customers:
 
-- Salons
-- Barbers
-- Massage therapists
-- Gyms
-- Airbnbs
-- Small hotels
-- Restaurants
-- Clinics
-- Cleaning companies
+- salons,
+- barbers,
+- massage businesses,
+- gyms,
+- Airbnbs,
+- small hotels,
+- restaurants,
+- clinics,
+- cleaning companies.
 
-Commercial workflow:
+Potential workflow:
 
-- Recurring pickup
-- Bulk pricing
-- Invoice billing
-- Service agreement
-- Linen count
-- Missing/damaged item tracking
-- Scheduled route
-- Account-level reporting
+- recurring pickup,
+- bulk pricing,
+- invoice billing,
+- service agreement,
+- linen count,
+- missing/damaged-item tracking,
+- scheduled route,
+- account reporting.
 
 ---
 
 ## AI Features Later
 
-AI should not be overbuilt into the first version. Long-term AI opportunities include:
+AI should not be required for core laundry operations.
 
-- Price estimate from bag count and customer history
-- Busy day prediction
-- Pickup/delivery route suggestions
-- Delayed order detection
-- Staffing suggestions
-- Repeat customer preference suggestions
-- Unusual weight/order anomaly detection
-- Customer update generation
-- Issue order summaries
+Possible later uses:
 
-Photo AI later:
+- estimate assistance from bag count/history,
+- busy-day prediction,
+- route suggestions,
+- delayed-order detection,
+- staffing suggestions,
+- customer update drafting,
+- issue summaries,
+- anomaly detection.
 
-- Stain photo notes
-- Damage documentation
-- Pickup/drop-off proof photos
-- AI-assisted stain category suggestions
+Deterministic workflow and human responsibility remain primary.
 
 ---
 
-## Not MVP
+## Explicitly Not MVP
 
-Avoid these until ServicesOS and the laundry workflow prove demand:
-
-- Full RetailOS rollout
-- Machine IoT integrations
-- Vending automation
-- Route optimization
-- QR code label printing
-- Commercial contracts
-- AI stain detection
-- Multi-location analytics
-- Advanced machine revenue forecasting
+- full RetailOS rollout,
+- machine IoT/control,
+- replacement of proprietary washer/dryer payment systems,
+- vending automation,
+- route optimization,
+- advanced QR/label infrastructure,
+- AI stain detection,
+- multi-location analytics,
+- advanced machine-revenue forecasting,
+- building both Stripe and Square simultaneously before the existing payment foundation is stable.
 
 ---
 
-## Architecture Note for SLAI
+## Implementation Sequence
 
-This idea reinforces a broader SLAI architecture philosophy:
+If Jamie later promotes Laundry/Laundromat:
 
 ```text
-SLAI products should be modular, linkable, tenant-aware, and workflow-owned.
+1. Validate one real laundromat/laundry operator
+2. Document current software/payment/machine stack
+3. Identify which workflows ServicesOS replaces vs integrates with
+4. Reuse ServicesOS core
+5. Add smallest laundry-specific workflow layer
+6. Add payment-provider connector only when the real customer requires it
+7. Add asset/maintenance workflow if validated
+8. Add bounded POS only where existing provider integration is insufficient
+9. Consider RetailOS only after retail complexity is proven
 ```
 
-The future SLAI Core should make it possible for a business to activate multiple modules without duplicating customers, employees, permissions, billing, inventory, or analytics.
-
-The main workflow determines the product anchor. POS can be added as an add-on when direct customer sales are needed. RetailOS linkage comes later if the retail side grows into a full retail business.
+Do not build a speculative full laundromat suite first.
 
 ---
 
-## Priority Note
+## Priority Guardrail
 
-This is a strong future vertical and bundle concept, but it should not distract from the current ServicesOS beta path.
+This remains a future vertical.
 
-Current priority remains:
+Current execution priority remains ServicesOS V1, wife beta, beta-critical fixes, UI fine-tuning, and payment stability before future vertical expansion.
 
-1. Stabilize ServicesOS cleaning beta
-2. Complete wife beta testing
-3. Fix UI and workflow blockers
-4. Stabilize payments/Stripe
-5. Only then revisit future modules and cross-product linking
-
-```text
-This document is for future planning only.
-Do not convert to active build work until Jamie explicitly promotes it.
-```
+Square support is a strong V2/future payment-provider candidate because it can lower switching friction for real businesses already invested in Square, but it must not derail the current Stripe/Stripe Connect stabilization work.
