@@ -13,8 +13,9 @@ Stellar Logic AI is not just building isolated apps.
 SLAI is building a connected family of practical AI-assisted operating systems for real-world business, security, growth, training, compliance, retail, pharmacy, and intelligence workflows.
 
 ```text
-ServicesOS proves the model.
-SLAI Web creates a branded front door, near-term cash flow, and a ServicesOS acquisition surface.
+ServicesOS proves the model and reference architecture.
+SLAI Platform Core promotes the proven reusable foundation.
+SLAI Web becomes the first independent Core consumer and creates near-term cash flow/acquisition.
 Security Foundation protects the ecosystem.
 SLAI OS helps run the company.
 GrowthAI helps create customers.
@@ -70,18 +71,24 @@ It should feel like one connected operating system, but it should not be built a
 
 ### Layer 1 — SLAI Core
 
-This is the shared foundation.
+This is the shared foundation promoted from proven product implementations.
 
 ```text
-Shared IDs
-Event concepts
-Tenant/user identity
-Data contracts
-Audit concepts
+Shared contracts / IDs
+Identity / tenant / membership concepts
+Authorization mechanisms
+Product billing / entitlements
+Audit / event / logging conventions
+Security primitives
 Cross-product references
+Bounded reusable provider adapters
 ```
 
-SLAI Core becomes the long-term foundation for cross-product intelligence.
+SLAI Core becomes the long-term foundation for reusable platform behavior and cross-product intelligence.
+
+Core does **not** mean one giant shared operational database. Products keep explicit product/environment authority and link through bounded contracts, APIs, projections, and future events where justified.
+
+ServicesOS is the reference implementation for Core V1. SLAI Web is the first independent consumer that validates whether the extracted foundation is genuinely reusable.
 
 ### Layer 2 — Security Foundation
 
@@ -139,6 +146,7 @@ These are the tools businesses use directly.
 
 ```text
 ServicesOS
+SLAI Web
 RetailOS
 PharmacyOS
 EducationOS
@@ -147,7 +155,7 @@ Security / Integrity products later
 GrowthAI customer add-ons later
 ```
 
-They solve real operational problems.
+They solve real operational or business problems.
 
 ### Layer 6 — Product Verticals
 
@@ -192,6 +200,27 @@ Purpose:
 - expand into nearby service verticals later
 - generate real operating data
 - prove customers will pay
+- prove the first production architecture from which reusable Core can be promoted
+
+### SLAI Platform Core
+
+The invisible shared platform foundation.
+
+Purpose:
+
+- promote proven cross-product capabilities out of ServicesOS without destabilizing it
+- provide reusable contracts for identity, tenancy/membership, authorization, audit/events/logging, product billing/entitlements, and related platform primitives
+- reduce duplicated platform work in later products
+- preserve product/environment isolation while enabling future linking
+- make each later SLAI product faster to build
+
+Core V1 is extracted **after ServicesOS V1 is customer-ready and stable**, not before.
+
+See:
+
+- `ServicesOS_to_Core_Extraction_Map.md`
+- `SLAI_Core_V1_Scope_and_Contracts.md`
+- `SLAI_Core_V1_Execution_Plan.md`
 
 ### SLAI Web
 
@@ -206,8 +235,9 @@ Purpose:
 - produce warm ServicesOS leads
 - provide a customer-facing website surface that can display approved ServicesOS data
 - connect native booking/request flows to ServicesOS later
+- become the first independent real-world consumer of SLAI Platform Core
 
-SLAI Web is a service/business layer, not a replacement for ServicesOS.
+SLAI Web is a business website platform, not the Stellar Logic AI company website and not a replacement for ServicesOS.
 
 See `../02_Website/SLAI_Web_Engine.md`.
 
@@ -314,7 +344,15 @@ Build ServicesOS
 ↓
 Get real users and real operating data
 ↓
-Use SLAI Web selectively to create cash flow, customer relationships, and ServicesOS leads
+Stabilize the customer-ready reference implementation
+↓
+Extract only the proven reusable SLAI Platform Core V1 foundation
+↓
+Revalidate ServicesOS against extracted Core
+↓
+Build SLAI Web on Core as the first independent consumer
+↓
+Use SLAI Web to create cash flow, customer relationships, and ServicesOS leads
 ↓
 Use Security Foundation principles to protect the ecosystem
 ↓
@@ -322,7 +360,7 @@ Use SLAI OS to manage product/company focus
 ↓
 Use GrowthAI to find and convert customers
 ↓
-Use feedback to improve ServicesOS
+Use feedback to improve ServicesOS and Core only where evidence supports it
 ↓
 Expand ServicesOS into adjacent service modules
 ↓
@@ -332,7 +370,7 @@ Expand into RetailOS / PharmacyOS when timing is right
 ↓
 Productize Security / Integrity offerings when timing is right
 ↓
-SLAI Core links the ecosystem
+Core and bounded connectors link proven products where workflows overlap
 ↓
 FutureAI learns from real workflows, not theory alone
 ```
@@ -352,6 +390,7 @@ It is the proof that SLAI can:
 - charge money
 - learn from users
 - expand into nearby verticals
+- produce reusable architecture from real use rather than theory
 
 If ServicesOS succeeds, the rest of SLAI becomes more credible.
 
@@ -388,6 +427,7 @@ The moat is:
 
 - real workflow data
 - small business operating knowledge
+- proven reusable platform architecture
 - cross-product linking
 - human-approved AI
 - modular vertical expansion
@@ -403,27 +443,44 @@ The moat is:
 
 Goal:
 
-- wife beta
+- wife/current V1 acceptance
+- customer-ready V1
+- stable payment flow
 - first customer
 - first recurring customer
-- stable payment flow
-- 5 customers
+- early real usage
 - revenue proof
 
-### Stage 2 — SLAI Web and Growth Engine
+### Stage 2 — SLAI Platform Core V1 Extraction
 
 Goal:
 
-- credible SLAI company website
+- freeze/reference the final customer-ready ServicesOS V1 baseline
+- run final ServicesOS → Core dependency/delta audit
+- extract only proven cross-product platform foundations
+- move ServicesOS onto extracted Core packages in small controlled slices
+- preserve or strengthen tenant/security/billing authority
+- eliminate promoted duplicate implementations
+- fully revalidate ServicesOS
+- release/freeze SLAI Platform Core V1
+
+Core extraction is a refactoring/promotion project, not permission to add broad future-product features.
+
+### Stage 3 — SLAI Web and Growth Engine
+
+Goal:
+
+- start SLAI Web using Core from day one
+- validate Core with the first independent consumer
 - validate productized customer website builds with one or two real businesses
-- validate $100/month managed-web service
+- validate $100/month or $1,000/year recurring web platform service
 - use website work as ServicesOS workflow discovery and customer acquisition
-- keep ServicesOS as the operating product
+- keep ServicesOS maintained as the operating product
 - internal GrowthAI lead tracking
 - founder-led outreach
 - customer acquisition workflow
 
-### Stage 3 — SLAI OS Internal Command Center
+### Stage 4 — SLAI OS Internal Command Center
 
 Goal:
 
@@ -435,17 +492,17 @@ Goal:
 - alerts
 - security visibility
 
-### Stage 4 — ServicesOS Expansion
+### Stage 5 — ServicesOS Expansion
 
 Goal:
 
 - adjacent service modules
 - deeper admin workflows
-- employee app
+- employee app expansion beyond V1 only when justified
 - training/checklist improvements
 - growth add-ons later
 
-### Stage 5 — EducationOS and ComplianceAI Attachments
+### Stage 6 — EducationOS and ComplianceAI Attachments
 
 Goal:
 
@@ -455,7 +512,7 @@ Goal:
 - audit-ready workflows
 - lifecycle/task systems
 
-### Stage 6 — RetailOS / PharmacyOS
+### Stage 7 — RetailOS / PharmacyOS
 
 Goal:
 
@@ -464,7 +521,7 @@ Goal:
 - pharmacy-specific workflows
 - compliance and training connections
 
-### Stage 7 — Security / Integrity Products
+### Stage 8 — Security / Integrity Products
 
 Goal:
 
@@ -474,7 +531,7 @@ Goal:
 - real-time competitive integrity systems
 - reporting and incident review workflows
 
-### Stage 8 — FutureAI Research Layer
+### Stage 9 — FutureAI Research Layer
 
 Goal:
 
@@ -490,6 +547,8 @@ Goal:
 Big vision.
 Small execution.
 ServicesOS first.
+Extract only what ServicesOS proves.
+Use SLAI Web to validate Core reuse.
 Security expectations baked in.
 Everything else documented, not built yet.
 ```
@@ -498,21 +557,25 @@ Everything else documented, not built yet.
 
 ## Current Practical Priority
 
-The active execution path remains:
+The active execution path remains ServicesOS only:
 
 ```text
-Finish ServicesOS testing and beta-critical fixes
+Finish remaining ServicesOS V1 capability slices
 ↓
-Run wife beta
+Run current V1 acceptance
 ↓
-Clean up UI
+Fix V1-specific findings
 ↓
-Stabilize payments
+UI fine-tuning
 ↓
-Launch first customers
+Security/payment/release hardening
 ↓
-Use GrowthAI/SLAI OS planning later when timing is right
+Customer-facing V1 release
+↓
+Stabilize early use
 ```
+
+Core planning may continue as documentation/read-only audit work, but Core implementation must not distract from the active ServicesOS finish.
 
 ---
 
@@ -524,41 +587,39 @@ SLAI is becoming:
 A practical AI operating-system company for real-world business, security, integrity, growth, training, compliance, and intelligence workflows.
 ```
 
-ServicesOS is the first proof. Security Foundation protects the ecosystem. SLAI OS and GrowthAI help the company survive and grow. The rest of the ecosystem grows only after the first product proves the model.
+ServicesOS is the first proof and reference implementation. SLAI Platform Core promotes proven shared foundations only after they earn reuse. SLAI Web is the first independent Core consumer. Security Foundation protects the ecosystem. SLAI OS and GrowthAI help the company survive and grow. The rest of the ecosystem grows only after the earlier layers prove themselves.
 
-## 2026-09-09 Ecosystem Refinement — Web as Public Layer, Shared Intelligence as Capability
+## 2026-09-17 Ecosystem Refinement — Core Extraction Before SLAI Web
 
-SLAI Web is now planned as a reusable **public-facing website platform** for small businesses and, later, for approved public projections from multiple SLAI products.
+The post-ServicesOS sequence is now explicitly:
+
+```text
+ServicesOS stable customer-facing V1
+→ freeze/reference final ServicesOS baseline
+→ SLAI Platform Core V1 extraction
+→ ServicesOS migration + full regression/security validation
+→ Core V1 release
+→ SLAI Web V1
+→ SLAI Web validates Core as second real product / first independent consumer
+→ validate acquisition + recurring web economics
+→ ServicesOS V2 and later products as evidence supports
+```
+
+SLAI Web remains a reusable public-facing website platform for small businesses and, later, for approved public projections from multiple SLAI products.
 
 Future pattern:
 
 ```text
 SLAI Product
-→ approved public-data projection
+→ approved public-data projection / bounded connector
 → SLAI Web
 → customer-facing website
 ```
 
 SLAI Web should not become the source of private operational truth.
 
-The company direction is increasingly a **one-stop technology partner for small businesses** while preserving modular products underneath a shared account/platform foundation.
+The company direction is increasingly a **one-stop technology partner for small businesses** while preserving modular products underneath shared, versioned platform contracts.
 
-Also added to SLAI Platform Core:
-
-- reusable Inventory Intelligence Platform planning,
-- deterministic-first inventory forecasting/exception logic,
-- shared communication-model strategy,
-- deterministic → local/shared SLM → frontier API routing.
-
-These are reusable capabilities, not justification to build everything at once.
-
-Post-V1 execution hypothesis:
-
-```text
-ServicesOS stable customer-facing V1
-→ SLAI Web V1
-→ validate acquisition + recurring web economics
-→ ServicesOS V2 and later products as evidence supports
-```
+Reusable Inventory Intelligence Platform planning and shared communication-model strategy remain future reusable capabilities, not justification to expand Core V1 beyond what ServicesOS + SLAI Web actually prove.
 
 ServicesOS remains the current active build.
