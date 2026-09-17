@@ -1,8 +1,8 @@
 # SLAI Web Services Business Model
 
 **Document Status:** Strategic company planning  
-**Implementation Status:** Future / post-ServicesOS-V1 go-to-market lane  
-**Last Updated:** 2026-09-05  
+**Implementation Status:** Future / post-ServicesOS-V1 and post-Core-V1 go-to-market lane  
+**Last Updated:** 2026-09-17  
 **Owner:** Jamie Brown / Stellar Logic AI
 
 ## Core Thesis
@@ -338,24 +338,35 @@ See:
 
 ## Priority Guardrail
 
-This model does **not** move website work ahead of ServicesOS V1.
+This model does **not** move website work ahead of ServicesOS V1 or SLAI Platform Core V1 extraction.
 
 Current execution remains:
 
 ```text
 Finish/stabilize ServicesOS V1
 ↓
-Wife beta / beta-critical fixes
+Wife/current V1 acceptance and beta-critical fixes
 ↓
-UI and payments stability
+UI, payments, security, and release stability
 ↓
-Real customer proof
+Customer-facing ServicesOS V1
 ↓
-Use one or two web projects to validate SLAI Web
+Stabilize early real use
+↓
+Extract SLAI Platform Core V1 from the proven ServicesOS baseline
+↓
+Migrate and fully revalidate ServicesOS against Core
+↓
+Release/freeze Core V1
+↓
+Start SLAI Web using Core from day one
+↓
+Use one or two real web customers to validate SLAI Web
 ↓
 Productize further only if demand and conversion justify it
 ```
 
+Core extraction is an architecture/refactoring phase, not a competing revenue product. Its purpose is to make SLAI Web and later products faster and safer to build without duplicating platform foundations.
 
 ## 2026-09-05 Operating-Model Refinement
 
@@ -472,13 +483,21 @@ This creates three revenue types:
 2. optional one-time implementation/custom-build revenue,
 3. ServicesOS recurring revenue when the customer also adopts ServicesOS.
 
-The current strategic sequence is:
+## 2026-09-17 Sequence Refinement — Core Before SLAI Web
+
+The current strategic sequence is now:
 
 ```text
 Stable customer-facing ServicesOS V1
-→ SLAI Web V1
-→ validate Web + ServicesOS acquisition/retention economics
-→ larger ServicesOS V2 expansion
+→ stabilize/reference the proven V1 baseline
+→ SLAI Platform Core V1 extraction
+→ ServicesOS migration + full regression/security validation
+→ Core V1 release
+→ SLAI Web V1 built on Core
+→ validate Core reuse + Web/ServicesOS acquisition and retention economics
+→ larger ServicesOS V2 expansion as evidence and priority allow
 ```
+
+This preserves the revenue purpose of SLAI Web while preventing the Web product from duplicating auth, tenancy, authorization, entitlement, audit, and other platform foundations that ServicesOS has already proven.
 
 Founder compensation from build work remains a planning intent subject to proper company/tax treatment; recurring product revenue should primarily strengthen SLAI until the company is stable.
