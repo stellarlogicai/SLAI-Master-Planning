@@ -2,22 +2,39 @@
 
 **Status:** Future planning only  
 **Active build priority:** ServicesOS cleaning beta remains priority one.  
-**Purpose:** Track future ServicesOS modules that may overlap with POS, RetailOS, EducationOS, GrowthAI, ComplianceAI, or other SLAI products.
+**Purpose:** Track future ServicesOS modules that may overlap with POS, payment providers, RetailOS, EducationOS, GrowthAI, ComplianceAI, or other SLAI products.
 
 ---
 
-## Guiding Rule
+## Guiding Rules
 
 ServicesOS is the service-workflow anchor.
 
-If a future business type sells products directly to customers, start with a POS add-on before splitting into RetailOS.
+If a future business type sells products directly to customers, start with bounded POS/payment integration before splitting into RetailOS.
 
 ```text
-ServicesOS Module + POS Add-On now.
-RetailOS linkage later if retail complexity grows.
+ServicesOS Module
++
+POS / payment-provider integration where needed
++
+RetailOS later only if retail complexity grows
 ```
 
-This keeps early modules simple while preserving the long-term SLAI vision of connected products.
+A business should not be forced to replace working payment hardware or its existing processor solely to adopt ServicesOS when a secure supported integration path exists.
+
+Current payment direction:
+
+```text
+V1
+→ stabilize Stripe / Stripe Connect
+
+V2 / later
+→ introduce a payment-provider abstraction
+→ add Square when validated by real customer need
+→ preserve provider-native hardware / Tap to Pay paths
+```
+
+ServicesOS should normalize the business workflow while the selected payment provider remains authoritative for the actual card transaction.
 
 ---
 
@@ -37,9 +54,9 @@ Examples:
 - Junk removal
 - Snow removal
 
-### ServicesOS + POS Add-On
+### ServicesOS + POS / Payment Provider Integration
 
-Best when the business mainly sells services but also sells products directly.
+Best when the business sells services but also needs in-person checkout, tips, retail items, or already has established payment hardware.
 
 Examples:
 
@@ -52,17 +69,17 @@ Examples:
 
 ### ServicesOS + RetailOS Later
 
-Best when the retail side becomes complex enough to justify full RetailOS.
+Best when retail complexity becomes substantial.
 
 Signals:
 
-- Large product catalog
-- Barcode scanning
-- Cash drawer/register sessions
-- Supplier purchasing
-- Multi-location retail reporting
-- Product margins
-- Stock transfers
+- large product catalog,
+- barcode scanning,
+- cash drawer/register sessions,
+- supplier purchasing,
+- multi-location retail reporting,
+- product margins,
+- stock transfers.
 
 ### ServicesOS + EducationOS
 
@@ -104,7 +121,38 @@ Examples:
 
 ---
 
-## Module Map
+## Payment Provider Abstraction Direction
+
+Long-term ServicesOS should avoid scattering one provider's assumptions throughout appointment, job, invoice, and reporting logic.
+
+Conceptual product-level operations:
+
+```text
+connectMerchant()
+createPayment()
+startInPersonCheckout()
+getPaymentStatus()
+refundPayment()
+collectPlatformFee()
+handleWebhook()
+disconnectMerchant()
+```
+
+Provider adapters translate those operations into Stripe or Square-specific behavior.
+
+Important rules:
+
+- Stripe remains the current V1 payment implementation and must be stabilized first.
+- Square is a future V2/payment-provider candidate, not current V1 scope.
+- Square hardware is not treated as Stripe hardware and vice versa.
+- Tap to Pay remains provider-native.
+- Existing customer hardware/investment should be preserved where practical.
+- Exact APIs, SDKs, fee models, permissions, device support, and webhook/event names must be re-verified against current provider documentation at implementation time.
+- Provider support should be driven by real customer adoption barriers, not by feature accumulation.
+
+---
+
+# Module Map
 
 ## 1. Laundry / Laundromat
 
@@ -112,8 +160,8 @@ Examples:
 Primary anchor:
 ServicesOS Laundry Module
 
-Add-on:
-POS Add-On
+Add-ons / integrations:
+Payment provider + bounded POS
 
 Future linkage:
 RetailOS if retail complexity grows
@@ -125,33 +173,54 @@ ServicesOS handles:
 - Pickup/delivery
 - Drop-off intake
 - Customer laundry preferences
-- Employee checklist
+- Employee scheduling/checklists
 - Order status tracking
 - Commercial laundry accounts
 - Recurring laundry service
+- Service inventory
+- Machine/asset records
+- Maintenance/downtime/issues
 
-POS add-on handles:
+POS/payment integration may handle:
 
-- Detergent sales
-- Fabric softener sales
+- Detergent/fabric-softener sales
 - Vending items
 - Counter checkout
 - Receipts
 - Refunds
 - Tips
+- Card-present payments
+
+### Existing Square laundromat direction
+
+If a laundromat already uses Square at the counter, future ServicesOS should prefer connecting that Square seller account rather than forcing a migration to Stripe.
+
+```text
+ServicesOS order / sale
+        ↓
+Square-connected checkout where supported
+        ↓
+Square remains payment authority
+        ↓
+ServicesOS receives authoritative payment result
+        ↓
+Order / invoice / reporting update
+```
+
+The washer/dryer payment system may be separate from the counter system and should not be replaced in the first laundromat release.
 
 RetailOS later handles:
 
 - Advanced product catalog
 - Vending inventory
-- Machine revenue tracking
 - Multi-location retail reporting
 - Supplier purchasing
+- Product margins
 
-Planning doc:
+Detailed planning doc:
 
 ```text
-ServicesOS/FutureModules/Laundry_RetailOS_Bundle.md
+01_ServicesOS/FutureModules/Laundry_RetailOS_Bundle.md
 ```
 
 ---
@@ -162,8 +231,8 @@ ServicesOS/FutureModules/Laundry_RetailOS_Bundle.md
 Primary anchor:
 ServicesOS Barbershop Module
 
-Add-on:
-POS Add-On
+Add-ons / integrations:
+Payment provider + bounded POS
 
 Future linkage:
 RetailOS if product sales grow
@@ -179,16 +248,35 @@ ServicesOS handles:
 - Recurring clients
 - Client history
 - Tips tied to service
+- Operational/customer context
 
-POS add-on handles:
+POS/payment integration may handle:
 
+- Card-present service checkout
+- Tap to Pay
 - Hair product sales
 - Beard oil sales
 - Shampoo/conditioner sales
 - Merch
 - Walk-in checkout
 - Receipts
-- Product refunds
+- Refunds
+
+### Square / Tap to Pay validation direction
+
+American Barbershop is a concrete future validation target because it may already use Square and phone-based Tap to Pay. Verify the exact setup before coding.
+
+Preferred future adoption message:
+
+> **Already use Square Tap to Pay? Keep it. Connect Square to ServicesOS.**
+
+That reduces switching friction and lets ServicesOS own the appointment/customer workflow without pretending to own the underlying card network transaction.
+
+Detailed planning doc:
+
+```text
+01_ServicesOS/Future-Verticals/ServicesOS_Barbershop_Pricing_and_Value_Strategy.md
+```
 
 RetailOS later handles:
 
@@ -197,10 +285,6 @@ RetailOS later handles:
 - Supplier orders
 - Product margins
 - Multi-chair / multi-location retail reports
-
-Notes:
-
-Barbershop is one of the cleanest ServicesOS + POS overlaps because it sells both time/service and physical products.
 
 ---
 
@@ -211,7 +295,7 @@ Primary anchor:
 ServicesOS Food Truck Module
 
 Add-on:
-POS Add-On
+POS / payment-provider integration
 
 Future linkage:
 RetailOS if menu/inventory complexity grows
@@ -227,7 +311,7 @@ ServicesOS handles:
 - Customer/event history
 - Private event deposits
 
-POS add-on handles:
+POS handles:
 
 - Menu checkout
 - On-site orders
@@ -244,9 +328,7 @@ RetailOS later handles:
 - Multi-truck reporting
 - Stock forecasting
 
-Notes:
-
-Food truck is more POS-heavy than some service modules, but ServicesOS still matters for catering, events, scheduling, and preparation workflows.
+Food truck is more POS-heavy than many service modules, so provider choice and real-time checkout needs should be validated before deciding how much POS belongs inside ServicesOS.
 
 ---
 
@@ -257,36 +339,17 @@ Primary anchor:
 ServicesOS Cleaning Module
 
 Add-on:
-POS Add-On
+POS / material sale capability
 
 Future linkage:
 RetailOS if product sales become meaningful
 ```
 
-ServicesOS handles:
+ServicesOS handles leads, quotes, cleaning jobs, recurring service, employee checklists, customer portal, and service inventory usage.
 
-- Leads
-- Quotes
-- Cleaning jobs
-- Recurring service
-- Employee checklists
-- Customer portal
-- Service inventory usage
+POS/material sale capability may handle cleaning product sales, starter kits, replacement supplies, and receipts.
 
-POS add-on handles:
-
-- Cleaning product sales
-- Starter kits
-- Replacement supplies
-- Add-on supply purchases
-- Customer receipts
-
-RetailOS later handles:
-
-- Product catalog
-- Stock management
-- Supplier orders
-- Margin reporting
+RetailOS later handles product catalog depth, supplier orders, stock management, and margin reporting.
 
 ---
 
@@ -297,36 +360,17 @@ Primary anchor:
 ServicesOS Lawn Care Module
 
 Add-on:
-POS Add-On or material billing
+Material billing / optional POS
 
 Future linkage:
 RetailOS if material/product resale grows
 ```
 
-ServicesOS handles:
+ServicesOS handles quotes, routes, jobs, recurring mowing, seasonal services, crews, and checklists.
 
-- Quotes
-- Routes
-- Jobs
-- Recurring mowing
-- Seasonal services
-- Crews
-- Checklists
+Material billing may handle mulch, seed, fertilizer, parts, and customer add-ons.
 
-POS/material billing handles:
-
-- Mulch
-- Seed
-- Fertilizer
-- Parts
-- Customer add-ons
-
-RetailOS later handles:
-
-- Bulk material inventory
-- Supplier pricing
-- Seasonal stock reporting
-- Product resale reporting
+RetailOS later handles bulk material inventory, supplier pricing, seasonal stock reporting, and product resale reporting.
 
 ---
 
@@ -337,36 +381,17 @@ Primary anchor:
 ServicesOS Handyman Module
 
 Add-on:
-POS Add-On or job material billing
+Job material billing / optional POS
 
 Future linkage:
 RetailOS if parts catalog grows
 ```
 
-ServicesOS handles:
+ServicesOS handles job requests, quotes, scheduling, assignments, tasks, completion tracking, and customer history.
 
-- Job requests
-- Quotes
-- Scheduling
-- Contractor/employee assignment
-- Tasks
-- Completion tracking
-- Customer history
+Material billing may handle parts, materials, customer-purchased hardware, add-ons, and markup.
 
-POS/material billing handles:
-
-- Parts
-- Materials
-- Customer-purchased hardware
-- Add-on items
-- Material markup
-
-RetailOS later handles:
-
-- Parts catalog
-- Supplier orders
-- Truck inventory
-- Margin tracking
+RetailOS later handles parts catalogs, supplier orders, truck inventory, and margin tracking.
 
 ---
 
@@ -377,29 +402,15 @@ Primary anchor:
 ServicesOS specialized service module
 
 Add-on:
-Optional POS Add-On
+Optional POS/payment-provider integration
 
 Future linkage:
-RetailOS only if product/treatment sales grow
+RetailOS only if meaningful product sales grow
 ```
 
-ServicesOS handles:
+ServicesOS handles quotes, jobs, routes, checklists, employee assignments, and recurring service.
 
-- Quotes
-- Jobs
-- Routes
-- Checklists
-- Employee assignments
-- Recurring service
-
-POS add-on may handle:
-
-- Upsells
-- Treatments
-- Protectants
-- Customer add-ons
-
-RetailOS is not needed unless the business develops meaningful product sales.
+POS may handle treatments, protectants, upsells, and customer add-ons.
 
 ---
 
@@ -416,29 +427,9 @@ Optional:
 ServicesOS for events or paid service workflows
 ```
 
-RetailOS handles:
+RetailOS owns POS, inventory, buy/sell/trade, product catalog, and pricing.
 
-- POS
-- Inventory
-- Buy/sell/trade
-- Product catalog
-- Pricing
-
-GrowthAI handles:
-
-- Customer outreach
-- Events
-- Promotions
-- Lead generation
-- Referral programs
-
-ServicesOS may help with:
-
-- Event booking
-- Tournament scheduling
-- Coaching sessions
-- Repairs/services
-- Paid appointments
+ServicesOS may help with event booking, tournament scheduling, coaching, repairs, or paid appointments.
 
 ---
 
@@ -455,34 +446,7 @@ Optional:
 ServicesOS for appointments and service workflows
 ```
 
-RetailOS handles:
-
-- Front-store POS
-- Inventory
-- Sales
-- Returns
-
-PharmacyOS handles:
-
-- Pharmacy task queues
-- Prescription-adjacent workflows
-- Patient service operations
-- Pharmacy-specific workflow support
-
-ComplianceAI handles:
-
-- Outdates
-- Temperature logs
-- Audit trails
-- Regulated workflow evidence
-- Rules and lifecycle tracking
-
-ServicesOS may help with:
-
-- Vaccination appointments
-- Consultations
-- Delivery tasks
-- Patient service scheduling
+RetailOS handles front-store POS/inventory/sales/returns. PharmacyOS handles pharmacy task and patient-service workflows. ComplianceAI handles regulated evidence and lifecycle controls. ServicesOS may help with vaccination appointments, consultations, delivery tasks, and service scheduling.
 
 ---
 
@@ -496,30 +460,7 @@ Related product:
 EducationOS
 ```
 
-ServicesOS handles:
-
-- Jobs
-- Customers
-- Scheduling
-- Employees
-- Operations
-
-EducationOS handles:
-
-- Training modules
-- Slideshows
-- Quizzes
-- SOP completion
-- Employee learning progress
-- Company-specific training
-
-Examples:
-
-- Cleaning company
-- Pharmacy operations
-- Food truck safety training
-- Field service teams
-- Multi-location service businesses
+ServicesOS owns customers, jobs, scheduling, employees, and operations. EducationOS owns training modules, quizzes, SOP completion, and learning progress.
 
 ---
 
@@ -529,40 +470,30 @@ Examples:
 Primary anchor:
 Depends on main workflow
 
-Likely bundle:
-ServicesOS + POS Add-On + RetailOS + ComplianceAI + GrowthAI
+Possible bundle:
+ServicesOS + payment/POS integration + RetailOS + ComplianceAI + GrowthAI
 ```
 
-A multi-location operator may need:
-
-- Service operations
-- Counter sales
-- Inventory
-- Compliance tracking
-- Customer acquisition
-- Analytics
-- Employee training
-
-This should remain modular, not one overbuilt product.
+Multi-location complexity should remain modular rather than becoming one overbuilt product.
 
 ---
 
 ## Future Bundle Examples
 
 ```text
-Laundry / Laundromat Bundle:
-ServicesOS Laundry + POS Add-On + optional RetailOS
+Laundry / Laundromat:
+ServicesOS Laundry + provider/POS integration + optional RetailOS
 
-Barbershop Bundle:
-ServicesOS Barber + POS Add-On + optional RetailOS
+Barbershop:
+ServicesOS Barber + provider/POS integration + optional RetailOS
 
-Food Truck Bundle:
-ServicesOS Food Truck + POS Add-On + optional RetailOS
+Food Truck:
+ServicesOS Food Truck + POS + optional RetailOS
 
-Cleaning Growth Bundle:
+Cleaning Growth:
 ServicesOS Cleaning + GrowthAI + optional EducationOS
 
-Pharmacy Operations Bundle:
+Pharmacy Operations:
 RetailOS + PharmacyOS + ComplianceAI + optional ServicesOS appointments
 ```
 
@@ -574,12 +505,15 @@ This index is for future planning and architecture only.
 
 Current priority remains:
 
-1. ServicesOS cleaning beta
+1. ServicesOS V1 / cleaning beta
 2. Wife beta testing
-3. ServicesOS UI hardening
-4. Payments/Stripe stability
-5. Then future modules and cross-product linking
+3. Beta-critical fixes
+4. UI hardening
+5. Stripe / Stripe Connect stability
+6. Customer-ready V1 release
+7. SLAI Web sequence
+8. Then later ServicesOS V2 / vertical expansion when Jamie explicitly promotes it
 
 ```text
-Do not convert these ideas into active build work until Jamie explicitly promotes them.
+Do not convert Square support, laundromat, barbershop, POS, or other future vertical ideas into current V1 implementation work.
 ```
