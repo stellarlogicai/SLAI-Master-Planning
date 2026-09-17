@@ -8,7 +8,7 @@ This folder covers two related but distinct website lanes:
 1. the public Stellar Logic AI company/product website,
 2. the future **SLAI Web** productized website platform and managed-web service for small-business customers.
 
-Website work may support ServicesOS launch and customer acquisition, but active SLAI Web implementation does not begin until ServicesOS V1 is stable enough to release engineering focus.
+Website work may support ServicesOS launch and customer acquisition, but active SLAI Web implementation does not begin until ServicesOS V1 is stable enough to release engineering focus **and SLAI Platform Core V1 has been extracted/stabilized from the final ServicesOS V1 implementation**.
 
 ## SLAI Web — Current Execution Order
 
@@ -16,14 +16,33 @@ Website work may support ServicesOS launch and customer acquisition, but active 
 Finish / stabilize ServicesOS V1
 → customer-facing launch
 → stabilize early usage
+→ freeze/reference the final customer-ready ServicesOS V1 baseline
+→ extract SLAI Platform Core V1 in controlled slices
+→ migrate and fully revalidate ServicesOS against extracted Core
+→ release/freeze Core V1
 → promote SLAI Web V1 to active build
-→ build and validate SLAI Web V1
-→ prove at least one real customer / revenue path
+→ build SLAI Web V1 using Core from day one
+→ use SLAI Web as the first independent validation of Core boundaries
+→ launch and validate SLAI Web with a real customer / revenue path
 → measure build time, direct cost, support burden, and self-service behavior
-→ then return to larger ServicesOS V2 expansion
+→ then return to larger ServicesOS V2 expansion as priorities allow
 ```
 
 The revenue purpose is intentional: SLAI Web is expected to create earlier implementation revenue, recurring managed-web/platform revenue, and a customer-acquisition path into ServicesOS.
+
+### Core prerequisite
+
+SLAI Web should **consume** shared platform foundations rather than copy them out of ServicesOS.
+
+Authoritative Core planning lives under `../15_SLAI_Platform_Core/`:
+
+- `ServicesOS_to_Core_Extraction_Map.md`
+- `SLAI_Core_V1_Scope_and_Contracts.md`
+- `SLAI_Core_V1_Execution_Plan.md`
+
+Core V1 is expected to provide the reusable platform mechanisms for identity/session, tenant/membership context, authorization, audit/event/logging contracts, SLAI product billing/entitlements, and applicable metering/notification foundations while SLAI Web retains its own product roles, Website Profile, publishing, deployment, domains, forms, layouts, and ServicesOS connector.
+
+SLAI Web remains a sibling product with separate product/environment authority; using Core does not mean sharing one production database with ServicesOS.
 
 ## SLAI Web — Locked V1 Architecture Baseline
 
@@ -69,13 +88,13 @@ All six primary V1 pre-build architecture/product decisions are now locked:
 6. Stripe billing and SLAI Web entitlement mapping
 ```
 
-At active-build start, these decisions should be verified against current provider/API reality rather than redesigned without a concrete blocker.
+At active-build start, these decisions should be verified against current provider/API reality and the released Core V1 contracts rather than redesigned without a concrete blocker.
 
 ## SLAI Web — Authoritative Planning Set
 
 ### Execution / scope
 
-- `SLAI_Web_V1_Execution_Plan.md` — authoritative V1 scope lock, build order, milestone gates, acceptance criteria, first-customer proof, and Codex stop conditions.
+- `SLAI_Web_V1_Execution_Plan.md` — authoritative V1 scope lock, build order, milestone gates, acceptance criteria, first-customer proof, and Codex stop conditions. Its active-build gate is now preceded by the Core V1 extraction/revalidation sequence documented under `../15_SLAI_Platform_Core/`.
 - `SLAI_Web_V1_Open_Decisions_Checklist.md` — records the six locked pre-build decisions plus the remaining just-in-time decisions that may be resolved before their dependent features ship.
 - `SLAI_Web_Platform_V1_and_Customer_Control_Model.md` — detailed product model: DIY/done-for-you/custom paths, dashboard, shared profile, page/section system, evolving design system, support mode, SLAI Intelligence, ownership/handoff, and product sequencing.
 
@@ -121,6 +140,8 @@ SLAI Web should not become a traditional founder-time-heavy agency.
 The desired model is:
 
 ```text
+SLAI Platform Core
++
 Reusable Web Core
 +
 versioned approved layout system
@@ -136,6 +157,16 @@ deterministic preview/publish/deploy
 bounded AI assistance
 +
 human QA
+```
+
+`SLAI Platform Core` and `SLAI Web Core` are different layers:
+
+```text
+SLAI Platform Core
+= shared cross-product identity/tenancy/authorization/billing/audit/etc.
+
+SLAI Web Core
+= shared website rendering/publishing/design infrastructure inside SLAI Web
 ```
 
 ## Build Guardrail
