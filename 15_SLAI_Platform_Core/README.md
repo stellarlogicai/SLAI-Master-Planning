@@ -24,6 +24,36 @@ It exists to reduce duplicated work, lower long-term operating cost, preserve co
 - transparent variable-cost governance,
 - and future reusable platform boundaries.
 
+## Core V1 Extraction Planning
+
+ServicesOS is the reference implementation for the first real SLAI Platform Core extraction.
+
+Current planning source:
+
+- `ServicesOS_to_Core_Extraction_Map.md` — read-only architecture audit of the active ServicesOS V1 branch, Core V1 classifications, duplicate/superseded implementations, target boundaries, provisional extraction order, and the final V1 delta-audit gate.
+
+Current intended sequence:
+
+```text
+Finish ServicesOS customer-ready V1
+↓
+Stabilize the proven V1 baseline
+↓
+Freeze/reference the exact extraction-source commit
+↓
+Extract SLAI Platform Core V1 in controlled slices
+↓
+Migrate and revalidate ServicesOS against extracted Core
+↓
+Release/freeze Core V1
+↓
+Start SLAI Web as the first independent Core consumer
+↓
+Use SLAI Web to validate and refine only proven cross-product boundaries
+```
+
+Do not begin the extraction early merely because the architecture has been documented.
+
 ## Shared-Capability Examples
 
 Potential shared capabilities include:
