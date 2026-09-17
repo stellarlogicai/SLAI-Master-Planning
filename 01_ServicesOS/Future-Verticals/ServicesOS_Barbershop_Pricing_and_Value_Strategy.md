@@ -2,129 +2,210 @@
 
 **Document Status:** Strategic pricing hypothesis / future vertical planning  
 **Implementation Status:** Future Roadmap — do not build from this document yet  
-**Last Updated:** 2026-09-05  
+**Last Updated:** 2026-09-16  
 **Owner:** Jamie Brown / Stellar Logic AI  
 **Related Vertical:** ServicesOS Appointment Services / Barber & Salon
 
 ## Purpose
 
-Preserve the current Barbershop pricing, packaging, communication-cost, founder-beta, SLAI Web, onboarding, and future hosted-page strategy without converting it into active ServicesOS V1 implementation work.
+Preserve the current Barbershop pricing, packaging, payment-provider, communication-cost, founder-beta, SLAI Web, onboarding, and future hosted-page strategy without converting it into active ServicesOS V1 implementation work.
 
-This document records **working product hypotheses**, not completed market validation.
+This document records future product direction and validation hypotheses. It does not authorize active Barbershop implementation while ServicesOS V1 remains the priority.
 
-A dedicated pricing/value deep-research prompt exists separately and should be run before treating competitor comparisons or exact packaging as externally validated facts.
+## Current Pricing Direction
 
-## Current Pricing Hypothesis
+Company-wide SLAI pricing now provides the default commercial baseline:
 
-Current working public target:
+```text
+ServicesOS
+$100/month
+or
+$1,000/year
+```
 
-> **ServicesOS Barbershop — approximately $100/month per location**
+The annual option provides the same normal entitlement and represents the standard two-month-free annual discount.
 
-The pricing goal is not to win by being the cheapest booking calendar.
+Barbershop should use the company-wide default unless Jamie explicitly approves a documented exception based on real economics or validation evidence.
 
-The goal is:
-
-> **Keep ServicesOS inexpensive to operate, price it fairly, include normal team growth generously, and provide materially more operational value per dollar.**
-
-The $100 target remains a working hypothesis until dedicated pricing research and real customer usage validate it.
+The pricing goal is not to win by being the cheapest booking calendar. The goal is to provide strong operational value at a simple price.
 
 ## Staff-Inclusive Pricing Direction
 
-Adding another barber to an existing ServicesOS tenant is expected to add relatively little platform cost by itself compared with adding another whole business tenant or consuming variable-cost providers.
+Adding another barber to an existing tenant is expected to add relatively little direct platform cost compared with adding another business tenant or consuming provider-backed services.
 
 A new barber primarily adds:
 
 - staff/provider profile data,
-- another availability/calendar context,
+- availability/calendar context,
 - appointment records,
 - permissions,
-- notifications associated with that provider,
+- notifications,
 - normal database/storage activity.
 
-Therefore, ServicesOS should avoid automatically copying competitors that heavily monetize every added staff seat unless SLAI's real costs or support burden justify it.
+ServicesOS should therefore avoid aggressive per-seat pricing for ordinary team growth unless real cost or support evidence requires it.
 
-Current working direction:
+Current planning direction:
 
-> **Include a generous normal-shop staff allowance in the base price rather than punishing the business whenever it adds another barber.**
+> **One shop. One simple price. Grow the team without the software bill jumping every time another barber is added.**
 
-Planning range to validate:
-
-- approximately **5–10 barbers/providers included** at the ~$100 shop price,
-- larger-team pricing only after real usage proves a need,
-- do not promise unlimited staff until support/usage economics are understood.
-
-Potential positioning:
-
-> **One shop. One simple price. Grow your team without your software bill jumping every time you add a barber.**
-
-This is a pricing/value hypothesis, not yet approved sales copy.
+A practical included-provider allowance can still be validated before public launch; do not promise unlimited staff without usage evidence.
 
 ## Founder / Design-Partner Pricing
 
 American Barbershop or another early validation partner should not receive an automatic permanent family discount.
 
-However, Jamie may explicitly approve a **temporary founder/design-partner rate** when the customer is providing meaningful beta feedback and helping validate a new vertical.
+Jamie may explicitly approve a temporary founder/design-partner rate when the customer provides meaningful feedback and helps validate the vertical.
 
-Current American Barbershop working concept:
+Any temporary rate should:
 
-> **Approximately $80/month temporarily during the founder-beta / design-partner period**
-
-Guardrails:
-
-- standard public target remains approximately $100/month,
-- the temporary rate should have a defined duration or validation end condition,
-- variable-cost allowances remain bounded,
-- heavy manual support, migration, SMS, or provider-backed AI is not automatically unlimited,
-- real unit economics should be measured during the pilot.
+- preserve the standard list price,
+- have a defined duration or end condition,
+- keep provider-backed costs bounded,
+- avoid unlimited manual support,
+- generate real unit-economics evidence.
 
 Useful pilot measurements:
 
-- cloud/infrastructure cost per month,
+- cloud/infrastructure cost,
 - AI/provider cost,
 - SMS/communication cost,
+- payment-provider cost,
 - support minutes,
 - onboarding/migration hours,
 - active barber count,
 - appointment volume,
-- revision/bug burden,
+- payment volume,
+- bug/revision burden,
 - retention and owner-perceived value.
+
+---
+
+## Existing Square / Tap to Pay Compatibility
+
+A real adoption consideration for the Barbershop vertical is that many shops may already use Square for card-present payments and may use Tap to Pay directly on staff phones.
+
+American Barbershop is a concrete validation lead for this possibility. The exact provider, account structure, and payment method should be verified with the shop before implementation rather than assumed.
+
+### Product principle
+
+> **Do not require a business to replace working payment hardware or a payment provider solely to adopt ServicesOS when a safe integration path exists.**
+
+Current ServicesOS V1 payment work remains centered on Stripe / Stripe Connect. Square support is a future V2/payment-provider expansion candidate.
+
+Preferred future architecture:
+
+```text
+ServicesOS
+        ↓
+Payment Provider Layer
+   ┌───────────────┐
+   │               │
+Stripe           Square
+   │               │
+Stripe Connect   Square seller authorization
+Stripe Tap to Pay
+                 Square Tap to Pay where supported
+Stripe Terminal  Square Terminal / Reader where supported
+```
+
+### Barbershop payment flow concept
+
+```text
+Appointment / service is already in ServicesOS
+        ↓
+Barber taps Collect Payment
+        ↓
+ServicesOS starts the connected provider's in-person checkout
+        ↓
+Customer taps card / phone
+        ↓
+Provider processes payment
+        ↓
+Provider sends authoritative result
+        ↓
+ServicesOS marks appointment/invoice paid
+        ↓
+Reporting and customer history update
+```
+
+For a Square-connected shop, the intended customer experience is:
+
+> **Already use Square Tap to Pay? Keep it. Connect Square to ServicesOS.**
+
+### Provider-specific truth remains separate
+
+ServicesOS should normalize the business workflow, but the selected payment provider remains authoritative for the underlying card transaction.
+
+Do not assume Square hardware can be used as Stripe hardware or vice versa. Each provider's supported Tap to Pay, reader, terminal, authentication, refund, event, and application/platform-fee rules must remain provider-native.
+
+Exact Square APIs, SDKs, permissions, device support, application-fee support, and event names must be verified against current Square documentation when the feature is actually implemented.
+
+---
+
+## Payment Provider Abstraction Direction
+
+Long-term ServicesOS should avoid hard-coding all business logic directly to one payment processor.
+
+Conceptual application-level operations:
+
+```text
+connectMerchant()
+createPayment()
+startInPersonCheckout()
+getPaymentStatus()
+refundPayment()
+collectPlatformFee()
+handleWebhook()
+disconnectMerchant()
+```
+
+Provider adapters translate those actions into Stripe or Square-specific behavior.
+
+This keeps the rest of ServicesOS focused on invoices, appointments, jobs, customers, and payment state rather than provider-specific implementation details.
+
+### V2 scope guardrail
+
+Square should only become active V2 work after:
+
+1. current Stripe/Stripe Connect behavior is stable,
+2. final V1 payment invariants are documented,
+3. at least one real target customer confirms Square is a meaningful switching barrier or retention advantage,
+4. current Square developer capabilities are re-verified,
+5. provider abstraction can be introduced without destabilizing V1 tenants.
+
+Do not build Stripe and Square simultaneously during the current V1 stabilization phase.
+
+---
 
 ## Communication Pricing Philosophy
 
-Messaging should primarily be a **customer-value and cost-recovery feature**, not a major profit center.
+Messaging should primarily be a customer-value and cost-recovery feature, not a major profit center.
 
 Preferred structure:
 
 ```text
 Base subscription
 → useful included communication allowance
-→ optional larger communication package at a better effective rate
-→ modest overage rate
+→ optional larger communication package
+→ modest overage where needed
 → owner-visible usage and spending controls
 ```
 
-Current directional concept:
+Exact SMS pricing remains TBD until current provider/carrier/A2P/segment economics are verified.
 
-- packages should carry a modest per-message contribution above verified delivered SLAI cost,
-- overages may carry a somewhat higher but still modest contribution,
-- exact cents are **TBD until provider, carrier, A2P, number, and segment economics are researched**,
-- do not document a final retail SMS rate from brainstorming alone.
-
-Required cost controls should eventually include:
+Required future controls should include:
 
 - usage meter,
 - remaining allowance,
 - reset date,
-- warnings before exhaustion,
+- warnings,
 - owner-set overage permission,
 - spending cap,
-- hard stop / email fallback where appropriate.
-
-Transactional reminders and marketing/growth messages may require different compliance or accounting treatment.
+- hard stop or fallback where appropriate.
 
 ## AI Usage Philosophy
 
-The valuable part of GrowthAI should not require paid model usage for every observation.
+Barbershop value should not require paid model usage for every observation.
 
 Preferred pattern:
 
@@ -137,41 +218,9 @@ Deterministic detection
 
 Provider-backed generation should remain bounded by credits/allowances and cost controls.
 
-The base subscription should deliver strong value even when AI-generation credits are exhausted.
-
-## Vertical Pricing Strategy
-
-Do not permanently assume that every ServicesOS vertical must use exactly the same price.
-
-Future pricing should be based on:
-
-- customer value,
-- competitive alternatives,
-- workflow intensity,
-- average business size,
-- support burden,
-- variable provider cost,
-- demonstrated retention/revenue benefit,
-- operational complexity.
-
-Do **not** create a maze of arbitrary prices for every industry.
-
-Potential future structures worth validating:
-
-1. one universal ServicesOS price,
-2. a few workflow-class/vertical price bands,
-3. simple business-size bands,
-4. base subscription plus genuinely variable-cost add-ons.
-
-Core principle:
-
-> **Charge for demonstrated customer value and real cost exposure, not merely because a vertical required code to exist.**
-
 ## Detailed Onboarding as Cost Reduction
 
-ServicesOS V1 is planned to include a detailed onboarding/business-setup system.
-
-That onboarding should reduce founder and future employee workload by collecting structured business information once, including where appropriate:
+ServicesOS onboarding should collect structured business information once, including where appropriate:
 
 - business identity,
 - services,
@@ -184,7 +233,8 @@ That onboarding should reduce founder and future employee workload by collecting
 - logo,
 - social links,
 - customer-facing information,
-- website-ready assets/data.
+- website-ready assets/data,
+- payment-provider choice/connection status when that capability exists.
 
 Long-term effect:
 
@@ -196,8 +246,6 @@ Customer completes ServicesOS onboarding
 → faster website production
 → lower support burden
 ```
-
-This is strategically important to SLAI Web economics.
 
 ## ServicesOS-Driven Website Maintenance
 
@@ -227,57 +275,25 @@ Owner edits ServicesOS
 → website consumes approved release
 ```
 
-This keeps Jamie and future web staff focused on higher-value work:
-
-- platform improvement,
-- layout/component quality,
-- integrations,
-- major design changes,
-- QA,
-- product strategy,
-- customer acquisition.
-
 Core operating principle:
 
 > **Customers manage their business facts. SLAI manages the system.**
 
 ## SLAI Web Turnaround Advantage
 
-SLAI Web is intended to achieve fast production through:
+SLAI Web is intended to achieve fast production through reusable core, approved layouts/components, structured onboarding, website-ready data, deterministic checks, and human QA.
 
-- reusable stable Web Core,
-- reusable layouts/components,
-- detailed ServicesOS onboarding,
-- canonical website-ready data,
-- AI-assisted implementation,
-- deterministic build/deployment checks,
-- human visual/factual QA.
+The under-an-hour production goal refers to SLAI active build/configuration time after required customer information is available; customer intake time is a separate part of the workflow.
 
 Goal:
 
 > **Template speed without template-looking websites.**
 
-Fast production should improve SLAI margin and turnaround time; it should not automatically force low-value pricing.
-
 ## Future Hosted Page / Marketplace Option
 
-A future optional ServicesOS marketplace or hosted-business-page layer could reuse the same approved public-data architecture.
+A future optional ServicesOS hosted-business-page or marketplace layer could reuse the same approved public-data architecture.
 
-A hosted business page could still look like a highly branded microsite using:
-
-- logo,
-- brand tokens,
-- custom hero,
-- services/pricing,
-- staff/provider profiles,
-- gallery,
-- reviews,
-- hours/location,
-- policies,
-- native booking,
-- SEO metadata.
-
-Possible future surfaces:
+Possible surfaces:
 
 ```text
 ServicesOS public business data
@@ -286,26 +302,16 @@ Hosted ServicesOS branded business page
         ↓
 SLAI Web custom-domain site
         ↓
-Optional marketplace/discovery surface
+Optional marketplace/discovery surface later
 ```
 
-These should share the same underlying public data rather than become separate content systems.
-
-**Guardrail:** Do not build a consumer marketplace early. Marketplace/discovery work is future-only and must not distract from ServicesOS stability or the proven SLAI Web workflow.
+Do not build a consumer marketplace early.
 
 ## Competitive Philosophy
 
-ServicesOS should not assume lower-priced competitors are low quality simply because they charge less.
+ServicesOS should compete through reusable SaaS economics, vertical-specific workflow quality, interoperability with existing business tools where practical, and strong value per dollar.
 
-Mature SaaS platforms can spread fixed engineering/support costs across large customer bases and generate expansion revenue from payments, messaging, premium tiers, staff pricing, marketplaces, or add-ons.
-
-SLAI's preferred response is not a race to the bottom.
-
-It is:
-
-> **Reusable SaaS economics + vertical-specific workflow quality + strong value per dollar.**
-
-For Barbershop, the intended differentiation is broader than scheduling:
+For Barbershop, intended differentiation is broader than scheduling:
 
 - booking,
 - operational context,
@@ -314,33 +320,36 @@ For Barbershop, the intended differentiation is broader than scheduling:
 - GrowthAI,
 - human-controlled automation,
 - website/data integration,
+- payment-provider flexibility,
 - simple team-friendly pricing.
 
 ## Validation Before Lock
 
-Before publishing final Barbershop pricing:
+Before publicly locking the Barbershop vertical:
 
-1. run the dedicated pricing/value competitive research,
-2. verify live competitor pricing,
-3. validate exact V1 scope,
-4. calculate realistic SMS/provider economics,
-5. test with at least one real barbershop,
-6. measure onboarding/support/variable cost,
-7. compare owner-perceived value against current software,
-8. then lock public price and packaging.
+1. verify American Barbershop's current booking/payment stack,
+2. confirm whether Square and Tap to Pay are actually used,
+3. verify live competitor pricing,
+4. validate exact ServicesOS scope,
+5. validate provider/SMS economics,
+6. test with at least one real barbershop,
+7. measure onboarding/support/payment usage,
+8. compare owner-perceived value against current software,
+9. then lock the vertical-specific launch package.
 
 ## Priority Guardrail
 
-This is future Barbershop and SLAI Web planning.
+This remains future Barbershop planning.
 
-It does not alter the current execution order:
+It does not alter the execution order:
 
 ```text
 ServicesOS V1
 → wife beta
 → beta-critical fixes
 → UI fine-tuning
-→ payment stability
+→ Stripe / Stripe Connect stability
 → customer-ready release
-→ only then promote Barbershop/Web implementation when Jamie decides
+→ SLAI Web sequence
+→ later ServicesOS V2 / vertical expansion when promoted
 ```
