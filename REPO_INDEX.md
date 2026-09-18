@@ -2,7 +2,7 @@
 
 Document Status: Living Index  
 Implementation Status: Active Planning Reference  
-Last Updated: 2026-09-06  
+Last Updated: 2026-09-18  
 Repository: `stellarlogicai/SLAI-Master-Planning`  
 Primary Active Build: ServicesOS
 
@@ -95,6 +95,7 @@ Key new planning:
 - `02_Website/SLAI_Web_Engine.md` — reusable web core, up-to-10 layout systems, ServicesOS-powered public business data, native booking architecture, low-AI-usage build flow, human QA, and scaling model.
 - `02_Website/SLAI_Web_Architecture_Spec.md` — operational production contract for shared core, layouts, customer layer, versioning, protected boundaries, public-data consumption, booking authority, AI boundaries, and release requirements.
 - `02_Website/SLAI_Web_Layout_Contract.md` — declarative layout contract and compatibility rules.
+- `02_Website/SLAI_Web_Layout_Library_Plan.md` — target 10-layout service-business library, SLAI/Aunt B's source-layout extraction, shared section/theme composition, controlled expansion order, and future AI-assisted layout direction.
 - `02_Website/SLAI_Web_QA_and_Release_Gates.md` — automated + human QA/release evidence model.
 - `02_Website/Templates/` — site manifest, intake/readiness, Web Job Packet, Human QA, and client approval/deployment templates.
 - `01_ServicesOS/Website_Public_Data_and_Booking_Contract.md` — future ServicesOS public projection, publish semantics, and native booking source-of-truth contract.
