@@ -172,6 +172,64 @@ The current implementation intentionally keeps the deterministic ServicesOS esti
 
 That is a valid V1 boundary, but it does **not** match the intended V2 pricing architecture described in this document.
 
+
+### 3.6 Mandatory pre-implementation audit gate
+
+The current codebase contains multiple generations of estimating, pricing, AI-assistance, property-condition, scope-control, and extra-work code.
+
+Before any V2 pricing-intelligence implementation begins, audit the relevant V1/current/legacy paths and classify each component as:
+
+- **Canonical — reuse directly**
+- **Canonical but needs hardening/refactor**
+- **Reference only**
+- **Legacy/deprecated — do not reuse**
+- **Conflicts with current product direction**
+
+At minimum, the audit must trace:
+
+```text
+intake facts
+→ estimate calculation
+→ saved lead/request
+→ booking conversion
+→ agreed price
+→ approved scope
+→ employee JobPacket
+→ arrival/condition evidence
+→ extra-work request
+→ owner/exception review
+→ customer approval
+→ authoritative updated scope/price
+→ payment
+```
+
+For each stage, record:
+
+- source of truth,
+- allowed writer,
+- allowed reader,
+- server/client authority,
+- tenant boundary,
+- versioning/idempotency behavior,
+- audit evidence,
+- duplicate/legacy fields,
+- migration risk.
+
+The audit must lock these decisions before implementation:
+
+1. canonical pricing engine/service,
+2. canonical tenant pricing-policy schema,
+3. canonical authoritative job-price field,
+4. canonical scope version/approval model,
+5. canonical employee field-verification contract,
+6. canonical customer-approval contract,
+7. canonical override/exception path,
+8. legacy code to retire or isolate,
+9. V1 contracts V2 may extend but must not break.
+
+**No owner pricing UI or SLAI-authoritative pricing work should be built against an unaudited engine.**
+
+
 ---
 
 ## 4. V1 / V2 Boundary
@@ -410,6 +468,154 @@ This preserves the SLAI philosophy:
 
 ---
 
+
+## 6A. Owner Pricing Setup / Business-Specific Pricing Configuration
+
+The current Aunt B pricing profile should be treated as a **prototype for a tenant-configurable pricing-policy model**, not as the permanent multi-tenant implementation.
+
+After the pricing audit locks one canonical engine and schema, ServicesOS V2 should provide an owner-facing pricing setup surface that turns business rules into understandable controls instead of exposing raw formulas.
+
+### Owner configuration categories
+
+Depending on the vertical, the owner may configure:
+
+- minimum job price,
+- base prices / anchor prices,
+- service-type pricing,
+- first-time / initial-reset pricing,
+- recurring-service pricing,
+- condition adjustments,
+- clutter/complexity adjustments,
+- pet or job-specific complexity adjustments,
+- add-on price and expected duration,
+- travel zones / mileage adjustments,
+- labor or margin targets where used,
+- pricing floors/ceilings,
+- manual-review triggers,
+- exception boundaries,
+- allowed discount/adjustment rules.
+
+### Pricing adjustment modes
+
+Where useful, a pricing rule may support:
+
+- fixed dollar adjustment,
+- percentage adjustment,
+- multiplier,
+- separate base/anchor price,
+- manual-review-only.
+
+The owner should not need to edit code or understand implementation formulas.
+
+Example:
+
+```text
+FIRST-TIME CLEANING
+
+How do you price the first visit?
+
+○ Same as normal cleaning
+● Add a percentage
+○ Add a fixed amount
+○ Use a separate base price
+
+First-clean increase: [ 20 ] %
+Minimum first-clean price: [ $175 ]
+```
+
+Example recurring configuration:
+
+```text
+RECURRING SERVICE
+
+Weekly:      [ -12% ]
+Biweekly:    [  -8% ]
+Monthly:     [  -3% ]
+
+Apply recurring pricing:
+● After first completed cleaning
+○ Immediately
+```
+
+### Live pricing simulator
+
+Pricing setup should include a safe preview/simulator using the same canonical pricing service that production pricing uses.
+
+Example:
+
+```text
+TEST YOUR PRICING
+
+3 bedrooms
+2 bathrooms
+Standard clean
+First visit
+Needs attention
+2 pets
+Inside oven
+
+Estimated range: $225–$270
+Suggested / modeled price: $248
+Estimated time: 4.5 hours
+```
+
+The simulator must not maintain a separate formula from production.
+
+### Configuration guardrails
+
+ServicesOS should detect contradictory or incomplete rules before activation, for example:
+
+- recurring pricing falls below the configured minimum,
+- a heavier condition produces a lower price than normal condition,
+- a service has no usable pricing rule,
+- a range is inverted,
+- a required manual-review trigger is missing,
+- an add-on has price but no usable scope/duration information where duration is required.
+
+### SLAI setup assistance
+
+SLAI Intelligence may help the owner understand or test the configured policy, for example:
+
+> "Based on these settings, a typical 3-bed / 2-bath first clean would fall in this range. Does that match how you normally price the work?"
+
+SLAI may explain consequences and identify inconsistencies, but it must not silently replace the owner's approved pricing policy.
+
+### Versioning and activation
+
+Pricing configuration should be versioned.
+
+Preferred lifecycle:
+
+```text
+Draft pricing policy
+        ↓
+Validate / simulate
+        ↓
+Owner activates
+        ↓
+New jobs use new version
+        ↓
+Historical jobs retain prior policy/version references
+```
+
+Do not retroactively rewrite historical quotes or approved jobs when the owner changes future pricing.
+
+### Multi-vertical rule
+
+The owner pricing UI should be generated from the canonical pricing-policy schema plus vertical-specific configuration, rather than hardcoding one cleaning-only settings page.
+
+The vertical module should define:
+
+- which pricing inputs are relevant,
+- labels/help text,
+- allowed adjustment types,
+- required fields,
+- manual-review triggers,
+- safe defaults where explicitly approved.
+
+The shared ServicesOS pricing system should remain the authority for calculation and audit.
+
+
 ## 7. First-Time Clean and Recurring Pricing
 
 The initial-clean concept should be explicit in V2.
@@ -632,23 +838,27 @@ This is future planning, not an active coding queue.
 ```text
 1. Freeze V1 pricing/scope contracts
         ↓
-2. Define V2 pricing-policy schema + decision record
+2. Audit all pricing/scope/approval implementations and lock canonical paths
         ↓
-3. Build secure public website intake gateway
+3. Define tenant pricing-policy schema + decision record
         ↓
-4. Connect preliminary range generation
+4. Build owner pricing setup + live simulator against the canonical engine
         ↓
-5. Add canonical Employee App arrival verification
+5. Build secure public website intake gateway
         ↓
-6. Add SLAI confirmed-price action
+6. Connect preliminary range generation
         ↓
-7. Connect customer approval to confirmed price/scope
+7. Add canonical Employee App arrival verification
         ↓
-8. Extend extra-work flow to SLAI repricing
+8. Add SLAI confirmed-price action
         ↓
-9. Add estimate-vs-verified-vs-actual analytics
+9. Connect customer approval to confirmed price/scope
         ↓
-10. Validate with Cleaning before generalizing to other verticals
+10. Extend extra-work flow to SLAI repricing
+        ↓
+11. Add estimate-vs-verified-vs-actual analytics
+        ↓
+12. Validate with Cleaning before generalizing to other verticals
 ```
 
 Each slice should have explicit acceptance criteria, tests, tenant-isolation validation, and rollback behavior.
