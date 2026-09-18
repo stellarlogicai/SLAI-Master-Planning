@@ -2,7 +2,7 @@
 
 **Document Status:** Strategic planning  
 **Implementation Status:** Future / post-ServicesOS-V1 support system  
-**Last Updated:** 2026-09-01  
+**Last Updated:** 2026-09-18  
 **Owner:** Jamie Brown / Stellar Logic AI  
 **Primary Rule:** ServicesOS remains priority one. Do not build this engine before ServicesOS reaches stable customer-ready V1 unless Jamie explicitly promotes a small supporting task.
 
@@ -56,22 +56,26 @@ The shared core should be protected from routine customer-specific edits.
 
 The goal is for most new websites to be configuration and presentation work rather than newly generated application logic.
 
-## Initial Layout Library
+## Target Layout Library
 
-The exact designs may evolve, but the first library can target up to ten reusable layout systems:
+The current target library is documented in `SLAI_Web_Layout_Library_Plan.md`.
 
-1. **Bold Local** — strong hero, reviews, services, large calls to action.
-2. **Premium Dark** — barbers, detailing, tattoo, premium trades, high-contrast visual brands.
-3. **Clean Professional** — cleaning, consulting, home services, professional service firms.
-4. **Visual Portfolio** — landscaping, contractors, remodeling, before/after-heavy businesses.
-5. **Booking First** — barber, salon, massage, appointment-driven services.
-6. **Service Area** — cleaning, lawn care, pressure washing, mobile services.
-7. **Trust First** — reputation-heavy or high-trust service businesses.
-8. **Team Focused** — businesses where the customer chooses or evaluates staff.
-9. **Modern Minimal** — simple, polished, higher-end local businesses.
-10. **Community / Story** — family businesses, legacy shops, local-community brands.
+Target families:
+
+1. **Modern Professional** — generalized from the SLAI website source design.
+2. **Warm Local Service** — generalized from the Aunt B's website source design.
+3. **Booking First** — appointment-driven service businesses.
+4. **Visual Showcase** — portfolio and before/after-heavy businesses.
+5. **Local Trust** — reputation and service-area-heavy local businesses.
+6. **Team First** — businesses where the customer evaluates or chooses staff/providers.
+7. **Service Catalog** — businesses with larger grouped service inventories.
+8. **Premium Editorial** — higher-end image- and brand-led service businesses.
+9. **Fast Conversion** — quote/call/request-driven service businesses.
+10. **Dynamic Dashboard** — public-safe live/context surfaces for approved product-connected sites.
 
 These are **layout systems, not clone templates**. Shared structure may be reused while typography, colors, imagery, spacing, section order, copy, and visual treatment remain customer-specific.
+
+The 10-layout catalog is a target library, not an instruction to build all ten at V1 start. `SLAI_Web_Layout_Contract.md` and `SLAI_Web_V1_Execution_Plan.md` remain authoritative: prove one or two excellent production layouts first, then expand the library from real customer evidence.
 
 ## ServicesOS as Canonical Business Data
 

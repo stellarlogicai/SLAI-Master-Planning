@@ -120,6 +120,7 @@ At active-build start, these decisions should be verified against current provid
 ### Production system / templates
 
 - `SLAI_Web_Engine.md` — reusable web platform, layout library concept, ServicesOS integration, booking architecture, AI-assisted build workflow, human QA, and scale model.
+- `SLAI_Web_Layout_Library_Plan.md` — target 10-layout service-business catalog, SLAI/Aunt B's source-layout extraction plan, shared section/theme model, evidence-gated build sequence, and future AI-composition direction.
 - `Templates/Website_Intake_and_Readiness.md` — launch-data readiness and provenance checklist.
 - `Templates/Web_Job_Packet.md` — scoped worker/Codex task contract with protected paths, tests, stop conditions, and report-back.
 - `Templates/Human_QA_Checklist.md` — human QA evidence.

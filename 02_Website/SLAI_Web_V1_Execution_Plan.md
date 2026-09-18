@@ -68,6 +68,7 @@ This execution plan is the implementation companion to:
 - `SLAI_Web_Engine.md`
 - `SLAI_Web_Architecture_Spec.md`
 - `SLAI_Web_Layout_Contract.md`
+- `SLAI_Web_Layout_Library_Plan.md` — target 10-family service-business layout catalog and evidence-gated expansion order; does not override the one-or-two-layout V1 start.
 - `SLAI_Web_QA_and_Release_Gates.md`
 - `SLAI_Web_V1_Product_and_Data_Contracts.md`
 - `SLAI_Web_V1_Deployment_Billing_and_Operations_Contracts.md`
@@ -495,6 +496,10 @@ Prove the layout contract with one excellent real layout before creating a libra
 - performance baseline.
 
 A second layout may be added only after the first passes real-customer QA or when the first target customer's business type clearly requires a materially different system.
+
+The broader target library is defined in `SLAI_Web_Layout_Library_Plan.md`. That document controls intended layout families and expansion order after this milestone proves the contract; it does not authorize building all target families before evidence.
+
+When source designs are ready for extraction, the current SLAI website and Aunt B's website may be audited as source material for the first generalized layout families. Reuse proven patterns without importing business-specific content or creating customer forks.
 
 ### Acceptance criteria
 

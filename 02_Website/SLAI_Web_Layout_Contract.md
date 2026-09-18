@@ -2,7 +2,7 @@
 
 **Status:** Planning contract  
 **Implementation:** Future  
-**Last Updated:** 2026-09-06
+**Last Updated:** 2026-09-18
 
 ## Purpose
 
@@ -67,8 +67,30 @@ Customer-specific overrides may change approved presentation choices, but should
 
 If the same override repeats across multiple customers, consider promoting it into a supported layout variant.
 
+## Layout Library Relationship
+
+The target service-business layout catalog and expansion order are documented in `SLAI_Web_Layout_Library_Plan.md`.
+
+The library plan does not override this contract or the V1 execution guardrail.
+
+Additional rules:
+
+- a layout family selects composition and supported variants; it does not create a second business-data model,
+- layout structure and theme/style presets remain separate concerns,
+- the authoritative Website Profile `presentation.layout`, `presentation.pages`, section `variantId`, and brand preset references remain the customer/site state,
+- new section types require an explicit Website Profile schema revision rather than template-only invention,
+- repeated customer-specific presentation needs should become supported variants before they become copied custom code,
+- future AI-assisted composition must emit valid supported layout/profile state rather than bypassing the contract.
+
+See also:
+
+- `SLAI_Web_V1_Website_Profile_Schema.md`
+- `SLAI_Web_V1_Execution_Plan.md`
+
 ## Initial Scope
 
 Build one or two excellent production layouts before expanding the library.
 
 Do not build all conceptual layouts in advance of demand.
+
+The 10-layout catalog is a target library to grow into after the first production layouts and shared section variants are proven.
