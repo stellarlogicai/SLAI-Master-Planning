@@ -72,6 +72,7 @@ Jamie may explicitly change this priority if business conditions justify it.
 This document is the **execution companion** to:
 
 - `ServicesOS_V2_Workforce_Field_Operations_and_Vertical_Expansion.md` — product vision and feature scope,
+- `ServicesOS_V2_SLAI_Intelligence_Pricing_and_Field_Verification.md` — V2 pricing authority, arrival verification, customer approval, and mid-job repricing contract,
 - `ServicesOS_Recurring_Service_Plans_V1_1.md` — recurring-work bridge plan,
 - `../ServicesOS Vertical Architecture.md` — Core + Vertical Modules architecture,
 - `../Website_Public_Data_and_Booking_Contract.md` — public-data and booking boundary,
@@ -273,11 +274,13 @@ Immutable job-scope snapshot
         ↓
 Employee sees exact approved scope
         ↓
-Customer requests extra work
+Customer requests extra work or field condition differs materially
         ↓
-Employee/owner records add-on request
+Employee/owner records add-on / condition-change request
         ↓
-Owner prices/reviews
+SLAI Intelligence calculates revised price/time within owner-configured policy
+        ↓
+Out-of-policy/manual-review cases route to owner
         ↓
 Customer approves or declines
         ↓
@@ -548,6 +551,58 @@ Required mechanisms:
 - production smoke gates.
 
 V1 tenants must not be silently forced through an irreversible V2 migration without tested recovery behavior.
+
+---
+
+
+## 5.11 SLAI Intelligence Pricing and Field-Verification Contract
+
+V2 pricing should use the existing deterministic pricing, scope versioning, customer approval, and extra-work foundations rather than creating a parallel pricing system.
+
+Detailed planning:
+
+- `ServicesOS_V2_SLAI_Intelligence_Pricing_and_Field_Verification.md`
+
+Required staged model:
+
+```text
+Customer/public intake
+        ↓
+Preliminary range
+        ↓
+Employee arrival verification
+        ↓
+Confirmed price
+        ↓
+Customer approval
+        ↓
+Work
+        ↓
+Material exception / extra work
+        ↓
+Reprice + re-approve
+```
+
+Authority rules:
+
+- Owner configures pricing policy and exception boundaries.
+- SLAI Intelligence is the per-job pricing authority **inside that approved contract**.
+- Employee verifies facts and scope; employee does not set price.
+- Customer approval is required before material revised work becomes authoritative.
+- Out-of-policy, high-risk, or insufficient-data cases require owner review.
+- Price decisions must store pricing-policy version, source scope/facts, result, explanation, and approval/override audit.
+- No client-supplied final price may become authoritative.
+- Historical estimate, verified price, and actual-job outcome must remain distinguishable.
+
+V1 dependency:
+
+- finish the current extra-work → owner review → customer approval → authoritative scope refresh flow first,
+- do not pull V2 pricing authority into the V1 release,
+- treat the existing legacy property-condition checklist as reference only; build V2 arrival verification through the current canonical Employee App/server boundaries.
+
+Admin-side success condition:
+
+> Routine jobs should no longer require the owner to manually calculate price. Owner attention should concentrate on policy and exceptions.
 
 ---
 
@@ -1187,12 +1242,13 @@ Prefer controlled release trains such as:
 ```text
 V2.0A — Core contracts + scheduling/crews
 V2.0B — Employee App day-of-work
-V2.0C — Routing/dispatch
-V2.0D — Safety/issues/communications
-V2.0E — Analytics + SLAI Assistant V2
-V2.0F — Vertical framework + Lawn Care pilot
-V2.0G — Appointment/Barbershop validation
-V2.0H — Theme/customization polish
+V2.0C — SLAI pricing + arrival verification
+V2.0D — Routing/dispatch
+V2.0E — Safety/issues/communications
+V2.0F — Analytics + SLAI Assistant V2
+V2.0G — Vertical framework + Lawn Care pilot
+V2.0H — Appointment/Barbershop validation
+V2.0I — Theme/customization polish
 ```
 
 Names/numbering may change during implementation.
