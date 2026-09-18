@@ -26,7 +26,7 @@ V2 should make that core substantially stronger for multi-employee and multi-cre
 V2 should continue the existing SLAI / ServicesOS rules:
 
 - AI amplifies people; it does not replace responsible business decisions.
-- Owners remain responsible for staffing, scheduling, pricing, routing, safety, customer, and payment decisions.
+- Owners remain responsible for staffing, scheduling, pricing policy/guardrails, routing, safety, customer, and payment decisions. In V2, SLAI Intelligence may calculate authoritative per-job pricing within owner-approved pricing policy, with owner review reserved for exceptions/out-of-policy cases.
 - Build simple first; complexity must be earned by real customer need.
 - Reuse the ServicesOS core instead of cloning products by industry.
 - Vertical expansion should happen through configuration/modules wherever practical.
@@ -264,8 +264,72 @@ SLAI should not autonomously:
 - dispatch workers
 - change routes
 - make safety decisions
-- change customer pricing
+- change the business's pricing policy/guardrails or exceed approved pricing boundaries without the required owner review
 - send/publish important content without the required owner action
+
+---
+
+## 5A. SLAI Intelligence Pricing & Field Verification
+
+V2 should promote pricing from a primarily owner-operated estimate workflow into a **bounded pricing-intelligence workflow** that reduces repetitive admin work.
+
+The detailed contract lives in:
+
+- [ServicesOS V2 — SLAI Intelligence Pricing & Field Verification](./ServicesOS_V2_SLAI_Intelligence_Pricing_and_Field_Verification.md)
+
+### Product direction
+
+```text
+Website/customer intake
+        ↓
+SLAI preliminary price range
+        ↓
+Employee arrival verification
+        ↓
+SLAI confirmed price
+        ↓
+Customer approval
+        ↓
+Work begins
+        ↓
+Material condition/scope change
+        ↓
+Existing extra-work/change-control flow
+        ↓
+SLAI repricing
+        ↓
+Customer approval
+```
+
+### Authority boundary
+
+- The owner defines pricing policy, floors/ceilings, services, add-ons, recurring rules, first-clean rules, and manual-review triggers.
+- SLAI Intelligence calculates the per-job price within that approved policy.
+- Employees verify real-world condition/scope and provide evidence; they do not set the price.
+- Customers approve the confirmed price and material revisions.
+- Out-of-policy or high-risk cases return to the owner for exception review.
+
+### V1 relationship
+
+Do not move this architecture into the current V1 finish line.
+
+V1 should finish the already-promised deterministic estimate, customer-approved scope, employee extra-work, owner review, customer approval, and authoritative scope-refresh lifecycle.
+
+V2 should connect those foundations into the preliminary-range → arrival-verification → confirmed-price → mid-job repricing workflow.
+
+### Admin-side outcome
+
+Routine pricing should become system-operated rather than a repetitive owner task.
+
+The owner should spend time on:
+
+- policy,
+- exceptions,
+- unusual jobs,
+- customer relationship decisions,
+
+rather than manually pricing every ordinary request.
+
 
 ---
 
@@ -484,7 +548,7 @@ The following remain later unless real customer need causes an explicit scope ch
 - Autonomous employee discipline
 - Autonomous hiring/firing recommendations
 - Autonomous dispatch
-- Autonomous pricing
+- Unbounded/autonomous pricing outside owner-configured pricing policy and guardrails
 - Autonomous safety decisions
 - Fully autonomous marketing/posting
 - Huge integration marketplace
@@ -509,19 +573,21 @@ ServicesOS V1 launch + stabilization
         ↓
 4. Employee App V2 integration
         ↓
-5. SLAI Assistant V2 operational awareness
+5. SLAI Intelligence pricing + field verification
         ↓
-6. Operational analytics
+6. SLAI Assistant V2 operational awareness
         ↓
-7. Themes & customization
+7. Operational analytics
         ↓
-8. Finish vertical abstraction
+8. Themes & customization
         ↓
-9. Lawn Care vertical pilot
+9. Finish vertical abstraction
         ↓
-10. Measure reuse / architecture cost
+10. Lawn Care vertical pilot
         ↓
-11. Decide whether to add more V2 verticals
+11. Measure reuse / architecture cost
+        ↓
+12. Decide whether to add more V2 verticals
 ```
 
 Some implementation slices may overlap when dependencies make that cleaner, but V1 launch stability must remain the gate before V2 implementation begins.
