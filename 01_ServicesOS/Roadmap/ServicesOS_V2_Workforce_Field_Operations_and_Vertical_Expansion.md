@@ -301,6 +301,16 @@ SLAI repricing
 Customer approval
 ```
 
+### Audit prerequisite
+
+Before this V2 capability is implemented, audit all current/legacy pricing, estimate, AI-assistance, property-condition, scope-control, and extra-work code. Lock one canonical pricing engine/service and schema before building owner configuration or SLAI-authoritative pricing.
+
+### Owner pricing configuration
+
+The current Aunt B pricing profile should become reference/prototype input for a multi-tenant owner configuration model, not remain hardcoded business logic.
+
+The owner-facing setup should support understandable controls such as minimum price, anchors/base prices, first-clean rules, recurring adjustments, condition/complexity adjustments, add-ons, travel, floors/ceilings, and manual-review triggers. A live simulator should use the exact canonical production pricing service.
+
 ### Authority boundary
 
 - The owner defines pricing policy, floors/ceilings, services, add-ons, recurring rules, first-clean rules, and manual-review triggers.
