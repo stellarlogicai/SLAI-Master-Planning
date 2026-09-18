@@ -125,7 +125,10 @@ Before coding the first V2 slice:
 - define feature flags and rollback rules,
 - define test expectations,
 - identify provider-backed variable costs,
-- identify any migration needed for existing V1 tenants.
+- identify any migration needed for existing V1 tenants,
+- complete a pricing/scope/approval audit before any V2 pricing-intelligence or owner-pricing-configuration implementation,
+- classify overlapping pricing/estimate/AI/condition/scope code as canonical, refactor, reference-only, deprecated, or conflicting,
+- lock one canonical pricing service, tenant pricing-policy schema, authoritative job-price field, and approval/version model before building pricing UI.
 
 ---
 
@@ -603,6 +606,15 @@ V1 dependency:
 Admin-side success condition:
 
 > Routine jobs should no longer require the owner to manually calculate price. Owner attention should concentrate on policy and exceptions.
+
+Owner setup dependency:
+
+- do not hardcode the Aunt B profile as the multi-tenant model,
+- after the mandatory audit, convert the canonical pricing contract into a tenant-configurable owner pricing setup,
+- expose understandable business controls instead of raw formulas,
+- include a live simulator that calls the same canonical pricing service used by production,
+- version pricing policies so future changes do not rewrite historical quotes/jobs,
+- use vertical configuration to decide which pricing controls appear for each business type.
 
 ---
 
