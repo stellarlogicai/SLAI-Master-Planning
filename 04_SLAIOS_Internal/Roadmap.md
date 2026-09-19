@@ -26,7 +26,9 @@ Build the smallest system SLAI can use every day:
 - internal communication,
 - basic Product Fleet,
 - Luna/Terra/Sol router,
-- audit history.
+- audit history,
+- initial shared semantic/entity vocabulary for the company and active products,
+- compact permission-aware context-pack construction from canonical sources.
 
 No external customer version.
 
@@ -76,6 +78,8 @@ Start narrow:
 - disposable VM/container execution,
 - controlled branch/PR workflow,
 - automated tests/build,
+- canonical repository/product context loaded before work,
+- shared semantic definitions for important entities/relationships,
 - no production credentials,
 - human approval before merge/deploy.
 
@@ -90,6 +94,8 @@ Only after the pilot proves value:
 - reusable environment templates,
 - model/cost routing,
 - automated QA workers,
+- bounded parallel implementation/test/docs/review workers,
+- one consolidated evidence/report path,
 - small human QA team,
 - Sol review for high-risk work,
 - contribution attribution,
@@ -97,6 +103,8 @@ Only after the pilot proves value:
 - stronger audit/replay.
 
 Scale workers only when a single worker becomes a real bottleneck.
+
+Scale agent concurrency only after shared meaning, repository rules, automated gates, and human review are strong enough that additional workers reduce queue time instead of multiplying contradictory work.
 
 ## Phase 6 — Internal Operating Maturity
 
