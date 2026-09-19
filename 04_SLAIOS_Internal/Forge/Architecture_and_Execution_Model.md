@@ -114,6 +114,98 @@ worker destroyed/reset
 result recorded in SLAIOS
 ```
 
+## Parallel Prompt Orchestration and Dependency Control
+
+Forge should support multiple prompts/tasks running at the same time, but concurrency is a scheduling decision rather than a default.
+
+The control plane should convert a larger engineering objective into a dependency graph:
+
+```text
+Release objective
+      |
+      +-- Slice A: implementation -----------+
+      |                                     |
+      +-- Slice B: independent tests -------+--> validation bundle
+      |                                     |
+      +-- Slice C: docs --------------------+
+      |
+      +-- Slice D: schema change
+              |
+              +--> Slice E: gateway update
+              +--> Slice F: consumer update
+```
+
+Slices A/B/C may run together when their contracts and write surfaces do not conflict.
+
+Slices D/E/F must respect the dependency edges and should not be launched as independent concurrent edits when E/F require D's final contract.
+
+Before dispatch, SLAIOS/Forge should evaluate at least:
+
+- repository and branch,
+- files/directories likely to be touched,
+- shared schemas/contracts,
+- database/API/event boundaries,
+- migration dependencies,
+- security/payment/identity sensitivity,
+- test ownership,
+- required reviewer,
+- expected merge order.
+
+### Conflict handling
+
+If two tasks are likely to change the same canonical file, schema, authority rule, migration, or tightly coupled contract, Forge should:
+
+1. serialize the work,
+2. split ownership more cleanly,
+3. establish the shared contract first and make dependent tasks wait,
+4. or escalate to the engineer when safe ordering is unclear.
+
+Do not rely on Git merge conflicts as the primary dependency detector.
+
+### Isolated execution
+
+Concurrent workers should use isolated branches/worktrees or equivalent clean execution environments.
+
+One worker must not silently consume another worker's unreviewed local state.
+
+Any intentional dependency on another in-flight slice must reference an explicit approved commit/branch/interface.
+
+### Prompt queue / scheduler
+
+The future engineering surface should make concurrent work visible as a controlled queue:
+
+```text
+READY       RUNNING       BLOCKED       VALIDATING       REVIEW
+Task A      Task B        Task D        Task C            Task E
+Task F                    waits on D
+```
+
+The scheduler may start additional workers only when:
+
+- dependencies are satisfied,
+- concurrency/cost budgets permit it,
+- the work is independent enough to avoid conflicting authority,
+- required validation capacity exists.
+
+The objective is not maximum simultaneous prompts.
+
+The objective is **maximum safe throughput with minimal human coordination overhead**.
+
+### Consolidated result
+
+A multi-task objective should return one higher-level report that explains:
+
+- which slices ran,
+- which ran in parallel,
+- dependencies that blocked/serialized work,
+- commits/branches/PRs produced,
+- tests/build/security evidence,
+- conflicts or unresolved decisions,
+- recommended merge order,
+- items requiring human judgment.
+
+The engineer should not have to reconstruct the release state from several unrelated agent transcripts.
+
 ## Tool Boundary
 
 Prefer explicit tools over unrestricted shell when practical:
