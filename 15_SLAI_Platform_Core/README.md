@@ -105,6 +105,38 @@ Potential shared capabilities beyond or after V1 include:
 - data portability,
 - and common security controls.
 
+## Future Shared Semantic Layer — Not a Core V1 Requirement
+
+A later SLAI architecture may promote proven schemas, references, relationships, authority rules, and domain terminology into a shared semantic layer that helps products and internal agents interpret the same concepts consistently.
+
+Conceptually:
+
+```text
+canonical schemas
++ explicit entity relationships
++ authority/source-of-truth rules
++ versioned events/references
+        ↓
+deterministic entity resolution / traversal
+        ↓
+small permission-aware context packs
+        ↓
+AI reasoning only over the facts needed for the task
+```
+
+Potential benefits include:
+
+- less repeated schema rediscovery,
+- smaller model context,
+- fewer contradictory agent interpretations,
+- more reliable cross-product references,
+- better auditability and replay,
+- cleaner SLAIOS/Forge orchestration.
+
+This is a **future semantic/ontology direction**, not permission to expand Core V1.
+
+Core V1 should only expose the schemas/references/events already justified by ServicesOS → SLAI Web reuse. A richer semantic layer must be earned by repeated cross-product/internal-agent use.
+
 ## Guardrails
 
 - ServicesOS remains the active product.
