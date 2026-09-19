@@ -66,6 +66,75 @@ feature  tests   docs/report
 
 The engineer can begin the next issue while prior work moves through automated validation and QA.
 
+
+## Clean Engineering Workflow
+
+Forge should turn the current founder/ChatGPT/Codex/GitHub/test/report loop into a repeatable company workflow.
+
+```text
+Engineer defines desired outcome
+        ↓
+SLAIOS supplies:
+- active product priority
+- canonical current state
+- architecture and semantic contracts
+- repository instructions
+- permissions
+- relevant decision history
+        ↓
+Forge creates bounded task slices
+        ↓
+┌──────────────────────────────┐
+│ implementation worker        │
+│ test/validation worker       │
+│ security/review worker       │
+│ documentation/report worker  │
+└──────────────────────────────┘
+        ↓
+Automated gates
+- focused tests
+- regression tests
+- build/lint
+- security/tenant checks
+- scope compliance
+        ↓
+Consolidated evidence/report
+        ↓
+Senior engineer / founder review
+        ↓
+Approve / revise / reject
+        ↓
+PR / merge / release process
+```
+
+The purpose is to remove repeated coordination work around engineering, not to remove the engineer from responsibility.
+
+As Forge matures, a human engineer should spend proportionally more time on:
+
+- architecture,
+- problem framing,
+- acceptance criteria,
+- difficult debugging,
+- product/technical tradeoffs,
+- security and reliability judgment,
+- review of unusual output,
+- release responsibility.
+
+And proportionally less time on:
+
+- restating stable repository context,
+- collecting known project documents,
+- writing repetitive implementation prompts,
+- manually gathering test/build evidence,
+- rewriting status reports,
+- preparing routine handoffs.
+
+### Shared-meaning requirement
+
+Parallel workers should receive the same canonical definitions for important concepts and relationships. A worker should not independently reinterpret terms such as tenant, customer, booking, approved scope, payment, entitlement, or deployment state when those meanings are already defined.
+
+SLAIOS should therefore build compact, permission-aware context packs from canonical schemas/relationships before Forge workers begin. This reduces contradictory assumptions and avoids wasting model context on rediscovering known meaning.
+
 ## QA Model
 
 A small QA team can be highly leveraged when automated workers handle predictable checks.
