@@ -75,6 +75,74 @@ Store and connect:
 
 Memory is evidence, not authority.
 
+
+### Shared Semantic Context / Company Ontology
+
+SLAIOS should eventually maintain a lightweight shared semantic layer over canonical company and product data.
+
+The goal is not to build a giant abstract knowledge graph before it is needed. The goal is to define important entities and relationships once so humans, workflows, and AI workers do not repeatedly rediscover what the data means.
+
+Examples:
+
+```text
+Tenant
+├── Customer
+│   ├── Lead
+│   ├── Estimate
+│   ├── Booking
+│   └── Payment
+├── Employee
+│   ├── Assignment
+│   └── Work evidence
+├── Job Scope
+│   ├── Approved version
+│   ├── Change request
+│   └── Customer approval
+├── Subscription / Entitlement
+├── Product / Repository
+├── Decision
+└── Operational Event
+```
+
+Preferred reasoning path:
+
+```text
+Question / task
+        ↓
+Resolve relevant entities
+        ↓
+Follow canonical relationships
+        ↓
+Select authoritative facts
+        ↓
+Build compact context pack
+        ↓
+AI reasoning / execution
+```
+
+Avoid:
+
+```text
+Question
+→ dump large stores of loosely related records
+→ ask the model to infer every relationship again
+```
+
+The semantic layer should preserve:
+
+- canonical entity identity,
+- relationship meaning,
+- source of truth,
+- authority boundaries,
+- version/state where relevant,
+- provenance,
+- access permissions,
+- product-specific ownership.
+
+Where Platform Core already defines a shared contract, SLAIOS should consume that meaning instead of inventing a conflicting definition. Product-specific semantics should remain with the product when they do not belong in Core.
+
+This layer is intended to improve reliability, context selection, token efficiency, cross-product understanding, and future Forge orchestration. It is not permission to centralize all product data or erase product ownership boundaries.
+
 ### Internal Communication
 
 Native remote-first communication should include:
@@ -216,6 +284,39 @@ The system should distinguish between:
 - people/finance/legal decisions.
 
 The goal is not an approval click for every trivial action. Human attention should be reserved for places where judgment or accountability adds value.
+
+
+### Engineering Orchestration Outcome
+
+For engineering, the long-term objective is a cleaner workflow around human judgment:
+
+```text
+Human defines outcome / accepts responsibility
+        ↓
+SLAIOS resolves:
+- product priority
+- canonical architecture
+- current repo/branch state
+- relevant decisions
+- semantic/domain context
+- permissions
+        ↓
+Forge decomposes only approved work into bounded slices
+        ↓
+Implementation / test / documentation / review workers
+        ↓
+Automated gates and evidence
+        ↓
+One consolidated engineering report
+        ↓
+Human technical review
+        ↓
+Merge / release decision
+```
+
+The system should eliminate repetitive coordination work such as reconstructing context, re-explaining repository rules, collecting test evidence, preparing handoff summaries, and checking whether a task crossed scope.
+
+It should not eliminate the engineering judgment that decides what should exist, how risky a change is, whether the architecture is sound, or whether the result is ready to release.
 
 ### Web Production Workflow
 
