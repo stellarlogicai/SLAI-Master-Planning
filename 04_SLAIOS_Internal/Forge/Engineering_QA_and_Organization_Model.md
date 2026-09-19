@@ -135,6 +135,71 @@ Parallel workers should receive the same canonical definitions for important con
 
 SLAIOS should therefore build compact, permission-aware context packs from canonical schemas/relationships before Forge workers begin. This reduces contradictory assumptions and avoids wasting model context on rediscovering known meaning.
 
+## Multi-Prompt Operating Mode
+
+A future engineer should be able to submit one objective and have SLAIOS/Forge safely operate several bounded prompts at once.
+
+Example:
+
+```text
+Engineer:
+"Finish the onboarding release slice."
+
+SLAIOS / Forge:
+├── Prompt A — implementation
+├── Prompt B — focused tests
+├── Prompt C — security/tenant review
+├── Prompt D — accessibility/UI review
+└── Prompt E — documentation/report
+
+Dependency controller:
+- A and D may run in parallel
+- B may scaffold independently, then validate against A's commit
+- C reviews the resulting authority-sensitive diff
+- E can prepare structure early but finalizes after validated state
+```
+
+The human interaction should emphasize the objective, boundaries, acceptance criteria, and final decision—not repeatedly copying stable context into five separate prompts.
+
+### Required orchestration behavior
+
+SLAIOS/Forge should:
+
+- generate bounded work packages from an approved objective,
+- give each worker the same canonical project/semantic context,
+- assign explicit read/write scope,
+- identify task dependencies before execution,
+- detect likely file/schema/contract collisions,
+- limit concurrency by risk, cost, and validation capacity,
+- preserve independent evidence per worker,
+- combine results into one release-level report,
+- propose merge order without silently merging consequential changes.
+
+A task being technically parallelizable does not mean it should run in parallel.
+
+### Human review surface
+
+The engineer should be able to see a compact state such as:
+
+```text
+Objective: Owner onboarding release
+
+3 running
+1 validating
+1 blocked on schema decision
+0 failed
+
+Needs your decision:
+- annual billing recovery behavior
+
+Safe to continue without you:
+- UI regression run
+- onboarding docs
+- accessibility review
+```
+
+This is the desired founder/senior-engineer leverage: several prompts can make progress while the engineer is occupied elsewhere, but uncertainty and consequential decisions return to a human instead of being silently guessed.
+
 ## QA Model
 
 A small QA team can be highly leveraged when automated workers handle predictable checks.
