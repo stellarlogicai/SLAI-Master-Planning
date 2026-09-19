@@ -57,3 +57,16 @@
     Productize the proven internal platform; do not build hypothetical customer configurability first.
 
 15. **Make good decisions easier and bad decisions harder.**
+
+16. **Shared meaning before broader agent autonomy.**
+
+    Canonical schemas, relationships, authority rules, and domain terminology should give humans and agents the same meaning for concepts such as tenant, customer, booking, scope, payment, entitlement, employee, event, and approval. Do not make every agent rediscover those relationships from raw records on every task.
+
+17. **Retrieve the smallest authoritative context needed.**
+
+    Prefer deterministic entity resolution, relationship traversal, and context-pack construction before model reasoning. Do not dump broad repositories, databases, or company memory into prompts when a small authoritative fact set can answer the task more reliably and with fewer tokens.
+
+18. **Use AI to remove engineering coordination friction, not engineering judgment.**
+
+    SLAIOS/Forge should automate context gathering, task setup, bounded delegation, repetitive implementation, testing, evidence capture, reporting, and handoffs. Humans remain responsible for architecture, problem definition, difficult tradeoffs, consequential review, and release decisions.
+
