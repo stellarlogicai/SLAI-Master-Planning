@@ -124,6 +124,37 @@ SLAIOS synthesizes:
 
 A human decides and the decision is recorded.
 
+## Concurrent Agent Execution
+
+SLAIOS may run multiple Luna, Terra, and Sol work packages concurrently when the tasks are independent enough to do so safely.
+
+Concurrency must be controlled by:
+
+- explicit dependency edges,
+- repository/file/contract collision checks,
+- role and project permissions,
+- risk level,
+- model/token budget,
+- available test/QA capacity,
+- merge/release sequencing.
+
+Example:
+
+```text
+Terra A  -> implementation slice
+Terra B  -> independent test work
+Luna     -> documentation/context/report preparation
+Sol      -> queued high-risk review after the relevant diff is stable
+```
+
+The router should not start Sol early merely to maximize parallelism if the artifact Sol must review does not yet exist.
+
+Likewise, two Terra workers should not independently redefine the same schema or authority contract.
+
+The orchestration goal is:
+
+> **parallelize independent work; serialize shared truth.**
+
 ## Agent-to-Agent Rule
 
 Agents may exchange narrowly scoped intermediate results through SLAIOS.
