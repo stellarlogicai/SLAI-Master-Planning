@@ -106,7 +106,8 @@ Only after the pilot proves value:
 - Sol review for high-risk work,
 - contribution attribution,
 - engineering reports and handoffs,
-- stronger audit/replay.
+- stronger audit/replay,
+- project lifecycle and cost telemetry suitable for later forecasting.
 
 Scale workers only when a single worker becomes a real bottleneck.
 
@@ -126,6 +127,11 @@ SLAI uses SLAIOS across:
 - engineering,
 - QA,
 - contribution/reward systems,
+- historical cycle-time baselines and delivery-window forecasting,
+- live project budget and cost-to-complete forecasting,
+- capacity/bottleneck analysis across humans, Forge, QA, review, and infrastructure,
+- scenario planning for staffing/scope/compute decisions,
+- decision-focused project briefings that replace routine status recitation,
 - company memory,
 - and decision history.
 
