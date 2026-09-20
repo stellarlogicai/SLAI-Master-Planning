@@ -70,3 +70,11 @@
 
     SLAIOS/Forge should automate context gathering, task setup, bounded delegation, repetitive implementation, testing, evidence capture, reporting, and handoffs. Humans remain responsible for architecture, problem definition, difficult tradeoffs, consequential review, and release decisions.
 
+
+19. **Forecast work systems, not people.**
+
+    Use historical cycle time, blocked time, review/QA time, rework, dependencies, Forge usage, and cost evidence to improve project schedules and budgets. Do not convert project forecasting telemetry into keystroke monitoring, time-online scoring, hidden productivity ratings, or automatic employee-performance judgments.
+
+20. **Meet for decisions and collaboration, not information the system already knows.**
+
+    SLAIOS should generate routine project status, risk, budget, and cost-to-complete briefings from authoritative evidence. Preserve meetings for architecture, design, mentorship, retrospectives, difficult tradeoffs, team connection, and consequential decisions.
