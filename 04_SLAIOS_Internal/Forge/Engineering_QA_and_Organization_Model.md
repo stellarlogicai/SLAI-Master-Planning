@@ -261,6 +261,26 @@ Reports may include:
 
 Humans review the report before it becomes authoritative.
 
+## Project Forecasting and Engineering Operations
+
+Forge execution evidence should feed the separate canonical SLAIOS planning model in `../Project_Forecasting_Budgeting_and_Decision_Operations.md`.
+
+The engineering workflow should make it possible to derive, without repetitive manual status reporting:
+
+- cycle time by class of work,
+- blocked/dependency time,
+- validation and review time,
+- rework,
+- Forge/model/VM/CI cost,
+- remaining work,
+- delivery-window confidence,
+- current cost-to-complete,
+- active bottlenecks.
+
+The goal is project forecasting and budgeting, not employee surveillance.
+
+Routine engineering meetings should therefore begin from the current SLAIOS brief and spend human time on decisions, architecture, collaboration, unusual risk, and exceptions.
+
 ## Contribution Attribution
 
 Record separately:
