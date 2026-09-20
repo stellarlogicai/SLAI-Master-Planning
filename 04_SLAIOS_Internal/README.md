@@ -46,6 +46,7 @@ Only after the internal system proves useful should SLAI extract reusable platfo
 - `Employee_Workspace_People_HR_and_Payroll.md` — employee side, HR, payroll coordination, onboarding/offboarding
 - `Contribution_Ledger_Rewards_and_Remote_Culture.md` — contribution provenance, timeframes, points, rewards, perks, and remote culture
 - `Product_Fleet_and_Product_Studio.md` — live product intelligence and product-design workflow
+- `Project_Forecasting_Budgeting_and_Decision_Operations.md` — historical cycle-time learning, project forecasting, cost-to-complete, capacity/bottleneck modeling, and decision-focused meetings
 - `White_Label_and_Productization.md` — future external and white-label strategy
 - `Forge/README.md` — Forge add-on boundary
 - `Forge/Architecture_and_Execution_Model.md` — controlled coding-worker architecture
