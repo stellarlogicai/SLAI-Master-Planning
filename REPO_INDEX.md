@@ -114,8 +114,9 @@ Company strategy, software-division structure, pricing philosophy, organization,
 
 This folder defines how Stellar Logic AI is structured as a company.
 
-Key current business-model file:
+Key current company operating files:
 
+- `03_SLAI_Company/SLAI_AI_Assisted_Engineering_Operating_Model.md` — canonical founder engineering method using Jamie + ChatGPT + Codex, persistent repository context, bounded task-delta prompts, validation/commit checkpoints, limited-Codex-capacity optimization, continuous manual UX QA, and future Forge evolution.
 - `03_SLAI_Company/SLAI_Web_Services_Business_Model.md` — services-funded SaaS strategy where website builds can provide near-term founder/company cash flow, managed web creates recurring SLAI revenue, and website customers can become ServicesOS leads.
 
 ## `04_SLAIOS_Internal/`
