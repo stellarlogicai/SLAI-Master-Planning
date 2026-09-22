@@ -52,6 +52,36 @@ SLAI Web is intentionally placed before the larger ServicesOS V2 expansion becau
 - reuse business/profile data already collected by ServicesOS,
 - create real customer relationships before larger V2 expansion.
 
+## 1.x Bridge Releases Before the Larger V2 Milestone
+
+ServicesOS should not freeze after V1 while the larger V2 program is being designed and validated.
+
+After V1 is stable, small production-ready capabilities may ship as controlled V1.x releases when they:
+
+- solve a proven customer problem,
+- reuse the stable V1 architecture,
+- do not require the unfinished V2 foundations,
+- are backward-compatible where practical,
+- have independent acceptance/security/release evidence,
+- do not derail the SLAI Web / Platform Core priority sequence.
+
+Existing Recurring Service Plans V1.1 is one example of this approach.
+
+Other future bridge candidates may include targeted customer-portal/account improvements, migration/switching assistance, or other bounded capabilities that earn priority through real customer usage.
+
+Do not pre-assign every future feature to a version number. Use V1.x as an incremental delivery strategy, not a second giant roadmap.
+
+Conceptually:
+
+```text
+V1.0 stable foundation
+→ V1.1 / V1.2 / V1.x useful bounded releases
+→ SLAI Web / Core work continues according to company priority
+→ larger V2 foundations arrive in controlled release trains
+```
+
+This lets ServicesOS build toward V2 without requiring customers to wait for one monolithic V2 launch.
+
 ### Revenue Gate
 
 Do not promote ServicesOS V2 into the active build merely because V1 is finished.
@@ -77,6 +107,7 @@ This document is the **execution companion** to:
 - `../ServicesOS Vertical Architecture.md` — Core + Vertical Modules architecture,
 - `../Website_Public_Data_and_Booking_Contract.md` — public-data and booking boundary,
 - `../../02_Website/SLAI_Web_Platform_V1_and_Customer_Control_Model.md` — SLAI Web product sequence and platform plan,
+- `../../02_Website/SLAI_Web_End_Customer_Account_and_Portal_Model.md` — future end-customer profile/portal boundary and incremental Web/ServicesOS integration direction,
 - the final ServicesOS V1 current-state / release documentation once V1 closes.
 
 ### Document authority
