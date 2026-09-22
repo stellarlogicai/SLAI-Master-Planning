@@ -4,6 +4,10 @@
 
 This folder preserves founder principles, governance, hiring, crisis planning, compensation philosophy, company operating beliefs, revenue strategy, and business-model decisions.
 
+## Current Engineering Operating Model
+
+- `SLAI_AI_Assisted_Engineering_Operating_Model.md` — canonical description of Jamie + ChatGPT + Codex engineering: deep planning, persistent instructions, task-delta prompting, model routing, Codex-usage optimization, validation/checkpoint loops, manual UX QA, and the path toward SLAIOS Forge.
+
 ## Current Business-Model Additions
 
 - `SLAI_Platform_Pricing_Standard.md` — authoritative company-wide default for standard customer-facing SLAI platforms: **$100/month or $1,000/year**, with the annual plan providing the same normal entitlement and two months free.
