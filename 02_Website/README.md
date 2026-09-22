@@ -105,6 +105,7 @@ At active-build start, these decisions should be verified against current provid
 - `SLAI_Web_V1_Product_Connector_and_Authority_Contract.md` — generic product connector seam, domain-specific authority, product-generic provenance, bounded capabilities, versioning, failure behavior, and the rule that ServicesOS is the first concrete connector without making it the only possible future source product.
 - `SLAI_Web_V1_Permissions_and_Authority_Matrix.md` — authoritative V1 Owner/Editor/Viewer permissions, scoped SLAI Support Mode, emergency Platform Operator boundary, publish/rollback authority, billing/domain/user/connector controls, AI permission inheritance, and audit/re-auth rules.
 - `SLAI_Web_V1_Product_and_Data_Contracts.md` — product-state, source-of-truth, operating-mode, publication/version, role, media/form, and public/private data contracts.
+- `SLAI_Web_End_Customer_Account_and_Portal_Model.md` — future end-customer identity/profile and branded portal model linking SLAI Web presentation to ServicesOS operational truth without cross-tenant data leakage; explicitly not a Web V1 launch blocker.
 - `SLAI_Web_Architecture_Spec.md` — shared core/layout/customer-layer boundaries, protected paths, versioning, public-data and booking boundaries.
 - `SLAI_Web_Layout_Contract.md` — layout responsibilities, compatibility, manifest fields, and customer-override rules.
 - `../01_ServicesOS/Website_Public_Data_and_Booking_Contract.md` — ServicesOS public-data projection and booking source-of-truth contract.
