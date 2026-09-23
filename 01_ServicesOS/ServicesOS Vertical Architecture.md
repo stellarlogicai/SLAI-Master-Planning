@@ -620,3 +620,16 @@ At final booking:
 6. owner/staff see the booking inside ServicesOS.
 
 This prevents double-booking and keeps all customer-facing surfaces aligned with the operating system.
+
+
+---
+
+# Pet Care / House Sitting Vertical — Future Context
+
+Pet care and house sitting are preserved as a future ServicesOS vertical example. Unlike cleaning, the primary vertical-specific context centers on per-pet care routines, household access, home-care responsibilities, emergency/escalation information, and least-privilege delivery of sensitive instructions to the assigned sitter.
+
+This vertical also establishes an important reusable platform direction: a future **vertical-aware intake engine** should allow the ServicesOS core to own form persistence, permissions, review, and job handoff while each vertical supplies its own structured intake fields and conditional sections.
+
+Keep customer intake proportional to the service; prefer optional/conditional fields and repeatable per-pet sections over one giant mandatory questionnaire.
+
+See `Future-Verticals/ServicesOS_Pet_Care_House_Sitting_Intake_Context.md`.
