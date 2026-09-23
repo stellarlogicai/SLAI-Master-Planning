@@ -457,3 +457,32 @@ AI should not independently:
 SLAIOS should become useful for SLAI before becoming configurable for everyone.
 
 Reusable abstractions and white-label support are earned only after internal workflows prove what actually matters.
+
+
+## Future SLAI Intelligence Core
+
+After ServicesOS V2 is completed and SLAIOS/SLAIForge are activated, SLAIOS should evaluate a shared intelligence architecture that prepares bounded, permission-aware context before calling a reasoning provider.
+
+The intended separation is:
+
+```text
+Context Engine
+    ↓
+Signal Engine
+    ↓
+Decision Fabric
+    ↓
+Policy Engine
+    ↓
+Reasoning Gateway
+    ↓
+Validation
+    ↓
+Human / authorized action
+```
+
+This extends the existing semantic-context, permission, model-routing, and human-control architecture. It does not authorize a universal model or autonomous control plane.
+
+The Decision Fabric may use deterministic routing, specialized ML, or a Jev/System One-style bounded decision model to classify a task, identify uncertainty, and decide whether expensive reasoning is necessary. OpenAI and other reasoning providers remain replaceable capabilities behind SLAI-owned context, policy, evidence, and validation.
+
+See `SLAI_Intelligence_Core.md` for the preserved future architecture and activation gate.
