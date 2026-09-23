@@ -323,3 +323,29 @@ one worker
 ```
 
 The infrastructure should grow because engineering throughput demands it, not because the architecture is exciting.
+
+
+## Future Intelligence-Core Integration
+
+When SLAIOS/SLAIForge work is activated after ServicesOS V2, Forge should evaluate consuming the shared SLAI Intelligence Core before dispatching coding/reasoning workers.
+
+The purpose is to compile a high-signal engineering packet from canonical product/repository state rather than repeatedly sending broad repository/company context to a model.
+
+Potential packet contents include:
+
+- task type and goal,
+- current product priority,
+- relevant architecture and decisions,
+- authorized write surfaces,
+- protected files/contracts,
+- dependencies,
+- risk/sensitivity,
+- acceptance criteria,
+- validation commands,
+- stop conditions,
+- required reviewer,
+- required report.
+
+The Intelligence Core does not replace Forge's worker isolation, instruction hierarchy, tests, QA, or human merge/release authority. It prepares and routes bounded work.
+
+See `../SLAI_Intelligence_Core.md`.
