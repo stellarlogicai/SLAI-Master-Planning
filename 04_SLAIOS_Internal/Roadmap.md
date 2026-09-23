@@ -173,3 +173,12 @@ No external productization should be assumed until SLAI itself proves the system
 > Build simple first. Complexity is earned.
 
 The system should grow because real company friction demands it, not because the architecture can support it.
+
+
+## Explicit ServicesOS V2 Gate for Intelligence-Core Work
+
+The shared SLAI Intelligence Core / Decision Fabric is preserved as future architecture only.
+
+Do not prototype or implement it as a separate initiative before ServicesOS V2 is completed and stable enough for SLAIOS/SLAIForge activation. When that gate is reached, begin with one low-risk internal SLAIOS workflow and measure whether bounded context/decision routing materially improves reliability, context size, cost, latency, and human correction rate.
+
+See `SLAI_Intelligence_Core.md`.
