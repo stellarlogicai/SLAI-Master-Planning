@@ -10,6 +10,23 @@ Do not make the internal MVP universally configurable for hypothetical customers
 
 Productization is earned after internal usage proves which capabilities matter.
 
+At the same time, foundational architecture should avoid choices that make future SaaS conversion require a ground-up rewrite.
+
+Future-safe foundations include:
+
+- organization / tenant abstraction,
+- identity and membership,
+- role and permission boundaries,
+- workspace/product/repository ownership,
+- explicit data authority,
+- module boundaries,
+- provider abstraction,
+- audit history,
+- usage and budget metering,
+- export / retention / deletion boundaries.
+
+These foundations are architectural boundaries, not permission to build external-SaaS product features early.
+
 ## Two Layers
 
 Long term, separate:
@@ -63,6 +80,24 @@ Reusable CompanyOS Platform
 ```
 
 This forces SLAI to dogfood the architecture it intends to sell.
+
+## Internal Proof Gate
+
+Do not build these external-product concerns into the internal Alpha merely because they may be needed later:
+
+- customer billing and entitlement UX,
+- reseller/partner systems,
+- broad white-label administration,
+- enterprise onboarding workflows,
+- public support portals,
+- complex customer provisioning,
+- enterprise governance layers beyond what SLAI itself needs.
+
+Core rule:
+
+> **Build for SLAI first. Architect for future SaaS. Do not pay the complexity cost until internal proof earns it.**
+
+The external product should be extracted from proven internal behavior rather than guessed in advance.
 
 ## White-Label Controls
 
