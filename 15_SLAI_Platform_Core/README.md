@@ -151,6 +151,7 @@ Core V1 should only expose the schemas/references/events already justified by Se
 
 New reusable platform planning:
 
+- `SLAI_Decision_Intelligence_Layer.md` — canonical reusable decision-intelligence architecture: deterministic enforcement first, bounded structured scoring/classification where exact rules are insufficient, local/shared communication assistance, frontier escalation, and human authority for consequential decisions.
 - `SLAI_Inventory_Intelligence_and_Communication_Architecture.md` — independent inventory-intelligence service concept, event-ledger model, deterministic forecasting/exceptions, cross-product inventory APIs, shared communication SLM strategy, cheapest-capable routing, evaluation, and validation boundaries.
 
 The inventory capability is intentionally not owned by RetailOS. RetailOS is a future consumer; ServicesOS and other products may consume it later where justified.
