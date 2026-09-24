@@ -261,6 +261,7 @@ Shared company-wide platform principles, architecture, and inherited standards.
 
 Current topics include:
 
+- `15_SLAI_Platform_Core/SLAI_Decision_Intelligence_Layer.md` — canonical reusable decision-intelligence layer for deterministic enforcement, bounded structured scoring/classification, escalation, and human authority,
 - cross-product linking,
 - product-promotion rules,
 - ecosystem architecture,
@@ -420,9 +421,17 @@ This captures the expanded SLAI Web direction:
 - cross-product public-data integration,
 - post-ServicesOS-V1 sequencing.
 
-### Shared Inventory Intelligence and Communication
+### Shared Decision Intelligence, Inventory Intelligence, and Communication
 
 New platform-core planning:
+
+- `15_SLAI_Platform_Core/SLAI_Decision_Intelligence_Layer.md`
+  - canonical name replacing the earlier inventory-local phrase `SLAI Deterministic Intelligence Layer`,
+  - deterministic enforcement for known boundaries,
+  - bounded structured intelligence for probabilistic classification/scoring,
+  - local/shared communication assistance and frontier escalation,
+  - human authority for consequential decisions.
+
 
 - `15_SLAI_Platform_Core/SLAI_Inventory_Intelligence_and_Communication_Architecture.md`
 
