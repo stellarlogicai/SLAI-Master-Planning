@@ -27,6 +27,28 @@ It is not one giant autonomous agent.
                                 Forge
 ```
 
+## Client / Control-Plane Separation
+
+SLAIOS should be designed as a platform with replaceable clients.
+
+~~~text
+SLAIOS Desktop / secure web client / future employee client
+        ↓
+SLAIOS control plane
+        ↓
+identity / permissions / decisions / memory / budgets / audit
+        ↓
+specialist systems
+        ↓
+Forge execution workers and other controlled automation
+~~~
+
+The preferred founder client is a desktop application, but authoritative state must not live only on the founder workstation.
+
+This allows SLAIOS to become the company control center while preserving future remote employee access and later SaaS extraction.
+
+See `SLAIOS_Desktop_and_Workstation_Architecture.md`.
+
 ## Core Modules
 
 ### Executive Intelligence
@@ -403,6 +425,22 @@ SLAIOS Core
       Engineering execution
 ```
 
+## Workstation and Forge Host Boundary
+
+The intended founder topology separates high-trust control from lower-trust execution:
+
+~~~text
+Jamie's workstation
+= SLAIOS Desktop / founder approvals / architecture / sensitive administration
+
+Second PC / Forge host
+= isolated workers / builds / tests / browser QA / coding-agent execution
+~~~
+
+Future employees should access authorized worker sessions through SLAIOS rather than receive general access to the founder workstation.
+
+Execution credentials should be scoped to the worker/task and expire or revoke after the authorized work ends.
+
 ## Forge Relationship
 
 Forge asks SLAIOS:
@@ -455,5 +493,11 @@ AI should not independently:
 ## Internal-First Rule
 
 SLAIOS should become useful for SLAI before becoming configurable for everyone.
+
+Foundational architecture should still preserve future SaaS viability through organization/tenant boundaries, roles, permissions, data ownership, module boundaries, usage/budget metering, audit, and provider abstraction.
+
+Do not implement customer-facing SaaS complexity merely to prove architectural foresight.
+
+> **Build for SLAI first. Architect for future SaaS. Productize only what internal use proves.**
 
 Reusable abstractions and white-label support are earned only after internal workflows prove what actually matters.
