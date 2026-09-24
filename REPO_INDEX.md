@@ -139,10 +139,13 @@ Core future direction:
 
 Forge is intentionally nested under SLAIOS rather than treated as a separate operating system. SLAIOS owns company context, identity, permissions, priorities, contribution tracking, approvals, and business knowledge; Forge owns isolated engineering execution, tests/builds, QA evidence, and PR preparation.
 
+The preferred founder topology keeps SLAIOS Desktop and high-trust founder authority on Jamie's workstation while a separate lower-trust Forge host provides isolated execution workers. Future employees connect through SLAIOS to authorized worker sessions rather than requiring high-end local development hardware or access to founder systems.
+
 Key planning files include:
 
 - `SLAIOS_Vision.md`
 - `SLAIOS_Architecture_and_Vision.md`
+- `SLAIOS_Desktop_and_Workstation_Architecture.md` — desktop-first company control center, high-trust founder workstation / lower-trust Forge-host split, remote employee worker sessions, infrastructure-first hiring strategy, and internal-first/future-SaaS-safe architecture
 - `Employee_Workspace_People_HR_and_Payroll.md`
 - `Contribution_Ledger_Rewards_and_Remote_Culture.md`
 - `Product_Fleet_and_Product_Studio.md`
