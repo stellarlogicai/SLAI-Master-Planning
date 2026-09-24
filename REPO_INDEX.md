@@ -152,12 +152,16 @@ Key planning files include:
 - `Forge/Engineering_QA_and_Organization_Model.md`
 - `SLAIOS_Web_Production_Orchestration.md` — future website-order orchestration, ServicesOS context pull, AI task packaging, automated checks, human QA, approvals, and deployment tracking
 - `SLAIOS_Audit_and_Authority_Model.md` — future risk-based authority levels, approval boundaries, audit-event requirements, and immutable context-snapshot principles
+- `Founder_Alpha/SLAIOS_Founder_Alpha_Spec.md` — approved narrow Founder Alpha contract, activation sequence, business-health analytics, context/decision surfaces, and explicit exclusions
+- `Founder_Alpha/Founder_Analytics_and_Unit_Economics.md` — canonical Founder Alpha metric definitions, cost-per-business views, and engineering-cost separation
+- `Forge/Forge_Alpha_Spec.md` — one-repo/one-worker Forge Alpha contract, engineering-agent provider abstraction, capacity preflight, evidence, and acceptance tests
+- `Forge/Forge_Capacity_and_Budget_Governance.md` — founder-funded mode, usage forecasting, capacity reservations, safe exhaustion, hard spend ceilings, and future company/product/project/milestone/task budget hierarchy
 
 Core rule:
 
 > AI supports the user. Humans remain responsible for consequential decisions.
 
-Status: Parked until ServicesOS reaches stable customer-ready V1 with real usage and SLAI has enough operating need/capacity to justify activation.
+Status: Future planning only. Approved activation sequence is ServicesOS customer-ready V1 → SLAI Platform Core extraction/revalidation → SLAI Web V1 → ServicesOS V2 → SLAIOS Founder Alpha → Forge Alpha, subject to real operating need and available capacity.
 
 ## `05_GrowthAI/`
 
