@@ -41,6 +41,8 @@ Core scope:
 - direct and fully allocated cost-per-business signals,
 - engineering-capacity visibility,
 - founder-funded spend controls,
+- desktop-first founder client connected to the persistent control plane,
+- future-safe organization/tenant ownership in core schemas,
 - audit/provenance.
 
 Primary surfaces:
@@ -53,10 +55,11 @@ DECISIONS
 MEMORY
 ~~~
 
-Canonical specification:
+Canonical specifications:
 
 - `Founder_Alpha/SLAIOS_Founder_Alpha_Spec.md`
 - `Founder_Alpha/Founder_Analytics_and_Unit_Economics.md`
+- `SLAIOS_Desktop_and_Workstation_Architecture.md`
 
 Explicitly defer full HR/payroll, rewards, full company chat replacement, full Product Studio/Fleet analytics, external SLAIOS, and large worker farms.
 
@@ -78,7 +81,8 @@ Start narrow:
 - capacity reservation,
 - paid API fallback disabled by default in founder-funded mode,
 - evidence bundle,
-- human approval before merge/release.
+- human approval before merge/release,
+- preferred founder topology of high-trust workstation + separate lower-trust Forge execution host.
 
 Acceptance must include intentional collision, out-of-scope-write, interruption/recovery, and capacity-exhaustion tests.
 
@@ -103,7 +107,7 @@ Jamie states outcome
 → decision/result recorded
 ~~~
 
-Goal: materially reduce founder setup/coordination while retaining human engineering judgment.
+Goal: materially reduce founder setup/coordination while retaining human engineering judgment. The founder workstation remains the high-trust control surface; the Forge host remains the lower-trust execution surface.
 
 ## Phase 4 — Small Worker Pool
 
@@ -116,7 +120,8 @@ Only after Alpha proves safe and useful:
 - semantic-collision detection,
 - capacity reservations across concurrent jobs,
 - model/cost routing,
-- consolidated objective-level evidence.
+- consolidated objective-level evidence,
+- employee access to isolated worker sessions through SLAIOS rather than general host access.
 
 Parallelize independent work. Serialize shared truth.
 
@@ -164,6 +169,8 @@ Forecast work systems, not people.
 
 ## Phase 7 — Broader SLAIOS Company Operations
 
+Hiring remains bottleneck-driven. If Jamie + AI + SLAIOS/Forge infrastructure can safely absorb the workload, SLAI may defer headcount and use capital first on reusable infrastructure. Hire earlier when customer reliability, QA, support/onboarding, security, production complexity, sales demand, or technical review proves a genuine human constraint.
+
 Only after the founder/engineering core proves useful:
 
 - employee workspaces,
@@ -188,7 +195,11 @@ This phase should produce evidence about which modules genuinely create value an
 
 ## Phase 9 — Reusable Platform / External Pilot
 
-Only after sustained internal proof:
+Only after sustained internal proof.
+
+The internal system should already have preserved future SaaS-safe foundations such as organization/tenant identity, permissions, data authority, module boundaries, audit, provider abstraction, and usage/budget metering. Phase 9 adds external-product complexity rather than rebuilding those foundations.
+
+Then:
 
 - separate SLAI-specific configuration from reusable platform capabilities,
 - formalize multi-tenant architecture where justified,
