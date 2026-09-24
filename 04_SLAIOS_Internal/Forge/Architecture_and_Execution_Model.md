@@ -31,6 +31,33 @@ Preferred principle:
                 Human approval
 ```
 
+## Founder Workstation / Worker Host Separation
+
+The preferred initial physical deployment separates high-trust founder control from lower-trust execution:
+
+~~~text
+Jamie's workstation
+├── SLAIOS Desktop
+├── founder approvals
+├── architecture/review
+├── sensitive administration
+└── optional local intelligence
+
+Second PC / Forge host
+├── worker manager
+├── disposable/isolated workers
+├── repo checkouts
+├── builds/tests/browser QA
+├── Codex/engineering-agent execution
+└── short-lived scoped credentials
+~~~
+
+The founder workstation should not be used as the shared employee execution host.
+
+Future employees should connect through SLAIOS to authorized worker sessions rather than receive unrestricted host access.
+
+See `../SLAIOS_Desktop_and_Workstation_Architecture.md`.
+
 ## Dedicated Server Model
 
 A future SLAI-owned dedicated server can host the control services and one or more isolated worker environments.
@@ -225,6 +252,28 @@ Prefer explicit tools over unrestricted shell when practical:
 - github.create_pr.
 
 Some jobs may require shell access, but that should be scoped by worker isolation and policy.
+
+## Employee Remote Access Boundary
+
+Forge should support remote employee development without requiring every employee to own or receive a high-end development workstation.
+
+The endpoint should act primarily as a secure client while SLAI-controlled infrastructure provides approved execution environments.
+
+Preferred access model:
+
+~~~text
+employee identity
+→ SLAIOS authorization
+→ assigned task/workspace
+→ isolated Forge worker
+→ bounded repo/tool access
+→ tests/build/evidence
+→ session ends
+→ credentials expire/revoke
+→ worker resets/destroys
+~~~
+
+Do not treat general RDP/desktop access to the Forge host as the long-term security model.
 
 ## Credentials
 
