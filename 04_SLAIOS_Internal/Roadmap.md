@@ -2,174 +2,212 @@
 
 Status: **Future planning only. No calendar commitment.**
 
-The roadmap is gated by operating need, not by an arbitrary date.
+The roadmap is gated by operating need and the approved product sequence, not by an arbitrary date.
 
-## Phase 0 — Activation Gate
+## Phase 0 — Activation Sequence
 
-Do not begin the SLAIOS build until:
+Current approved order:
 
-- ServicesOS is stable customer-ready V1,
-- real customers/usage exist,
-- internal operating complexity creates a genuine need,
-- and SLAI has enough capacity that SLAIOS will not slow the active product.
+~~~text
+ServicesOS customer-ready V1
+→ SLAI Platform Core extraction/revalidation
+→ SLAI Web V1
+→ ServicesOS V2
+→ SLAIOS Founder Alpha
+→ Forge Alpha
+~~~
 
-## Phase 1 — Internal Core
+This sequence intentionally gives SLAI time to accumulate real product, repository, decision, cost, and engineering-coordination complexity before building its internal control plane.
 
-Build the smallest system SLAI can use every day:
+Do not pull implementation attention from ServicesOS merely because SLAIOS planning is detailed.
 
-- identity and role-aware access,
-- company memory,
-- approved decision records,
-- executive/CEO briefing,
-- employee home,
-- project/product visibility,
-- internal communication,
-- basic Product Fleet,
-- Luna/Terra/Sol router,
-- audit history,
-- initial shared semantic/entity vocabulary for the company and active products,
-- compact permission-aware context-pack construction from canonical sources.
+## Phase 1 — Founder Alpha / Founder Kernel
 
-No external customer version.
+Build the smallest system Jamie can use every day.
 
-## Phase 2 — Remote Company and People Operations
+Core scope:
 
-Add only after the core proves useful:
+- product priority and current state,
+- Master Planning retrieval,
+- approved decision history,
+- repository/branch state,
+- architecture/contracts,
+- permission-aware context packs,
+- objective/task state,
+- model/risk routing,
+- engineering approvals,
+- founder business-health analytics,
+- new/active business and user metrics,
+- direct and fully allocated cost-per-business signals,
+- engineering-capacity visibility,
+- founder-funded spend controls,
+- audit/provenance.
 
-- employee profiles,
-- organization/manager relationships,
-- remote onboarding,
-- offboarding,
-- PTO/leave,
-- training and certifications,
-- policy acknowledgements,
-- payroll-provider coordination,
-- compensation security boundaries,
-- time-zone-aware handoffs,
-- Contribution Ledger,
-- employee self-service.
+Primary surfaces:
 
-## Phase 3 — Recognition, Culture, and Product Work
+~~~text
+TODAY
+PRODUCTS
+ENGINEERING
+DECISIONS
+MEMORY
+~~~
 
-Add:
+Canonical specification:
 
-- rewards/points layer over verified contributions,
-- team quests and seasonal leaderboards,
-- perks and reward fulfillment,
-- swag catalog,
-- food/lunch credits,
-- remote culture events,
-- Product Studio,
-- idea vault,
-- richer Product Fleet intelligence.
+- `Founder_Alpha/SLAIOS_Founder_Alpha_Spec.md`
+- `Founder_Alpha/Founder_Analytics_and_Unit_Economics.md`
 
-Rewards remain separate from formal employment evaluation.
+Explicitly defer full HR/payroll, rewards, full company chat replacement, full Product Studio/Fleet analytics, external SLAIOS, and large worker farms.
 
-## Phase 4 — SLAIOS Forge Pilot
+## Phase 2 — Forge Alpha
 
-Forge begins as an add-on to SLAIOS, not a separate product.
+Prove the current Jamie + ChatGPT + Codex engineering loop can be automated safely.
 
 Start narrow:
 
 - one approved repository,
-- one controlled worker environment,
-- one dedicated server or equivalent host,
-- API-hosted models,
-- disposable VM/container execution,
-- controlled branch/PR workflow,
-- automated tests/build,
-- canonical repository/product context loaded before work,
-- shared semantic definitions for important entities/relationships,
-- no production credentials,
-- human approval before merge/deploy.
+- one isolated disposable worker,
+- one bounded task slice,
+- pinned start commit,
+- explicit permission envelope,
+- deterministic write boundaries,
+- approved validation profile,
+- programmatic Codex/engineering-agent provider boundary,
+- task usage forecasting,
+- capacity reservation,
+- paid API fallback disabled by default in founder-funded mode,
+- evidence bundle,
+- human approval before merge/release.
 
-The goal is to prove engineering leverage, not build a large "agent farm."
+Acceptance must include intentional collision, out-of-scope-write, interruption/recovery, and capacity-exhaustion tests.
 
-## Phase 5 — Forge Scale and QA
+Canonical specifications:
 
-Only after the pilot proves value:
+- `Forge/Forge_Alpha_Spec.md`
+- `Forge/Forge_Capacity_and_Budget_Governance.md`
 
-- multiple worker environments,
-- job scheduling,
-- reusable environment templates,
+## Phase 3 — Founder Engineering Loop
+
+Connect the whole loop:
+
+~~~text
+Jamie states outcome
+→ SLAIOS resolves product/repo/priority/context
+→ SLAIDIL classifies/routs within deterministic policy
+→ task slice proposed
+→ Jamie approves
+→ Forge executes
+→ tests/build/validation/evidence
+→ Jamie reviews
+→ decision/result recorded
+~~~
+
+Goal: materially reduce founder setup/coordination while retaining human engineering judgment.
+
+## Phase 4 — Small Worker Pool
+
+Only after Alpha proves safe and useful:
+
+- 2–3 isolated workers,
+- dependency-aware scheduler,
+- deterministic resource leases,
+- file/schema/contract collision controls,
+- semantic-collision detection,
+- capacity reservations across concurrent jobs,
 - model/cost routing,
+- consolidated objective-level evidence.
+
+Parallelize independent work. Serialize shared truth.
+
+Do not add workers simply because hardware allows it.
+
+## Phase 5 — QA Integration
+
+Add stronger engineering QA when work volume justifies it:
+
 - automated QA workers,
-- bounded parallel implementation/test/docs/review workers,
-- dependency/conflict graph for active engineering slices,
-- safe-concurrency scheduler that identifies which prompts can run together and which must wait,
-- repository/file/contract collision checks before concurrent work starts,
-- isolated task branches/worktrees or equivalent worker separation,
-- merge sequencing for dependent slices,
-- per-project concurrency and model-spend caps,
-- one consolidated evidence/report path,
-- small human QA team,
-- Sol review for high-risk work,
-- contribution attribution,
-- engineering reports and handoffs,
-- stronger audit/replay,
-- project lifecycle and cost telemetry suitable for later forecasting.
+- browser/device checks where appropriate,
+- release-candidate validation,
+- human exploratory QA workflow,
+- defect/repro packages,
+- fix verification,
+- high-risk Sol review,
+- consolidated release evidence.
 
-Scale workers only when a single worker becomes a real bottleneck.
+Human QA should test whether normal users can accomplish intended outcomes without builder knowledge.
 
-Scale agent concurrency only after shared meaning, repository rules, automated gates, and human review are strong enough that additional workers reduce queue time instead of multiplying contradictory work.
+## Phase 6 — Budgeting and Operational Intelligence Maturity
 
-## Phase 6 — Internal Operating Maturity
+Expand from Alpha capacity controls into evidence-backed budgets:
 
-SLAI uses SLAIOS across:
+~~~text
+Company budget
+→ Product budget
+→ Project budget
+→ Milestone / release budget
+→ Task-slice budget
+~~~
 
-- executive planning,
-- employees,
-- communications,
-- product fleet,
-- product design,
-- people operations,
-- payroll coordination,
-- engineering,
-- QA,
-- contribution/reward systems,
-- historical cycle-time baselines and delivery-window forecasting,
-- live project budget and cost-to-complete forecasting,
-- capacity/bottleneck analysis across humans, Forge, QA, review, and infrastructure,
-- scenario planning for staffing/scope/compute decisions,
-- decision-focused project briefings that replace routine status recitation,
-- company memory,
-- and decision history.
+Add:
 
-This phase should produce evidence about which modules actually create value.
+- historical cycle-time distributions,
+- task usage/cost forecasts,
+- planned vs actual,
+- cost-to-complete,
+- budget variance reasons,
+- revenue-gated engineering capacity growth,
+- bottleneck analysis across implementation/review/QA/security/compute,
+- scenario planning.
 
-## Phase 7 — Reusable Platform Extraction
+Forecast work systems, not people.
 
-Only after internal proof:
+## Phase 7 — Broader SLAIOS Company Operations
+
+Only after the founder/engineering core proves useful:
+
+- employee workspaces,
+- internal communications,
+- remote onboarding/offboarding,
+- PTO/leave,
+- training/certifications,
+- payroll-provider coordination,
+- Contribution Ledger,
+- rewards/recognition,
+- richer Product Fleet,
+- Product Studio,
+- broader departmental intelligence.
+
+Rewards and project telemetry remain separate from formal human performance management.
+
+## Phase 8 — Internal Operating Maturity
+
+SLAI uses SLAIOS across founder operations, engineering, QA, company memory, decisions, projects, people operations, product fleet, budgets, and handoffs.
+
+This phase should produce evidence about which modules genuinely create value and which should remain internal-only.
+
+## Phase 9 — Reusable Platform / External Pilot
+
+Only after sustained internal proof:
 
 - separate SLAI-specific configuration from reusable platform capabilities,
-- formalize multi-tenant architecture,
-- define module enablement,
-- configurable roles and terminology,
+- formalize multi-tenant architecture where justified,
+- module enablement,
+- configurable roles/terminology,
 - branding/theme controls,
 - customer data isolation,
 - provider abstraction,
-- enterprise governance.
+- enterprise governance,
+- optional external/white-label pilot.
 
-Treat SLAIOS as the first tenant of the reusable platform.
-
-## Phase 8 — External Pilot / White Label
-
-Potential future external offer:
-
-- company operating core,
-- employee workspace,
-- communications,
-- knowledge/decision memory,
-- AI orchestration,
-- optional People/HR modules,
-- optional Product Studio/Product Fleet,
-- optional Forge engineering add-on,
-- white-label/OEM controls.
-
-No external productization should be assumed until SLAI itself proves the system.
+No external productization is assumed merely because the architecture can support it.
 
 ## Scaling Principle
 
-> Build simple first. Complexity is earned.
+> **Build simple first. Complexity is earned.**
 
-The system should grow because real company friction demands it, not because the architecture can support it.
+## Financial Principle
+
+> **SLAIOS and Forge should remain survivable if customer growth is slower than expected. Execution capacity grows when the business earns the ability to pay for it.**
+
+The system should make safe waiting, slicing, and budget control normal behaviors rather than treating unlimited AI/compute spend as the default.
