@@ -27,6 +27,8 @@ Core principle:
 
 SLAIOS may operate like an AI executive partner or "co-CEO" in the sense that it can notice, challenge, organize, prepare, and coordinate. It never becomes the legal or human decision authority.
 
+Long term, SLAIOS is intended to become the human-controlled company control center for Stellar Logic AI. The preferred founder experience is desktop-first, while company truth and authority remain in the persistent control plane.
+
 ## Internal First
 
 Build SLAIOS for SLAI first.
@@ -35,10 +37,13 @@ Use it every day.
 
 Only after the internal system proves useful should SLAI extract reusable platform capabilities, externalize the product, or offer white-label/OEM versions.
 
+Foundational schemas and authority boundaries should remain future-SaaS-safe from the beginning, but external billing, onboarding, white-label administration, reseller, and enterprise complexity are deferred until internal proof earns them.
+
 ## Canonical Planning
 
 - `SLAIOS_Vision.md` — executive vision and product boundaries
 - `SLAIOS_Architecture_and_Vision.md` — system architecture and module relationships
+- `SLAIOS_Desktop_and_Workstation_Architecture.md` — desktop-first company-control-center client, founder-workstation/Forge-host trust split, remote employee worker access, capital/hiring strategy, and future-SaaS-safe foundations
 - `Roadmap.md` — future activation sequence
 - `Founder_Alpha/SLAIOS_Founder_Alpha_Spec.md` — narrow founder-control-plane scope, activation gate, analytics, context, authority, and Alpha exclusions
 - `Founder_Alpha/Founder_Analytics_and_Unit_Economics.md` — canonical Founder Alpha metrics, cost-per-business definitions, and engineering-cost separation
