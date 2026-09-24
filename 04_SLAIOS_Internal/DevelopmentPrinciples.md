@@ -78,3 +78,23 @@
 20. **Meet for decisions and collaboration, not information the system already knows.**
 
     SLAIOS should generate routine project status, risk, budget, and cost-to-complete briefings from authoritative evidence. Preserve meetings for architecture, design, mentorship, retrospectives, difficult tradeoffs, team connection, and consequential decisions.
+
+21. **SLAIOS becomes the company control center; the desktop app is a client, not the authority.**
+
+    The preferred founder experience may be desktop-first, but company truth, permissions, budgets, decisions, and workflow authority must live in the SLAIOS control plane so additional secure clients can exist later.
+
+22. **Separate founder authority from worker execution.**
+
+    The founder workstation remains high-trust. Forge hosts and disposable workers are lower-trust execution environments with minimum necessary, short-lived authority. Employees should receive authorized worker/session access rather than general access to founder systems.
+
+23. **Invest in reusable leverage before recurring overhead when safe.**
+
+    SLAI's preferred early capital strategy is to use founder + AI leverage, acquire the right workstation/Forge infrastructure, and defer hiring until a measured human bottleneck appears. This is not an absolute hiring freeze; customer reliability, security, QA, support, sales/onboarding, or engineering-review constraints may justify earlier hiring.
+
+24. **Architect for future SaaS without building future SaaS early.**
+
+    Preserve organization/tenant boundaries, identity, roles, permissions, module boundaries, data ownership, provider abstraction, audit, usage/budget metering, and export/retention boundaries from the beginning. Defer external billing UX, white-label administration, reseller systems, enterprise onboarding, and similar complexity until internal proof earns it.
+
+25. **Employees should connect to capability, not depend on expensive endpoints.**
+
+    Where practical, SLAI-controlled Forge infrastructure should provide standardized development/test environments so future employees can use modest secure client hardware without requiring SLAI to duplicate high-end engineering workstations for every seat.
