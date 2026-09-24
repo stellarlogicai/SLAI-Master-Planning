@@ -111,6 +111,28 @@ Future SLAIOS and Forge are expected to use this layer for decisions such as:
 
 Known conflicts should be blocked deterministically. Bounded intelligence may discover likely undeclared conflicts, but it cannot bypass locks or authority rules.
 
+## Capacity and Budget Decisions
+
+SLAIDIL may support Forge/SLAIOS preflight decisions by combining historical job evidence, task classification, model requirements, context size, validation burden, current capacity, and applicable budget envelopes.
+
+Candidate outputs include:
+
+~~~text
+START
+SPLIT
+WAIT_FOR_CAPACITY
+WAIT_FOR_RESET
+REQUIRES_FOUNDER_APPROVAL
+BLOCKED_POLICY
+~~~
+
+Important boundary:
+
+> **Forecasting may be probabilistic. Budget enforcement is deterministic.**
+
+A bounded model may estimate likely usage or detect that a task resembles an expensive class of work. It may not raise a hard spending limit, consume founder reserve, enable paid fallback, or weaken a required security/review policy.
+
+
 ## Human-Control Boundary
 
 The layer may calculate, classify, score, recommend, and route.
