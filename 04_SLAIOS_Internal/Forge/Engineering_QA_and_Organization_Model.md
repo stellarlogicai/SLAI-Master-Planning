@@ -302,9 +302,58 @@ AI assistance:
 
 Do not erase human engineering contribution because the human did not physically type every line.
 
+## Employee Development Environment
+
+Future SLAI engineers and QA staff should not require SLAI to duplicate the founder's high-end workstation at every seat.
+
+Preferred model:
+
+~~~text
+employee PC / laptop
+→ secure SLAIOS client
+→ role/project authorization
+→ assigned Forge workspace
+→ SLAI-controlled isolated worker
+→ approved repo/tools/test environment
+~~~
+
+The heavy engineering environment lives on SLAI-controlled infrastructure. Employee endpoints primarily provide secure interaction, communication, review, and normal productivity.
+
+This should simplify:
+
+- remote onboarding,
+- environment standardization,
+- package/toolchain consistency,
+- credential revocation,
+- offboarding,
+- workstation replacement,
+- development hardware scaling.
+
+Employee access should be to an authorized worker/session, not unrestricted access to Jamie's workstation or the underlying Forge host.
+
+## Capital and Hiring Strategy
+
+The preferred early strategy is to preserve cash and increase founder leverage before adding recurring payroll when the workload remains safe.
+
+Candidate progression:
+
+~~~text
+founder + AI-assisted workflow
+→ founder workstation
+→ dedicated Forge worker host
+→ SLAIOS Founder Alpha
+→ Forge Alpha
+→ prove remote worker model
+→ hire against measured human bottlenecks
+~~~
+
+This is a default capital-allocation strategy, not an absolute hiring freeze.
+
+Hire earlier when customer reliability, support/onboarding, QA, security, production complexity, sales demand, or technical review becomes a genuine human constraint.
+
 ## Early Hiring Strategy
 
-If founder engineering + AI leverage can safely carry the product for longer, SLAI may be able to hire earlier in areas that directly improve traction:
+If founder engineering + AI leverage can safely carry the product for longer, SLAI may choose to defer hiring and prioritize reusable infrastructure. If hiring becomes necessary before Forge is mature, earlier hires may be justified in areas that directly improve traction or protect customer reliability:
 
 - sales,
 - onboarding/implementation,
