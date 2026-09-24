@@ -6,6 +6,8 @@ SLAIOS is the operating system for Stellar Logic AI.
 
 It should unify company knowledge, work, people, communications, products, AI assistance, and decision history so the company can operate with a small, highly capable human team.
 
+Long term, SLAIOS should become the **human-controlled company control center** for Stellar Logic AI: the operating environment through which the founder and future authorized employees understand company state, make decisions, coordinate products, manage budgets, access company memory, and govern controlled execution.
+
 The goal is not to automate leadership away.
 
 The goal is:
@@ -41,6 +43,22 @@ The same system may show:
 - a manager: team priorities, blockers, approvals, PTO requests, and authorized performance evidence;
 - an engineer: assigned products, repositories, decisions, technical context, and engineering workflows;
 - an employee: today's work, messages, knowledge, training, contributions, rewards, PTO, payroll self-service, and approved AI assistance.
+
+## Desktop-First Control Experience
+
+The preferred founder experience is a streamlined SLAIOS desktop application.
+
+The desktop app is a client to the SLAIOS control plane, not the sole source of company truth or authority.
+
+This separation allows:
+
+- a high-trust founder workstation,
+- secure web or employee clients later,
+- centralized identity, permissions, audit, budgets, and company state,
+- Forge execution on separate lower-trust infrastructure,
+- replacement or expansion of client applications without rebuilding the operating system.
+
+See `SLAIOS_Desktop_and_Workstation_Architecture.md`.
 
 ## AI-Enhanced Workflows in One Place
 
@@ -223,6 +241,14 @@ Forge is not a separate company operating system.
 
 SLAIOS should first prove itself inside SLAI.
 
+The architecture should nevertheless be **future-SaaS-safe from the beginning** in foundational areas such as organization/tenant identity, membership, permissions, module boundaries, data authority, provider abstraction, audit, usage metering, budgets, and export/retention boundaries.
+
+Do not build external customer billing UX, enterprise onboarding, reseller controls, broad white-label configuration, or other external-SaaS complexity until internal proof earns it.
+
+Core productization rule:
+
+> **Build for SLAI first. Architect for future SaaS. Do not pay the complexity cost until internal proof earns it.**
+
 If it becomes externally viable, the reusable platform may later support:
 
 - multi-tenant company operating systems,
@@ -240,4 +266,4 @@ This vision is future planning only.
 
 Do not activate SLAIOS development merely because the concept is compelling.
 
-ServicesOS remains the execution anchor until its customer-ready and real-usage gates are satisfied.
+Approved activation sequence remains: ServicesOS customer-ready V1 → SLAI Platform Core extraction/revalidation → SLAI Web V1 → ServicesOS V2 → SLAIOS Founder Alpha → Forge Alpha. ServicesOS remains the current execution anchor.
