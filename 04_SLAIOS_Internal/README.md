@@ -40,6 +40,8 @@ Only after the internal system proves useful should SLAI extract reusable platfo
 - `SLAIOS_Vision.md` — executive vision and product boundaries
 - `SLAIOS_Architecture_and_Vision.md` — system architecture and module relationships
 - `Roadmap.md` — future activation sequence
+- `Founder_Alpha/SLAIOS_Founder_Alpha_Spec.md` — narrow founder-control-plane scope, activation gate, analytics, context, authority, and Alpha exclusions
+- `Founder_Alpha/Founder_Analytics_and_Unit_Economics.md` — canonical Founder Alpha metrics, cost-per-business definitions, and engineering-cost separation
 - `AI_Agents.md` — Luna / Terra / Sol orchestration model
 - `Permissions.md` — role, project, department, sensitivity, and AI access controls
 - `InternalCommunication.md` — remote-first communications and decision capture
@@ -51,6 +53,8 @@ Only after the internal system proves useful should SLAI extract reusable platfo
 - `Forge/README.md` — Forge add-on boundary
 - `Forge/Architecture_and_Execution_Model.md` — controlled coding-worker architecture
 - `Forge/Engineering_QA_and_Organization_Model.md` — future human engineering + QA operating model
+- `Forge/Forge_Alpha_Spec.md` — first one-worker/one-repo Forge implementation contract and Codex/provider abstraction
+- `Forge/Forge_Capacity_and_Budget_Governance.md` — founder-funded capacity forecasting, reservations, hard spend ceilings, safe exhaustion, and future project-budget hierarchy
 - `SLAIOS_Web_Production_Orchestration.md` — future ServicesOS-data-driven website production queue, AI task packaging, human QA, approvals, and deployment orchestration
 - `SLAIOS_Audit_and_Authority_Model.md` — future risk-based automation authority, approval-context requirements, audit-event minimums, and immutable context-snapshot rules
 
