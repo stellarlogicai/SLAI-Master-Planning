@@ -30,6 +30,14 @@ It is not the full future company OS.
 
 ### Founder cockpit
 
+The preferred Founder Alpha experience is a **desktop-first SLAIOS client** connected to the persistent SLAIOS control plane.
+
+The desktop client may run on Jamie's high-trust workstation, but authoritative company state, decisions, budgets, permissions, and Forge authority must remain outside the UI itself so secure web/employee clients can be added later without redesigning the system.
+
+See `../SLAIOS_Desktop_and_Workstation_Architecture.md`.
+
+### Founder cockpit
+
 Primary areas:
 
 - **Today**
@@ -99,6 +107,26 @@ It should therefore surface:
 - tasks waiting for reset or budget approval.
 
 Paid API fallback is **disabled by default** in founder-funded mode.
+
+## Workstation Boundary
+
+Founder Alpha should assume the intended two-machine founder topology:
+
+~~~text
+Jamie's workstation
+→ high-trust SLAIOS Desktop / approvals / architecture / sensitive administration
+
+Second PC / Forge host
+→ lower-trust isolated execution workers / builds / tests / coding-agent execution
+~~~
+
+Employees are not granted general access to the founder workstation. Future employee access should be mediated by SLAIOS identity/permissions into authorized worker sessions.
+
+## SaaS-Ready Foundation
+
+Founder Alpha is internal-first, but its core entities should include organization/tenant ownership even while Stellar Logic AI is the only organization.
+
+This is a schema/authority boundary, not a requirement to build customer billing, white-label controls, enterprise onboarding, or other external product features in Alpha.
 
 ## Explicit Alpha Exclusions
 
