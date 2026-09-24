@@ -2,7 +2,7 @@
 
 Status: **Parked future internal system.**
 
-SLAIOS is the future internal operating system for Stellar Logic AI. It should not be actively built until ServicesOS reaches stable customer-ready V1, has real usage, and there is enough operating need to justify the investment.
+SLAIOS is the future internal operating system for Stellar Logic AI. It should not be actively built before the approved sequence reaches SLAIOS Founder Alpha: ServicesOS customer-ready V1 → SLAI Platform Core extraction/revalidation → SLAI Web V1 → ServicesOS V2 → SLAIOS Founder Alpha. Operating need and available capacity remain required activation checks.
 
 ## Core Purpose
 
@@ -66,4 +66,4 @@ SLAIOS planning must not pull engineering attention away from ServicesOS.
 
 The current rule remains:
 
-> ServicesOS earns the next line of code until its customer-ready stability and real-usage gates are met.
+> ServicesOS remains the execution anchor. Detailed SLAIOS/Forge planning exists to make future implementation faster, not to pull engineering attention forward.
