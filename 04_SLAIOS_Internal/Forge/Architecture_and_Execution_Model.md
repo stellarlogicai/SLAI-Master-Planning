@@ -242,6 +242,17 @@ unless a specifically authorized workflow requires them.
 
 Production deployment should remain a separate controlled system.
 
+## Engineering Agent Provider Boundary
+
+Forge should not depend on automating a desktop coding-agent UI.
+
+Use a provider boundary so the control plane can call the supported Codex/engineering-agent programmatic surface available at implementation time without making the rest of Forge provider-specific.
+
+Canonical Alpha details:
+
+- `Forge_Alpha_Spec.md`
+- `Forge_Capacity_and_Budget_Governance.md`
+
 ## Model Routing
 
 Examples:
@@ -300,13 +311,22 @@ Do not log secrets.
 
 Track:
 
+- included provider/Codex capacity where measurable,
 - API/model spend,
+- capacity reservations,
+- founder emergency reserve,
 - worker time,
 - concurrent jobs,
 - test/build compute,
 - storage/network use.
 
-SLAIOS should choose the lowest-cost adequate model and avoid leaving workers idle.
+Founder-funded mode should use included capacity first where supported.
+
+Paid API fallback is disabled by default. Capacity exhaustion should pause/queue work safely rather than silently converting an included-usage limit into cash spend.
+
+SLAIOS should choose the lowest-cost adequate model, but cost pressure must never weaken required security, payments, auth, tenant-isolation, validation, or review gates.
+
+Longer-term budgets may be nested by company → product → project → milestone/release → task slice. Forge may optimize inside an approved budget envelope; it may not enlarge that envelope on its own.
 
 ## Scale Path
 
