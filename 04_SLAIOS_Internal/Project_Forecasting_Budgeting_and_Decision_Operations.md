@@ -230,7 +230,56 @@ Most project dashboards should use authorized aggregate loaded-cost rates rather
 
 ---
 
-## 7. Cost-to-Complete
+## 7. Budget Hierarchy and Founder-Funded Controls
+
+Early SLAI planning should assume growth may be slower than hoped and that Jamie may personally fund a meaningful share of engineering costs.
+
+Budget control should therefore mature in layers:
+
+~~~text
+Company budget
+   ↓
+Product budget
+   ↓
+Project budget
+   ↓
+Milestone / release budget
+   ↓
+Task-slice budget
+~~~
+
+Founder Alpha / Forge Alpha should begin with the smallest useful controls:
+
+- overall engineering-capacity visibility,
+- included Codex/provider capacity where measurable,
+- task usage forecasts,
+- active capacity reservations,
+- founder emergency reserve,
+- hard paid-AI spending ceiling,
+- paid fallback disabled unless explicitly approved,
+- safe wait/reset behavior when capacity is exhausted.
+
+Later, once real revenue and execution history exist, SLAIOS may allocate explicit product/project/milestone/task budgets.
+
+The system should distinguish:
+
+~~~text
+operating/customer cost
+≠ engineering/development cost
+≠ transaction/payment cost
+~~~
+
+This avoids contaminating tenant unit-economics reporting with product-development spend.
+
+Forge budget mechanics are specified in:
+
+- `Forge/Forge_Capacity_and_Budget_Governance.md`
+
+Core rule:
+
+> **SLAIOS may forecast and recommend. Forge may optimize within an approved budget. Only an authorized human may increase a hard spending envelope.**
+
+## 8. Cost-to-Complete
 
 SLAIOS should continuously update the forecast as actual evidence replaces assumptions.
 
@@ -265,7 +314,7 @@ The forecast should preserve why it changed rather than silently rewriting the o
 
 ---
 
-## 8. Scenario Planning
+## 9. Scenario Planning
 
 Authorized leaders should be able to ask controlled planning questions such as:
 
@@ -284,7 +333,7 @@ It should not present speculative outputs as guaranteed business outcomes.
 
 ---
 
-## 9. Decision-Focused Meetings
+## 10. Decision-Focused Meetings
 
 SLAIOS should reduce mundane status-reporting meetings, not remove useful human collaboration.
 
@@ -349,7 +398,7 @@ Do not spend expensive team time verbally reconstructing information already pre
 
 ---
 
-## 10. Schedule-Risk Communication
+## 11. Schedule-Risk Communication
 
 Missing an estimate should be treated as planning information.
 
@@ -373,7 +422,7 @@ Repeatedly hiding known blockers or failing to communicate material risk is a se
 
 ---
 
-## 11. Project Intelligence Is Not Employee Surveillance
+## 12. Project Intelligence Is Not Employee Surveillance
 
 This system must not depend on invasive activity monitoring.
 
@@ -401,7 +450,7 @@ Formal performance management remains a separate human process.
 
 ---
 
-## 12. Separation From Contribution and Rewards
+## 13. Separation From Contribution and Rewards
 
 SLAIOS already plans a Contribution Ledger and optional recognition/reward systems.
 
@@ -427,7 +476,7 @@ Rewards may use verified contribution outcomes under the separate Contribution L
 
 ---
 
-## 13. Forge Integration
+## 14. Forge Integration
 
 Forge should automatically provide safe project evidence such as:
 
@@ -448,7 +497,7 @@ For multi-VM/multi-prompt objectives, SLAIOS should roll worker evidence up into
 
 ---
 
-## 14. Forecasting Maturity Path
+## 15. Forecasting Maturity Path
 
 ### Stage A — Capture
 
@@ -478,7 +527,7 @@ Use automatic briefings so recurring meetings spend time on decisions, collabora
 
 ---
 
-## 15. Success Definition
+## 16. Success Definition
 
 This capability succeeds when:
 
