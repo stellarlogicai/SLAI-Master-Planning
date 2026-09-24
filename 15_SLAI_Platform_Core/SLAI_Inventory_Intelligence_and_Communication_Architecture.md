@@ -13,7 +13,7 @@ Its purpose is to record what physically happened to inventory, separate true de
 
 Core rule:
 
-> **AI explains. Deterministic intelligence decides. Humans approve consequential changes.**
+> **Deterministic policy enforces known boundaries. Decision intelligence evaluates bounded uncertainty. AI explains. Humans approve consequential changes.**
 
 The inventory engine should exist independently enough that RetailOS, ServicesOS, warehouses, field-service operations, and future SLAI products can consume it through stable contracts.
 
@@ -205,9 +205,11 @@ Potential consumers:
 
 Each consumer supplies domain context and chooses which inventory capabilities to expose.
 
-## SLAI Deterministic Intelligence Layer
+## SLAI Decision Intelligence Layer
 
-Preferred flow:
+Canonical shared architecture: `SLAI_Decision_Intelligence_Layer.md`.
+
+For inventory, the preferred flow is:
 
 ```text
 Raw Events
