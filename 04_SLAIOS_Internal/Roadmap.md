@@ -98,7 +98,7 @@ Connect the whole loop:
 ~~~text
 Jamie states outcome
 → SLAIOS resolves product/repo/priority/context
-→ SLAIDIL classifies/routs within deterministic policy
+→ SLAIDIL classifies/routes within deterministic policy
 → task slice proposed
 → Jamie approves
 → Forge executes
