@@ -36,8 +36,6 @@ The desktop client may run on Jamie's high-trust workstation, but authoritative 
 
 See `../SLAIOS_Desktop_and_Workstation_Architecture.md`.
 
-### Founder cockpit
-
 Primary areas:
 
 - **Today**
