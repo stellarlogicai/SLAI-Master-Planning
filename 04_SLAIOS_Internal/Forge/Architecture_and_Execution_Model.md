@@ -275,9 +275,43 @@ employee identity
 
 Do not treat general RDP/desktop access to the Forge host as the long-term security model.
 
+## Service / Workload Principal Model
+
+Forge should distinguish the human responsible for work from the non-human principal used to execute it.
+
+~~~text
+Human actor
+→ SLAIOS authorization
+→ ForgeJob
+→ provider principal
+   ├─ user-backed principal where appropriate
+   ├─ service account
+   └─ short-lived workload identity
+→ scoped execution
+~~~
+
+Candidate principal classes:
+
+~~~text
+ForgeImplementation
+ForgeReview
+ForgeCI
+ForgeHighRisk
+~~~
+
+These are authority classes, not permanent provider-specific account names.
+
+A disposable worker does not automatically deserve its own paid human seat. The commercial/authentication relationship should follow the provider's supported automation model.
+
+Core rule:
+
+> **SLAIOS governs human responsibility and business authority. The provider principal supplies execution identity.**
+
+Provider principals must never increase task authority beyond the SLAIOS permission envelope.
+
 ## Credentials
 
-Workers should receive minimum necessary, short-lived credentials where practical.
+Workers should receive minimum necessary, short-lived credentials where practical. Prefer brokered service/workload identities where supported so disposable workers do not contain long-lived personal credentials.
 
 Do not provide:
 
