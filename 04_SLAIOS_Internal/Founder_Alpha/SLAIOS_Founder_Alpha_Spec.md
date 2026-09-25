@@ -106,6 +106,26 @@ It should therefore surface:
 
 Paid API fallback is **disabled by default** in founder-funded mode.
 
+## Founder Dogfooding Requirement
+
+Founder Alpha should deliberately prove the operating model intended for future employees.
+
+Normal founder engineering should use:
+
+~~~text
+Jamie SLAIOS identity
+→ founder permission envelope
+→ approved task/context
+→ brokered provider/repository access
+→ Forge worker
+→ evidence
+→ human approval
+~~~
+
+Jamie may hold broader authority than future employees, but normal work should not bypass identity, permission, worker, evidence, or budget controls merely because he is the founder.
+
+A separate break-glass recovery path may exist for genuine incidents.
+
 ## Workstation Boundary
 
 Founder Alpha should assume the intended two-machine founder topology:
