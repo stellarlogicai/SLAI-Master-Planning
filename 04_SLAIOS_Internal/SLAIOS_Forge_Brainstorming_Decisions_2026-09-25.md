@@ -581,6 +581,7 @@ Canonical detail lives in:
 - `Product_Telemetry_and_Intelligence_Architecture.md`
 - `Private_AI_and_Tenant_Intelligence_Architecture.md`
 - `SLAIOS_Commercial_Pricing_and_Expansion_Model.md`
+- `SLAIOS_Context_Maturity_and_Guided_Knowledge_Capture.md`
 - `White_Label_and_Productization.md`
 - `Roadmap.md`
 
