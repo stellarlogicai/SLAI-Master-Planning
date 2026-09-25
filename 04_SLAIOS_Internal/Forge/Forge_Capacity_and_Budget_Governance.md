@@ -287,6 +287,113 @@ As evidence grows, SLAIOS should answer:
 
 The output is decision support, not automatic founder spending authority.
 
+## Budget Adjustment Decision Flow
+
+When a project or milestone is forecast to exceed an approved hard budget, SLAIOS should prepare the decision rather than force the founder to reconstruct the numbers manually.
+
+Example:
+
+~~~text
+Current budget              $1,500
+Spent                       $1,270
+Committed                   $180
+Remaining forecast P50      $190
+Remaining forecast P80      $260
+Remaining forecast P95      $340
+Projected total             $1,710–$1,790
+~~~
+
+SLAIOS should explain:
+
+- why the forecast changed,
+- which work caused the variance,
+- whether scope changed,
+- whether provider/model usage changed,
+- whether waiting for an included-capacity reset changes cash cost,
+- whether scope can be reduced safely,
+- the recommended revised budget,
+- the confidence/risk behind the recommendation.
+
+Possible founder actions:
+
+~~~text
+APPROVE_REVISED_BUDGET
+SET_DIFFERENT_BUDGET
+REDUCE_SCOPE
+WAIT_FOR_RESET
+PAUSE_PROJECT
+REJECT
+~~~
+
+Approval creates a new version of the BudgetEnvelope and preserves the previous version and reason.
+
+Core rule:
+
+> **SLAIOS may recommend a larger budget. It may not grant itself one.**
+
+## Subscription / Capacity Upgrade Recommendations
+
+SLAIOS may also identify when recurring provider capacity is a proven bottleneck.
+
+Examples:
+
+- included Codex/agent capacity is repeatedly exhausted,
+- work regularly waits for reset,
+- paid overflow is repeatedly more expensive than a higher plan,
+- SLAI revenue can support the recurring cost,
+- higher capacity would materially reduce queue delay without weakening controls.
+
+SLAIOS may compare:
+
+~~~text
+stay on current plan
+vs
+wait for reset
+vs
+buy occasional credits/usage
+vs
+upgrade recurring plan
+~~~
+
+The recommendation should show:
+
+- incremental recurring cost,
+- recent utilization,
+- forecast demand,
+- paid overflow avoided,
+- expected queue/delay effect,
+- impact on approved company/project budgets.
+
+An account/plan upgrade remains a human-approved recurring budget change.
+
+Provider plan names, limits, and prices must be refreshed from current provider information rather than hard-coded as permanent architecture.
+
+## Multi-Dimensional Budgeting
+
+Project health should track at least three separate dimensions:
+
+~~~text
+1. MONEY
+API / cloud / CI / storage / provider spend
+
+2. INCLUDED CAPACITY
+subscription/provider allowance
+remaining amount
+reset timing
+active reservations
+founder reserve
+
+3. WORK FORECAST
+remaining task slices
+required risk/model class
+P50 / P80 / P95 usage
+validation/retry expectations
+~~~
+
+A project may be within its cash budget while still lacking enough included capacity to finish safely before reset.
+
+SLAIOS should be able to recommend splitting, waiting, buying approved capacity, or revising the budget depending on schedule and business priority.
+
 ## Final Rule
 
 > **Forge may optimize within an approved budget. It may not create a larger budget for itself.**
