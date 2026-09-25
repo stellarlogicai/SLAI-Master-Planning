@@ -519,6 +519,54 @@ internal proof
 → broader commercial launch if earned
 ~~~
 
+
+## 24. Context Maturity and Guided Knowledge Capture
+
+SLAI's unusually detailed internal documentation should be treated as a high-context reference implementation, not a minimum adoption requirement for future SLAIOS customers.
+
+SLAIOS should support organizations that begin with scattered, stale, contradictory, or mostly tribal knowledge.
+
+Core decision:
+
+> **SLAIOS should help create organizational maturity, not require it.**
+
+The system should be able to identify important missing context, determine the appropriate human authority, ask focused questions, convert confirmed answers into structured company knowledge, record provenance, and update context confidence.
+
+Preferred maturity path:
+
+~~~text
+Sparse
+→ Imported
+→ Reconciled
+→ Structured
+→ Operational
+→ Forge Ready
+~~~
+
+A company may receive substantial SLAIOS value before it is safe for Forge execution.
+
+Another core rule:
+
+> **Authority should scale with context quality.**
+
+When engineering context is insufficient, Forge should block rather than improvise through consequential unknowns and should identify the missing information needed to continue.
+
+The long-term learning loop is:
+
+~~~text
+people work
+→ SLAIOS detects knowledge gaps
+→ appropriate humans answer/approve
+→ structured company knowledge improves
+→ SLAIOS/Forge receive better context
+→ work becomes safer and easier
+→ new gaps surface
+~~~
+
+Canonical detail lives in:
+
+- `SLAIOS_Context_Maturity_and_Guided_Knowledge_Capture.md`
+
 ## Canonical Documents Updated / Created From This Session
 
 - `SLAIOS_Desktop_and_Workstation_Architecture.md`
