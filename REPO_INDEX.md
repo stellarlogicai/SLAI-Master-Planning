@@ -2,7 +2,7 @@
 
 Document Status: Living Index  
 Implementation Status: Active Planning Reference  
-Last Updated: 2026-09-18  
+Last Updated: 2026-09-25  
 Repository: `stellarlogicai/SLAI-Master-Planning`  
 Primary Active Build: ServicesOS
 
@@ -152,6 +152,7 @@ Key planning files include:
 - `Product_Telemetry_and_Intelligence_Architecture.md` — future software-product telemetry SDK/connectors, build/release/runtime monitoring, customer/product usage, revenue/cost/margin intelligence, and source-grounded outcome correlation
 - `Private_AI_and_Tenant_Intelligence_Architecture.md` — future dedicated company AI isolation, SLAI-owned model direction, tenant-specific memory/context, private deployment, and data-lifecycle rules
 - `SLAIOS_Commercial_Pricing_and_Expansion_Model.md` — September 2026 pricing hypothesis: organization/active-user bands, Forge access + pooled execution capacity, GrowthAI/specialist add-ons, Product Intelligence, Private AI, enterprise packaging, and internal unit-economics proof
+- `SLAIOS_Context_Maturity_and_Guided_Knowledge_Capture.md` — future context-maturity model for organizations with incomplete documentation, guided knowledge capture from authorized humans, provenance/confidence tracking, and context-based Forge safety/readiness
 - `SLAIOS_Forge_Brainstorming_Decisions_2026-09-25.md` — canonical session decision history for the September 24–25 SLAIOS/Forge brainstorming pass
 - `White_Label_and_Productization.md`
 - `Forge/README.md`
