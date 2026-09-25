@@ -279,6 +279,54 @@ Core rule:
 
 > **SLAIOS may forecast and recommend. Forge may optimize within an approved budget. Only an authorized human may increase a hard spending envelope.**
 
+## 8A. Budget Decision Preparation
+
+SLAIOS should reduce founder bookkeeping by preparing complete budget decisions when forecasts move outside an approved envelope.
+
+A useful decision card should contain:
+
+- current approved budget,
+- amount spent,
+- amount already committed/reserved,
+- P50/P80/P95 remaining cost,
+- projected final range,
+- reason for variance,
+- scope impact,
+- provider/capacity impact,
+- schedule impact,
+- alternatives,
+- recommended revised budget,
+- effect of approval/rejection.
+
+Example:
+
+~~~text
+PROJECT: Payments Stabilization
+
+Current budget           $1,500
+Spent                    $1,270
+Committed                $180
+Projected total          $1,710–$1,790
+
+Primary variance
+- two additional repair slices
+- security validation above historical median
+
+Recommendation
+Increase approved budget to $1,850
+
+Alternatives
+- reduce noncritical scope
+- wait for provider-capacity reset
+- pause project
+~~~
+
+The founder should be able to approve, change, reduce scope, wait, pause, or reject without manually reconstructing the underlying arithmetic.
+
+The recommendation is decision support. The budget change itself remains an authorized human action.
+
+Detailed mechanics are defined in `Forge/Forge_Capacity_and_Budget_Governance.md`.
+
 ## 8. Cost-to-Complete
 
 SLAIOS should continuously update the forecast as actual evidence replaces assumptions.
