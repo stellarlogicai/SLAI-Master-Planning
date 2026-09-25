@@ -98,3 +98,23 @@
 25. **Employees should connect to capability, not depend on expensive endpoints.**
 
     Where practical, SLAI-controlled Forge infrastructure should provide standardized development/test environments so future employees can use modest secure client hardware without requiring SLAI to duplicate high-end engineering workstations for every seat.
+
+26. **Founder usage should prove the employee architecture.**
+
+    Founder Alpha should use the same normal identity, authorization, credential-brokering, task, worker, evidence, and approval pathways intended for future employees. Founder status may grant broader authority, but normal work should not bypass the architecture. Break-glass paths are for incidents, not convenience.
+
+27. **One company login should broker bounded downstream access.**
+
+    Employees should authenticate to SLAIOS and receive temporary, task-scoped access to authorized tools through service/workload identities where supported. Preserve both human accountability and non-human execution identity in audit.
+
+28. **Measure before monetizing.**
+
+    Instrument organization, active-user, model, worker, task, product, and outcome costs internally before external SLAIOS/Forge pricing is finalized. Commercial packaging should be based on real SLAI economics and customer evidence, not only competitor pricing.
+
+29. **Product telemetry and business intelligence are separate but correlated.**
+
+    Technical release/runtime evidence and product usage/revenue/cost evidence may be connected in Product Fleet, but every metric must preserve its authoritative source. Correlation should not be presented as causation without evidence.
+
+30. **Private AI changes isolation, not authority.**
+
+    Dedicated or customer-private AI environments must remain subject to the same SLAIOS permissions, SLAIDIL policy, audit, budget, and human-approval boundaries as shared AI.
