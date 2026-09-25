@@ -12,6 +12,19 @@ The goal is to answer:
 
 > What changed? Why does it matter? What needs a human decision?
 
+## Product Telemetry and Intelligence Boundary
+
+Product Fleet should consume a dedicated telemetry/intelligence architecture rather than invent ad hoc metrics per dashboard.
+
+Two distinct signal families are planned:
+
+- **Product Telemetry** — build, test, release, deployment, runtime, error, incident, and technical-health evidence.
+- **Product Intelligence** — users, customers, subscriptions, revenue, cost, margin, feature adoption, churn, and other business/product outcomes.
+
+SLAIOS should correlate both while preserving each upstream source of truth.
+
+See `Product_Telemetry_and_Intelligence_Architecture.md`.
+
 ## Product Health Layers
 
 ### Technical Health
@@ -103,6 +116,23 @@ Each product may have:
 - risks,
 - opportunities,
 - recent contributions.
+
+## Engineering-to-Business Outcome Correlation
+
+Over time Product Fleet should support a trace such as:
+
+~~~text
+approved product decision
+→ Forge / implementation work
+→ validated release
+→ deployment
+→ runtime behavior
+→ feature/customer usage
+→ revenue / cost / support signals
+→ human interpretation
+~~~
+
+This creates a path from engineering evidence to product/business evidence without claiming that correlation automatically proves causation.
 
 ## Correlation and Decision History
 
