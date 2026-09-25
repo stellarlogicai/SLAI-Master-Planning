@@ -189,6 +189,24 @@ Rewards and project telemetry remain separate from formal human performance mana
 
 ## Phase 8 — Internal Operating Maturity
 
+As internal maturity grows, SLAIOS may also add:
+
+- Product Telemetry for build/release/runtime monitoring,
+- Product Intelligence for users/revenue/cost/margin correlation,
+- stronger internal commercial/unit-economics instrumentation,
+- private/dedicated AI experiments only when cost and security justify them,
+- broader specialist-module entitlements such as GrowthAI integration.
+
+These remain internal-proof capabilities before any external packaging.
+
+See:
+
+- `Product_Telemetry_and_Intelligence_Architecture.md`
+- `Private_AI_and_Tenant_Intelligence_Architecture.md`
+- `SLAIOS_Commercial_Pricing_and_Expansion_Model.md`
+
+
+
 SLAI uses SLAIOS across founder operations, engineering, QA, company memory, decisions, projects, people operations, product fleet, budgets, and handoffs.
 
 This phase should produce evidence about which modules genuinely create value and which should remain internal-only.
@@ -209,6 +227,11 @@ Then:
 - customer data isolation,
 - provider abstraction,
 - enterprise governance,
+- organization/user-band pricing experiments,
+- Forge access + pooled capacity experiments,
+- specialist add-on entitlements,
+- optional Product Intelligence packaging,
+- optional Private AI/dedicated deployment pilots,
 - optional external/white-label pilot.
 
 No external productization is assumed merely because the architecture can support it.
