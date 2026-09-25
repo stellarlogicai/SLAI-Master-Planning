@@ -35,9 +35,13 @@ Build SLAIOS for SLAI first.
 
 Use it every day.
 
+Founder Alpha should deliberately dogfood the same normal identity, permission, credential-brokering, Forge-worker, evidence, and approval paths intended for future employees. Jamie may have broader authority, but routine founder work should prove the architecture rather than bypass it.
+
 Only after the internal system proves useful should SLAI extract reusable platform capabilities, externalize the product, or offer white-label/OEM versions.
 
 Foundational schemas and authority boundaries should remain future-SaaS-safe from the beginning, but external billing, onboarding, white-label administration, reseller, and enterprise complexity are deferred until internal proof earns them.
+
+Commercial instrumentation is allowed before commercialization: SLAIOS/Forge should be able to measure organization, user, AI/model, worker, task, product, cost, capacity, and accepted-outcome economics while SLAI uses the system internally.
 
 ## Canonical Planning
 
@@ -53,6 +57,9 @@ Foundational schemas and authority boundaries should remain future-SaaS-safe fro
 - `Employee_Workspace_People_HR_and_Payroll.md` — employee side, HR, payroll coordination, onboarding/offboarding
 - `Contribution_Ledger_Rewards_and_Remote_Culture.md` — contribution provenance, timeframes, points, rewards, perks, and remote culture
 - `Product_Fleet_and_Product_Studio.md` — live product intelligence and product-design workflow
+- `Product_Telemetry_and_Intelligence_Architecture.md` — technical build/release/runtime telemetry plus product usage, revenue, cost, margin, and engineering-to-business outcome correlation
+- `Private_AI_and_Tenant_Intelligence_Architecture.md` — future SLAI-owned/dedicated AI isolation tiers, company-specific intelligence, permission boundaries, and customer-private deployment direction
+- `SLAIOS_Commercial_Pricing_and_Expansion_Model.md` — future organization/user bands, Forge access + pooled execution capacity, GrowthAI/specialist add-ons, Private AI, enterprise structure, and dogfooding economics
 - `Project_Forecasting_Budgeting_and_Decision_Operations.md` — historical cycle-time learning, project forecasting, cost-to-complete, capacity/bottleneck modeling, and decision-focused meetings
 - `White_Label_and_Productization.md` — future external and white-label strategy
 - `Forge/README.md` — Forge add-on boundary
