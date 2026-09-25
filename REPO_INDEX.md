@@ -149,6 +149,9 @@ Key planning files include:
 - `Employee_Workspace_People_HR_and_Payroll.md`
 - `Contribution_Ledger_Rewards_and_Remote_Culture.md`
 - `Product_Fleet_and_Product_Studio.md`
+- `Product_Telemetry_and_Intelligence_Architecture.md` — future software-product telemetry SDK/connectors, build/release/runtime monitoring, customer/product usage, revenue/cost/margin intelligence, and source-grounded outcome correlation
+- `Private_AI_and_Tenant_Intelligence_Architecture.md` — future dedicated company AI isolation, SLAI-owned model direction, tenant-specific memory/context, private deployment, and data-lifecycle rules
+- `SLAIOS_Commercial_Pricing_and_Expansion_Model.md` — September 2026 pricing hypothesis: organization/active-user bands, Forge access + pooled execution capacity, GrowthAI/specialist add-ons, Product Intelligence, Private AI, enterprise packaging, and internal unit-economics proof
 - `White_Label_and_Productization.md`
 - `Forge/README.md`
 - `Forge/Architecture_and_Execution_Model.md`
@@ -163,6 +166,8 @@ Key planning files include:
 Core rule:
 
 > AI supports the user. Humans remain responsible for consequential decisions.
+
+Additional operating rule: Founder Alpha should prove the same identity/authorization/credential-brokering/Forge pathways intended for future employees, so later hiring inherits an already-tested operating system rather than a founder-only shortcut.
 
 Status: Future planning only. Approved activation sequence is ServicesOS customer-ready V1 → SLAI Platform Core extraction/revalidation → SLAI Web V1 → ServicesOS V2 → SLAIOS Founder Alpha → Forge Alpha, subject to real operating need and available capacity.
 
