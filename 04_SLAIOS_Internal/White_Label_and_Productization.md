@@ -119,6 +119,48 @@ Potential future configuration:
 - communication structure,
 - email/notification branding.
 
+## Commercial Expansion Model
+
+If productized, SLAIOS should act as the customer platform relationship while specialist capabilities remain separately entitled where their value/economics differ.
+
+Potential future structure:
+
+~~~text
+SLAIOS Core
+├─ organization / active-user band
+├─ standard employee workspace
+├─ company memory / decisions / permissions
+└─ base operating intelligence
+
+Optional capabilities
+├─ GrowthAI
+├─ SLAIForge
+├─ Forge execution capacity
+├─ Product Intelligence / monitoring
+├─ Private AI
+└─ future specialist modules
+~~~
+
+This preserves one coherent customer experience without forcing every expensive capability into one unlimited Core plan.
+
+See `SLAIOS_Commercial_Pricing_and_Expansion_Model.md`.
+
+## Private AI Productization
+
+Some future customers may require dedicated AI isolation beyond ordinary multi-tenant application boundaries.
+
+Potential maturity path:
+
+~~~text
+standard SLAI-managed AI with tenant-isolated context
+→ repeatable dedicated Private AI environment
+→ enterprise customer-cloud/private deployment where justified
+~~~
+
+The private option must retain the same SLAIOS permissions, audit, human-control, and source-boundary rules.
+
+See `Private_AI_and_Tenant_Intelligence_Architecture.md`.
+
 ## Modular Offering
 
 Customers should not be forced to enable everything.
