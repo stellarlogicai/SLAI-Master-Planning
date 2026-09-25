@@ -84,6 +84,40 @@ Potential record:
 - restricted employment documents,
 - compensation/payroll references with stronger access controls.
 
+## Scoped Context and Founder-Interruption Reduction
+
+SLAIOS should answer routine operating questions from authoritative company context so new employees do not require constant founder explanation.
+
+The system should normally answer:
+
+- what product/project is active,
+- what objective is assigned,
+- which repository/workspace is authoritative,
+- what the approved architecture says,
+- what may be changed,
+- what requires approval,
+- what the current budget/capacity is,
+- what validation is required,
+- why a prior decision was made,
+- who owns the next step.
+
+Human escalation should focus on:
+
+- genuinely new product decisions,
+- ambiguous requirements,
+- architecture tradeoffs,
+- unusual customer situations,
+- security/policy exceptions,
+- budget increases,
+- priority changes,
+- consequential people decisions.
+
+Core principle:
+
+> **Documented company truth should answer routine questions. Human attention should be reserved for judgment.**
+
+This is a major reason SLAIOS/Forge should be thoroughly planned before significant hiring: future employees enter an already-structured operating environment rather than depending on Jamie to reconstruct context repeatedly.
+
 ## Remote-First Operations
 
 SLAIOS should assume employees may work from different locations and time zones.
