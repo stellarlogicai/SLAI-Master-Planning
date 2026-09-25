@@ -248,6 +248,41 @@ must not automatically authorize:
 - destructive migrations,
 - or customer-data export.
 
+## Brokered Tool and Service Access
+
+Employees should authenticate primarily to SLAIOS rather than manually maintain separate high-value credentials for every connected tool.
+
+Preferred model:
+
+~~~text
+Human identity
+→ SLAIOS session
+→ role/project/task authorization
+→ temporary downstream service/workload principal
+→ scoped tool/resource access
+→ action/evidence
+→ expiry/revocation
+~~~
+
+SLAIOS should preserve both identities in the audit trail:
+
+- **human actor** — who requested/owned the work,
+- **execution principal** — which service account/workload identity actually called the downstream system.
+
+This prevents shared machine/service credentials from erasing human accountability.
+
+Examples of downstream systems that may eventually use brokered access:
+
+- coding-agent providers,
+- GitHub/GitLab,
+- CI/build systems,
+- worker infrastructure,
+- cloud development environments,
+- approved AI/model providers,
+- future company tooling.
+
+Do not design the employee experience around sharing one unrestricted service account or storing founder credentials on employee endpoints.
+
 ## Forge / Codex Permissions
 
 Forge and Codex-style workers inherit SLAIOS authorization.
@@ -270,6 +305,8 @@ Before a coding or automation job begins, SLAIOS should resolve:
 A worker should never gain access simply because the underlying server can reach a resource.
 
 The result/report should return through the same authorization boundary so the worker cannot expose restricted information in summaries, logs, artifacts, or generated prompts.
+
+Where a provider supports non-human service accounts, workload identities, or short-lived credentials, Forge should prefer those mechanisms over personal-login automation. Provider-specific implementation remains abstract because authentication models can change.
 
 ## Onboarding and Offboarding Boundary
 
