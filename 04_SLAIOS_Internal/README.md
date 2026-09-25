@@ -60,6 +60,7 @@ Commercial instrumentation is allowed before commercialization: SLAIOS/Forge sho
 - `Product_Telemetry_and_Intelligence_Architecture.md` — technical build/release/runtime telemetry plus product usage, revenue, cost, margin, and engineering-to-business outcome correlation
 - `Private_AI_and_Tenant_Intelligence_Architecture.md` — future SLAI-owned/dedicated AI isolation tiers, company-specific intelligence, permission boundaries, and customer-private deployment direction
 - `SLAIOS_Commercial_Pricing_and_Expansion_Model.md` — future organization/user bands, Forge access + pooled execution capacity, GrowthAI/specialist add-ons, Private AI, enterprise structure, and dogfooding economics
+- `SLAIOS_Forge_Brainstorming_Decisions_2026-09-25.md` — decision-history record for the September 24–25 planning session covering hiring/infrastructure, one-login employee access, provider principals, founder dogfooding, pricing, budgeting, Product Intelligence, Private AI, and employee-scaling implications
 - `Project_Forecasting_Budgeting_and_Decision_Operations.md` — historical cycle-time learning, project forecasting, cost-to-complete, capacity/bottleneck modeling, and decision-focused meetings
 - `White_Label_and_Productization.md` — future external and white-label strategy
 - `Forge/README.md` — Forge add-on boundary
