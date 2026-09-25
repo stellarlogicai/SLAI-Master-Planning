@@ -136,6 +136,54 @@ This model is intended to provide:
 - project-specific resource profiles,
 - clean separation between founder authority and employee execution.
 
+## One-Login Employee Experience
+
+The preferred employee experience is:
+
+~~~text
+open SLAIOS
+→ authenticate once
+→ see assigned work
+→ launch authorized Forge/workspace session
+→ required underlying tools are brokered automatically
+~~~
+
+Employees should not be expected to separately remember and manage:
+
+- coding-agent/provider credentials,
+- repository tokens,
+- CI secrets,
+- worker-host passwords,
+- cloud/tool credentials that can instead be scoped and brokered.
+
+SLAIOS remains responsible for preserving the human actor identity even when downstream execution uses a non-human service/workload principal.
+
+Core principle:
+
+> **Employees authenticate to SLAIOS. SLAIOS brokers temporary access to the systems required for their authorized work.**
+
+## Founder Dogfooding Rule
+
+Founder Alpha should use the same normal identity, authorization, task, credential-brokering, and worker pathways intended for future employees.
+
+Jamie may have broader founder permissions, but founder status should not bypass the architecture during ordinary work.
+
+Preferred normal path:
+
+~~~text
+Jamie
+→ SLAIOS identity
+→ founder authority / task scope
+→ Forge worker
+→ temporary/scoped provider + repo access
+→ evidence
+→ approval
+~~~
+
+A separate break-glass/admin recovery path may exist for genuine incidents, but normal daily engineering should prove the same operating model future employees will inherit.
+
+This ensures SLAIOS/Forge is physically proven by SLAI before employee rollout or external SaaS productization.
+
 ## Identity and Credential Boundary
 
 Execution access should be granted to the authorized task/session rather than permanently copied onto an employee device.
