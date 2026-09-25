@@ -8,6 +8,21 @@ SLAIOS should support the entire company, not only executives.
 
 Each employee receives a role-aware operating surface that gives them the information, work, communication, and self-service tools appropriate to their position.
 
+## Single-Identity Employee Experience
+
+The default employee experience should be:
+
+~~~text
+sign into SLAIOS
+→ see assigned work and authorized company context
+→ launch approved tools/workspaces from SLAIOS
+→ downstream credentials are brokered by the system
+~~~
+
+Employees should not be expected to remember separate high-value logins for coding agents, repositories, CI, worker hosts, or internal toolchains when SLAIOS can securely broker those connections.
+
+SLAIOS should still preserve human accountability even when downstream execution uses a service account or workload identity.
+
 ## Employee Home
 
 A future employee home may include:
@@ -89,7 +104,7 @@ Potential flow:
 
 1. employment paperwork,
 2. policies and acknowledgements,
-3. account/access setup,
+3. SLAIOS identity plus role/project assignments,
 4. equipment,
 5. required training,
 6. team/product introduction,
@@ -106,9 +121,9 @@ Potential controlled workflow:
 ```text
 employment status change
   ->
-disable SLAIOS account
+disable SLAIOS identity
   ->
-revoke connected access
+revoke sessions and connected/brokered access
   ->
 transfer owned work
   ->
