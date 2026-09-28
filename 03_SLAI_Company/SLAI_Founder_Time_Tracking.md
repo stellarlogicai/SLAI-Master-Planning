@@ -7,9 +7,15 @@
 
 ## Core Rule
 
-Time spent actively working with ChatGPT on SLAI company work counts as founder work time.
+The **ChatGPT Project named `SLAI MASTER PLANNING` is the time-tracking boundary.**
 
-This includes work on:
+Jamie keeps SLAI-related ChatGPT work inside this Project. Therefore:
+
+> **Active time spent in any conversation inside the `SLAI MASTER PLANNING` ChatGPT Project counts as SLAI founder work time.**
+
+This avoids having to classify every individual conversation by whether it is "work." If it is intentionally being handled inside the SLAI MASTER PLANNING Project, it is treated as SLAI work.
+
+This can include:
 - ServicesOS
 - SLAI Web
 - SLAI Platform Core
@@ -25,8 +31,9 @@ This includes work on:
 - pricing and business-model work
 - customer/sales preparation
 - infrastructure planning
+- founder brainstorming that materially contributes to SLAI
 
-Personal conversations that are unrelated to SLAI are not counted.
+Chats outside the `SLAI MASTER PLANNING` Project are not automatically counted.
 
 ## Session Rule
 
@@ -35,12 +42,13 @@ Until SLAI has a formal timekeeping system, ChatGPT-assisted work should be reco
 For a session:
 1. Record the date.
 2. Record a reasonable start and end time when known.
-3. Record the primary project and work type.
+3. Record the primary project and work type when useful.
 4. Record actual duration when reasonably known.
 5. If exact duration is not available, record an estimate and mark it as estimated.
 6. Do not inflate time for long unattended gaps. Split sessions when there was a meaningful break.
-7. Time spent actively directing, reviewing, testing, or responding to AI-assisted work counts as founder work.
+7. Time spent actively directing, reviewing, testing, brainstorming, deciding, documenting, or responding to AI-assisted work inside the `SLAI MASTER PLANNING` Project counts as founder work.
 8. Unattended AI execution time does not automatically count as founder labor unless Jamie was actively working on another SLAI task during that period.
+9. A conversation may span multiple SLAI topics. It can be logged as `Multi-Project / Company` when one primary project is not meaningful.
 
 ## Historical Time
 
@@ -49,8 +57,8 @@ Before this tracker was established, Jamie estimates that he commonly invested a
 Historical hours should remain clearly labeled as **founder estimate**, not reconstructed as false precision.
 
 If a later historical reconstruction is useful, supporting evidence may include:
+- ChatGPT `SLAI MASTER PLANNING` project/chat history
 - GitHub activity
-- ChatGPT project/chat history
 - Codex work sessions
 - major project milestones
 - file/document creation history
@@ -58,7 +66,7 @@ If a later historical reconstruction is useful, supporting evidence may include:
 
 ## Work Categories
 
-Use one primary category per entry:
+Use one primary category per entry when useful:
 
 - Engineering
 - Testing / QA
@@ -73,7 +81,7 @@ Use one primary category per entry:
 
 ## Project Labels
 
-Use the most specific relevant project label, including:
+Use the most specific relevant project label when useful, including:
 - ServicesOS
 - SLAI Company
 - SLAI Web
@@ -104,6 +112,8 @@ Required fields:
 - Notes
 
 `Source` may be values such as ChatGPT, Codex, GitHub, Manual, Customer, or Mixed.
+
+For ChatGPT-derived entries, `SLAI MASTER PLANNING` is the authoritative Project boundary.
 
 ## Why Track This
 
