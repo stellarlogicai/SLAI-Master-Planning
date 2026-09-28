@@ -30,6 +30,7 @@ This can include:
 - documentation
 - pricing and business-model work
 - customer/sales preparation
+- business networking, relationship-building, and partnership development
 - infrastructure planning
 - founder brainstorming that materially contributes to SLAI
 
@@ -46,7 +47,7 @@ For a session:
 4. Record actual duration when reasonably known.
 5. If exact duration is not available, record an estimate and mark it as estimated.
 6. Do not inflate time for long unattended gaps. Split sessions when there was a meaningful break.
-7. Time spent actively directing, reviewing, testing, brainstorming, deciding, documenting, or responding to AI-assisted work inside the `SLAI MASTER PLANNING` Project counts as founder work.
+7. Time spent actively directing, reviewing, testing, brainstorming, deciding, documenting, networking, or responding to AI-assisted work inside the `SLAI MASTER PLANNING` Project counts as founder work.
 8. Unattended AI execution time does not automatically count as founder labor unless Jamie was actively working on another SLAI task during that period.
 9. A conversation may span multiple SLAI topics. It can be logged as `Multi-Project / Company` when one primary project is not meaningful.
 
@@ -76,6 +77,7 @@ Use one primary category per entry when useful:
 - Research
 - Business / Administration
 - Sales / Customer
+- Networking / Partnerships
 - Infrastructure
 - Other SLAI Work
 
