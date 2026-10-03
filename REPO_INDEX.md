@@ -2,7 +2,7 @@
 
 Document Status: Living Index  
 Implementation Status: Active Planning Reference  
-Last Updated: 2026-09-25  
+Last Updated: 2026-10-03  
 Repository: `stellarlogicai/SLAI-Master-Planning`  
 Primary Active Build: ServicesOS
 
@@ -230,6 +230,10 @@ Status: Parked.
 ## `09_FutureAI_Research/`
 
 Long-range AI research and future concepts.
+
+Key preserved concept:
+
+- `09_FutureAI_Research/Conversation_Training_Engine/SLAI_AI_Conversation_Training_Engine_Idea.md` — reusable adaptive AI voice conversation simulator/training engine, including deterministic observation, coaching, product adapters, human-control boundaries, privacy principles, evaluation/failure modes, and pre-build validation gates.
 
 Status: Research only. Do not allow this lane to distract from ServicesOS.
 
