@@ -233,6 +233,9 @@ Parked ideas:
 * Failure modes
 * Consciousness debate
 * Research questions
+* AI conversation training engine / realistic voice roleplay
+* Deterministic conversation observation and adaptive coaching
+* Product adapters for ServicesOS, EducationOS, corporate training, and job readiness
 
 Promotion trigger:
 
