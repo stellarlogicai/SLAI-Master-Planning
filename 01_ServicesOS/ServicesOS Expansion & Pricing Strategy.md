@@ -415,6 +415,92 @@ Current planning hypothesis:
 
 Do not treat this as final public packaging until competitive research and a real pilot confirm it.
 
+## ServicesOS Team Seat / Role Packaging Direction — 2026-10-05
+
+This is a **working commercial and entitlement hypothesis**, not a final public packaging commitment. It preserves the current direction so later pricing work starts from the same assumptions and revalidates them with real usage.
+
+### Base team hypothesis
+
+Current working model:
+
+```text
+ServicesOS base subscription
+$100/month
+→ up to 10 active team users total
+→ owner/admin/field mix may vary by business
+```
+
+At the full 10-user allowance, the customer-facing mental model is approximately **$10 per user per month**, while SLAI should continue pricing and governing the account primarily at the tenant/business level rather than multiplying every variable-cost allowance by seat count.
+
+### Seat / role classes
+
+ServicesOS should distinguish between different operational cost and authority profiles instead of treating every login as economically identical.
+
+**Owner**
+- Full business authority subject to existing security/approval rules.
+- May use provider-backed GrowthAI capabilities.
+- Controls billing, permissions, company settings, and consequential approvals.
+
+**Admin / Manager**
+- Office, scheduling, estimating, customer communication, operations, or management work.
+- May use approved provider-backed GrowthAI capabilities when explicitly permitted.
+- Uses the tenant's shared AI-credit pool rather than receiving a separate per-user allowance.
+
+**Field Employee**
+- Primarily uses jobs, schedule, checklists, photos, notes, status updates, authorized customer/job context, and SLAI Intelligence.
+- Should not require routine external-model/API calls for ordinary field work.
+- Should not receive unrestricted access to marketing, billing, company-wide financial intelligence, or other admin/provider-backed capabilities merely because the employee has a seat.
+
+Roles should remain permission-driven. A field supervisor may receive selected management capabilities without automatically becoming a full admin or gaining unrestricted provider-backed AI access.
+
+### Shared variable-cost pools
+
+Expensive allowances should remain **tenant-level shared resources**, not per-seat entitlements.
+
+Current planning direction:
+
+- AI credits are shared by the business account, not multiplied by user count.
+- The current ServicesOS contract of **100 included monthly AI credits** remains the reference point unless later usage evidence changes it.
+- Messaging/SMS allowances are shared by the business account.
+- The current founder planning target is **up to roughly 4,000 business text messages per month** in the base subscription, with an estimated provider cost around **$30–$35 at the cap** under current assumptions. Revalidate carrier/provider/segment economics before public commitment.
+- Adding field seats does **not** automatically add another SMS pool or another AI-credit pool.
+
+### Expansion-seat hypothesis
+
+Current working expansion idea:
+
+```text
+Base
+$100/month
+→ up to 10 total users
+
+Additional Field Team Pack
++$50/month
+→ up to 10 additional field seats
+```
+
+That makes the next 10 field users approximately **$5 per added field user per month** while preserving a simple business-level subscription.
+
+This is a planning hypothesis only. Validate storage, database traffic, support load, messaging behavior, and actual employee-app usage before locking it publicly.
+
+### Larger-company admin usage
+
+Larger service businesses may have several office managers, schedulers, estimators, operations managers, marketing staff, or customer-service users who legitimately use provider-backed AI more often than field employees.
+
+Therefore:
+
+- do not assume only the owner will ever use external AI;
+- provider-backed AI should be available to **authorized owner/admin users**;
+- all such use should draw from the tenant's shared credit/usage controls;
+- additional admin-heavy packaging may eventually cost more than field-seat expansion if real usage proves materially higher variable cost;
+- do not prebuild or publish a complex admin-seat pricing grid before usage evidence exists.
+
+### Commercial principle
+
+> **Seats scale access to the operating system. Expensive usage scales through shared tenant-level allowances and explicit permissions.**
+
+This lets ServicesOS support team growth without punishing ordinary hiring while still protecting SLAI from SMS, AI, storage, and support costs that actually scale with usage.
+
 ## Temporary Founder / Design-Partner Pricing
 
 Jamie may explicitly approve a temporary founder/design-partner rate when a customer materially helps validate a new vertical.
