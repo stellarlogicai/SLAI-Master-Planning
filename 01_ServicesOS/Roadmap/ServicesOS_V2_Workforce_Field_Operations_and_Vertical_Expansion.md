@@ -217,6 +217,60 @@ This should remain operational tracking, not payroll calculation.
 
 ---
 
+## 4A. Workforce Seat and Entitlement Model
+
+ServicesOS should distinguish **field access** from **owner/admin access** because the roles have different authority, workflows, and variable-cost profiles.
+
+### Role direction
+
+**Owner**
+- Full business authority subject to security and human-approval rules.
+- Can authorize provider-backed SLAI/GrowthAI capabilities.
+- Controls billing, permissions, and company-level settings.
+
+**Admin / Manager**
+- Supports scheduling, estimating, customer communication, operations, reporting, or other office/management work.
+- May receive selected provider-backed AI capabilities when explicitly permitted.
+- Shares the tenant's AI-credit/usage pool rather than receiving a separate per-seat model allowance.
+
+**Field Employee**
+- Primarily needs assigned work, schedule, checklists, field photos, notes, status changes, authorized job/customer context, and SLAI Intelligence.
+- Ordinary field workflows should remain deterministic/local wherever practical and should not require routine external-model calls.
+- Field access should not automatically grant company-wide administrative, billing, marketing, or provider-backed AI authority.
+
+A supervisor may receive narrowly elevated operational permissions without becoming a full admin. Capability authorization should remain permission-driven rather than relying only on a broad role label.
+
+### Cost and entitlement boundary
+
+Seat growth must not silently multiply the highest-cost resources.
+
+Default architectural direction:
+
+```text
+More field seats
+→ more authorized operational access
+→ ordinary database/storage/app usage
+
+NOT automatically
+→ another SMS allowance per seat
+→ another AI-credit allowance per seat
+→ unrestricted provider-backed AI
+```
+
+Messaging and provider-backed AI remain business/tenant-level resources with explicit allowances, metering, and permissions.
+
+The commercial working hypotheses for the base 10-user allowance, field-seat expansion, shared AI credits, and shared messaging pool are maintained in:
+
+- `01_ServicesOS/ServicesOS Expansion & Pricing Strategy.md`
+
+### V1 guardrail
+
+This section does **not** authorize a V1 permissions or billing redesign before wife beta/customer-ready V1 is complete.
+
+Preserve the concept now. Revalidate actual role behavior, support load, AI use, messaging use, and field-app usage before implementing expanded seat packaging.
+
+---
+
 ## 5. SLAI Assistant V2
 
 V1 establishes SLAI Assistant as the owner’s business assistant.
