@@ -190,16 +190,38 @@ Where a customer uses ServicesOS and a policy also controls an operational Servi
 
 Only approved, attributable content may be displayed.
 
+Testimonials may come from approved external review sources **or from SLAI Web form submissions** such as:
+
+- customer feedback,
+- testimonial/story submissions,
+- employee/team shout-outs where the content is appropriate for public display.
+
+A form submission must **not** become public automatically.
+
+Preferred promotion flow:
+
+```text
+Form submission
+→ business owner/editor review
+→ verify publish permission / display preference
+→ approve selected content
+→ promote to website testimonial/content record
+→ preview
+→ publish
+```
+
 Store:
 
 - text/excerpt,
 - attribution/display name when permitted,
 - source,
+- originating form/submission reference when applicable,
+- submitter publication-consent or display-preference evidence when applicable,
 - approval state,
 - source link where applicable,
 - date where known.
 
-Do not fabricate or materially alter review meaning.
+Do not fabricate or materially alter review meaning. Do not publish private feedback merely because it was positive.
 
 ### FAQs
 
@@ -723,6 +745,8 @@ Examples using the same underlying engine may include:
 - business-specific questionnaires.
 
 A form's **purpose** and its **post-submission destination/action** are separate concepts. For example, a quote request may hand off to ServicesOS while an employee shout-out may simply be stored in SLAI Web and notify an authorized business user.
+
+Some form types may also offer an explicit **website-promotion path** after submission. Customer feedback, testimonial, story, or shout-out submissions may be reviewed by an authorized business user and selectively promoted into approved website content. Promotion is never automatic and must preserve the original submission reference plus any required permission to display the submitter's name/content.
 
 A form definition should be reusable as:
 
