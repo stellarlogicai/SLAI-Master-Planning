@@ -684,12 +684,56 @@ Customer/SLAI must record confirmation that supplied media may be used. Do not t
 
 ---
 
-# 12. Form / Lead Contract
+# 12. Native Form / Lead Contract
 
-Standard contact/request forms should support:
+**Decision update — 2026-10-06:** reusable forms are a planned native SLAI Web capability. This preserves product ownership now; it does **not** promote form-builder implementation ahead of ServicesOS customer-ready V1, SLAI Platform Core extraction/revalidation, or the approved SLAI Web activation sequence.
+
+### Product ownership
+
+| System | Responsibility |
+|---|---|
+| **SLAI Web** | Form/questionnaire definition, website embedding, branding/presentation, responsive/mobile layout, safe conditional questions, shareable public form route/link, and form publication/versioning |
+| **ServicesOS** | Operational customer/lead/request records, submission-driven notifications, service-request workflows, follow-up state, and downstream business operations when connected |
+| **Agreement Lite** | Contracts/agreements, electronic-signature intent/consent, immutable signed agreement evidence, signed records/PDFs, and agreement-specific retention/audit requirements |
+| **GrowthAI / SLAI Intelligence** | Help the business draft a form/questionnaire, identify likely missing information, suggest wording/ordering/conditional questions, and explain recommendations; human owner/admin reviews before publication |
+
+Core rule:
+
+> **SLAI Web owns reusable form presentation and collection. ServicesOS owns connected operational workflow. Agreement Lite owns signatures/contracts. GrowthAI may assist authoring but is not the authority over what the business publishes or collects.**
+
+### Reusable form engine
+
+Forms must be schema/configuration-driven rather than hardcoded per website or vertical.
+
+Examples using the same underlying engine may include:
+
+- cleaning consultation / estimate intake,
+- landscaping property assessment,
+- barbershop/salon consultation,
+- general contact or service request,
+- event/vendor inquiry,
+- hiring interest form where appropriate,
+- business-specific questionnaires.
+
+A form definition should be reusable as:
+
+```text
+FormDefinition
+→ website-embedded form
+→ shareable public link
+→ future approved delivery channels
+```
+
+The form engine should support different layouts/presentation without duplicating the canonical question/field definition.
+
+### Standard form data
+
+A normal contact/request form should support at minimum:
 
 - tenant/site identifier,
-- form type/version,
+- stable form ID,
+- form schema/version,
+- field/question IDs,
 - name/contact fields as needed,
 - message/request fields,
 - optional service reference,
@@ -697,7 +741,46 @@ Standard contact/request forms should support:
 - created timestamp,
 - delivery/storage status,
 - spam/risk signals,
-- idempotency or duplicate mitigation where applicable.
+- idempotency or duplicate mitigation where applicable,
+- submission provenance/source route.
+
+Future richer questionnaires may add:
+
+- sections/pages/slides,
+- conditional visibility/branching,
+- select/multi-select/radio/checkbox fields,
+- date/time fields,
+- bounded file/image upload where separately designed,
+- structured business-specific fields,
+- explicit retention classification.
+
+### Publish/version rule
+
+A published form must reference an explicit form definition/version.
+
+Changing a live form should create a new version rather than silently changing the historical meaning of prior submissions.
+
+A submission must retain enough information to answer:
+
+- which form/version was submitted,
+- which questions/field IDs were presented,
+- what values were submitted,
+- when it was accepted,
+- which tenant/site received it,
+- what downstream handoff occurred.
+
+### Mobile-first rule
+
+Forms should be usable on phones without requiring a dedicated app.
+
+SLAI Web should prefer:
+
+- large touch targets,
+- simple progress where multi-step,
+- clear labels and validation,
+- minimal required typing,
+- resumable behavior only when privacy/security requirements justify it,
+- no forced account creation for ordinary public intake unless the workflow genuinely requires identity.
 
 ### Security / abuse rules
 
@@ -708,7 +791,38 @@ Standard contact/request forms should support:
 - no arbitrary file upload in V1 unless separately designed,
 - output encoding/sanitization,
 - no secret leakage,
-- no unbounded email/API fan-out.
+- no unbounded email/API fan-out,
+- tenant isolation before storage or operational handoff,
+- explicit allowlisting of fields that may flow into ServicesOS.
+
+### Sensitive-data classes
+
+Not every form may use the same access/retention rules.
+
+Forms that collect sensitive data require a declared data class and additional controls before publication.
+
+Examples include:
+
+- childcare/minor information,
+- health/medical details,
+- identity documents,
+- financial information,
+- regulated/compliance information,
+- safety/security details.
+
+For minor/childcare questionnaires in particular, define before implementation:
+
+- minimum necessary fields,
+- who may view submissions,
+- retention/deletion period,
+- whether raw submissions may be exported,
+- whether notifications may contain sensitive fields,
+- whether GrowthAI/model providers may receive any submission content,
+- whether parent/guardian consent or additional policy requirements apply.
+
+Default rule:
+
+> **Do not send sensitive form content to an external model merely because GrowthAI helped create the form. Authoring assistance and submission processing are separate authority/privacy decisions.**
 
 ### Delivery rule
 
@@ -720,13 +834,59 @@ If notification delivery fails after authoritative intake, retain enough status 
 
 For a standalone SLAI Web customer, SLAI Web is the authoritative intake system for the website form unless another explicitly supported external integration is configured.
 
+Standalone SLAI Web may store and present submissions without requiring ServicesOS.
+
 ### ServicesOS handoff
 
-When ServicesOS is connected, supported contact/request forms should create the corresponding ServicesOS lead/request through a defined server-side connector when that workflow is enabled.
+When ServicesOS is connected, supported contact/request forms should create the corresponding ServicesOS lead/request/customer workflow through a defined server-side connector when that workflow is enabled.
 
-ServicesOS then becomes the operational authority for the resulting lead/request.
+ServicesOS then becomes the operational authority for the resulting lead/request/customer workflow.
+
+Conceptually:
+
+```text
+SLAI Web Form
+→ authoritative submission acceptance
+→ validated connector payload
+→ ServicesOS lead/request/customer workflow
+→ notifications/follow-up/business operations
+```
 
 Do not write directly into arbitrary ServicesOS collections from public browser code.
+
+### Agreement Lite boundary
+
+A normal SLAI Web form must not become an informal substitute for Agreement Lite.
+
+If the workflow requires:
+
+- contractual terms,
+- intent to sign,
+- electronic-records consent,
+- signature evidence,
+- exact immutable agreement content/version,
+- signed PDF/copy,
+- agreement audit trail,
+
+route to Agreement Lite rather than extending a generic form submission into a pseudo-contract.
+
+### GrowthAI / SLAI Intelligence authoring assistance
+
+GrowthAI may eventually help an owner/admin:
+
+- draft a form from a business goal,
+- start from a vertical-aware template,
+- identify missing questions,
+- reduce redundant questions,
+- suggest conditional follow-ups,
+- rewrite confusing wording,
+- flag potentially sensitive questions,
+- explain why a field may be useful,
+- suggest a shorter mobile-friendly flow.
+
+The owner/admin must review and approve before publish.
+
+GrowthAI should not autonomously publish a form, decide legal consent language, or expand sensitive-data collection without explicit human approval.
 
 ---
 
