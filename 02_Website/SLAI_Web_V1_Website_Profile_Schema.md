@@ -636,17 +636,64 @@ type WebsiteConversionV1 = {
   forms: WebsiteFormConfigV1[];
 };
 
+type WebsiteFormKindV1 =
+  | "contact"
+  | "request_service"
+  | "consultation"
+  | "questionnaire"
+  | "custom_intake";
+
+type WebsiteFormFieldTypeV1 =
+  | "short_text"
+  | "long_text"
+  | "email"
+  | "phone"
+  | "number"
+  | "select"
+  | "multi_select"
+  | "radio"
+  | "checkbox"
+  | "date"
+  | "acknowledgement";
+
+type WebsiteFormConditionV1 = {
+  sourceFieldId: string;
+  operator: "equals" | "not_equals" | "contains";
+  value: string | number | boolean;
+};
+
+type WebsiteFormFieldV1 = {
+  fieldId: string;
+  type: WebsiteFormFieldTypeV1;
+  label: string;
+  helpText?: string;
+  required: boolean;
+  options?: Array<{ value: string; label: string }>;
+  visibleWhen?: WebsiteFormConditionV1;
+};
+
 type WebsiteFormConfigV1 = {
   formId: string;
-  type: "contact" | "request_service";
+  formVersion: string;
+  kind: WebsiteFormKindV1;
   enabled: boolean;
   heading?: string;
+  description?: string;
+  fields: WebsiteFormFieldV1[];
   successMessage?: string;
+  presentation?: {
+    layout: "single_page" | "step_by_step";
+    inheritSiteBranding: boolean;
+  };
+  shareablePublicRouteEnabled: boolean;
   servicesosHandoffEnabled: boolean;
+  dataClass: "standard" | "sensitive_restricted";
 };
 ```
 
 `destinationRef` references a validated route, public contact method, form, ServicesOS booking connector, or approved external URL. It must not contain secrets.
+
+V1 form definitions are schema-driven and reusable across website embedding and shareable public links. Basic conditional visibility is supported; arbitrary scripting and deep branching are not part of the V1 contract. Form submissions remain separate operational records and must retain the submitted form ID/version.
 
 Connected ServicesOS booking remains server-authoritative outside this profile.
 
