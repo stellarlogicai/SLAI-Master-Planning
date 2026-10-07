@@ -686,7 +686,7 @@ Customer/SLAI must record confirmation that supplied media may be used. Do not t
 
 # 12. Native Form / Lead Contract
 
-**Decision update — 2026-10-06:** reusable forms are a planned native SLAI Web capability. This preserves product ownership now; it does **not** promote form-builder implementation ahead of ServicesOS customer-ready V1, SLAI Platform Core extraction/revalidation, or the approved SLAI Web activation sequence.
+**Decision update — 2026-10-06:** reusable forms are a **required bounded SLAI Web V1 capability**. This locks the capability into Web V1 while preserving the approved sequence: do **not** begin SLAI Web implementation ahead of ServicesOS customer-ready V1 and SLAI Platform Core extraction/revalidation.
 
 ### Product ownership
 
@@ -744,15 +744,26 @@ A normal contact/request form should support at minimum:
 - idempotency or duplicate mitigation where applicable,
 - submission provenance/source route.
 
-Future richer questionnaires may add:
+The bounded V1 form engine should support:
 
-- sections/pages/slides,
-- conditional visibility/branching,
+- single-page or simple step-by-step presentation,
+- text/long-text/email/phone/number fields,
 - select/multi-select/radio/checkbox fields,
-- date/time fields,
-- bounded file/image upload where separately designed,
+- date fields,
+- acknowledgements/consent checkboxes,
+- required/optional validation,
+- basic conditional visibility driven by prior answers,
 - structured business-specific fields,
-- explicit retention classification.
+- explicit standard versus sensitive/restricted data classification.
+
+Defer from V1 unless separately earned:
+
+- arbitrary scripting,
+- deep/nested branching graphs,
+- unrestricted file/image upload,
+- payment collection inside generic forms,
+- signature/contract behavior outside Agreement Lite,
+- advanced analytics/automation comparable to dedicated form platforms.
 
 ### Publish/version rule
 
@@ -872,7 +883,7 @@ route to Agreement Lite rather than extending a generic form submission into a p
 
 ### GrowthAI / SLAI Intelligence authoring assistance
 
-GrowthAI may eventually help an owner/admin:
+GrowthAI / SLAI Intelligence may assist an owner/admin in V1 where the bounded assistance is ready, but the deterministic form editor must not depend on AI. It may:
 
 - draft a form from a business goal,
 - start from a vertical-aware template,
