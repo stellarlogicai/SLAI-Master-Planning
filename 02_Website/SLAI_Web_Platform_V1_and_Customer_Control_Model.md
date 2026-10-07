@@ -1,7 +1,7 @@
 # SLAI Web Platform V1 and Customer Control Model
 
 **Status:** Strategic planning / future active build after ServicesOS V1  
-**Last Updated:** 2026-09-09  
+**Last Updated:** 2026-10-06  
 **Owner:** Jamie Brown / Stellar Logic AI  
 **Priority Gate:** Do not begin active SLAI Web implementation until ServicesOS V1 is stable, customer-facing, payment-ready, and no longer requiring constant beta-critical intervention.
 
@@ -200,6 +200,79 @@ About Page
 Customers may reorder or choose compatible sections within safe rules.
 
 New functionality, unsupported components, unusual integrations, and bespoke experiences remain SLAI custom work.
+
+## Native Reusable Forms and Questionnaires
+
+SLAI Web should eventually provide a native reusable form/questionnaire capability instead of hardcoding individual intake forms into customer websites.
+
+This is a **planned SLAI Web platform capability**, not an immediate ServicesOS MVP requirement and not authorization to expand the current ServicesOS V1 finish line.
+
+### Product split
+
+```text
+SLAI Web
+→ build/brand/publish/embed/share forms
+
+ServicesOS (when connected)
+→ receive approved operational submissions
+→ customer/lead/request records
+→ notifications and business workflow
+
+Agreement Lite
+→ contractual/e-signature workflows and immutable signed evidence
+
+GrowthAI / SLAI Intelligence
+→ assist form authoring and gap detection
+→ human owner/admin reviews before publish
+```
+
+The same form engine should support many businesses and verticals through configuration rather than separate code paths.
+
+Examples:
+
+- cleaning consultation,
+- landscaping property assessment,
+- barbershop/salon consultation,
+- general service request,
+- business-specific questionnaire.
+
+Forms should support website embedding and a shareable mobile-friendly link so a business can send the same intake through text, email, Messenger, QR code, or another approved channel without requiring the respondent to install an app.
+
+### Architecture principle
+
+> **Forms are reusable public-intake definitions. Operational records belong to the operational product.**
+
+Standalone SLAI Web customers may keep form submissions in SLAI Web.
+
+When ServicesOS is connected, supported operational forms should hand off through a defined connector and ServicesOS should own the resulting business workflow.
+
+Do not build a second customer/lead CRM inside SLAI Web merely because SLAI Web collected the submission.
+
+### GrowthAI assistance
+
+GrowthAI may help create a first draft from:
+
+- business type,
+- service/workflow goal,
+- known business settings,
+- existing approved templates,
+- owner-supplied requirements.
+
+It may suggest missing questions, clearer wording, ordering, or conditional follow-ups.
+
+The owner/admin remains responsible for what gets published and what customer information is collected.
+
+### Sensitive forms
+
+Sensitive-data forms require stricter rules than ordinary leads/contact requests.
+
+Childcare/minor questionnaires are an explicit example. Before such a form is enabled, define access, minimum-data collection, retention/deletion, notification redaction, export behavior, and model/provider boundaries.
+
+A form-authoring model should not automatically receive completed sensitive submissions.
+
+The detailed canonical contract lives in:
+
+- `SLAI_Web_V1_Product_and_Data_Contracts.md#12-native-form--lead-contract`
 
 ## Design System and UI/UX Lifecycle
 
