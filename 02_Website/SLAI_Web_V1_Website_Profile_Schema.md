@@ -411,12 +411,21 @@ type TestimonialV1 = {
   attribution?: string;
   sourceLabel?: string;
   sourceUrl?: string;
+  sourceFormId?: string;
+  sourceFormSubmissionId?: string;
   originalDate?: string;
+  publicationPermission?: {
+    granted: boolean;
+    displayNameAllowed?: boolean;
+    recordedAt?: TimestampValue;
+  };
   approved: boolean;
 };
 ```
 
 Do not fabricate reviews or materially alter meaning.
+
+A testimonial promoted from a form submission must preserve its originating form/submission reference. Positive feedback does not become public automatically: an authorized business user must approve it, and any required publication/display-name permission must be recorded before publish.
 
 ## 7.4 FAQs
 
