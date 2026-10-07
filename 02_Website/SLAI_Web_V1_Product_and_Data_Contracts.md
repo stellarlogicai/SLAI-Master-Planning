@@ -705,15 +705,24 @@ Core rule:
 
 Forms must be schema/configuration-driven rather than hardcoded per website or vertical.
 
+Each tenant/site may own **multiple independently managed forms**. The system must not treat "form" as a single website setting. Owners/editors should be able to create, name, duplicate, edit, preview, publish, disable, archive, and review submissions for each form independently.
+
 Examples using the same underlying engine may include:
 
 - cleaning consultation / estimate intake,
+- employee/team shout-out,
+- customer feedback,
+- testimonial/story submission,
+- callback request,
+- hiring interest,
 - landscaping property assessment,
 - barbershop/salon consultation,
 - general contact or service request,
 - event/vendor inquiry,
 - hiring interest form where appropriate,
 - business-specific questionnaires.
+
+A form's **purpose** and its **post-submission destination/action** are separate concepts. For example, a quote request may hand off to ServicesOS while an employee shout-out may simply be stored in SLAI Web and notify an authorized business user.
 
 A form definition should be reusable as:
 
