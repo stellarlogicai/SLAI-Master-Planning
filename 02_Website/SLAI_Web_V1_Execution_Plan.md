@@ -205,13 +205,27 @@ Do not build ten layouts before demand proves the need.
 - bounded storage/asset rules,
 - deletion/reference safety.
 
-### Forms / contact flow
+### Native reusable forms / contact flow
 
-- standard contact/lead form,
+SLAI Web V1 must include a **bounded reusable form builder**, not only one hardcoded contact form.
+
+V1 includes:
+
+- create/edit reusable form definitions from supported field types,
+- website-embedded forms,
+- shareable mobile-friendly public form links,
+- branding/presentation inherited from the business/site where practical,
+- text, long text, email, phone, number, select, multi-select, radio, checkbox, date, and simple consent/acknowledgement fields,
+- required/optional field rules,
+- basic conditional field visibility based on prior answers,
+- explicit form versions so old submissions retain their original meaning,
+- standalone SLAI Web submission storage/review,
 - anti-spam/rate-limit protections,
 - customer notification/delivery handling,
 - clear submission result/error behavior,
-- ServicesOS lead/request handoff where connected and explicitly supported.
+- ServicesOS lead/request/customer-workflow handoff where connected and explicitly supported.
+
+V1 does **not** need a Typeform/Jotform-scale drag-and-drop system, arbitrary scripting, deep branching graphs, payments inside forms, signature/contract behavior, or unrestricted sensitive-data collection. Agreement Lite remains the signature/contract path.
 
 ### SEO / metadata / analytics foundation
 
@@ -263,7 +277,11 @@ Allowed V1 assistance may include:
 - suggest SEO metadata,
 - explain style choices,
 - flag accessibility/usability concerns,
-- help diagnose unusual layout/content issues.
+- help diagnose unusual layout/content issues,
+- optionally draft a form/questionnaire from the business goal and known business context,
+- optionally suggest missing questions or clearer wording for a form.
+
+Form generation remains human-reviewed. A deterministic form editor and schema must work without AI; AI-assisted form authoring is not allowed to publish automatically.
 
 Normal site rendering, validation, publishing, versioning, deployment, metadata generation from verified fields, and standard layout instantiation should remain deterministic.
 
@@ -294,6 +312,10 @@ Unless a real paying customer proves one is necessary for V1 viability, defer:
 - fully automated domain transfer/migration for every registrar,
 - custom email hosting,
 - custom CRM replacement,
+- unrestricted drag-and-drop / arbitrary-script form builder,
+- complex branching/logic programming for forms,
+- generic electronic-signature/contract builder outside Agreement Lite,
+- unrestricted sensitive-data intake without an approved data-class policy,
 - ServicesOS dependency for standalone Web customers.
 
 ---
@@ -588,20 +610,38 @@ Support normal small-business content and lead capture safely.
 
 ### Forms
 
-- contact/lead form,
-- validation,
+- schema-driven reusable form definitions,
+- supported V1 field library,
+- create/edit/preview/publish form workflow,
+- website embedding,
+- shareable public form route/link,
+- mobile-first rendering,
+- required/optional validation,
+- basic conditional field visibility,
+- immutable/versioned published form definitions,
+- authoritative submission acceptance,
+- standalone submission storage/review,
 - anti-spam/rate limiting,
 - delivery/storage policy,
 - customer notification,
 - safe failure/retry behavior,
-- ServicesOS handoff where explicitly connected.
+- ServicesOS handoff where explicitly connected,
+- explicit Agreement Lite boundary for signatures/contracts.
 
 ### Acceptance criteria
 
 - unsupported/malicious file types are rejected,
 - oversized/abusive upload behavior is bounded,
+- one form definition can be reused without customer-specific code,
+- a business owner can create a normal service-intake form without SLAI editing source code,
+- website-embedded and shareable-link rendering use the same canonical form definition/version,
+- old submissions retain the exact form/version context they were submitted against,
+- basic conditional visibility behaves deterministically,
 - form spam cannot create unbounded cost/load,
 - no secret/private operational data is returned to the browser,
+- standalone submissions remain usable without ServicesOS,
+- connected operational submissions hand off only through the bounded ServicesOS connector,
+- signature/contract needs route to Agreement Lite rather than generic forms,
 - failures are visible and recoverable rather than silently losing leads.
 
 ---
