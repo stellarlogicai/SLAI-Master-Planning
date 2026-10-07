@@ -212,6 +212,9 @@ SLAI Web V1 must include a **bounded reusable form builder**, not only one hardc
 V1 includes:
 
 - create/edit reusable form definitions from supported field types,
+- manage multiple forms per business/site from one Forms area,
+- name, duplicate, archive, enable/disable, preview, and publish forms independently,
+- filter/view submissions by form,
 - website-embedded forms,
 - shareable mobile-friendly public form links,
 - branding/presentation inherited from the business/site where practical,
@@ -611,6 +614,8 @@ Support normal small-business content and lead capture safely.
 ### Forms
 
 - schema-driven reusable form definitions,
+- multi-form management dashboard/list,
+- independent form lifecycle (draft/published/disabled/archived),
 - supported V1 field library,
 - create/edit/preview/publish form workflow,
 - website embedding,
@@ -633,7 +638,10 @@ Support normal small-business content and lead capture safely.
 - unsupported/malicious file types are rejected,
 - oversized/abusive upload behavior is bounded,
 - one form definition can be reused without customer-specific code,
-- a business owner can create a normal service-intake form without SLAI editing source code,
+- one business/site can own and manage multiple distinct forms without code changes,
+- forms can be independently named, previewed, published, disabled, duplicated, and archived,
+- submissions can be identified and reviewed by originating form/version,
+- a business owner can create a normal service-intake, feedback, shout-out, contact, or other supported form without SLAI editing source code,
 - website-embedded and shareable-link rendering use the same canonical form definition/version,
 - old submissions retain the exact form/version context they were submitted against,
 - basic conditional visibility behaves deterministically,
