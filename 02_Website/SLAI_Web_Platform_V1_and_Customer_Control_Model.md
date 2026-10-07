@@ -203,9 +203,9 @@ New functionality, unsupported components, unusual integrations, and bespoke exp
 
 ## Native Reusable Forms and Questionnaires
 
-SLAI Web should eventually provide a native reusable form/questionnaire capability instead of hardcoding individual intake forms into customer websites.
+SLAI Web V1 must provide a **bounded native reusable form/questionnaire capability** instead of hardcoding individual intake forms into customer websites.
 
-This is a **planned SLAI Web platform capability**, not an immediate ServicesOS MVP requirement and not authorization to expand the current ServicesOS V1 finish line.
+This is a **locked SLAI Web V1 capability**, but it is still not an immediate ServicesOS MVP requirement and does not authorize expanding the current ServicesOS V1 finish line.
 
 ### Product split
 
@@ -237,6 +237,23 @@ Examples:
 - business-specific questionnaire.
 
 Forms should support website embedding and a shareable mobile-friendly link so a business can send the same intake through text, email, Messenger, QR code, or another approved channel without requiring the respondent to install an app.
+
+### V1 boundary
+
+V1 should be powerful enough for a small business to create a useful intake form without SLAI editing code.
+
+V1 should include:
+
+- supported reusable field types,
+- required/optional rules,
+- basic conditional visibility,
+- website embed,
+- shareable mobile-friendly link,
+- versioned form definitions,
+- standalone submission review,
+- bounded ServicesOS handoff when connected.
+
+V1 should **not** attempt to compete with mature dedicated form platforms on arbitrary drag-and-drop composition, scripting, deep branching, payment collection, workflow automation, or signature/contract tooling.
 
 ### Architecture principle
 
