@@ -675,8 +675,11 @@ type WebsiteFormFieldV1 = {
 type WebsiteFormConfigV1 = {
   formId: string;
   formVersion: string;
+  name: string; // internal business-facing label, e.g. "Employee Shout-Out"
   kind: WebsiteFormKindV1;
+  status: "draft" | "published" | "disabled" | "archived";
   enabled: boolean;
+  publicSlug?: string; // unique within the site when a shareable route is enabled
   heading?: string;
   description?: string;
   fields: WebsiteFormFieldV1[];
@@ -693,7 +696,7 @@ type WebsiteFormConfigV1 = {
 
 `destinationRef` references a validated route, public contact method, form, ServicesOS booking connector, or approved external URL. It must not contain secrets.
 
-V1 form definitions are schema-driven and reusable across website embedding and shareable public links. Basic conditional visibility is supported; arbitrary scripting and deep branching are not part of the V1 contract. Form submissions remain separate operational records and must retain the submitted form ID/version.
+V1 form definitions are schema-driven and reusable across website embedding and shareable public links. A site may own multiple forms in `forms: WebsiteFormConfigV1[]`; each form has its own stable ID, human-friendly management name, lifecycle state, version, and optional public slug. Basic conditional visibility is supported; arbitrary scripting and deep branching are not part of the V1 contract. Form submissions remain separate operational records and must retain the submitted form ID/version.
 
 Connected ServicesOS booking remains server-authoritative outside this profile.
 
