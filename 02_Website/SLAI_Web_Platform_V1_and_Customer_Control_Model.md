@@ -234,7 +234,14 @@ Examples:
 - landscaping property assessment,
 - barbershop/salon consultation,
 - general service request,
+- employee shout-out,
+- customer feedback,
+- testimonial submission,
+- callback request,
+- hiring interest,
 - business-specific questionnaire.
+
+A single business may run several of these at once. The product model must not assume one website equals one form.
 
 Forms should support website embedding and a shareable mobile-friendly link so a business can send the same intake through text, email, Messenger, QR code, or another approved channel without requiring the respondent to install an app.
 
@@ -244,6 +251,10 @@ V1 should be powerful enough for a small business to create a useful intake form
 
 V1 should include:
 
+- multiple forms per business/site,
+- a Forms management area showing each form's name, purpose/type, status, last update, and submission activity,
+- independent create, duplicate, edit, preview, publish, disable, and archive actions,
+- submission review/filtering by originating form,
 - supported reusable field types,
 - required/optional rules,
 - basic conditional visibility,
