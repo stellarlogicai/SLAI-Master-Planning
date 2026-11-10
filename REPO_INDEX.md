@@ -98,6 +98,7 @@ Key new planning:
 - `02_Website/SLAI_Web_Layout_Library_Plan.md` — target 10-layout service-business library, SLAI/Aunt B's source-layout extraction, shared section/theme composition, controlled expansion order, and future AI-assisted layout direction.
 - `02_Website/SLAI_Web_QA_and_Release_Gates.md` — automated + human QA/release evidence model.
 - `02_Website/Templates/` — site manifest, intake/readiness, Web Job Packet, Human QA, and client approval/deployment templates.
+- `02_Website/Templates/SLAIWeb_Better_Life_Home_Cleaning_Reference_Template.md` — research-backed residential cleaning website presentation reference: outcome-first messaging, founder/team story, social proof, verified trust/FAQ/service-area design, MaidCentral quote embed observation, and original SLAIWeb template guidance (**future planning only**).
 - `01_ServicesOS/Website_Public_Data_and_Booking_Contract.md` — future ServicesOS public projection, publish semantics, and native booking source-of-truth contract.
 - `02_Website/American_Barbershop_Concept_and_Validation.md` — first concrete web/ServicesOS-Barber validation case.
 - `03_SLAI_Company/SLAI_Web_Services_Business_Model.md` — $100 Managed Web, $100 ServicesOS, working website-build economics, founder-compensation intent, and website-to-ServicesOS acquisition funnel.
